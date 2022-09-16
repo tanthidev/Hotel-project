@@ -50,8 +50,8 @@ body{
 }
 
 hr{
-    height: 1px;
-    margin: 30px 0;
+    height: 0.1px;
+    margin: 10px 0;
     background-color: rgba(38,38,38, 0.5);
 }
 
@@ -115,6 +115,43 @@ hr{
     transform: scale(1.2);
 }
 
+
+.btn-submit{
+    border: none;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 15px;
+    background-color: rgba(217,134,0);
+    color: var(--white-color);
+}
+
+
+.btn-submit:hover{
+    background-color: rgb(154, 95, 0);
+}
+
+
+.btn-cancel{
+    border: none;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 15px;
+    background-color: rgb(188, 188, 188);
+    color: var(--white-color);
+    margin: 0 10px;
+}
+
+.btn-cancel:hover{
+    background-color: rgb(115, 114, 114);
+}
+
+.hidden-item{
+    font-size: 5px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    cursor: default;
+}
 
 /* Header CSS */
 .header{
@@ -1204,9 +1241,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         padding: 100px 0;
     }
 
-    hr{
-        display: none;
-    }
 
     .service__title{
         display: none;
@@ -1281,10 +1315,26 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin: 10px 0;
 }
 
+.profile__control--item:hover{
+    color: rgba(217,134,0);
+    transform: scale(1.03);
+}
+
 .profile__control--item-text{
     cursor: pointer;
     font-size: 15px;
 }   
+.profile__container-info--header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-change-info{
+    color: var(--main-color);
+    font-size: 25px;
+    margin-right: 20px;
+    cursor: pointer;
+}
 
 .profile__container-change-pass{
     display: none;
@@ -1300,7 +1350,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .profile__main--item,
 .profile__change-pass--item
 {
-    margin: 20px 0;
+    margin: 22.5px 0;
 }
 .profile__main--container-title,
 .profile__change-pass--container-title{
@@ -1318,21 +1368,35 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .profile__main--info-text{
     font-size: 15px;
+    /* display: none; */
 }
 
 .change-pass--input{
     width: 30%;
 }
 
-.change-pass__btn-submit{
-    border: none;
-    padding: 8px 20px;
-    border-radius: 50px;
-    font-size: 15px;
-    background-color: rgba(217,134,0);
-    color: var(--white-color);
+
+
+
+.profile__main--info-text-cannot-change{
+    display: block !important;
 }
 
+.profile__change-input-change-info{
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1px solid var(--main-color);
+    display: none;
+
+}
+
+.btn-submit-change-info{
+    display: none;
+}
+
+.cancel-change-info{
+    display: none;
+}
 
 /* Animation */  
 @keyframes fade {

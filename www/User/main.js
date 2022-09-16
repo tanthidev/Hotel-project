@@ -41,3 +41,51 @@ document.onclick = function(event){
     }
 }
 
+if(document.getElementById("profile__container-info").style.display="block"){
+    document.getElementById("to-page-info").style.color="rgba(217,134,0)";
+}
+
+
+document.getElementById('to-page-info').onclick = function(){
+    document.getElementById("profile__container-info").style.display="block";
+    document.getElementById("to-page-info").style.color="rgba(217,134,0)";
+    document.getElementById("profile__container-change-pass").style.display="none";
+    document.getElementById("to-page-change-pass").style.color="#000";
+}
+
+document.getElementById('to-page-change-pass').onclick = function(){
+    document.getElementById("profile__container-change-pass").style.display="block";
+    document.getElementById("to-page-change-pass").style.color="rgba(217,134,0)";
+    document.getElementById("profile__container-info").style.display="none";
+    document.getElementById("to-page-info").style.color="#000";
+}
+
+
+document.getElementById('btn-change-info').onclick = function(){
+    const collection = document.getElementsByClassName("profile__main--info-text");
+    for (let i = 0; i < collection.length; i++) {
+        collection[i].style.display = "none";
+    }
+
+    const collection2 = document.getElementsByClassName("profile__change-input-change-info");
+    for (let i = 0; i < collection2.length; i++) {
+        collection2[i].style.display = "block";
+    }
+    document.getElementById("btn-submit-change-info").style.display="block";
+    document.getElementById("cancel-change-info").style.display="block";
+}
+
+document.getElementById('cancel-change-info').onclick = function(){
+    const collection = document.getElementsByClassName("profile__main--info-text");
+    for (let i = 0; i < collection.length; i++) {
+        collection[i].style.display = "block";
+    }
+
+    const collection2 = document.getElementsByClassName("profile__change-input-change-info");
+    for (let i = 0; i < collection2.length; i++) {
+        collection2[i].style.display = "none";
+    }
+    document.getElementById("btn-submit-change-info").style.display="none";
+    document.getElementById("cancel-change-info").style.display="none";
+
+}

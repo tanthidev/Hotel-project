@@ -53,8 +53,13 @@
         exit;
     }
     
+
+
     //Xử lý userID
-    $userID=1;
+    $sql = "SELECT * FROM User WHERE userID = (SELECT max(userID) FROM User)";
+	$result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    $userID = $row['userID']+1;
     //Lưu thông tin thành viên vào bảng
     @$addmember = mysqli_query($conn,"
         INSERT INTO User (userID,fullName,phoneNumber,email,passWord)
