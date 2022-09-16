@@ -36,7 +36,7 @@ if (isset($_POST['tel']))
     $row = mysqli_fetch_array($query);
      
     //So sánh 2 mật khẩu có trùng khớp hay không
-    if ($password != $row['password']) {
+    if ($passWord != $row['passWord']) {
         echo "Mật khẩu không đúng. Vui lòng nhập lại. <a href='javascript: history.go(-1)'>Trở lại</a>";
         exit;
     }
@@ -289,26 +289,26 @@ if (isset($_POST['tel']))
 					<form class="home__taskbar-booking">
 						<!-- check in -->
 						<div class="taskbar-booking__checkin taskbar-booking--item">
-							<p class="taskbar-booking--text">
+							<label for="booking-input-checkin" class="taskbar-booking--text">
 								Check-in
-							</p>
-							<input type="date" name="checkin-date" class="booking-input">
+							</label>
+							<input id="booking-input-checkin" type="date" name="checkin-date" class="booking-input">
 						</div>
 						<!-- check out -->
 						<div class="taskbar-booking__checkout taskbar-booking--item">
-							<p class="taskbar-booking--text">
+							<label for="booking-input-checkout" class="taskbar-booking--text">
 								<i class="fa-regular fa-inbox-out"></i>
 								Check-out
-							</p>
-							<input type="date" name="checkout-date"  class="booking-input">
+							</label>
+							<input id="booking-input-checkout" type="date" name="checkout-date"  class="booking-input">
 						</div>
 						<!-- Number guest -->
 						<div class="taskbar-booking__number-guest taskbar-booking--item">
-							<p class="taskbar-booking--text">
+							<label for="booking-input-guest" class="taskbar-booking--text">
 								<i class="fa-solid fa-users"></i>
 								Guest
-							</p>
-							<input type="number" name="number-guest" value="1" min="1"  class="booking-input booking-input--guest">
+							</label>
+							<input id="booking-input-guest" type="number" name="number-guest" value="1" min="1"  class="booking-input booking-input--guest">
 						</div>
 						<!-- Search -->
 						<input type="submit" value="Search" class="taskbar-booking__search">

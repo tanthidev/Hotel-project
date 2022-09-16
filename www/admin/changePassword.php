@@ -1,8 +1,9 @@
 <?php
     ob_start();
+    session_start();
     include "db.php";
     //Nếu không phải là sự kiện đăng ký thì không xử lý
-    if(!isset($_POST['fullName'])){
+    if(!isset($_SESSION['us'])){
         die('');
     }
    
@@ -10,23 +11,37 @@
     // header('Content-Type: text/html; charset=UTF-8');
           
     //Lấy dữ liệu từ file dangky.php
-    $userID
+    $userID         = $_SESSION['us'];
     $currentpass    = addslashes($_POST['currentpass']);
     $newpass        = addslashes($_POST['newpass']);
-    $renewpass      = addslashes($_POST['re-newpass']);
+    $re_newpass      = addslashes($_POST['re-newpass']);
+
+    // Mã khóa mật khẩu
+    $currentpass  = md5($currentpass);
+    $newpass = md5($newpass);
+    $re_newpass = md5($re_newpass);
+
+    $sql = "SELECT * FROM User where userID = $userID ";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
 
 
     //Kiểm tra pass có chính xác không
-    if (mysqli_num_rows(mysqli_query($conn,"SELECT passWord FROM User WHERE email='$email'")) > 0)
+    if ($row['passWord']!=$currentpass){
+        echo "Password không chính xác. <a href='javascript: history.go(-1)'>Trở lại</a>";
+        exit;
+    }
 
-    //Lưu thông tin thành viên vào bảng
+     //Kiểm tra mật khẩu có trùng nhau không
+     if($newpass != $re_newpass){
+        echo "Mật khẩu không giống nhau! <a href='javascript: history.go(-1)'>Trở lại</a>";
+        exit;
+    }
+
+    //Cập nhật password
     @$updatemember = mysqli_query($conn," 
         UPDATE User
-        SET fullName = '$fullName', 
-            phoneNumber = '$phoneNumber', 
-            birthDay='$birthDay', 
-            email='$email', 
-            gender='$gender' 
+        SET passWord = '$newpass'
         WHERE userID='$userID'");
                           
     //Thông báo quá trình lưu
