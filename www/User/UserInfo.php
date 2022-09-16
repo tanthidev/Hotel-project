@@ -117,7 +117,16 @@
 			</div>	
 			
 			<div class="grid__column-3-4">
-
+				<div class="grid__row">
+					<div class="profile-right">
+						<h2 class="profile__title">
+								Thông tin
+						</h2>
+						<div class="profile__main">
+							
+						</div>
+					</div>	
+				</div>
 			</div>
 		</div>
     </div>
