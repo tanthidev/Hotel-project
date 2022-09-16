@@ -26,7 +26,7 @@ if (isset($_POST['tel']))
     $passWord = md5($passWord);
      
     //Kiểm tra tên đăng nhập có tồn tại không
-    $query = mysqli_query($conn,"SELECT phoneNumber, passWord FROM member WHERE phoneNumber='$phoneNumber'");
+    $query = mysqli_query($conn,"SELECT phoneNumber, passWord FROM User WHERE phoneNumber='$phoneNumber'");
     if (mysqli_num_rows($query) == 0) {
         echo "Tên đăng nhập này không tồn tại. Vui lòng kiểm tra lại. <a href='javascript: history.go(-1)'>Trở lại</a>";
         exit;
@@ -107,7 +107,7 @@ if (isset($_POST['tel']))
 						if(isset($_SESSION['us'])&&($_SESSION['us']!="")){
 							include('./admin/db.php');
 							$a = $_SESSION['us'];
-							$sql = "SELECT fullName, email FROM member where phoneNumber = $a";
+							$sql = "SELECT fullName, email FROM User where phoneNumber = $a";
 							$result = $conn->query($sql);
 							$row = $result->fetch_assoc();
 							echo '<div class="header__user-opption">

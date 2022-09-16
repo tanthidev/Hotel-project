@@ -28,7 +28,7 @@
         $pass = md5($pass);
         $re_pass = md5($re_pass);
     //Kiểm tra tên đăng nhập này đã có người dùng chưa
-    if (mysqli_num_rows(mysqli_query($conn,"SELECT phoneNumber FROM member WHERE phoneNumber='$phoneNumber'")) > 0){
+    if (mysqli_num_rows(mysqli_query($conn,"SELECT phoneNumber FROM User WHERE phoneNumber='$phoneNumber'")) > 0){
         echo "Số điện thoại đã được sử dụng!. <a href='javascript: history.go(-1)'>Trở lại</a>";
         exit;
     }
@@ -41,7 +41,7 @@
     }
           
     //Kiểm tra email đã có người dùng chưa
-    if (mysqli_num_rows(mysqli_query($conn,"SELECT email FROM member WHERE email='$email'")) > 0)
+    if (mysqli_num_rows(mysqli_query($conn,"SELECT email FROM User WHERE email='$email'")) > 0)
     {
         echo "Email này đã có người dùng. Vui lòng chọn Email khác. <a href='javascript: history.go(-1)'>Trở lại</a>";
         exit;
@@ -53,10 +53,12 @@
         exit;
     }
     
+    //Xử lý userID
+    $userID=1;
     //Lưu thông tin thành viên vào bảng
     @$addmember = mysqli_query($conn,"
-        INSERT INTO member (fullName,phoneNumber,email,passWord)
-        VALUE ('$fullName','$phoneNumber','$email','$pass')");
+        INSERT INTO User (userID,fullName,phoneNumber,email,passWord)
+        VALUE ('$userID','$fullName','$phoneNumber','$email','$pass')");
                           
     //Thông báo quá trình lưu
     if ($addmember)

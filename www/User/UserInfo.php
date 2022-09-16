@@ -1,6 +1,11 @@
 <?php
 	session_start();
 	ob_start();
+	include('db.php');
+	$a = $_SESSION['us'];
+	$sql = "SELECT fullName, phoneNumber, email, passWord, birthDay FROM User where phoneNumber = $a";
+	$result = $conn->query($sql);
+	$row = $result->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +21,7 @@
 	<title>Carlton Hotel</title>
 	<link rel="icon" type="image/x-icon" href="/dataweb/img/logo/logo-company.png">
 </head>
-<body>
+<body class="body-userInfo">
     <div class="header" id="header">
 		<div class="grid">
 			<div class="grid__row header__container">
@@ -52,11 +57,6 @@
 					<?php
 						
 						if(isset($_SESSION['us'])&&($_SESSION['us']!="")){
-							include('db.php');
-							$a = $_SESSION['us'];
-							$sql = "SELECT fullName, email FROM member where phoneNumber = $a";
-							$result = $conn->query($sql);
-							$row = $result->fetch_assoc();
 							echo '
 							<div class="header__user-opption">
 								<p id="header_user-name" class="header_user-name">Welcome, '.$row["fullName"].'</p>
@@ -99,32 +99,122 @@
     
     <div class="container">
         <div class="grid">
-			<div class="grid__column-4">
-				<div class="profile-left">
-					<ul class="profile__control">
-						<li class="profile__control--item">
+		<div class="grid__row">
+			<div class="grid__column-4 ">
+					<div class="profile-left profile__area-content">
+						<ul class="profile__control">
+							<li class="profile__control--item">
+								<span class="profile__control--item-text">
+									User information
+								</span>
+							</li>
+							<li class="profile__control--item">
 							<span class="profile__control--item-text">
-								Thông tin & liên lạc
-							</span>
-						</li>
-						<li class="profile__control--item">
-						<span class="profile__control--item-text">
-								Đổi mật khẩu
-							</span>
-						</li>
-					</ul>
-				</div>			
-			</div>	
-			
-			<div class="grid__column-3-4">
-				<div class="grid__row">
-					<div class="profile-right">
-						<h2 class="profile__title">
-								Thông tin
-						</h2>
-						<div class="profile__main">
-							
+									Change password
+								</span>
+							</li>
+						</ul>
+					</div>			
+				</div>	
+				
+				<div class="grid__column-3-4">
+					<div class="profile-right profile__area-content">
+						<div class="profile__container-info">
+							<h2 class="profile__title">
+								Information
+							</h2>
+							<div class="profile__main">
+								<div class="grid__row profile__main--item">
+									<div class="profile__main--container-title">
+										<label for="" class="profile__main--title">Full Name:</label>
+									</div>
+
+									<div class="profile__main--container-info">
+										<?php 
+											echo '<p class="profile__main--info-text">'.$row['fullName'].'</p>'
+										?>
+									</div>
+
+								</div>
+
+								<div class="grid__row profile__main--item">
+									<div class="profile__main--container-title">
+										<label for="" class="profile__main--title">BirthDay:</label>
+									</div>
+
+									<div class="profile__main--container-info">
+										<?php 
+											echo '<p class="profile__main--info-text">'.$row['birthDay'].'</p>'
+										?>
+									</div>
+								</div>
+
+								<div class="grid__row profile__main--item">
+									<div class="profile__main--container-title">
+										<label for="" class="profile__main--title">Phone number:</label>
+									</div>
+
+									<div class="profile__main--container-info">
+											<?php 
+												echo '<p class="profile__main--info-text">'.$row['phoneNumber'].'</p>'
+											?>
+									</div>
+								</div>
+
+								<div class="grid__row profile__main--item">
+									<div class="profile__main--container-title">
+										<label for="" class="profile__main--title">Email:</label>
+									</div>
+
+									<div class="profile__main--container-info">
+											<?php 
+												echo '<p class="profile__main--info-text">'.$row['email'].'</p>'
+											?>
+										</div>
+								</div>
+							</div>
 						</div>
+						<!-- Change password -->
+						<div class="profile__container-change-pass">
+							<h2 class="profile__title">
+								Change password:
+							</h2>
+							<form action="" class="profile__form-change-pass">
+								<!-- Current password -->
+								<div class="grid__row profile__change-pass--item">
+									<div class="profile__change-pass--container-title">
+										<label for="currentpass" class="profile__change-pass--title">Current password</label>
+									</div>
+									<input id="currentpass" name="currentpass" type="password" class="change-pass--input">
+								</div>
+
+								<!-- New password -->
+								<div class="grid__row profile__change-pass--item">
+									<div class="profile__change-pass--container-title">
+										<label for="newpass" class="profile__change-pass--title">New password</label>
+									</div>
+										<input id="newpass" name="newpass" type="password" class="change-pass--input">
+								</div>
+
+								<!-- Repeat New password -->
+								<div class="grid__row profile__change-pass--item">
+									<div class="profile__change-pass--container-title">
+										<label for="re-newpass" class="profile__change-pass--title">Repeat new password</label>
+									</div>
+										<input id="re-newpass" name="re-newpass" type="password" class="change-pass--input">
+								</div>
+								
+
+								<div class="grid__row profile__change-pass--item">
+									<div class="profile__change-pass--container-title">
+										
+									</div>
+									<input type="submit" class="change-pass__btn-submit" value="Change">
+								</div>
+								
+							</form>
+						</div>
+
 					</div>	
 				</div>
 			</div>

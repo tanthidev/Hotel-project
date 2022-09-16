@@ -642,9 +642,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 100px 0;
 }
 
-.welcome-page__content{
-
-}
 
 .welcome-page__title{
     font-size: 30px;
@@ -1262,6 +1259,79 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 
+
+/* CSS Userinfo Page */
+.body-userInfo{
+    background-color: #F1F1F1;
+}
+
+.profile__area-content{
+    background-color: var(--white-color);
+    margin: 30px 0;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.profile__control{
+    list-style: none;
+    padding: 0;
+}
+
+.profile__control--item{
+    margin: 10px 0;
+}
+
+.profile__control--item-text{
+    cursor: pointer;
+    font-size: 15px;
+}   
+
+.profile__container-change-pass{
+    display: none;
+}
+
+.profile__title{
+    font-size: 35px;
+}
+.profile__main,
+.profile__form-change-pass{  
+    margin-left: 70px;
+}
+.profile__main--item,
+.profile__change-pass--item
+{
+    margin: 20px 0;
+}
+.profile__main--container-title,
+.profile__change-pass--container-title{
+    width: 30%;
+}
+
+.profile__main--title,
+.profile__change-pass--title{
+    font-size: 15px;
+}
+
+.profile__main--container-info{
+
+}
+
+.profile__main--info-text{
+    font-size: 15px;
+}
+
+.change-pass--input{
+    width: 30%;
+}
+
+.change-pass__btn-submit{
+    border: none;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 15px;
+    background-color: rgba(217,134,0);
+    color: var(--white-color);
+}
 
 
 /* Animation */  
