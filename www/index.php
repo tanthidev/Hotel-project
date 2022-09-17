@@ -457,7 +457,7 @@ if (isset($_POST['tel']))
 							<span class="dot" onclick="currentSlide(3)"></span>
 						</div>
 						<div class="all-rooms">
-							<a href="#" class="all-rooms--link">
+							<a href="./View/listRoom.php" class="all-rooms--link">
 								View all our rooms
 								<i class="arrow fa-solid fa-arrow-right" aria-hidden="true"></i>
 							</a>

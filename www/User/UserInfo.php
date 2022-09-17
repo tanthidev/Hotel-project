@@ -38,7 +38,7 @@
 				<div class="header__menu">
 					<ul id="header__menu--list" class="header__menu--list">
 						<li class="header__menu--item">
-							<a href="" class="header__menu--link">HOME</a>
+							<a href="/index.php" class="header__menu--link">HOME</a>
 						</li>
 						<li class="header__menu--item">
 							<a href="#room" class="header__menu--link">ROOM</a>
