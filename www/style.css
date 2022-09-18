@@ -96,6 +96,7 @@ hr{
 }
 
 .btn-to-top{
+    cursor: pointer;
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -441,7 +442,7 @@ input:-ms-input-placeholder { color: #999999; }
     right: 0;
     color: #fff;
     font-size: 40px;
-    margin-right: 15px;
+    margin: 0 15px;
     cursor: pointer;
     height: 30px;
 }
@@ -590,6 +591,19 @@ input:-ms-input-placeholder { color: #999999; }
 
 .validate-input {
   position: relative;
+}
+
+.login-form__forgot--link{
+    color: #0965F8;
+}
+
+.login-form__forgot--link:hover{
+    color: #0541a1;
+    cursor: pointer;
+}
+
+.back-btn{
+    left: 0;
 }
 
 

@@ -40,21 +40,28 @@ if(slides!=0){
 }
 
 
-
-
 // Show task login/ register when click
+
+//Hidden when click X
 document.getElementById('login-cancel').onclick = function(){
     document.getElementById("wrap-login").style.display= "none";
 }
 document.getElementById('register-cancel').onclick = function(){
     document.getElementById("wrap-register").style.display= "none";
 }
+document.getElementById('forgot-cancel').onclick = function(){
+    document.getElementById("wrap-forgot").style.display= "none";
+}
+
+
+//To other task
 
 document.getElementById("header__user--login").onclick = function() {
     document.getElementById("wrap-login").style.display = "flex";
 }
 
 document.getElementById("header__user--register").onclick = function() {
+
     if(document.getElementById("wrap-login").style.display = "flex")
         document.getElementById("wrap-login").style.display = "none";
     document.getElementById("wrap-register").style.display = "flex"; 
@@ -75,6 +82,18 @@ document.getElementById("login-form__to-register--text").onclick = function() {
 document.getElementById("register-form__to-login--text").onclick = function() {
     document.getElementById("wrap-register").style.display = "none";
     document.getElementById("wrap-login").style.display = "flex";
+}
+
+//from task login to forgot
+document.getElementById('login-form__to-forgot').onclick = function(){
+    document.getElementById("wrap-login").style.display= "none";
+    document.getElementById("wrap-forgot").style.display= "flex";
+}
+
+//from task forgot to login
+document.getElementById('forgot-back').onclick = function(){
+    document.getElementById("wrap-login").style.display= "flex";
+    document.getElementById("wrap-forgot").style.display= "none";
 }
 
 
@@ -133,7 +152,7 @@ function readMoreWelcomePage() {
     var dots = document.getElementById("welcome-page__text--dots");
     var moreText = document.getElementById("welcome-page__text--more");
     var btnText = document.getElementById("welcome-page__readmore-btn");
-  
+
     if (dots.style.display === "none") {
       dots.style.display = "inline";
       btnText.innerHTML = "Read more";
