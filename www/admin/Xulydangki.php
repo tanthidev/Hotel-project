@@ -32,10 +32,9 @@
         echo "Số điện thoại đã được sử dụng!. <a href='javascript: history.go(-1)'>Trở lại</a>";
         exit;
     }
-          
-    //Kiểm tra email có đúng định dạng hay không
-    if (!preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/", $email))
-    {
+
+
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
         echo "Email này không hợp lệ. Vui long nhập email khác. <a href='javascript: history.go(-1)'>Trở lại</a>";
         exit;
     }
