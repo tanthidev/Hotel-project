@@ -306,6 +306,50 @@ ob_start();
 					</div>
 				</div>
 			</div>
+
+			<div class="container-list-room">
+				<div class="grid">
+					<div class="list-room__group">
+						<!-- ROOM TOP -->
+						<div class="list-room__group--container-room-top list-room__group--container-room">
+							<div class="grid__row">
+								<div class="grid__column-10-6">
+									<div class="list-room__container-img">
+										
+									</div>
+			
+									<div class="room-top__container-content">
+											
+									</div>
+								</div>
+
+								<div class="grid__column-10-4">
+									<!--  -->
+								</div>
+							</div>
+						</div>
+
+						<div class="list-room__group--container-room-bot list-room__group--container-room">
+							<div class="grid__row">
+								<div class="grid__column-10-4">
+									<!--  -->
+								</div>
+		
+								<div class="grid__column-10-6">
+									<div class="list-room__container-img">
+											
+									</div>
+				
+									<div class="room-top__container-content">
+												
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
 		</div>
 
 		<div class="footer">
