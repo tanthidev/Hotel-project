@@ -31,7 +31,7 @@ ob_start();
 			<div class="grid__row header__container">
 				<div class="header__container-logo">
 					<a href="#" class="header__container-logo--img">
-						<img src="./dataweb/img/logo/logo-company.png" alt="" class="header__logo">
+						<img src="/dataweb/img/logo/logo-company.png" alt="" class="header__logo">
 
 					</a>
 					<!-- Btn use only mobile -->
@@ -192,7 +192,7 @@ ob_start();
 								<i class="fa-solid fa-xmark"></i>
 							</div>
 			
-							<form action="/admin/login.php" method="POST" class="login-form validate-form">
+							<form action="/admin/login.php?act=login" method="POST" class="login-form validate-form">
 								<span class="login-form-title">
 									Member Login
 								</span>

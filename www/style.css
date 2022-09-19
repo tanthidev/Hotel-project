@@ -166,6 +166,11 @@ hr{
     cursor: default;
 }
 
+a:hover{
+    text-align: none;
+    color: var(--white-color);
+}
+
 /* Header CSS */
 .header{
 	width: 100%;
@@ -269,12 +274,14 @@ hr{
     position: relative;
     padding: 0 10px;
     cursor: pointer;
+    color: var(--white-color);
 }
 
 
 
 .header__user-item:hover{
     color: rgb(116, 115, 135);
+    text-decoration: none;
 }
 
 
