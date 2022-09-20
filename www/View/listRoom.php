@@ -462,7 +462,7 @@ ob_start();
 													<span class="list-room__booking-price--text">$100/ Night</span>
 												</div>
 												<!--  -->
-												<a href="#" class="list-room__booking-btn">BOOK NOW</a>
+												<a href="booking-room.php?id=A2" class="list-room__booking-btn">BOOK NOW</a>
 											</div>
 										</div>
 									</div>

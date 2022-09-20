@@ -63,36 +63,68 @@ ob_start();
 						if(isset($_SESSION['us'])&&($_SESSION['us']!="")){
 							include('./admin/db.php');
 							$a = $_SESSION['us'];
-							$sql = "SELECT fullName, email FROM User where userID = $a";
+							$sql = "SELECT fullName, email, roles FROM User where userID = $a";
 							$result = $conn->query($sql);
 							$row = $result->fetch_assoc();
-							echo '<div class="header__user-opption">
-							<p id="header_user-name" class="header_user-name">Welcome, '.$row["fullName"].'</p>
-							<div id="user__opption" class="user__opption">
-								<ul class="user__opption--list">
-									<li class="user__opption--item">
-										<a href="./User/UserInfo.php" class="user__manager--link user__opption--item-link">
-											<i class="fa-regular fa-user"></i>
-											Quản lý tài khoản
-										</a>
-									</li>
-									<li class="user__opption--item">
-										<a href="#" class="user__databooking--link user__opption--item-link">
-											<i class="fa-solid fa-suitcase"></i>
-											Dữ liệu đặt chỗ
-										</a>
-									</li>
-									<li class="user__opption--item">
-										<a href="./admin/logout.php" class="user__logout--link user__opption--item-link">
-											<i class="fa-solid fa-arrow-right-from-bracket"></i>
-											Đăng xuất
-										</a>
-									</li>
-								</ul>
+
+							if($row['roles']==1){
+								echo '<div class="header__user-opption">
+								<p id="header_user-name" class="header_user-name">Welcome, '.$row["fullName"].'</p>
+								<div id="user__opption" class="user__opption">
+									<ul class="user__opption--list">
+										<li class="user__opption--item">
+											<a href="./User/UserInfo.php" class="user__manager--link user__opption--item-link">
+												<i class="fa-regular fa-user"></i>
+												Quản lý tài khoản
+											</a>
+										</li>
+										<li class="user__opption--item">
+											<a href="#" class="user__databooking--link user__opption--item-link">
+												<i class="fa-solid fa-suitcase"></i>
+												Dữ liệu đặt chỗ
+											</a>
+										</li>
+										<li class="user__opption--item">
+											<a href="./admin/logout.php" class="user__logout--link user__opption--item-link">
+												<i class="fa-solid fa-arrow-right-from-bracket"></i>
+												Đăng xuất
+											</a>
+										</li>
+									</ul>
+								</div>
 							</div>
-						</div>
-						<div id="header__user--register" class="header__user--register header__user-item "></div>
-						<div id="header__user--login" class="header__user--login header__user-item "></div>';
+							<div id="header__user--register" class="header__user--register header__user-item "></div>
+							<div id="header__user--login" class="header__user--login header__user-item "></div>';
+							}
+
+							if($row['roles']==2){
+								echo '<div class="header__user-opption">
+								<p id="header_user-name" class="header_user-name">Welcome, '.$row["fullName"].'</p>
+								<div id="user__opption" class="user__opption">
+									<ul class="user__opption--list">
+										<li class="user__opption--item">
+											<a href="./User/UserInfo.php" class="user__manager--link user__opption--item-link">
+												<i class="fa-regular fa-user"></i>
+												Quản lý khách sạn
+											</a>
+										</li>
+										<li class="user__opption--item">
+											<a href="./admin/logout.php" class="user__logout--link user__opption--item-link">
+												<i class="fa-solid fa-arrow-right-from-bracket"></i>
+												Đăng xuất
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div id="header__user--register" class="header__user--register header__user-item "></div>
+							<div id="header__user--login" class="header__user--login header__user-item "></div>';
+							}
+
+
+						
+					
+					
 						} else{
 							?>
 								<div id="header__user--register" class="header__user--register header__user-item ">Register</div>

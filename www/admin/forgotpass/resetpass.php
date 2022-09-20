@@ -2,7 +2,6 @@
     ob_start();
     session_start();
     include "../db.php";
-    echo $_COOKIE['ID'];
     //Nếu không phải là sự kiện đăng ký thì không xử lý
     if(!isset($_COOKIE['ID'])){
         header('Location: /index.php');
