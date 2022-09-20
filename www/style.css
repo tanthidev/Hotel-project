@@ -217,6 +217,28 @@ a:hover{
     margin-bottom: 5px;
 }
 
+.notice-task{
+    position: absolute;
+    width: 450px;
+    height: 100px;
+    background-color: var(--white-color);
+    border-left:7px solid red;
+    border-radius: 5px;
+    right: 0;
+    bottom: 50%;
+    box-shadow: 1px 0 1px #000;
+    display: flex;
+    align-items: center;
+    animation: Notice 4s ease-in-out forwards;
+}
+
+.notice-text{
+    font-size: 25px;
+    color: red;
+    margin-left: 20px;
+}
+
+
 
 /* index CSS */
 
@@ -1554,6 +1576,84 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 
 
+/* CSS FORGOT PAGE */
+
+
+.container-form-forgotpass{
+    width: 50%;
+    margin: 100px auto;
+}
+
+.container-content-forgot{
+    
+}
+
+.warning-forgot{
+    background-color: #e6e6e6;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.warning-forgot--logo{
+    text-align: center;
+    background-color: var(--main-color);
+    padding: 10px 0;
+}
+
+.warning-forgot--img{
+    width: 130px;
+}
+
+.warning-forgot-content{
+
+}
+
+.warning-forgot-content--title{
+    margin-top: 12px;
+    margin-left: 15px;
+    font-size: 30px;
+}
+
+.warning-forgot-content--text{
+    font-size: 17px;
+    margin-left: 15px;
+}
+
+.warning-forgot-content--list{
+}
+
+.warning-forgot-content--item{
+    padding-left: 0px;
+    font-size: 17px;
+}
+
+
+.form-forgot,
+.form-confirm{
+    display: block;
+    background-color: #e6e6e6;
+    margin-top: 10px;
+    text-align: center;
+    padding: 20px 0;
+    border-radius: 5px;
+}
+
+.form-forgot--title,
+.form-confirm--title{
+    font-size: 20px;
+}
+
+.forgot-input-code,
+.confirm-input-code{
+    width: 70%;
+    margin: 5px 15% 5px;
+    border: 1px solid #ccc;
+    height: 30px;
+    border-radius: 5px;
+    padding: 3px 15px;
+    font-size: 15px;
+}
+
 
 
 
@@ -1592,6 +1692,33 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     to {
         opacity: 1;
         transform : translateY(0);
+    }
+}
+
+@keyframes Notice{
+    0% {
+        opacity: 0;
+        transform: translateX(450px);
+}
+
+    10% {
+        opacity: 1;
+        transform : translateX(0);
+    }
+
+    90% {
+        opacity: 1;
+        transform : translateX(0);
+    }
+
+    99% {
+        opacity: 0;
+        transform: translateX(450px);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(0);
     }
 }
 

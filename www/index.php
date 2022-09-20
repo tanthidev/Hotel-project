@@ -223,9 +223,9 @@ ob_start();
 									<span class="login-form__forgot--text">
 										Forgot
 									</span>
-									<span id="login-form__to-forgot" class="txt2 login-form__forgot--link">
+									<a href="/admin/forgotpass/forgot.php" id="login-form__to-forgot" class="txt2 login-form__forgot--link">
 										Username / Password?
-									</span>
+									</a>
 								</div>
 			
 								<div class="text-center login-form__to-register">
@@ -239,41 +239,7 @@ ob_start();
 					</div>
 				</div>
 
-				<!-- Task forgot password -->
-				<div class="header__user--container--login">
-					<div class="container-login">
-						<div id="wrap-forgot" class="wrap-login">
-							<div id="forgot-cancel" class="cancel-btn">
-								<i class="fa-solid fa-xmark"></i>
-							</div>
-
-							<div id="forgot-back" class="cancel-btn back-btn">
-								<i class="fa-sharp fa-solid fa-arrow-left"></i>
-							</div>
-			
-							<form action="index.php" method="POST" class="login-form validate-form">
-								<span class="login-form-title">
-									Forgot Password
-								</span>
-			
-								<div class="wrap-input validate-input">
-									<input class="login-form--input" type="email" name="email" placeholder="Enter your email">
-									<span class="focus-input"></span>
-									<span class="symbol-input">
-									<i class="fa-solid fa-envelope" aria-hidden="true"></i>
-									</span>
-								</div>
-								
-								<div class="container-login-form-btn">
-									<button class="login-form-btn">
-										Confirm
-									</button>
-								</div>
-			
-							</form>
-						</div>
-					</div>
-				</div>
+				
 
 
 
