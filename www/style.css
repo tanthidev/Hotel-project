@@ -238,6 +238,14 @@ a:hover{
     margin-left: 20px;
 }
 
+.notice-task--success{
+    border-left:7px solid green
+}
+
+.notice-text--success{
+    color: green;
+}
+
 
 
 /* index CSS */
@@ -1699,7 +1707,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     0% {
         opacity: 0;
         transform: translateX(450px);
-}
+    }
 
     10% {
         opacity: 1;
@@ -1714,6 +1722,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     99% {
         opacity: 0;
         transform: translateX(450px);
+        
     }
 
     100% {
