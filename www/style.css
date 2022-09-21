@@ -35,7 +35,7 @@ body{
 }
 
 .grid{
-    width: 1200px;
+    width: 1100px;
     max-width: 100%;
     margin: 0 auto;
 }
@@ -76,6 +76,16 @@ hr{
     padding: 0 15px; 
 }
 
+
+.grid__column-10-6{
+    width: 60%;
+    padding: 0 15px; 
+}
+
+.grid__column-10-4{
+    width: 40%;
+    padding: 0 15px; 
+}
 
 .grid__column-10-6{
     width: 60%;
@@ -663,8 +673,13 @@ input:-ms-input-placeholder { color: #999999; }
 
 .home__backgound{
     position: relative;
-    padding-top: 50%;
-    background: url('./dataweb/img/backgroundHome.jpg') top center / cover no-repeat;
+    padding-top: 30%;
+    background: url('/dataweb/img/backgroundHome.jpg') top center / cover no-repeat;
+}
+
+.home__backgound--short{
+    padding-top: 25%;
+    background: url('/dataweb/img/backgroundHome.jpg') center center / cover no-repeat;
 }
 
 
@@ -1065,6 +1080,336 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 
+
+
+
+
+/* CSS Userinfo Page */
+.body-userInfo{
+    background-color: #F1F1F1;
+}
+
+.profile__area-content{
+    background-color: var(--white-color);
+    margin: 30px 0;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.profile__control{
+    list-style: none;
+    padding: 0;
+}
+
+.profile__control--item{
+    margin: 10px 0;
+}
+
+.profile__control--item:hover{
+    color: var(--orange-color);
+    transform: scale(1.03);
+}
+
+.profile__control--item-text{
+    cursor: pointer;
+    font-size: 15px;
+}   
+.profile__container-info--header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-change-info{
+    color: var(--main-color);
+    font-size: 25px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.profile__container-change-pass{
+    display: none;
+}
+
+.profile__title{
+    font-size: 35px;
+}
+.profile__main,
+.profile__form-change-pass{  
+    margin-left: 70px;
+}
+.profile__main--item,
+.profile__change-pass--item
+{
+    margin: 22.5px 0;
+}
+.profile__main--container-title,
+.profile__change-pass--container-title{
+    width: 30%;
+}
+
+.profile__main--title,
+.profile__change-pass--title{
+    font-size: 15px;
+}
+
+
+.profile__main--info-text{
+    font-size: 15px;
+    /* display: none; */
+}
+
+.change-pass--input{
+    width: 30%;
+}
+
+
+
+
+.profile__main--info-text-cannot-change{
+    display: block !important;
+}
+
+.profile__change-input-change-info{
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1px solid var(--main-color);
+    display: none;
+
+}
+
+.btn-submit-change-info{
+    display: none;
+}
+
+.cancel-change-info{
+    display: none;
+}
+
+
+/* CSS LIST ROOM */
+
+.list-room__container-img{
+    background: url("https://besthqwallpapers.com/Uploads/6-11-2017/27286/thumb2-interior-of-hotel-room-modern-design-brown-tone-hotel-room-room-for-three.jpg") top center / cover no-repeat;
+    padding-top: 55%;
+    border-radius: 5px;
+}
+
+.list-room__group--container-room:hover{
+    transform: scale(1.01);
+    cursor: pointer;
+}
+
+.list-room__container-content{
+    background-color: rgba(255,255,255,0.9);
+    border-radius: 3px;
+    box-shadow: 0.5px #000;
+    height: 30%;
+    min-height: 300px;
+    width: 50%;
+    min-width: 500px;
+    padding: 15px;
+    box-shadow: 0.1px 0.1px 3px var(--orange-color);
+}
+
+.list-room__container-content:hover{
+    background-color: rgb(255,255,255);
+    transform: scale(1.03);
+}
+
+
+
+.list-room-top__container-content{
+    right: 0;
+}
+.list-room-top__content{
+    right: 0;
+}
+
+
+.list-room-bot__container-content{
+    position: absolute;
+    right: 0;
+}
+
+.list-room__info-room--container{
+    width: 65%;
+}
+
+.list-room__group--container-room{
+    position: relative;
+    margin: 70px 0;
+}
+
+.list-room__style-room{
+    font-size: 50px;
+    font-family: 'Qwitcher Grypen', cursive;
+}
+
+.list-room__describe{
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.list-room__info-room{
+    margin-top: 10px;
+}
+
+.list-room__info-room--icon{
+    margin: 5px;
+    font-size: 13px;
+    color: var(--orange-color);
+}
+
+.list-room__info-room--text{
+    padding: 10px 0;
+    font-size: 10px;
+}
+
+
+.list-room__booking{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+}
+
+.list-room__booking-price{
+    color: var(--orange-color);
+    font-size: 20px;
+    font-weight: 700;
+    border: 2px solid var(--orange-color);
+    padding: 2px 5px;
+    border-radius: 10px;
+}
+
+.list-room__booking-btn{
+    background-color: var(--orange-color);
+    padding: 20px 10px;
+    line-height: 1px;
+    text-align: center;
+    text-justify: auto;
+    border-radius: 10px;
+    font-size: 20px;
+    color: var(--white-color);
+}
+
+.list-room__booking-btn:hover{
+    text-decoration: none;
+    color: var(--white-color);
+    transform: scale(1.05);
+}
+
+
+
+/* CSS FORGOT PAGE */
+
+
+.container-form-forgotpass{
+    width: 50%;
+    margin: 100px auto;
+}
+
+.container-content-forgot{
+    
+}
+
+.warning-forgot{
+    background-color: #e6e6e6;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.warning-forgot--logo{
+    text-align: center;
+    background-color: var(--main-color);
+    padding: 10px 0;
+}
+
+.warning-forgot--img{
+    width: 130px;
+}
+
+.warning-forgot-content{
+
+}
+
+.warning-forgot-content--title{
+    margin-top: 12px;
+    margin-left: 15px;
+    font-size: 30px;
+}
+
+.warning-forgot-content--text{
+    font-size: 17px;
+    margin-left: 15px;
+}
+
+.warning-forgot-content--list{
+}
+
+.warning-forgot-content--item{
+    padding-left: 0px;
+    font-size: 17px;
+}
+
+
+.form-forgot,
+.form-confirm{
+    display: block;
+    background-color: #e6e6e6;
+    margin-top: 10px;
+    text-align: center;
+    padding: 20px 0;
+    border-radius: 5px;
+}
+
+.form-forgot--title,
+.form-confirm--title{
+    font-size: 20px;
+}
+
+.forgot-input-code,
+.confirm-input-code{
+    width: 70%;
+    margin: 5px 15% 5px;
+    border: 1px solid #ccc;
+    height: 30px;
+    border-radius: 5px;
+    padding: 3px 15px;
+    font-size: 15px;
+}
+
+
+.container-page-booking{
+    margin: 50px auto;
+}
+
+.page-booking__main--slide-img {
+    position: relative;
+
+}
+
+.page-booking__main--slide--item{
+    border-radius: 5px;
+    overflow: hidden;
+    animation: fade 1s ease-in-out forwards;
+}
+
+.next--page-booking{
+    right: 15px;
+}
+
+.prev--page-booking{
+
+}
+
+.page-booking__main--selection{
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    height: 700px;
+}
+
+
+
 /* REPONSIVE */
 
 /* PC */
@@ -1075,6 +1420,19 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     .home__taskbar-booking{
         width: 45%;
         min-width: 600px;
+    }
+
+    .list-room-bot__content{
+        right: 40%;
+    
+    }
+
+    .list-room__content{
+        position: absolute;
+        bottom: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
     }
 
 }
@@ -1142,10 +1500,76 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     .home__taskbar-booking{
         width: 90%;
     }
+
+    /* CSS LISTROOM PAGE */
+    .list-room__container-img{
+        position: relative;
+        width: 80%;
+        display: flex;
+        margin: auto;
+    }
+    .grid__column--L{
+        position: relative;
+        width: 100%;
+    }
+    .grid__column--S{
+        width: 0;
+        padding: 0;
+   }
+
+   .list-room__content{
+        width: 50%;
+        display: flex;
+        margin: auto;
+        position: relative;
+   }
+   .list-room__container-content{
+        width: 100%;
+        padding: 10px;
+        margin: auto;
+        height: fit-content;
+        min-height: fit-content;
+        min-width: fit-content;
+   }
+   
+
+   .list-room-bot__container-content,
+   .list-room-top__container-content{
+        position: unset;
+        margin: 0;
+
+   }
+   .list-room-top__content,
+   .list-room-top__content{
+        right: auto;
+   }
+
+   .list-room__describe{
+        display: none;
+   }
+   
+   .list-room__info-room{
+    display: none;
+   }
+
+   .list-room__style-room{
+        text-align: center;
+   }
+
+   .list-room__booking-price,
+   .list-room__booking-btn{
+        font-size: 17px;
+        
+   }
+   
+
+
+
+
 }
 
 /* Mobile */
-@media (max-width:739px){
+@media (max-width:740px){
 
     .header{
         overflow: hidden;
@@ -1353,317 +1777,78 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     .footer__list--item{
         font-size: 8px;
     }
-}
 
 
+    /* CSS LISTROOM PAGE */
+    .list-room__container-img{
+        position: relative;
+        width: 80%;
+        display: flex;
+        margin: auto;
+    }
+    .grid__column--L{
+        position: relative;
+        width: 100%;
+    }
+    .grid__column--S{
+        width: 0;
+        padding: 0;
+   }
 
-/* CSS Userinfo Page */
-.body-userInfo{
-    background-color: #F1F1F1;
-}
+   .list-room__content{
+        width: 50%;
+        display: flex;
+        margin: auto;
+        position: relative;
+   }
+   .list-room__container-content{
+        width: 100%;
+        padding: 10px;
+        margin: auto;
+        height: fit-content;
+        min-height: fit-content;
+        min-width: fit-content;
+   }
+   
 
-.profile__area-content{
-    background-color: var(--white-color);
-    margin: 30px 0;
-    padding: 20px;
-    border-radius: 4px;
-}
+   .list-room-bot__container-content,
+   .list-room-top__container-content{
+        position: unset;
+        margin: 0;
 
-.profile__control{
-    list-style: none;
-    padding: 0;
-}
+   }
+   .list-room-top__content,
+   .list-room-top__content{
+        right: auto;
+   }
 
-.profile__control--item{
-    margin: 10px 0;
-}
-
-.profile__control--item:hover{
-    color: var(--orange-color);
-    transform: scale(1.03);
-}
-
-.profile__control--item-text{
-    cursor: pointer;
-    font-size: 15px;
-}   
-.profile__container-info--header{
-    display: flex;
-    justify-content: space-between;
-}
-
-.btn-change-info{
-    color: var(--main-color);
-    font-size: 25px;
-    margin-right: 20px;
-    cursor: pointer;
-}
-
-.profile__container-change-pass{
+   .list-room__describe{
+        display: none;
+   }
+   
+   .list-room__info-room{
     display: none;
-}
+   }
 
-.profile__title{
-    font-size: 35px;
-}
-.profile__main,
-.profile__form-change-pass{  
-    margin-left: 70px;
-}
-.profile__main--item,
-.profile__change-pass--item
-{
-    margin: 22.5px 0;
-}
-.profile__main--container-title,
-.profile__change-pass--container-title{
-    width: 30%;
-}
+   .list-room__style-room{
+        text-align: center;
+   }
 
-.profile__main--title,
-.profile__change-pass--title{
-    font-size: 15px;
-}
+   .list-room__booking-price,
+   .list-room__booking-btn{
+        font-size: 10px;
+        
+   }
+
+   .list-room__booking-price{
+        padding: 10px 0;
+   }
 
 
-.profile__main--info-text{
-    font-size: 15px;
-    /* display: none; */
-}
-
-.change-pass--input{
-    width: 30%;
-}
-
-
-
-
-.profile__main--info-text-cannot-change{
-    display: block !important;
-}
-
-.profile__change-input-change-info{
-    font-size: 15px;
-    border-radius: 5px;
-    border: 1px solid var(--main-color);
-    display: none;
-
-}
-
-.btn-submit-change-info{
-    display: none;
-}
-
-.cancel-change-info{
-    display: none;
-}
-
-
-/* CSS LIST ROOM */
-
-.list-room__container-img{
-    background: url("https://besthqwallpapers.com/Uploads/6-11-2017/27286/thumb2-interior-of-hotel-room-modern-design-brown-tone-hotel-room-room-for-three.jpg") top center / cover no-repeat;
-    padding-top: 55%;
-    border-radius: 5px;
-}
-
-.list-room__group--container-room:hover{
-    transform: scale(1.01);
-    cursor: pointer;
-}
-
-.list-room__container-content{
-    background-color: rgba(255,255,255,0.9);
-    border-radius: 3px;
-    box-shadow: 0.5px #000;
-    height: 30%;
-    min-height: 300px;
-    width: 50%;
-    min-width: 500px;
-    padding: 15px;
-    box-shadow: 0.1px 0.1px 3px var(--orange-color);
-}
-
-.list-room__container-content:hover{
-    background-color: rgb(255,255,255);
-    transform: scale(1.03);
-}
-
-.list-room__content{
-    position: absolute;
-    bottom: 0;
-    height: 100%;
-    display: flex;
-    align-items: center;
-
-}
-
-.list-room-top__container-content{
-    right: 0;
-}
-.list-room-top__content{
-    right: 0;
-}
-
-.list-room-bot__content{
-    right: 40%;
-
-}
-
-.list-room-bot__container-content{
-    position: absolute;
-    right: 0;
-}
-
-.list-room__info-room--container{
-    width: 65%;
-}
-
-.list-room__group--container-room{
-    position: relative;
-    margin: 100px 0;
-}
-
-.list-room__style-room{
-    font-size: 50px;
-    font-family: 'Qwitcher Grypen', cursive;
-}
-
-.list-room__describe{
-    font-size: 15px;
-    margin-top: 10px;
-}
-
-.list-room__info-room{
-    margin-top: 10px;
-}
-
-.list-room__info-room--icon{
-    margin: 5px;
-    font-size: 13px;
-    color: var(--orange-color);
-}
-
-.list-room__info-room--text{
-    padding: 10px 0;
-    font-size: 10px;
-}
-
-
-.list-room__booking{
-    display: flex;
-    justify-content: space-between;
-    padding: 0 50px;
-}
-
-.list-room__booking-price{
-    color: var(--orange-color);
-    font-size: 20px;
-    font-weight: 700;
-    border: 2px solid var(--orange-color);
-    padding: 2px 5px;
-    border-radius: 10px;
-}
-
-.list-room__booking-btn{
-    background-color: var(--orange-color);
-    padding: 20px 10px;
-    line-height: 1px;
-    text-align: center;
-    text-justify: auto;
-    border-radius: 10px;
-    font-size: 20px;
-    color: var(--white-color);
-}
-
-.list-room__booking-btn:hover{
-    text-decoration: none;
-    color: var(--white-color);
-    transform: scale(1.05);
-}
-
-
-
-/* CSS FORGOT PAGE */
-
-
-.container-form-forgotpass{
-    width: 50%;
-    margin: 100px auto;
-}
-
-.container-content-forgot{
-    
-}
-
-.warning-forgot{
-    background-color: #e6e6e6;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.warning-forgot--logo{
-    text-align: center;
-    background-color: var(--main-color);
-    padding: 10px 0;
-}
-
-.warning-forgot--img{
-    width: 130px;
-}
-
-.warning-forgot-content{
-
-}
-
-.warning-forgot-content--title{
-    margin-top: 12px;
-    margin-left: 15px;
-    font-size: 30px;
-}
-
-.warning-forgot-content--text{
-    font-size: 17px;
-    margin-left: 15px;
-}
-
-.warning-forgot-content--list{
-}
-
-.warning-forgot-content--item{
-    padding-left: 0px;
-    font-size: 17px;
-}
-
-
-.form-forgot,
-.form-confirm{
-    display: block;
-    background-color: #e6e6e6;
-    margin-top: 10px;
-    text-align: center;
-    padding: 20px 0;
-    border-radius: 5px;
-}
-
-.form-forgot--title,
-.form-confirm--title{
-    font-size: 20px;
-}
-
-.forgot-input-code,
-.confirm-input-code{
-    width: 70%;
-    margin: 5px 15% 5px;
-    border: 1px solid #ccc;
-    height: 30px;
-    border-radius: 5px;
-    padding: 3px 15px;
-    font-size: 15px;
-}
 
 
 
+}
 
 
 

@@ -1,43 +1,5 @@
 
-// Slide show
-let slides = document.getElementsByClassName("favorite-rooms__slide");
-if(slides!=0){
-    let slideIndex = 1;
-    showSlides(slideIndex);
 
-    function plusSlides(n) {
-    showSlides(slideIndex += n);
-    }
-
-    function currentSlide(n) {
-    showSlides(slideIndex = n);
-    }
-
-    function showSlides(n) {
-        let i;
-        let slides = document.getElementsByClassName("favorite-rooms__slide");
-        let dots = document.getElementsByClassName("dot");
-        if (slideIndex > slides.length) {
-            slideIndex = 1
-        }  
-        if (n < 1) {slideIndex = slides.length}
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
-        }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex-1].style.display = "block";  
-        dots[slideIndex-1].className += " active";
-
-        //nếu đang ở slide cuối cùng thì chuyển về slide đầu
-        if (slideIndex > slides.length) {
-            slideIndex = 0
-        } 
-        //tự động chuyển đổi slide sau 5s
-        setTimeout(showSlides, 4000);
-    }
-}
 
 
 // Show task login/ register when click
@@ -155,6 +117,46 @@ function readMoreWelcomePage() {
   }
 
 
+// Slide show
+let slides = document.getElementsByClassName("favorite-rooms__slide");
+if(slides!=0){
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+    showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+    showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("favorite-rooms__slide");
+        let dots = document.getElementsByClassName("dot");
+        if (slideIndex > slides.length) {
+            slideIndex = 1
+        }  
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+
+        //nếu đang ở slide cuối cùng thì chuyển về slide đầu
+        if (slideIndex > slides.length) {
+            slideIndex = 0
+        } 
+        //tự động chuyển đổi slide sau 5s
+        setTimeout(showSlides, 4000);
+    }
+}
+
 
 document.getElementById('header_user-name').onclick = function(){
     if(document.getElementById("user__opption").style.display== ""){
@@ -172,3 +174,4 @@ document.onclick = function(event){
         document.getElementById("user__opption").style.display="none";
     }
 }
+
