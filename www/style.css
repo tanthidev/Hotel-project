@@ -1398,9 +1398,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     right: 15px;
 }
 
-.prev--page-booking{
-
-}
 
 .page-booking__main--selection{
     border: 2px solid #ccc;
