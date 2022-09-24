@@ -21,6 +21,10 @@ services:
             - 8080:80
         volumes:
             - ./www:/var/www/html/
+            - ./php.ini:/usr/local/etc/php/conf.d/30-custom.ini
+            - ./apache.conf:/usr/local//etc/apache2/sites-available
+        environment:
+            - ALLOW_OVERRIDE=true
         depends_on:
             - "mysql-server"
     phpmyadmin:

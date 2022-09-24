@@ -1,13 +1,23 @@
 <?php
-//Khai báo sử dụng session
-session_start();
-ob_start();
+	session_start();
+	ob_start();
+	require_once "./mvc/connect.php";
+
+	
+	$path = ltrim($_SERVER['REQUEST_URI'], '/');    // Trim leading slash(es)
+    $elements = explode('/', $path);                // Split path on slashes
+	$_GET["url"] = $path;
+    
+	
+	$myapp = new app();
+
+
 
 ?>
 
 
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -15,7 +25,7 @@ ob_start();
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/style.css"> <!-- Sử dụng link tuyệt đối tính từ root, vì vậy có dấu / đầu tiên -->
+	<link rel="stylesheet" href="/style.css">
 	<link rel="stylesheet" href="/dataweb/font/fontawesome-free-6.2.0-web/fontawesome-free-6.2.0-web/css/all.css">
 	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;700&family=Qwitcher+Grypen:wght@700&display=swap" rel="stylesheet">
 	<title>Carlton Hotel</title>
@@ -34,7 +44,7 @@ ob_start();
 						<img src="/dataweb/img/logo/logo-company.png" alt="" class="header__logo">
 
 					</a>
-					<!-- Btn use only mobile -->
+					
 					<btn id="header__btn-menu--mobile" class="header__btn-menu--mobile" onclick="">
 						<i class="fa-solid fa-bars"></i>
 					</btn>
@@ -139,13 +149,12 @@ ob_start();
 		</div>
 
 		
-	</div>
+	</div> 
 
 	<div class="container-content">
 		<div class="home">
 			<div class="home__backgound">
 
-				<!-- Task Register -->
 				<div class="header__user--container--register">
 					<div class="container-register">
 						<div id="wrap-register" class="wrap-register">
@@ -216,7 +225,6 @@ ob_start();
 					</div>
 				</div>
 
-				<!-- Task Login -->
 				<div class="header__user--container--login">
 					<div class="container-login">
 						<div id="wrap-login" class="wrap-login">
@@ -277,14 +285,14 @@ ob_start();
 
 				<div class="home__taskbar-container-booking">
 					<form class="home__taskbar-booking">
-						<!-- check in -->
+				
 						<div class="taskbar-booking__checkin taskbar-booking--item">
 							<label for="booking-input-checkin" class="taskbar-booking--text">
 								Check-in
 							</label>
 							<input id="booking-input-checkin" type="date" name="checkin-date" class="booking-input">
 						</div>
-						<!-- check out -->
+						
 						<div class="taskbar-booking__checkout taskbar-booking--item">
 							<label for="booking-input-checkout" class="taskbar-booking--text">
 								<i class="fa-regular fa-inbox-out"></i>
@@ -292,7 +300,7 @@ ob_start();
 							</label>
 							<input id="booking-input-checkout" type="date" name="checkout-date"  class="booking-input">
 						</div>
-						<!-- Number guest -->
+					
 						<div class="taskbar-booking__number-guest taskbar-booking--item">
 							<label for="booking-input-guest" class="taskbar-booking--text">
 								<i class="fa-solid fa-users"></i>
@@ -300,7 +308,7 @@ ob_start();
 							</label>
 							<input id="booking-input-guest" type="number" name="number-guest" value="1" min="1"  class="booking-input booking-input--guest">
 						</div>
-						<!-- Search -->
+						
 						<input type="submit" value="Search" class="taskbar-booking__search">
 					</form>
 				</div>
@@ -380,7 +388,7 @@ ob_start();
 								</div>
 							</div>
 						</div>
-						<!--  -->
+						
 						<div class="favorite-rooms__slide transfer-slide">
 							<div class="favorite-rooms__slide--container-img">
 								<img src="./dataweb/img/room/A0102.jpg" alt="" class="favorite-rooms__slide--img">
@@ -409,7 +417,7 @@ ob_start();
 								</div>
 							</div>
 						</div>
-						<!--  -->
+						
 						<div class="favorite-rooms__slide transfer-slide">
 							<div class="favorite-rooms__slide--container-img">
 								<img src="./dataweb/img/room/A0103.jpg" alt="" class="favorite-rooms__slide--img">
@@ -438,7 +446,7 @@ ob_start();
 								</div>
 							</div>
 						</div>
-						<!--  -->
+						
 						<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
   						<a class="next" onclick="plusSlides(1)">&#10095;</a>
 						<div class="favorite-room__slide-dot">
@@ -472,7 +480,7 @@ ob_start();
 					</div>
 
 					<div class="grid__column-3--2 overview-about__container-item">
-						<!-- <div class="overview-about__container-item"> -->
+					
 							<div class="overview-about__item">
 								<div class="overview-about__item--icon">
 									<i class="fa-solid fa-location-dot"></i>
@@ -481,7 +489,7 @@ ob_start();
 									10+ Branches
 								</div>
 							</div>
-							<!--  -->
+							
 							<div class="overview-about__item">
 								<div class="overview-about__item--icon">
 									<i class="fa-sharp fa-solid fa-key"></i>
@@ -490,7 +498,7 @@ ob_start();
 									100+ Rooms
 								</div>
 							</div>
-							<!--  -->
+							
 							<div class="overview-about__item">
 								<div class="overview-about__item--icon">
 									<i class="fa-solid fa-bell-concierge"></i>
@@ -499,7 +507,7 @@ ob_start();
 									20+ Services
 								</div>
 							</div>
-							<!--  -->
+							
 							<div class="overview-about__item">
 								<div class="overview-about__item--icon">
 									<i class="fa-solid fa-calendar-days"></i>
@@ -509,7 +517,7 @@ ob_start();
 								</div>
 							</div>
 
-							<!--  -->
+						
 							<div class="overview-about__item">
 								<div class="overview-about__item--icon">
 									<i class="fa-solid fa-users"></i>
@@ -518,7 +526,7 @@ ob_start();
 									100k+ Customers
 								</div>
 							</div>
-							<!--  -->
+							
 							<div class="overview-about__item">
 								<div class="overview-about__item--icon">
 									<i class="fa-solid fa-star"></i>
@@ -527,10 +535,10 @@ ob_start();
 									5 Stars
 								</div>
 							</div>
-						<!-- </div> -->
+						
 					</div>
 				</div>
-				<!--  -->
+				
 			</div>
 		</div>
 
@@ -550,7 +558,7 @@ ob_start();
 							</p>
 						</div>
 					</div>
-					<!--  -->
+					
 					<div class="services__item2 services__item">
 						<div class="services__container-image services__container-image2">
 						</div>
@@ -565,7 +573,7 @@ ob_start();
 							</p>
 						</div>
 					</div>
-					<!--  -->
+					
 					<div class="services__item3 services__item">
 						<div class="services__container-text">
 							<h3 class="service__title" >Our Services</h3>
@@ -581,7 +589,7 @@ ob_start();
 						</div>
 					</div>
 
-					<!--  -->
+					
 					<div class="services__item4 services__item">
 						<div class="services__container-text">
 							<h3 class="service__title" >Our Services</h3>
@@ -665,7 +673,7 @@ ob_start();
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<script src="/main.js"></script> <!-- Sử dụng link tuyệt đối tính từ root, vì vậy có dấu / đầu tiên -->
+	<script src="/main.js"></script> 
 </body>
 
-</html>
+</html> -->
