@@ -42,7 +42,7 @@ if (isset($_POST['tel']))
     }
     
     //Lưu tên đăng nhập
-    $_SESSION['us'] = $row['userID'];
+    $_SESSION['id'] = $row['userID'];
     header('Location: /index.php');
 	exit;
 }

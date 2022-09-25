@@ -2,8 +2,8 @@
     session_start();
     ob_start();
 
-    if(isset($_SESSION['us'])&&($_SESSION['us']!="")){
-        unset($_SESSION['us']);
+    if(isset($_SESSION['id'])&&($_SESSION['id']!="")){
+        unset($_SESSION['id']);
         header('Location: /index.php');
     }
 ?>

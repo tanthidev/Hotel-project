@@ -4,7 +4,7 @@
     include "db.php";
 
     //Nếu không phải là sự kiện đăng ký thì không xử lý
-    if(!isset($_SESSION['us'])){
+    if(!isset($_SESSION['id'])){
         header('Location: /index.php');
     }
    
@@ -13,7 +13,7 @@
           
     //Lấy dữ liệu từ file dangky.php
   
-    $userID = $_SESSION['us'];   
+    $userID = $_SESSION['id'];   
     $currentpass    = addslashes($_POST['currentpass']);
     $newpass        = addslashes($_POST['newpass']);
     $re_newpass      = addslashes($_POST['re-newpass']);
