@@ -1,7 +1,10 @@
 <?php
 //Khai báo sử dụng session
-session_start();
-ob_start();
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+        ob_start();
+    } 
 
 ?>
 
@@ -304,10 +307,43 @@ ob_start();
 						</div>
 					</div>
 				</div>
+
+                <div class="home__taskbar-container-booking">
+						<form class="home__taskbar-booking">
+							<!-- check in -->
+							<div class="taskbar-booking__checkin taskbar-booking--item">
+								<label for="booking-input-checkin" class="taskbar-booking--text">
+									Check-in
+								</label>
+								<input id="booking-input-checkin" type="date" name="checkin-date" class="booking-input">
+							</div>
+							<!-- check out -->
+							<div class="taskbar-booking__checkout taskbar-booking--item">
+								<label for="booking-input-checkout" class="taskbar-booking--text">
+									<i class="fa-regular fa-inbox-out"></i>
+									Check-out
+								</label>
+								<input id="booking-input-checkout" type="date" name="checkout-date"  class="booking-input">
+							</div>
+							<!-- Number guest -->
+							<div class="taskbar-booking__number-guest taskbar-booking--item">
+								<label for="booking-input-guest" class="taskbar-booking--text">
+									<i class="fa-solid fa-users"></i>
+									Guest
+								</label>
+								<input id="booking-input-guest" type="number" name="number-guest" value="1" min="1"  class="booking-input booking-input--guest">
+							</div>
+							<!-- Search -->
+							<input type="submit" value="Search" class="taskbar-booking__search">
+						</form>
+					</div>
 			</div>
 
             <!--  -->
             <!-- Add code here -->
+            <?php 
+                require_once "./mvc/views/pages/".$data['page'].".php";
+            ?>
             <!--  -->
 
 		</div>
