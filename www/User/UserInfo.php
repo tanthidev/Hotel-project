@@ -2,7 +2,7 @@
 	session_start();
 	ob_start();
 	include('db.php');
-	$a = $_SESSION['us'];
+	$a = $_SESSION['id'];
 	$sql = "SELECT *  FROM User where userID = $a";
 	$result = $conn->query($sql);
 	$row = $result->fetch_assoc();
@@ -55,7 +55,7 @@
 				<div id="header__user" class="header__user">
 					<?php
 						
-						if(isset($_SESSION['us'])&&($_SESSION['us']!="")){
+						if(isset($_SESSION['id'])&&($_SESSION['id']!="")){
 							echo '
 							<div class="header__user-opption">
 								<p id="header_user-name" class="header_user-name">Welcome, '.$row["fullName"].'</p>

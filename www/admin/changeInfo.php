@@ -11,7 +11,7 @@
     // header('Content-Type: text/html; charset=UTF-8');
           
     //Lấy dữ liệu từ file dangky.php
-    $userID     = addslashes($_SESSION['us']);
+    $userID     = addslashes($_SESSION['id']);
     $fullName   = addslashes($_POST['fullName']);
     $birthDay   = addslashes($_POST['birthDay']);
     $phoneNumber= addslashes($_POST['phoneNumber']);
