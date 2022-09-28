@@ -1,3 +1,6 @@
+<?php 
+	
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,11 +55,7 @@
 					
                 <?php
 						if($data['user']){
-							include('./admin/db.php');
-							$a = $_SESSION['id'];
-							$sql = "SELECT fullName, email, roles FROM User where userID = $a";
                             $row = $data['user']->fetch_assoc();
-
 
 							if($row['roles']==1){
 								echo '<div class="header__user-opption">
@@ -64,7 +63,7 @@
 								<div id="user__opption" class="user__opption">
 									<ul class="user__opption--list">
 										<li class="user__opption--item">
-											<a href="./User/UserInfo.php" class="user__manager--link user__opption--item-link">
+											<a href="/user/" class="user__manager--link user__opption--item-link">
 												<i class="fa-regular fa-user"></i>
 												Quản lý tài khoản
 											</a>
@@ -76,7 +75,7 @@
 											</a>
 										</li>
 										<li class="user__opption--item">
-											<a href="./admin/logout.php" class="user__logout--link user__opption--item-link">
+											<a href="/user/logout" class="user__logout--link user__opption--item-link">
 												<i class="fa-solid fa-arrow-right-from-bracket"></i>
 												Đăng xuất
 											</a>
@@ -118,8 +117,8 @@
 					
 						} else{
 							?>
-								<div id="header__user--register" class="header__user--register header__user-item ">Register</div>
-								<div id="header__user--login" class="header__user--login header__user-item ">Log In</div>
+								<a href="/enrol/register" id="header__user--register" class="header__user--register header__user-item ">Register</a>
+								<a href="/enrol/login" id="header__user--login" class="header__user--login header__user-item ">Log In</a>
 							
 						<?php } ?>
 
@@ -136,7 +135,7 @@
 		<div class="home">
 			<div class="home__backgound">
 
-				<div class="header__user--container--register">
+				<!-- <div class="header__user--container--register">
 					<div class="container-register">
 						<div id="wrap-register" class="wrap-register">
 							<div id="register-cancel" class="cancel-btn">
@@ -204,61 +203,9 @@
 							</form>
 						</div> 
 					</div>
-				</div>
+				</div> -->
 
-				<div class="header__user--container--login">
-					<div class="container-login">
-						<div id="wrap-login" class="wrap-login">
-							<div id="login-cancel" class="cancel-btn">
-								<i class="fa-solid fa-xmark"></i>
-							</div>
-			
-							<form action="/admin/login.php?act=login" method="POST" class="login-form validate-form">
-								<span class="login-form-title">
-									Member Login
-								</span>
-			
-								<div class="wrap-input validate-input">
-									<input class="login-form--input" type="tel" name="tel" placeholder="Phone Number">
-									<span class="focus-input"></span>
-									<span class="symbol-input">
-										<i class="fa-sharp fa-solid fa-phone" aria-hidden="true"></i>
-									</span>
-								</div>
-			
-								<div class="wrap-input validate-input">
-									<input class="login-form--input" type="password" name="pass" placeholder="Password">
-									<span class="focus-input"></span>
-									<span class="symbol-input">
-										<i class="fa fa-lock" aria-hidden="true"></i>
-									</span>
-								</div>
-								
-								<div class="container-login-form-btn">
-									<button class="login-form-btn">
-										Login
-									</button>
-								</div>
-			
-								<div class="text-center login-form__forgot">
-									<span class="login-form__forgot--text">
-										Forgot
-									</span>
-									<a href="/admin/forgotpass/forgot.php" id="login-form__to-forgot" class="txt2 login-form__forgot--link">
-										Username / Password?
-									</a>
-								</div>
-			
-								<div class="text-center login-form__to-register">
-									<a id="login-form__to-register--text"  class="txt2  login-form__to-register--text" href="#">
-										Create your Account
-										<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-									</a>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
+
 
 				
 

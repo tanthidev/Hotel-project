@@ -236,14 +236,16 @@ a:hover{
     border-radius: 5px;
     right: 0;
     bottom: 50%;
-    box-shadow: 1px 0 1px #000;
+    box-shadow: 2px 0 2px red;
     display: flex;
     align-items: center;
     animation: Notice 4s ease-in-out forwards;
+    z-index: 2;
 }
 
 .notice-text{
     font-size: 25px;
+    font-weight: 600;
     color: red;
     margin-left: 20px;
 }
@@ -460,11 +462,11 @@ input:-ms-input-placeholder { color: #999999; }
 
 .container-login, 
 .container-register {
-    position: absolute;
     top: 0;
-    width: 35%;  
+    width: 35%; 
+    height: fit-content; 
     display: flex;
-    margin: auto;
+    margin: 100px auto;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -488,7 +490,6 @@ input:-ms-input-placeholder { color: #999999; }
     justify-content: space-between;
     padding: 30px;
     margin: 10px;
-    display: none;
     box-shadow: 1px 1px 50px 5px var(--main-color);
 }
 

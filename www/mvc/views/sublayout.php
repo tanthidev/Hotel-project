@@ -64,9 +64,6 @@
 						
                     <?php
 						if($data['user']){
-							include('./admin/db.php');
-							$a = $_SESSION['id'];
-							$sql = "SELECT fullName, email, roles FROM User where userID = $a";
                             $row = $data['user']->fetch_assoc();
 
 
@@ -88,7 +85,7 @@
 											</a>
 										</li>
 										<li class="user__opption--item">
-											<a href="./admin/logout.php" class="user__logout--link user__opption--item-link">
+											<a href="/user/logout" class="user__logout--link user__opption--item-link">
 												<i class="fa-solid fa-arrow-right-from-bracket"></i>
 												Đăng xuất
 											</a>
@@ -106,13 +103,13 @@
 								<div id="user__opption" class="user__opption">
 									<ul class="user__opption--list">
 										<li class="user__opption--item">
-											<a href="./User/UserInfo.php" class="user__manager--link user__opption--item-link">
+											<a href="/user/" class="user__manager--link user__opption--item-link">
 												<i class="fa-regular fa-user"></i>
 												Quản lý khách sạn
 											</a>
 										</li>
 										<li class="user__opption--item">
-											<a href="./admin/logout.php" class="user__logout--link user__opption--item-link">
+											<a href="./mvc/core/admin/logout.php" class="user__logout--link user__opption--item-link">
 												<i class="fa-solid fa-arrow-right-from-bracket"></i>
 												Đăng xuất
 											</a>

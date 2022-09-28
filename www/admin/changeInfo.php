@@ -46,7 +46,7 @@
     //Thông báo quá trình lưu
     if ($updatemember)
         // echo 'Ok!';     
-        header('Location: /User/UserInfo.php');
+        header('Location: /user/');
     else{
         echo mysqli_error($conn);
         echo "Có lỗi xảy ra trong quá trình update. <a href='/User/UserInfo.php'>Thử lại</a>";

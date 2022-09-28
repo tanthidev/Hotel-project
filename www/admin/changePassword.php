@@ -5,7 +5,7 @@
 
     //Nếu không phải là sự kiện đăng ký thì không xử lý
     if(!isset($_SESSION['id'])){
-        header('Location: /index.php');
+        header('Location: /home');
     }
    
     //Khai báo utf-8 để hiển thị được tiếng việt

@@ -1,53 +1,5 @@
 
 
-
-
-// Show task login/ register when click
-
-//Hidden when click X
-document.getElementById('login-cancel').onclick = function(){
-    document.getElementById("wrap-login").style.display= "none";
-}
-document.getElementById('register-cancel').onclick = function(){
-    document.getElementById("wrap-register").style.display= "none";
-}
-
-
-//To other task
-
-document.getElementById("header__user--login").onclick = function() {
-    document.getElementById("wrap-login").style.display = "flex";
-}
-
-document.getElementById("header__user--register").onclick = function() {
-
-    if(document.getElementById("wrap-login").style.display = "flex")
-        document.getElementById("wrap-login").style.display = "none";
-    document.getElementById("wrap-register").style.display = "flex"; 
-}
-
-document.getElementById("header__user--login").onclick = function() {
-    if(document.getElementById("wrap-register").style.display = "flex")
-        document.getElementById("wrap-register").style.display = "none";
-    document.getElementById("wrap-login").style.display = "flex";
-}
-
-// form task login to register
-document.getElementById("login-form__to-register--text").onclick = function() {
-    document.getElementById("wrap-login").style.display = "none";
-    document.getElementById("wrap-register").style.display = "flex";
-}
-// from task register to login
-document.getElementById("register-form__to-login--text").onclick = function() {
-    document.getElementById("wrap-register").style.display = "none";
-    document.getElementById("wrap-login").style.display = "flex";
-}
-
-
-
-
-
-
 //CROLL TO TOP
 // Get the button:
 let mybutton = document.getElementById("btn-to-top");
