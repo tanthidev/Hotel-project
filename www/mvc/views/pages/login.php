@@ -52,7 +52,7 @@
                 <span class="login-form__forgot--text">
                     Forgot
                 </span>
-                <a href="/admin/forgotpass/forgot.php" id="login-form__to-forgot" class="txt2 login-form__forgot--link">
+                <a href="/enrol/forgot" id="login-form__to-forgot" class="txt2 login-form__forgot--link">
                     Username / Password?
                 </a>
             </div>

@@ -1,4 +1,25 @@
 
+<?php 
+    if(isset($data['notice'])){
+        if($data['check']){
+            $text= "notice-text--success";
+            $task= "notice-task--success";
+        }
+        else{
+            $text= "notice-text";
+            $task= "notice-task";
+        }
+
+        echo '
+        <div class="'.$task.' notice-task">
+            <span class="'.$text.' notice-text">
+            '.$data['notice'].'
+            </span>
+        </div>
+        ';      
+    }
+?>
+			
 			<div class="home__welcome-page">
 				<div class="grid">
 					<div class="grid__row welcome-page__container">
@@ -133,7 +154,7 @@
 						<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
   						<a class="next" onclick="plusSlides(1)">&#10095;</a>
 						<div class="all-rooms">
-							<a href="./View/listRoom.php" class="all-rooms--link">
+							<a href="/listroom" class="all-rooms--link">
 								View all our rooms
 								<i class="arrow fa-solid fa-arrow-right" aria-hidden="true"></i>
 							</a>

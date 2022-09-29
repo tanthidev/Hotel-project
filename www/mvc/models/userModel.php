@@ -13,11 +13,6 @@
                 $qr = "SELECT userID, fullName, phoneNumber, roles, email, gender from User where userID=$id";
                 $rows = mysqli_query($this ->conn, $qr);
                 $row = mysqli_fetch_array($rows);
-                // echo $row['fullName'];
-                // $array = array();
-                // while($row = mysqli_fetch_array($rows)){
-                //     $array = $row;
-                // }
                 return json_encode($row, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
             }
         }
@@ -41,6 +36,14 @@
             return $Id;
         }
 
+        //GET USER BY EMAIL
+        public function getUserByEmail($email){
+            $qr = "SELECT userID, fullName, email from User where email='$email'";
+            $rows = mysqli_query($this ->conn, $qr);
+            $row = mysqli_fetch_array($rows);
+            return json_encode($row, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+        }
+
         //Kiểm tra số điện thoại có tồn tại trong database
         public function checkExistphoneNumber($phoneNumber){
             $qr = "SELECT * FROM User WHERE phoneNumber='$phoneNumber'";
@@ -54,7 +57,7 @@
 
         //Kiểm tra email có tồn tại trong database
         public function checkExistEmail($email){
-            $qr = "SELECT * FROM User WHERE phoneNumber='$email'";
+            $qr = "SELECT * FROM User WHERE email='$email'";
             if (mysqli_num_rows(mysqli_query($this ->conn,$qr)) > 0){
                 //Tồn tại email ==> Trả về true
                 return true;
@@ -78,6 +81,18 @@
                     VALUE ('$userID','$fullName','$phoneNumber','$email','$pass')";
             $result = false;
             $a = mysqli_query($this -> conn, $qr);
+            if($a){
+                $result = true;
+            }
+
+            return $result;
+        }
+
+        //Update password
+        public function updatePassword($userID, $pass){
+            $qr = "UPDATE User SET passWord='$pass' WHERE userID='$userID'";
+            $a = mysqli_query($this -> conn, $qr);
+            $result = false;
             if($a){
                 $result = true;
             }
