@@ -1,13 +1,17 @@
 <?php 
     if(isset($data['notice'])){
         if($data['check']){
-            $check= "--success";
+            $text= "notice-text--success";
+            $task= "notice-task--success";
         }
-        else $check="";
+        else{
+            $text= "notice-text";
+            $task= "notice-task";
+        }
 
         echo '
-        <div class="notice-task'.$check.'">
-            <span class="notice-text'.$check.'">
+        <div class="'.$task.' notice-task">
+            <span class="'.$text.' notice-text">
             '.$data['notice'].'
             </span>
         </div>
@@ -66,13 +70,11 @@
             
             <div class="container-register-form-btn">
                 <input name="btnRegister" type="submit" class="register-form-btn" value="Register">
-                    Register
             </div>
 
 
             <div class="text-center register-form__login">
-                <a id="register-form__to-login--text" class="txt2 register-form__to-login--text" href="#">
-                    
+                <a id="register-form__to-login--text" class="txt2 register-form__to-login--text" href="/enrol/login">                   
                         Do you already have an account? Log in
                     <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                 </a>

@@ -251,7 +251,8 @@ a:hover{
 }
 
 .notice-task--success{
-    border-left:7px solid green
+    border-left:7px solid green;
+    box-shadow: 2px 0 2px green;
 }
 
 .notice-text--success{

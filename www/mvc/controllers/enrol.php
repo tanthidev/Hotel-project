@@ -1,6 +1,12 @@
 <?php 
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
+ob_start();
 
-    class enrol extends controller{
+class enrol extends controller{
+
 
         // LOGIN
         static function login(){
@@ -11,13 +17,71 @@
         }
 
         static function loginprocessing(){
+            //Gọi model User
+            $user = self::model("userModel");
+
             //Get data from User's form
+            if(isset($_POST['btnLogin'])){
+                $phoneNumber= addslashes($_POST['tel']);
+                $pass= addslashes($_POST['pass']);   
+            
+                $textnotice="";
+                $checkLogin=false;
+    
+                //Check login 
+                //Kiểm tra đã nhập đủ tên đăng nhập với mật khẩu chưa
+                if (!$phoneNumber || !$pass) {
+                    //Kiểm tra ng;ười dùng đã nhập liệu đầy đủ chưa
+                    if ($phoneNumber || !$pass){
+                        $textnotice="Vui lòng nhập đầy đủ thông tin.";
+                        //GỌi view
+                        $view =self::view("simplelayout",[
+                            "page"=>"login",
+                            "notice" => $textnotice,
+                            "check" => $checkLogin
+                        ]);
+                        exit;
+                    }
+                }
+    
+         
+                //Kiểm tra tên đăng nhập có tồn tại không
+                if (!($user -> checkExistphoneNumber($phoneNumber))) {
+                    $textnotice="Phone number is incorrect!";
+                        //GỌi view
+                        $view =self::view("simplelayout",[
+                            "page"=>"login",
+                            "notice" => $textnotice,
+                            "check" => $checkLogin
+                        ]);
+                        exit;
+                }
+         
+                //So sánh 2 mật khẩu có trùng khớp hay không
+                if (!($user -> checkPass($phoneNumber, $pass))) {
+                    $textnotice="Password is incorrect!";
+                        //GỌi view
+                        $view =self::view("simplelayout",[
+                            "page"=>"login",
+                            "notice" => $textnotice,
+                            "check" => $checkLogin
+                        ]);
+                        exit;
+                }
+        
+                //Lấy Id để tạo session
+                $_SESSION['id'] = $user -> getID($phoneNumber);
+                echo $_SESSION['id'];
 
+                //Lưu tên đăng nhập
+                //Về Trang chủ
+                header('Location: /home');
+                exit;
+    
+            
+            }
 
-            //Check login 
-
-
-            //Notice
+           
         }
 
         //REGISTER
@@ -29,6 +93,9 @@
         }
 
         static function registerprocessing(){
+            //Gọi Model User
+            $user = self::model("userModel");
+
             //Get data from User's form
             if(isset($_POST['btnRegister'])){
                 $fullName   = addslashes($_POST['fullName']);
@@ -43,8 +110,7 @@
                 $checkregister=false;
                 
                 //Kiểm tra ng;ười dùng đã nhập liệu đầy đủ chưa
-                if (!$fullName || !$phoneNumber || !$email || !$pass || !$re_pass)
-                {
+                if (!$fullName || !$phoneNumber || !$email || !$pass || !$re_pass){
                     $textnotice="Vui lòng nhập đầy đủ thông tin.";
                     //GỌi view
                     $view =self::view("simplelayout",[
@@ -52,12 +118,27 @@
                         "notice" => $textnotice,
                         "check" => $checkregister
                     ]);
+                    exit;
                 }
-                      
-                // Mã khóa mật khẩu
-                $pass = password_hash($pass, PASSWORD_DEFAULT);
-                //Kiểm tra mật khẩu có trùng nhau không
 
+                //Kiểm tra tên đăng nhập này đã có người dùng chưa
+                if ($user -> checkExistphoneNumber($phoneNumber)){
+                    //Nếu trả về true => đã tồn tại 
+                    $textnotice="Số điện thoại đã được sử dụng!";
+                    //GỌi view
+                    $view =self::view("simplelayout",[
+                        "page"=>"register",
+                        "notice" => $textnotice,
+                        "check" => $checkregister
+                    ]);
+                    exit;
+                }
+                
+
+                // Mã khóa mật khẩu bằng BCrypt
+                $pass = password_hash($pass, PASSWORD_DEFAULT);
+
+                //Kiểm tra mật khẩu có trùng nhau không
                 if(!password_verify($re_pass, $pass)){
                     $textnotice="Password không giống nhau!";
                     //GỌi view
@@ -66,45 +147,69 @@
                         "notice" => $textnotice,
                         "check" => $checkregister
                     ]);
-                }
-
-                //Kiểm tra tên đăng nhập này đã có người dùng chưa
-                if (mysqli_num_rows(mysqli_query($conn,"SELECT phoneNumber FROM User WHERE phoneNumber='$phoneNumber'")) > 0){
-                    echo "Số điện thoại đã được sử dụng!. <a href='javascript: history.go(-1)'>Trở lại</a>";
                     exit;
                 }
+
+
             
-            
+                //Kiểm tra mail có đúng định dạng không 
                 if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-                    echo "Email này không hợp lệ. Vui long nhập email khác. <a href='javascript: history.go(-1)'>Trở lại</a>";
+                    $textnotice="Email không hợp lệ!";
+                    //GỌi view
+                    $view =self::view("simplelayout",[
+                        "page"=>"register",
+                        "notice" => $textnotice,
+                        "check" => $checkregister
+                    ]);
                     exit;
                 }
                       
                 //Kiểm tra email đã có người dùng chưa
-                if (mysqli_num_rows(mysqli_query($conn,"SELECT email FROM User WHERE email='$email'")) > 0)
-                {
-                    echo "Email này đã có người dùng. Vui lòng chọn Email khác. <a href='javascript: history.go(-1)'>Trở lại</a>";
+                if ($user -> checkExistEmail($email)){              
+                    $textnotice="Email đã được dụng!";
+                    //GỌi view
+                    $view =self::view("simplelayout",[
+                        "page"=>"register",
+                        "notice" => $textnotice,
+                        "check" => $checkregister
+                    ]);
                     exit;
                 }
             
 
                 
-            
-            
                 //Xử lý userID
-                $sql = "SELECT * FROM User WHERE userID = (SELECT max(userID) FROM User)";
-                $result = $conn->query($sql);
-                $row = $result->fetch_assoc();
-                $userID = $row['userID']+1;
+                $userID = $user -> userIDProcessing();
+
                 //Lưu thông tin thành viên vào bảng
-                @$addmember = mysqli_query($conn,"
-                    INSERT INTO User (userID,fullName,phoneNumber,email,passWord)
-                    VALUE ('$userID','$fullName','$phoneNumber','$email','$pass')");
-        
-                    //Notice
+                $result = $user -> insertUser($userID,$fullName,$phoneNumber,$email,$pass);
+
+
+                //Notice
+                if($result){
+                    $textnotice = "Đăng kí thành công";
+                    $checkregister = true;
+                } else{
+                    $textnotice = "Đăng kí thất bại";
+                }
+                
+                //GỌi view
+                $view =self::view("simplelayout",[
+                    "page"=>"register",
+                    "notice" => $textnotice,
+                    "check" => $checkregister
+                ]);
+                exit;
             }
         
 
+        }
+
+        static function logout(){
+            if(isset($_SESSION['id'])&&($_SESSION['id']!="")){
+                unset($_SESSION['id']);
+                header('Location: /home');
+            }
         }
 
 

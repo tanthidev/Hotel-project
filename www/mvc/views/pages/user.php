@@ -36,7 +36,7 @@
 
 									<div class="profile__main--container-info">
 										<?php 
-											echo '<p class="profile__main--info-text profile__main--info-text-cannot-change">'.$row['userID'].'</p>'
+											echo '<p class="profile__main--info-text profile__main--info-text-cannot-change">'.$row->userID.'</p>'
 										?>
 
 									</div>
@@ -51,10 +51,10 @@
 
 									<div class="profile__main--container-info">
 										<?php 
-											echo '<p class="profile__main--info-text">'.$row['fullName'].'</p>'
+											echo '<p class="profile__main--info-text">'.$row -> fullName.'</p>'
 										?>
 
-										<input id="profile__main--info-fullName" class="profile__change-input-change-info" type="text" name="fullName" value=<?php echo '"'.$row['fullName'].'"'?>>
+										<input id="profile__main--info-fullName" class="profile__change-input-change-info" type="text" name="fullName" value=<?php echo '"'.$row -> fullName.'"'?>>
 									</div>
 								</div>
 
@@ -68,9 +68,9 @@
 
 									<div class="profile__main--container-info">
 											<?php 
-												echo '<p class="profile__main--info-text">'.$row['phoneNumber'].'</p>'
+												echo '<p class="profile__main--info-text">'.$row->phoneNumber.'</p>'
 											?>
-											<input id="profile__main--info-phoneNumber" class="profile__change-input-change-info" type="tel" name="phoneNumber" value=<?php echo '"'.$row['phoneNumber'].'"'?>>
+											<input id="profile__main--info-phoneNumber" class="profile__change-input-change-info" type="tel" name="phoneNumber" value=<?php echo '"'.$row->phoneNumber.'"'?>>
 									</div>
 								</div>
 
@@ -83,9 +83,9 @@
 
 									<div class="profile__main--container-info">
 											<?php 
-												echo '<p class="profile__main--info-text">'.$row['email'].'</p>'
+												echo '<p class="profile__main--info-text">'.$row->email.'</p>'
 											?>
-											<input id="profile__main--info-email" class="profile__change-input-change-info" type="text" name="email" value=<?php echo '"'.$row['email'].'"'?>>
+											<input id="profile__main--info-email" class="profile__change-input-change-info" type="text" name="email" value=<?php echo '"'.$row->email.'"'?>>
 									</div>
 								</div>
 
@@ -98,11 +98,11 @@
 
 									<div class="profile__main--container-info">
 											<?php 
-												echo '<p class="profile__main--info-text">'.$row['gender'].'</p>'
+												echo '<p class="profile__main--info-text">'.$row->gender.'</p>'
 											
 											?>
 
-											<select class="profile__change-input-change-info" name="gender" id="gender" value="AAA">
+											<select class="profile__change-input-change-info" name="gender" id="gender" value="">
 												<option value="null">--Choose gender--</option>
 												<option value="Male">Male</option>
 												<option value="Female">Female</option>

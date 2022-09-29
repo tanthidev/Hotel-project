@@ -33,7 +33,7 @@
 			<div class="grid">
 				<div class="grid__row header__container">
 					<div class="header__container-logo">
-						<a href="/index.php" class="header__container-logo--img">
+						<a href="/home" class="header__container-logo--img">
 							<img src="/dataweb/img/logo/logo-company.png" alt="" class="header__logo">
 
 						</a>
@@ -46,7 +46,7 @@
 					<div class="header__menu">
 						<ul id="header__menu--list" class="header__menu--list">
 							<li class="header__menu--item">
-								<a href="/index.php" class="header__menu--link">HOME</a>
+								<a href="/home" class="header__menu--link">HOME</a>
 							</li>
 							<li class="header__menu--item">
 								<a href="#room" class="header__menu--link">ROOM</a>
@@ -61,8 +61,74 @@
 					</div>
 
 					<div id="header__user" class="header__user">
-                        <div id="header__user--register" class="header__user--register header__user-item ">Register</div>
-                        <div id="header__user--login" class="header__user--login header__user-item ">Log In</div>						
+						<?php
+							if(isset($data['user'])){
+								$row = json_decode($data['user']);
+								// echo($row -> fullName);
+								if($row -> roles ==1){
+									echo '<div class="header__user-opption">
+									<p id="header_user-name" class="header_user-name">Welcome, '.$row->fullName.'</p>
+									<div id="user__opption" class="user__opption">
+										<ul class="user__opption--list">
+											<li class="user__opption--item">
+												<a href="/user/" class="user__manager--link user__opption--item-link">
+													<i class="fa-regular fa-user"></i>
+													Quản lý tài khoản
+												</a>
+											</li>
+											<li class="user__opption--item">
+												<a href="#" class="user__databooking--link user__opption--item-link">
+													<i class="fa-solid fa-suitcase"></i>
+													Dữ liệu đặt chỗ
+												</a>
+											</li>
+											<li class="user__opption--item">
+												<a href="/user/logout" class="user__logout--link user__opption--item-link">
+													<i class="fa-solid fa-arrow-right-from-bracket"></i>
+													Đăng xuất
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div id="header__user--register" class="header__user--register header__user-item "></div>
+								<div id="header__user--login" class="header__user--login header__user-item "></div>';
+								}
+
+								if($row->roles==2){
+									echo '<div class="header__user-opption">
+									<p id="header_user-name" class="header_user-name">Welcome, '.$row->fullName.'</p>
+									<div id="user__opption" class="user__opption">
+										<ul class="user__opption--list">
+											<li class="user__opption--item">
+												<a href="./User/UserInfo.php" class="user__manager--link user__opption--item-link">
+													<i class="fa-regular fa-user"></i>
+													Quản lý khách sạn
+												</a>
+											</li>
+											<li class="user__opption--item">
+												<a href="/enrol/logout" class="user__logout--link user__opption--item-link">
+													<i class="fa-solid fa-arrow-right-from-bracket"></i>
+													Đăng xuất
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div id="header__user--register" class="header__user--register header__user-item "></div>
+								<div id="header__user--login" class="header__user--login header__user-item "></div>';
+								}
+
+
+							
+						
+						
+							} else{
+								?>
+									<a href="/enrol/register" id="header__user--register" class="header__user--register header__user-item ">Register</a>
+									<a href="/enrol/login" id="header__user--login" class="header__user--login header__user-item ">Log In</a>
+								
+						<?php } ?>	
 					</div>
 				</div>
 			</div>	

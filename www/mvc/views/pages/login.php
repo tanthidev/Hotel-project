@@ -1,8 +1,29 @@
+<?php 
+    if(isset($data['notice'])){
+        if($data['check']){
+            $text= "notice-text--success";
+            $task= "notice-task--success";
+        }
+        else{
+            $text= "notice-text";
+            $task= "notice-task";
+        }
+
+        echo '
+        <div class="'.$task.' notice-task">
+            <span class="'.$text.' notice-text">
+            '.$data['notice'].'
+            </span>
+        </div>
+        ';      
+    }
+?>
+
 
 <div class="container-login">
     <div id="wrap-login" class="wrap-login">
 
-        <form action="/enrol/login" method="POST" class="login-form validate-form">
+        <form action="/enrol/loginprocessing" method="POST" class="login-form validate-form">
             <span class="login-form-title">
                 Member Login
             </span>
@@ -24,9 +45,7 @@
             </div>
             
             <div class="container-login-form-btn">
-                <button class="login-form-btn">
-                    Login
-                </button>
+                <input type="submit" name="btnLogin" class="login-form-btn" value="LOG IN">
             </div>
 
             <div class="text-center login-form__forgot">
@@ -39,7 +58,7 @@
             </div>
 
             <div class="text-center login-form__to-register">
-                <a id="login-form__to-register--text"  class="txt2  login-form__to-register--text" href="#">
+                <a id="login-form__to-register--text"  class="txt2  login-form__to-register--text" href="/enrol/register">
                     Create your Account
                     <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
                 </a>

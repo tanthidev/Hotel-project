@@ -33,7 +33,7 @@
 			<div class="grid">
 				<div class="grid__row header__container">
 					<div class="header__container-logo">
-						<a href="/index.php" class="header__container-logo--img">
+						<a href="/home" class="header__container-logo--img">
 							<img src="/dataweb/img/logo/logo-company.png" alt="" class="header__logo">
 
 						</a>
@@ -46,7 +46,7 @@
 					<div class="header__menu">
 						<ul id="header__menu--list" class="header__menu--list">
 							<li class="header__menu--item">
-								<a href="/index.php" class="header__menu--link">HOME</a>
+								<a href="/home" class="header__menu--link">HOME</a>
 							</li>
 							<li class="header__menu--item">
 								<a href="#room" class="header__menu--link">ROOM</a>
@@ -62,75 +62,74 @@
 
 					<div id="header__user" class="header__user">
 						
-                    <?php
-						if($data['user']){
-                            $row = $data['user']->fetch_assoc();
-
-
-							if($row['roles']==1){
-								echo '<div class="header__user-opption">
-								<p id="header_user-name" class="header_user-name">Welcome, '.$row["fullName"].'</p>
-								<div id="user__opption" class="user__opption">
-									<ul class="user__opption--list">
-										<li class="user__opption--item">
-											<a href="./User/UserInfo.php" class="user__manager--link user__opption--item-link">
-												<i class="fa-regular fa-user"></i>
-												Quản lý tài khoản
-											</a>
-										</li>
-										<li class="user__opption--item">
-											<a href="#" class="user__databooking--link user__opption--item-link">
-												<i class="fa-solid fa-suitcase"></i>
-												Dữ liệu đặt chỗ
-											</a>
-										</li>
-										<li class="user__opption--item">
-											<a href="/user/logout" class="user__logout--link user__opption--item-link">
-												<i class="fa-solid fa-arrow-right-from-bracket"></i>
-												Đăng xuất
-											</a>
-										</li>
-									</ul>
+						<?php
+							if(isset($data['user'])){
+								$row = json_decode($data['user']);
+								// echo($row -> fullName);
+								if($row -> roles ==1){
+									echo '<div class="header__user-opption">
+									<p id="header_user-name" class="header_user-name">Welcome, '.$row->fullName.'</p>
+									<div id="user__opption" class="user__opption">
+										<ul class="user__opption--list">
+											<li class="user__opption--item">
+												<a href="/user/" class="user__manager--link user__opption--item-link">
+													<i class="fa-regular fa-user"></i>
+													Quản lý tài khoản
+												</a>
+											</li>
+											<li class="user__opption--item">
+												<a href="#" class="user__databooking--link user__opption--item-link">
+													<i class="fa-solid fa-suitcase"></i>
+													Dữ liệu đặt chỗ
+												</a>
+											</li>
+											<li class="user__opption--item">
+												<a href="/user/logout" class="user__logout--link user__opption--item-link">
+													<i class="fa-solid fa-arrow-right-from-bracket"></i>
+													Đăng xuất
+												</a>
+											</li>
+										</ul>
+									</div>
 								</div>
-							</div>
-							<div id="header__user--register" class="header__user--register header__user-item "></div>
-							<div id="header__user--login" class="header__user--login header__user-item "></div>';
-							}
+								<div id="header__user--register" class="header__user--register header__user-item "></div>
+								<div id="header__user--login" class="header__user--login header__user-item "></div>';
+								}
 
-							if($row['roles']==2){
-								echo '<div class="header__user-opption">
-								<p id="header_user-name" class="header_user-name">Welcome, '.$row["fullName"].'</p>
-								<div id="user__opption" class="user__opption">
-									<ul class="user__opption--list">
-										<li class="user__opption--item">
-											<a href="/user/" class="user__manager--link user__opption--item-link">
-												<i class="fa-regular fa-user"></i>
-												Quản lý khách sạn
-											</a>
-										</li>
-										<li class="user__opption--item">
-											<a href="./mvc/core/admin/logout.php" class="user__logout--link user__opption--item-link">
-												<i class="fa-solid fa-arrow-right-from-bracket"></i>
-												Đăng xuất
-											</a>
-										</li>
-									</ul>
+								if($row->roles==2){
+									echo '<div class="header__user-opption">
+									<p id="header_user-name" class="header_user-name">Welcome, '.$row->fullName.'</p>
+									<div id="user__opption" class="user__opption">
+										<ul class="user__opption--list">
+											<li class="user__opption--item">
+												<a href="./User/UserInfo.php" class="user__manager--link user__opption--item-link">
+													<i class="fa-regular fa-user"></i>
+													Quản lý khách sạn
+												</a>
+											</li>
+											<li class="user__opption--item">
+												<a href="/enrol/logout" class="user__logout--link user__opption--item-link">
+													<i class="fa-solid fa-arrow-right-from-bracket"></i>
+													Đăng xuất
+												</a>
+											</li>
+										</ul>
+									</div>
 								</div>
-							</div>
-							<div id="header__user--register" class="header__user--register header__user-item "></div>
-							<div id="header__user--login" class="header__user--login header__user-item "></div>';
-							}
+								<div id="header__user--register" class="header__user--register header__user-item "></div>
+								<div id="header__user--login" class="header__user--login header__user-item "></div>';
+								}
 
 
-						
-					
-					
-						} else{
-							?>
-								<div id="header__user--register" class="header__user--register header__user-item ">Register</div>
-								<div id="header__user--login" class="header__user--login header__user-item ">Log In</div>
 							
-						<?php } ?>
+						
+						
+							} else{
+								?>
+									<a href="/enrol/register" id="header__user--register" class="header__user--register header__user-item ">Register</a>
+									<a href="/enrol/login" id="header__user--login" class="header__user--login header__user-item ">Log In</a>
+								
+							<?php } ?>
 
 
 					</div>
@@ -143,134 +142,10 @@
 			<div class="home">
 				<div class="home__backgound home__backgound--short">
 
-                    <!-- Task Register -->
-				<div class="header__user--container--register">
-					<div class="container-register">
-						<div id="wrap-register" class="wrap-register">
-							<div id="register-cancel" class="cancel-btn">
-								<i class="fa-solid fa-xmark"></i>
-							</div>
-			
-							<form action="./admin/Xulydangki.php" method="POST" class="register-form validate-form">
-								<span class="register-form-title">
-									Member Register
-								</span>
-								<div class="wrap-input validate-input">
-									<input class="register-form--input" type="text" name="fullName" placeholder="Full Name">
-									<span class="focus-input"></span>
-									<span class="symbol-input">
-										<i class="fa-solid fa-user"aria-hidden="true"></i>
-									</span>
-								</div>
 
-								<div class="wrap-input validate-input">
-									<input class="register-form--input" type="tel" name="tel" placeholder="Phone Number">
-									<span class="focus-input"></span>
-									<span class="symbol-input">
-										<i class="fa-sharp fa-solid fa-phone" aria-hidden="true"></i>
-									</span>
-								</div>
-
-								<div class="wrap-input validate-input">
-									<input class="register-form--input" type="email" name="email" placeholder="Email">
-									<span class="focus-input"></span>
-									<span class="symbol-input">
-										<i class="fa-solid fa-envelope" aria-hidden="true"></i>
-									</span>
-								</div>
-			
-								<div class="wrap-input validate-input">
-									<input class="register-form--input" type="password" name="pass" placeholder="Password">
-									<span class="focus-input"></span>
-									<span class="symbol-input">
-										<i class="fa fa-lock" aria-hidden="true"></i>
-									</span>
-								</div>
-
-								<div class="wrap-input validate-input">
-									<input class="register-form--input" type="password" name="repeat-pass" placeholder="Repeat Password">
-									<span class="focus-input"></span>
-									<span class="symbol-input">
-										<i class="fa-solid fa-repeat" aria-hidden="true"></i>
-									</span>
-								</div>
-								
-								<div class="container-register-form-btn">
-									<button class="register-form-btn">
-										Register
-									</button>
-								</div>
-			
-			
-								<div class="text-center register-form__login">
-									<a id="register-form__to-login--text" class="txt2 register-form__to-login--text" href="#">
-										
-											Do you already have an account? Log in
-										<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-									</a>
-								</div>
-							</form>
-						</div> 
-					</div>
-				</div>
-
-				<!-- Task Login -->
-				<div class="header__user--container--login">
-					<div class="container-login">
-						<div id="wrap-login" class="wrap-login">
-							<div id="login-cancel" class="cancel-btn">
-								<i class="fa-solid fa-xmark"></i>
-							</div>
-			
-							<form action="/admin/login.php" method="POST" class="login-form validate-form">
-								<span class="login-form-title">
-									Member Login
-								</span>
-			
-								<div class="wrap-input validate-input">
-									<input class="login-form--input" type="tel" name="tel" placeholder="Phone Number">
-									<span class="focus-input"></span>
-									<span class="symbol-input">
-										<i class="fa-sharp fa-solid fa-phone" aria-hidden="true"></i>
-									</span>
-								</div>
-			
-								<div class="wrap-input validate-input">
-									<input class="login-form--input" type="password" name="pass" placeholder="Password">
-									<span class="focus-input"></span>
-									<span class="symbol-input">
-										<i class="fa fa-lock" aria-hidden="true"></i>
-									</span>
-								</div>
-								
-								<div class="container-login-form-btn">
-									<button class="login-form-btn">
-										Login
-									</button>
-								</div>
-			
-								<div class="text-center login-form__forgot">
-									<span class="login-form__forgot--text">
-										Forgot
-									</span>
-									<span id="login-form__to-forgot" class="txt2 login-form__forgot--link">
-										Username / Password?
-									</span>
-								</div>
-			
-								<div class="text-center login-form__to-register">
-									<a id="login-form__to-register--text"  class="txt2  login-form__to-register--text" href="#">
-										Create your Account
-										<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-									</a>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
 
 				<!-- Task forgot password -->
-				<div class="header__user--container--login">
+				<!-- <div class="header__user--container--login">
 					<div class="container-login">
 						<div id="wrap-forgot" class="wrap-login">
 							<div id="forgot-cancel" class="cancel-btn">
@@ -303,7 +178,7 @@
 							</form>
 						</div>
 					</div>
-				</div>
+				</div> -->
 
                 <div class="home__taskbar-container-booking">
 						<form class="home__taskbar-booking">

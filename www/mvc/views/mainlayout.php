@@ -1,4 +1,10 @@
 <?php 
+	ob_start();
+
+	if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
 	
 ?>
 <!DOCTYPE html>
@@ -24,7 +30,7 @@
 		<div class="grid">
 			<div class="grid__row header__container">
 				<div class="header__container-logo">
-					<a href="#" class="header__container-logo--img">
+					<a href="/home" class="header__container-logo--img">
 						<img src="/dataweb/img/logo/logo-company.png" alt="" class="header__logo">
 
 					</a>
@@ -37,7 +43,7 @@
 				<div class="header__menu">
 					<ul id="header__menu--list" class="header__menu--list">
 						<li class="header__menu--item">
-							<a href="/index.php" class="header__menu--link">HOME</a>
+							<a href="/home" class="header__menu--link">HOME</a>
 						</li>
 						<li class="header__menu--item">
 							<a href="#room" class="header__menu--link">ROOM</a>
@@ -54,12 +60,12 @@
 				<div id="header__user" class="header__user">
 					
                 <?php
-						if($data['user']){
-                            $row = $data['user']->fetch_assoc();
-
-							if($row['roles']==1){
+						if(isset($data['user'])){
+                            $row = json_decode($data['user']);
+							// echo($row -> fullName);
+							if($row -> roles ==1){
 								echo '<div class="header__user-opption">
-								<p id="header_user-name" class="header_user-name">Welcome, '.$row["fullName"].'</p>
+								<p id="header_user-name" class="header_user-name">Welcome, '.$row->fullName.'</p>
 								<div id="user__opption" class="user__opption">
 									<ul class="user__opption--list">
 										<li class="user__opption--item">
@@ -87,9 +93,9 @@
 							<div id="header__user--login" class="header__user--login header__user-item "></div>';
 							}
 
-							if($row['roles']==2){
+							if($row->roles==2){
 								echo '<div class="header__user-opption">
-								<p id="header_user-name" class="header_user-name">Welcome, '.$row["fullName"].'</p>
+								<p id="header_user-name" class="header_user-name">Welcome, '.$row->fullName.'</p>
 								<div id="user__opption" class="user__opption">
 									<ul class="user__opption--list">
 										<li class="user__opption--item">
@@ -99,7 +105,7 @@
 											</a>
 										</li>
 										<li class="user__opption--item">
-											<a href="./admin/logout.php" class="user__logout--link user__opption--item-link">
+											<a href="/enrol/logout" class="user__logout--link user__opption--item-link">
 												<i class="fa-solid fa-arrow-right-from-bracket"></i>
 												Đăng xuất
 											</a>

@@ -38,6 +38,9 @@
                     require_once("./mvc/controllers/".$this->controller.".php");
                     $this-> controller = new $this -> controller;
                 }
+            } else {
+                require_once("./mvc/controllers/".$this->controller.".php");
+                $this-> controller = new $this -> controller;
             }
             
             
