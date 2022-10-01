@@ -166,6 +166,8 @@ hr{
 
 .btn-cancel:hover{
     background-color: rgb(115, 114, 114);
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .hidden-item{

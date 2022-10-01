@@ -64,21 +64,14 @@
             }
 
             return false;
+        
         }
 
-        //Xử lý userID
-        public function userIDProcessing(){
-            $qr = "SELECT * FROM User WHERE userID = (SELECT max(userID) FROM User)";
-            $result = $this ->conn->query($qr);
-            $row = $result->fetch_assoc();
-            $Id= $row['userID']+1;
-            return $Id;
-        }
 
         //Insert new User
-        public function insertUser($userID,$fullName,$phoneNumber,$email,$pass){
-            $qr ="INSERT INTO User (userID, fullName, phoneNumber, email, passWord)
-                    VALUE ('$userID','$fullName','$phoneNumber','$email','$pass')";
+        public function insertUser($fullName,$phoneNumber,$email,$pass){
+            $qr ="INSERT INTO User (fullName, phoneNumber, email, passWord)
+                    VALUE ('$fullName','$phoneNumber','$email','$pass')";
             $result = false;
             $a = mysqli_query($this -> conn, $qr);
             if($a){
@@ -100,7 +93,7 @@
             return $result;
         }
 
-        //Kiểm tra mật khẩu đăng nhập
+        //Kiểm tra mật khẩu đăng nhập bằng sđt
         public function checkPass($phoneNumber, $pass){
             $qr = "SELECT passWord, phoneNumber from User where phoneNumber=$phoneNumber";
             $rows = mysqli_query($this ->conn, $qr);
@@ -108,6 +101,30 @@
             $check = password_verify($pass, $row['passWord']);
             return $check;
         }
+        
+        //Kiểm tra mật khẩu đăng nhập bằng ID
+        public function checkPassByID($userID, $pass){
+            $qr = "SELECT passWord, phoneNumber from User where userID='$userID'";
+            $rows = mysqli_query($this ->conn, $qr);
+            $row = mysqli_fetch_array($rows);
+            $check = password_verify($pass, $row['passWord']);
+            return $check;
+        }
 
+        //Update User
+        public function updateUser($userID,$fullName,$phoneNumber,$email,$gender){
+            $qr="UPDATE User
+                SET fullName = '$fullName', 
+                    phoneNumber = '$phoneNumber', 
+                    email='$email', 
+                    gender='$gender' 
+                WHERE userID='$userID'";
+            $a = mysqli_query($this -> conn, $qr);
+            $result = false;
+            if($a){
+                $result = true;
+            }
+            return $result;
+        }
     }
 ?>

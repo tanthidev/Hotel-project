@@ -180,12 +180,9 @@ class enrol extends controller{
                 }
             
 
-                
-                //Xử lý userID
-                $userID = $user -> userIDProcessing();
 
                 //Lưu thông tin thành viên vào bảng
-                $result = $user -> insertUser($userID,$fullName,$phoneNumber,$email,$pass);
+                $result = $user -> insertUser($fullName,$phoneNumber,$email,$pass);
 
 
                 //Notice
@@ -204,8 +201,6 @@ class enrol extends controller{
                 ]);
                 exit;
             }
-        
-
         }
 
         //LOGOUT

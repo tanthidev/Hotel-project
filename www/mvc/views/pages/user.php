@@ -1,3 +1,23 @@
+<?php 
+    if(isset($data['notice'])){
+        if($data['check']){
+            $text= "notice-text--success";
+            $task= "notice-task--success";
+        }
+        else{
+            $text= "notice-text";
+            $task= "notice-task";
+        }
+
+        echo '
+        <div class="'.$task.' notice-task">
+            <span class="'.$text.' notice-text">
+            '.$data['notice'].'
+            </span>
+        </div>
+        ';      
+    }
+?>
 <div class="container">
         <div class="grid">
 		<div class="grid__row">
@@ -20,7 +40,7 @@
 				
 				<div class="grid__column-3-4">
 					<div class="profile-right profile__area-content">
-						<form action="/admin/changeInfo.php" method="POST" id="profile__container-info" class="profile__container-info">
+						<form action="/user/changeInfo" method="POST" id="profile__container-info" class="profile__container-info">
 							<div class="profile__container-info--header">
 								<h2 class="profile__title">
 									Information
@@ -111,12 +131,24 @@
 									</div>
 								</div>
 
+								<hr>
+
+								<div class="grid__row profile__main--item">
+									<div class="profile__main--container-title">
+										<label id="profile__main--title-pass" style="display: none" for="profile__main--info-password" class="profile__main--title">Confirm Password:</label>
+									</div>
+
+									<div class="profile__main--container-info">
+										<input id="profile__main--info-password" class="profile__change-input-change-info" type="password" name="password">
+									</div>
+
+								</div>
 
 								<div class="grid__row profile__main--item">
 									<div class="profile__main--container-title">
 									</div>
-									<button id="cancel-change-info" class="btn-cancel cancel-change-info">Cancel</button>
-									<input id="btn-submit-change-info" type="submit" class="btn-submit btn-submit-change-info" value="Change">
+									<a href="" id="cancel-change-info" class="btn-cancel cancel-change-info">Cancel</a>
+									<input name="btn-change-info" id="btn-submit-change-info" type="submit" class="btn-submit btn-submit-change-info" value="Change">
 								</div>
 
 							</div>
@@ -128,7 +160,7 @@
 							<h2 class="profile__title">
 								Change password:
 							</h2>
-							<form action="/admin/changePassword.php" method="POST" class="profile__form-change-pass">
+							<form action="/user/changePass" method="POST" class="profile__form-change-pass">
 								<!-- Current password -->
 								<div class="grid__row profile__change-pass--item">
 									<div class="profile__change-pass--container-title">
@@ -158,7 +190,7 @@
 									<div class="profile__change-pass--container-title">
 										
 									</div>
-									<input id="btn-submit-change-password" type="submit" class="btn-submit btn-submit-change-password" value="Change">
+									<input name="btn-change-pass" id="btn-submit-change-password" type="submit" class="btn-submit btn-submit-change-password" value="Change">
 								</div>
 								
 							</form>

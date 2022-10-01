@@ -59,7 +59,7 @@
 		<div id="room" class="favorite-rooms">
 			<div class="grid">
 				<div class="grid__row">
-					<div class="favorite-rooms__container">
+					<div id="favorite-rooms__container" class="favorite-rooms__container">
 						<h1 class="favorite-rooms__title">
 							Our Favorite Room
 						</h1>
