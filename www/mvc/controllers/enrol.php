@@ -189,17 +189,23 @@ class enrol extends controller{
                 if($result){
                     $textnotice = "Đăng kí thành công";
                     $checkregister = true;
+                    //GỌi view
+                    $view =self::view("simplelayout",[
+                        "page"=>"login",
+                        "notice" => $textnotice,
+                        "check" => $checkregister
+                    ]);
+                    exit;
                 } else{
                     $textnotice = "Đăng kí thất bại";
+                    //GỌi view
+                    $view =self::view("simplelayout",[
+                        "page"=>"register",
+                        "notice" => $textnotice,
+                        "check" => $checkregister
+                        ]);
+                    exit;
                 }
-                
-                //GỌi view
-                $view =self::view("simplelayout",[
-                    "page"=>"register",
-                    "notice" => $textnotice,
-                    "check" => $checkregister
-                ]);
-                exit;
             }
         }
 

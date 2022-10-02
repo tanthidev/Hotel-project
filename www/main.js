@@ -22,22 +22,27 @@ function topFunction() {
 }
 
 // Show menu when click button on mobile
-document.getElementById("header__btn-menu--mobile").onclick = function(){
-    if(document.getElementById("header").style.overflow==""){
-        document.getElementById("header").style.overflow = "visible";
-        
+if(document.getElementById("header__btn-menu--mobile")){
+    document.getElementById("header__btn-menu--mobile").onclick = function(){
+        if(document.getElementById("header").style.overflow==""){
+            document.getElementById("header").style.overflow = "visible";
+            
+        }
+        else if(document.getElementById("header").style.overflow=="hidden"){
+            document.getElementById("header").style.overflow = "visible";
+            
+        }
+        else{
+            document.getElementById("header").style.overflow = "hidden";
+        }
     }
-    else if(document.getElementById("header").style.overflow=="hidden"){
-        document.getElementById("header").style.overflow = "visible";
-        
-    }
-    else{
-        document.getElementById("header").style.overflow = "hidden";
-    }
+
 }
-document.getElementById("header__menu--list").onclick = function(){
-    if(document.getElementById("header").style.overflow = "visible"){
-        document.getElementById("header").style.overflow = "hidden";
+if(document.getElementById("header_user-name")){
+    document.getElementById("header_user-name").onclick = function(){
+        if(document.getElementById("header").style.overflow = "visible"){
+            document.getElementById("header").style.overflow = "hidden";
+        }
     }
 }
 
@@ -56,7 +61,6 @@ if(document.getElementById("header_user-name")){
             document.getElementById("user__opption").style.display="none";
         } 
     }
-
 }
 
 
@@ -137,6 +141,31 @@ function readMoreWelcomePage() {
 
 
 
+
+if(document.getElementById("container__dashBoard")){
+    let id = document.getElementById('admin-dashboard');
+    id.classList.add('category-current');
+}
+
+if(document.getElementById("container__bookingManager")){
+    let id = document.getElementById('admin-booking');
+    id.classList.add('category-current');
+}
+
+if(document.getElementById("container__userManager")){
+    let id = document.getElementById('admin-user');
+    id.classList.add('category-current');
+}
+
+if(document.getElementById("container__roomManager")){
+    let id = document.getElementById('admin-room');
+    id.classList.add('category-current');
+}
+
+if(document.getElementById("container__serviceManager")){
+    let id = document.getElementById('admin-service');
+    id.classList.add('category-current');
+}
 
 
 // Slide show

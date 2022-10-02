@@ -107,6 +107,14 @@ hr{
     padding: 0 15px;
 }
 
+.grid__column-5-1{
+    width: 20%;
+}
+
+.grid__column-5-4{
+    width: 80%;
+}
+
 .btn__booking-now{
     width: 150px;
     border: none;
@@ -179,7 +187,7 @@ hr{
 }
 
 a:hover{
-    text-align: none;
+    text-decoration: none;
     color: var(--white-color);
 }
 
@@ -1487,13 +1495,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     top: 0;
 }
 
-.page-booking__extra-service-name{
-    
-}
-
-.page-booking__extra-service-price{
-    
-}
 
 .page-booking--selection-footer{
     height: 100px;
@@ -1501,6 +1502,92 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     background-color: #FFF2DE;
 }
 
+
+/* CSS ADMIN PAGE */
+
+.admin__container-categories{
+    background-color: var(--main-color);
+    height: 100%;
+    padding: 50px 0;
+    position: fixed;
+}
+
+.admin__categoies--list{
+    list-style: none;
+    padding: 0;
+}
+
+.admin__categories--link{
+    color:var(--white-color);
+    font-size: 17px;
+    font-weight: 300;
+}
+
+.admin__categories--item:hover{
+    background-color: rgb(46, 55, 101);
+}
+
+.admin__categories--item{
+    position: relative;
+    text-decoration: none;
+    padding: 20px 0;
+    padding-left: 40px;
+}
+
+.admin__categories--item-icon{
+    font-size: 22px;
+}
+
+.admin__catogories--item-text{
+    margin-left: 15px;
+}
+
+.category-current{
+    z-index: 1;
+    color: var(--main-color);
+    background-color: var(--white-color);
+}
+
+.category-current:hover{
+    background-color: var(--white-color);
+    
+}
+
+.category-current::before{
+    position: absolute;
+    content: "";
+    top: -60px;
+    right: -10px;
+    height: 60px;
+    width: 50px;
+    border-bottom-right-radius: 80px;
+    box-shadow: 0 40px 0 0 var(--white);
+    transform: rotateZ(360deg);
+} 
+
+.category-current::after{
+    position: absolute;
+    content: "";
+    bottom: -60px;
+    right: -10px;
+    height: 60px;
+    width: 50px;
+    border-top-right-radius: 80px;
+    box-shadow: 0 -40px 0 0 var(--white);
+    transform: rotateZ(360deg);
+} 
+
+
+.admin__container-content{
+    position: absolute;
+    right: 0;
+}
+
+/* CSS USER MANAGER PAGE */
+.container__userManager{
+    height: 500px;
+    padding: 50px 30px;  
+}
 
 
 
@@ -2009,4 +2096,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         transform: translateX(0);
     }
 }
+
+
 
