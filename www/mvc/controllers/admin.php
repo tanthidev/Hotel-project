@@ -1,6 +1,13 @@
 <?php 
     class admin extends controller{
         
+        static function default(){
+            //GỌi view
+            $view =self::view("adminlayout",[
+                "page"=>"dashBoard"
+            ]);
+        }
+        
         static function dashBoard(){
             //GỌi view
             $view =self::view("adminlayout",[
@@ -17,9 +24,11 @@
         }
         
         static function userManager(){
+            $user = self::model("userModel");
             //GỌi view
             $view =self::view("adminlayout",[
-                "page"=>"userManager"
+                "page"=>"userManager",
+                "fullUser" => $user->getAllUser()
             ]);
         }
 

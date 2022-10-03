@@ -97,6 +97,16 @@ hr{
     padding: 0 15px; 
 }
 
+.grid__column-10-1{
+    width: 10%;
+    padding: 0 10px; 
+}
+
+.grid__column-10-2{
+    width: 20%;
+    padding: 0 10px; 
+}
+
 .grid__column-3--2{
     width: 66.6666%;
     padding: 0 20px;
@@ -685,7 +695,7 @@ input:-ms-input-placeholder { color: #999999; }
 
 .home__backgound{
     position: relative;
-    padding-top: 30%;
+    padding-top: 50%;
     background: url('/dataweb/img/backgroundHome.jpg') top center / cover no-repeat;
 }
 
@@ -1589,6 +1599,30 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 50px 30px;  
 }
 
+.userManager__table{
+    width: 100%;
+}
+
+.userManager_table-header-item{
+    font-size: 12px;
+    background-color:#ccc;
+    padding: 12px;
+    border-bottom: 1px solid #bbb;
+}
+.userManager_table-content{
+    font-size: 12px;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+}
+.userManager_table-row{
+    background-color:#F1F1F1;
+}
+
+.userManager_table-row:hover{
+    background-color: var(--main-color);
+    color: var(--white-color);
+    cursor: pointer;
+}
 
 
 /* REPONSIVE */

@@ -81,7 +81,7 @@
 											</a>
 										</li>
 										<li class="user__opption--item">
-											<a href="/user/logout" class="user__logout--link user__opption--item-link">
+											<a href="/enrol/logout" class="user__logout--link user__opption--item-link">
 												<i class="fa-solid fa-arrow-right-from-bracket"></i>
 												Đăng xuất
 											</a>
@@ -99,7 +99,7 @@
 								<div id="user__opption" class="user__opption">
 									<ul class="user__opption--list">
 										<li class="user__opption--item">
-											<a href="./User/UserInfo.php" class="user__manager--link user__opption--item-link">
+											<a href="./admin" class="user__manager--link user__opption--item-link">
 												<i class="fa-regular fa-user"></i>
 												Quản lý khách sạn
 											</a>
@@ -140,79 +140,6 @@
 	<div class="container-content">
 		<div class="home">
 			<div class="home__backgound">
-
-				<!-- <div class="header__user--container--register">
-					<div class="container-register">
-						<div id="wrap-register" class="wrap-register">
-							<div id="register-cancel" class="cancel-btn">
-								<i class="fa-solid fa-xmark"></i>
-							</div>
-			
-							<form action="./admin/Xulydangki.php" method="POST" class="register-form validate-form">
-								<span class="register-form-title">
-									Member Register
-								</span>
-								<div class="wrap-input validate-input">
-									<input class="register-form--input" type="text" name="fullName" placeholder="Full Name">
-									<span class="focus-input"></span>
-									<span class="symbol-input">
-										<i class="fa-solid fa-user"aria-hidden="true"></i>
-									</span>
-								</div>
-
-								<div class="wrap-input validate-input">
-									<input class="register-form--input" type="tel" name="tel" placeholder="Phone Number">
-									<span class="focus-input"></span>
-									<span class="symbol-input">
-										<i class="fa-sharp fa-solid fa-phone" aria-hidden="true"></i>
-									</span>
-								</div>
-
-								<div class="wrap-input validate-input">
-									<input class="register-form--input" type="email" name="email" placeholder="Email">
-									<span class="focus-input"></span>
-									<span class="symbol-input">
-										<i class="fa-solid fa-envelope" aria-hidden="true"></i>
-									</span>
-								</div>
-			
-								<div class="wrap-input validate-input">
-									<input class="register-form--input" type="password" name="pass" placeholder="Password">
-									<span class="focus-input"></span>
-									<span class="symbol-input">
-										<i class="fa fa-lock" aria-hidden="true"></i>
-									</span>
-								</div>
-
-								<div class="wrap-input validate-input">
-									<input class="register-form--input" type="password" name="repeat-pass" placeholder="Repeat Password">
-									<span class="focus-input"></span>
-									<span class="symbol-input">
-										<i class="fa-solid fa-repeat" aria-hidden="true"></i>
-									</span>
-								</div>
-								
-								<div class="container-register-form-btn">
-									<button class="register-form-btn">
-										Register
-									</button>
-								</div>
-			
-			
-								<div class="text-center register-form__login">
-									<a id="register-form__to-login--text" class="txt2 register-form__to-login--text" href="#">
-										
-											Do you already have an account? Log in
-										<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-									</a>
-								</div>
-							</form>
-						</div> 
-					</div>
-				</div> -->
-
-
-
 				
 
 

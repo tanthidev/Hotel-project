@@ -83,7 +83,7 @@
 												</a>
 											</li>
 											<li class="user__opption--item">
-												<a href="/user/logout" class="user__logout--link user__opption--item-link">
+												<a href="/enrol/logout" class="user__logout--link user__opption--item-link">
 													<i class="fa-solid fa-arrow-right-from-bracket"></i>
 													Đăng xuất
 												</a>
