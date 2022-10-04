@@ -8,6 +8,8 @@
     --main-color: #13172B;
     --main-color0-9:rgba(19, 23, 43,0.95);
     --orange-color: rgba(217,134,0);
+    --orange-color-dark: rgb(151, 93, 0);
+    --background-color: #F1F1F1;
 }
 
 *{
@@ -32,6 +34,7 @@ body{
     font-family: 'Qwitcher Grypen', cursive;
     font-family: 'Nunito', sans-serif;
     height: fit-content;
+    background-color: var(--background-color);
 }
 
 .grid{
@@ -200,6 +203,47 @@ a:hover{
     text-decoration: none;
     color: var(--white-color);
 }
+
+/* Controller PAGE */
+
+.container-pagination{
+    width: calc(100% - 60px);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    margin: 20px 0;
+}
+
+.btn__controller-page{
+    background-color: var(--white-color);
+    padding: 8px;
+    margin: 0 2px;
+    width: 40px;
+    border-radius: 4px;
+    color: var(--main-color);
+    font-size: 13px;
+}
+
+.btn__controller-page:hover{
+    cursor: pointer;
+    background-color: #e6e6e6;
+    color: var(--main-color);
+}
+
+.btn-page-active{
+    background-color: var(--main-color);
+    color: var(--white-color);
+}
+
+.btn-page-active:hover{
+    background-color: rgb(16, 24, 74);
+    color: var(--white-color);
+    
+}
+
+
 
 /* Header CSS */
 .header{
@@ -1555,11 +1599,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .category-current{
     z-index: 1;
     color: var(--main-color);
-    background-color: var(--white-color);
+    background-color: var(--background-color);
 }
 
 .category-current:hover{
-    background-color: var(--white-color);
+    background-color: var(--background-color);
     
 }
 
@@ -1571,7 +1615,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     height: 60px;
     width: 50px;
     border-bottom-right-radius: 80px;
-    box-shadow: 0 40px 0 0 var(--white);
+    box-shadow: 0 40px 0 0 var(--background-color);
     transform: rotateZ(360deg);
 } 
 
@@ -1583,7 +1627,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     height: 60px;
     width: 50px;
     border-top-right-radius: 80px;
-    box-shadow: 0 -40px 0 0 var(--white);
+    box-shadow: 0 -40px 0 0 var(--background-color);
     transform: rotateZ(360deg);
 } 
 
@@ -1595,7 +1639,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 /* CSS USER MANAGER PAGE */
 .container__userManager{
-    height: 500px;
+    height: 600px;
     padding: 50px 30px;  
 }
 
@@ -1607,15 +1651,33 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 12px;
     background-color:#ccc;
     padding: 12px;
-    border-bottom: 1px solid #bbb;
+    
 }
 .userManager_table-content{
-    font-size: 12px;
-    padding: 15px;
-    border-bottom: 1px solid #ccc;
+    font-size: 13px;
+    padding: 14px;
 }
+.userManager_table-content--action{
+    display: flex;
+}
+.userManager_table-content--change,
+.userManager_table-content--detele{
+    display: inline-block;
+    font-size: 15px;
+}
+
+.userManager_table-content--detele{
+    margin-left: 10px;
+}
+
+.userManager_table-content--change:hover,
+.userManager_table-content--detele:hover{
+    color: var(--orange-color);
+}
+
 .userManager_table-row{
     background-color:#F1F1F1;
+    border-bottom: 1px solid #bbb;
 }
 
 .userManager_table-row:hover{
@@ -1623,6 +1685,47 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     color: var(--white-color);
     cursor: pointer;
 }
+
+/* ROOM MANAGER CSS */
+.container__roomManager{
+    position: relative;
+    height: 100%;
+}
+.container__add-room{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 30px 50px;
+}
+
+.add-room__btn{
+    display: flex;
+    height: fit-content;
+    width: fit-content;
+    padding: 10px;
+    border: none;
+    align-items: center;
+    background-color: var(--orange-color);
+    color: var(--white-color);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-room__btn:hover{
+    transform: scale(1.05);
+}
+
+
+.add-room__btn--icon{
+    font-size: 25px;
+    margin: 0 5px;
+}
+
+.container__form-add-room{
+    width: 100%;
+    height: 100px;
+}
+
 
 
 /* REPONSIVE */

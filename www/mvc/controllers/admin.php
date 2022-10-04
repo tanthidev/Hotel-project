@@ -24,11 +24,30 @@
         }
         
         static function userManager(){
+            //Users per page
+            $userPerPage=10;
+
+            //Get page from url
+            if(isset($_GET['page'])){
+                $currentPage=$_GET['page'];
+            }
+            else {
+                $currentPage=1;
+            }
+            //Gọi Model User
             $user = self::model("userModel");
+            $totalUser = count(json_decode($user->getAllUser()));
+            $totalPage = ceil($totalUser/$userPerPage);
+
+            $from = ($currentPage-1) * $userPerPage;
+
+
+            
             //GỌi view
             $view =self::view("adminlayout",[
                 "page"=>"userManager",
-                "fullUser" => $user->getAllUser()
+                "users" => $user->getLimUser($from, $userPerPage),
+                "totalPage"=> $totalPage,
             ]);
         }
 

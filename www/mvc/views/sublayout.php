@@ -68,7 +68,7 @@
 								// echo($row -> fullName);
 								if($row -> roles ==1){
 									echo '<div class="header__user-opption">
-									<p id="header_user-name" class="header_user-name">Welcome, '.$row->fullName.'</p>
+									<p id="header_user-name" class="header_user-name">Welcome, '.$row->fullName.'<i class="fa-solid fa-caret-down"></i></p>
 									<div id="user__opption" class="user__opption">
 										<ul class="user__opption--list">
 											<li class="user__opption--item">
@@ -102,7 +102,7 @@
 									<div id="user__opption" class="user__opption">
 										<ul class="user__opption--list">
 											<li class="user__opption--item">
-												<a href="./User/UserInfo.php" class="user__manager--link user__opption--item-link">
+												<a href="./admin" class="user__manager--link user__opption--item-link">
 													<i class="fa-regular fa-user"></i>
 													Quản lý khách sạn
 												</a>

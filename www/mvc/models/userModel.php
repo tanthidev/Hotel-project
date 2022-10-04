@@ -27,6 +27,18 @@
             return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
         }
 
+        // GET LIMIT USERS
+
+        public function getLimUser($from, $amount){
+            $qr = "SELECT userID, fullName, phoneNumber, email, country, gender, passPort from User limit $from, $amount";
+            $rows = mysqli_query($this ->conn, $qr);
+            $array = array();
+            while($row = mysqli_fetch_assoc($rows)){
+                $array[] = $row;
+            }
+            return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+        }
+
         //Get UserID 
         public function getID($phoneNumber){
             $qr = "SELECT userID from User where phoneNumber=$phoneNumber";
