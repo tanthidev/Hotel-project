@@ -189,7 +189,7 @@
                     }
                 }
 
-                header("Local: /admin/roomManager");
+                header("Location: /admin/roomManager");
 
             }
 

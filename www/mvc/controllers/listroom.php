@@ -7,7 +7,8 @@
             //GỌi view
             $view =self::view("sublayout",[
                 "page"=>"listroom",
-                "user"=> $user -> getUser()
+                "user"=> $user -> getUser(),
+                "rooms" => $room -> getListRoom()
 
             ]);
         }

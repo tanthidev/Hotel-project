@@ -906,7 +906,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .favorite-rooms__slide{
     margin-top: 10px;;
-
 }
 .favorite-rooms__slide--container-img{
     position: relative;
@@ -1255,7 +1254,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 /* CSS LIST ROOM */
 
 .list-room__container-img{
-    background: url("https://besthqwallpapers.com/Uploads/6-11-2017/27286/thumb2-interior-of-hotel-room-modern-design-brown-tone-hotel-room-room-for-three.jpg") top center / cover no-repeat;
+    
     padding-top: 55%;
     border-radius: 5px;
 }

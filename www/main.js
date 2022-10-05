@@ -1,5 +1,5 @@
 
-$(document).ready(function(){
+
 //CROLL TO TOP
 // Get the button:
 let mybutton = document.getElementById("btn-to-top");
@@ -199,10 +199,21 @@ if(document.getElementById("favorite-rooms__container")){
         }
         function plusSlides(n) {
             showSlides(slideIndex += n);
-            }
+            
+        }
+
+        const next = document.getElementById('next');
+        const prev = document.getElementById('prev');
+        next.addEventListener('click', (event) => {
+            plusSlides(1);
+        });
+        prev.addEventListener('click', (event) => {
+            plusSlides(-1);
+        });
     }
 
 }
+
 
 
     $("#roomNumber").keyup(function(){
@@ -216,7 +227,7 @@ if(document.getElementById("favorite-rooms__container")){
             });
         }
     });
-});
+
 
 
 

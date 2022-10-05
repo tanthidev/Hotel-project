@@ -1,21 +1,34 @@
+<?php 
+    
+    $nameAvatar = json_decode($data['avatarRoom']) -> localAvatar;
+    $localImage = 'src="/mvc/data/images/' .  $nameAvatar . '"';
+    $imageRoom = json_decode($data['imageRoom']) ;
+    $countImageRoom = count( $imageRoom);
+    // print_r($imageRoom [1]-> localImage);
+?>
 <div class="grid container-page-booking">
                 <div class="grid__row page-booking__main">
                     <!--  -->
-                    <div id="favorite-rooms__slide" class="grid__column-10-6 slideshow-container  page-booking__main--slide-img">
-                            <div class="favorite-rooms__slide fade page-booking__main--slide--item">
-                                <img src="/dataweb/img/room/A0101.jpg" style="width:100%">
+                    <div id="favorite-rooms__container" class="grid__column-10-6 slideshow-container page-booking__main--slide-img">
+                            <div class="favorite-rooms__slide page-booking__main--slide--item">
+                                <img <?php echo $localImage; ?> style="width:100%">
                             </div>
 
-                            <div class="favorite-rooms__slide fade page-booking__main--slide--item">
-                                <img src="/dataweb/img/room/A0102.jpg" style="width:100%">
-                            </div>
+                            <?php 
+                                for($index=0;$index<$countImageRoom;$index++){
+                                    $localImage = 'src="/mvc/data/images/' .  $imageRoom[$index]-> localImage. '"';
+                                    echo '
+                                    <div class="favorite-rooms__slide  page-booking__main--slide--item">
+                                        <img '.$localImage.' style="width:100%">
+                                    </div>
+                                ';
+                                }
+                                
+                            ?>
 
-                            <div class="favorite-rooms__slide fade page-booking__main--slide--item">
-                                <img src="/dataweb/img/room/A0103.jpg" style="width:100%">
-                            </div>
 
-                            <a class="prev prev--page-booking" onclick="plusSlides(-1)">❮</a>
-                            <a class="next next--page-booking" onclick="plusSlides(1)">❯</a>
+                            <a id="prev" class="prev prev--page-booking">❮</a>
+                            <a id="next" class="next next--page-booking">❯</a>
                     </div>
                     <!--  -->
                     <div class="grid__column-10-4 page-booking__main--selection">

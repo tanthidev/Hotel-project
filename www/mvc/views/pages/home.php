@@ -44,7 +44,7 @@
 							Our Favorite Room
 						</h1>
 	
-						<div id="favorite-rooms__slide" class="favorite-rooms__slide transfer-slide">
+						<div class="favorite-rooms__slide transfer-slide">
 							<div class="favorite-rooms__slide--container-img">
 								<img src="./dataweb/img/room/A0101.jpg" alt="" class="favorite-rooms__slide--img">
 								<a href="" class="btn__booking-now favorite-rooms_slide--booking">Đặt phòng</a>
@@ -131,8 +131,8 @@
 							</div>
 						</div>
 						
-						<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  						<a class="next" onclick="plusSlides(1)">&#10095;</a>
+						<a id="prev" class="prev">&#10094;</a>
+  						<a id="next" class="next">&#10095;</a>
 						<div class="all-rooms">
 							<a href="/listroom" class="all-rooms--link">
 								View all our rooms
