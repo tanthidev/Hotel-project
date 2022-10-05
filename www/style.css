@@ -1724,7 +1724,80 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .container__form-add-room{
     width: 100%;
     height: 100px;
+    padding: 0 30px;
 }
+
+.form__add-room--title{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.form-add-room{
+    background-color: var(--white-color);
+    padding: 10px 30px;
+}
+
+.form-add-room--label{
+    font-size: 20px;
+    margin: 0;
+}
+
+.form-add-room--input{
+    width: 100%;
+    margin-bottom: 15px;
+    height: 35px;
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.form-add-room--input-describe{
+    height: auto;
+}
+
+.form-add-room--input-img{
+    width: fit-content;
+}
+
+.form-add-room--input-img:hover{
+    cursor: pointer;
+}
+
+.form-add-room__container-btn{
+    text-align: right;
+    padding-right: 30px;
+}
+
+.form-add-room-btn{
+    width: 70px;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 0 7px;
+    font-size: 13px;
+}
+
+.form-add-room-reset{
+    background-color: #999999;
+    color: var(--white-color);
+}
+.form-add-room-submit{
+    background-color: var(--orange-color);
+    color: var(--white-color);
+}
+
+.form-add-room-btn:hover{
+    transform: scale(1.04);
+}
+
+#roomNumber{
+    margin-bottom: 0;
+}
+#messageRoomNumber{
+    color: red;
+    font-size: 15px;
+}
+
 
 
 

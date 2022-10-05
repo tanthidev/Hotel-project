@@ -1,5 +1,5 @@
 
-
+$(document).ready(function(){
 //CROLL TO TOP
 // Get the button:
 let mybutton = document.getElementById("btn-to-top");
@@ -203,6 +203,20 @@ if(document.getElementById("favorite-rooms__container")){
     }
 
 }
+
+
+    $("#roomNumber").keyup(function(){
+        var num = $(this).val();
+        if(num==""){
+            $("#messageRoomNumber").html("");
+        }
+        else{
+            $.post("/ajax/checkRoomNumber", {roomNumber: num}, function(data){
+                    $("#messageRoomNumber").html(data);
+            });
+        }
+    });
+});
 
 
 

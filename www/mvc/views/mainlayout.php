@@ -7,6 +7,26 @@
     } 
 	
 ?>
+<?php 
+    if(isset($data['notice'])){
+        if($data['check']){
+            $text= "notice-text--success";
+            $task= "notice-task--success";
+        }
+        else{
+            $text= "notice-text";
+            $task= "notice-task";
+        }
+
+        echo '
+        <div class="'.$task.' notice-task">
+            <span class="'.$text.' notice-text">
+            '.$data['notice'].'
+            </span>
+        </div>
+        ';      
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -245,7 +265,7 @@
 
 
 
-
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>						
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

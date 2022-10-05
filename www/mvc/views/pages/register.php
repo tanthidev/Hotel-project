@@ -1,23 +1,4 @@
-<?php 
-    if(isset($data['notice'])){
-        if($data['check']){
-            $text= "notice-text--success";
-            $task= "notice-task--success";
-        }
-        else{
-            $text= "notice-text";
-            $task= "notice-task";
-        }
 
-        echo '
-        <div class="'.$task.' notice-task">
-            <span class="'.$text.' notice-text">
-            '.$data['notice'].'
-            </span>
-        </div>
-        ';      
-    }
-?>
 
 
 

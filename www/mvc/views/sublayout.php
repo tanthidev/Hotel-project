@@ -8,6 +8,27 @@
 
 ?>
 
+<?php 
+    if(isset($data['notice'])){
+        if($data['check']){
+            $text= "notice-text--success";
+            $task= "notice-task--success";
+        }
+        else{
+            $text= "notice-text";
+            $task= "notice-task";
+        }
+
+        echo '
+        <div class="'.$task.' notice-task">
+            <span class="'.$text.' notice-text">
+            '.$data['notice'].'
+            </span>
+        </div>
+        ';      
+    }
+?>
+
 
 
 <!DOCTYPE html>
@@ -68,7 +89,7 @@
 								// echo($row -> fullName);
 								if($row -> roles ==1){
 									echo '<div class="header__user-opption">
-									<p id="header_user-name" class="header_user-name">Welcome, '.$row->fullName.'<i class="fa-solid fa-caret-down"></i></p>
+									<p id="header_user-name" class="header_user-name">Welcome, '.$row->fullName.'</p>
 									<div id="user__opption" class="user__opption">
 										<ul class="user__opption--list">
 											<li class="user__opption--item">
@@ -278,10 +299,11 @@
 
 
 
-
+							
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>	
 	<script src="main.js"></script>
 		
 	</body>
