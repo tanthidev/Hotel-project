@@ -606,10 +606,11 @@ input:-ms-input-placeholder { color: #999999; }
 
 /*---------------------------------------------*/
 .wrap-input {
-  position: relative;
-  width: 100%;
-  z-index: 1;
-  margin-bottom: 10px;
+
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    margin-top: 10px;
 }
 
 
@@ -648,11 +649,22 @@ input:-ms-input-placeholder { color: #999999; }
   animation: anim-shadow 0.5s ease-in-out forwards;
 }
 
+#notice__exist-phone-number,
+#notice__exist-email{
+    color: red;
+    font-size: 13px;
+}
 
+#icon-check-pass{
+    font-size: 17px;
+    margin-right: 20%;
+    display: none;
+}
 
 .symbol-input {
     font-size: 15px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     position: absolute;
     border-radius: 25px;
@@ -1694,14 +1706,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     display: flex;
     justify-content: flex-end;
     width: 100%;
-    padding: 30px 50px;
+    padding: 20px 50px;
 }
 
 .add-room__btn{
     display: flex;
     height: fit-content;
     width: fit-content;
-    padding: 10px;
+    padding: 7px 9px;
     border: none;
     align-items: center;
     background-color: var(--orange-color);
@@ -1790,12 +1802,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     transform: scale(1.04);
 }
 
+#notice--empty{
+    display: inline-block;
+    font-size: 17px;
+    color: red;
+    animation: 1s shake infinite;
+}
+
 #roomNumber{
     margin-bottom: 0;
 }
 #messageRoomNumber{
     color: red;
     font-size: 15px;
+    animation: 1s shake infinite;
 }
 
 
@@ -2244,6 +2264,25 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 
 /* Animation */  
+
+@keyframes shake{
+    10%, 90% {
+        transform: translate3d(0px, 0, 0);
+      }
+      
+      20%, 80% {
+        transform: translate3d(1px, 0, 0);
+      }
+    
+      30%, 50%, 70% {
+        transform: translate3d(-3px, 0, 0);
+      }
+    
+      40%, 60% {
+        transform: translate3d(3px, 0, 0);
+      }
+    }
+
 @keyframes fade {
     from {
         opacity: 0.4

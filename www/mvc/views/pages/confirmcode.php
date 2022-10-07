@@ -45,10 +45,11 @@
                         }
                     }
                      else {?>
-                        <form action="/enrol/confirmcodeprocessing" method="POST" class="form-confirm">
+                        <form id="form-confirm" action="/enrol/confirmcodeprocessing" method="POST" class="form-confirm">
                             <h1 class="form-confirm--title">Enter code</h1>
-                            <input name="code" type="text" class="confirm-input-code" placeholder="Code">
-                            <button class="btn-submit confirm__btn-confirm">Confirm</button>
+                            <input id="confirm-input-code" name="code" type="text" class="confirm-input-code" placeholder="Code">
+                            <span id="notice--empty"></span>
+                            <button type="submit" class="btn-submit confirm__btn-confirm">Confirm</button>
                         </form>
                     <?php } ?>
             </div>

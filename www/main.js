@@ -64,11 +64,6 @@ if(document.getElementById("header_user-name")){
 }
 
 
-document.onclick = function(event){
-    if(event.target.id != "header_user-name"){
-        document.getElementById("user__opption").style.display="none";
-    }
-}
 
 function readMoreWelcomePage() {
     var dots = document.getElementById("welcome-page__text--dots");
@@ -222,22 +217,184 @@ if(document.getElementById("add-room__btn")){
     };
 }
 
-//Check form
+//Check form add Room
+if(document.getElementById("container__form-add-room")){
+    function logSubmit(event) {
+        const roomNumber = document.getElementById("roomNumber").value;   
+        const roomType = document.getElementById("roomType").value;
+        const roomAvatar = document.getElementById("roomAvatar").value;
+        const roomImages = document.getElementById("roomImages").value;
+        if(roomNumber==""){
+            notice.textContent = `Please enter room number!`;
+            event.preventDefault();
+        } else 
+            if(roomType==""){
+                notice.textContent = `Please choose room type!`;
+                event.preventDefault();
+            }else 
+                if(roomAvatar==""){
+                    notice.textContent = `Please choose room avatar!`;
+                    event.preventDefault();
+                }else 
+                    if(roomImages==""){
+                        notice.textContent = `Please choose room image!`;
+                        event.preventDefault();
+                    }
+    }
+    
+    const form = document.getElementById('form-add-room');
+    const notice = document.getElementById('notice--empty');
+    form.addEventListener('submit', logSubmit);
+}
 
+//Check form register
+if(document.getElementById("register-form")){
+    function logSubmit(event) {
+        const fullName = document.getElementById("register-form--input-fullName").value;   
+        const tel = document.getElementById("register-form--input-tel").value;
+        const email = document.getElementById("register-form--input-email").value;
+        const password = document.getElementById("register-form--input-password").value;
+        const prepassword = document.getElementById("register-form--input-prepass").value;
+        
+        if(fullName==""){
+            notice.textContent = `Please enter your full name!`;
+            event.preventDefault();
+        } else 
+            if(tel==""){
+                notice.textContent = `Please choose your phone number!`;
+                event.preventDefault();
+            }else 
+                if(email==""){
+                    notice.textContent = `Please enter your email!`;
+                    event.preventDefault();
+                }else 
+                    if(password==""){
+                        notice.textContent = `Please your password!`;
+                        event.preventDefault();
+                    }else 
+                        if(prepassword==""){
+                            notice.textContent = `Please enter pre-password!`;
+                            event.preventDefault();
+                        }
+
+    }
+    
+    const form = document.getElementById('register-form');
+    const notice = document.getElementById('notice--empty');
+    form.addEventListener('submit', logSubmit);
+}
+
+//Check form login
+if(document.getElementById("login-form")){
+    function logSubmit(event) {
+        const tel = document.getElementById("login-form--input-tel").value;   
+        const pass = document.getElementById("login-form--input-pass").value;
+        
+        if(tel==""){
+            notice.textContent = `Please enter your phone number!`;
+            event.preventDefault();
+        } else 
+            if(pass==""){
+                notice.textContent = `Please enter password!`;
+                event.preventDefault();
+            }
+    }
+    
+    const form = document.getElementById('login-form');
+    const notice = document.getElementById('notice--empty');
+    form.addEventListener('submit', logSubmit);
+}
+
+//Check form login
+if(document.getElementById("form-confirm")){
+    function logSubmit(event) {
+        const code = document.getElementById("confirm-input-code").value;   
+        
+        if(code==""){
+            notice.textContent = `Please enter code!`;
+            event.preventDefault();
+        }
+    }
+    const form = document.getElementById('form-confirm');
+    const notice = document.getElementById('notice--empty');
+    form.addEventListener('submit', logSubmit);
+}
 
 
 //AJAX
-$("#roomNumber").keyup(function(){
-    var num = $(this).val();
-    if(num==""){
-        $("#messageRoomNumber").html("");
-    }
-    else{
-        $.post("/ajax/checkRoomNumber", {roomNumber: num}, function(data){
-                $("#messageRoomNumber").html(data);
-        });
-    }
-});
+//check exist room number
+if(document.getElementById("roomNumber")){
+    $("#roomNumber").keyup(function(){
+        const notice = document.getElementById('notice--empty');
+        notice.textContent = ``;
+        var num = $(this).val();
+        if(num==""){
+            $("#messageRoomNumber").html("");
+        }
+        else{
+            $.post("/ajax/checkRoomNumber", {roomNumber: num}, function(data){
+                    $("#messageRoomNumber").html(data);
+            });
+        }
+    });
+}
+
+//Check exist input
+if(document.getElementById("register-form")){
+    $("#register-form--input-fullName").keyup(function(){
+        const notice = document.getElementById('notice--empty');
+        notice.textContent = ``;
+    });
+
+    //Phone number
+    $("#register-form--input-tel").keyup(function(){
+        const notice = document.getElementById('notice--empty');
+        notice.textContent = ``;
+        var phone = $(this).val();
+        if(phone==""){
+            $("#notice__exist-phone-number").html("");
+        }
+        else{
+            $.post("/ajax/checkphoneNumber", {phoneNumber: phone}, function(data){
+                $("#notice__exist-phone-number").html(data);
+            });
+        }
+    });
+
+    //Email
+    $("#register-form--input-email").keyup(function(){
+        const notice = document.getElementById('notice--empty');
+        notice.textContent = ``;
+        var mail = $(this).val();
+        if(mail==""){
+            $("#notice__exist-email").html("");
+        }
+        else{
+            $.post("/ajax/checkEmail", {email: mail}, function(data){
+                $("#notice__exist-email").html(data);
+            });
+        }
+    });
+
+    //Check correct repeat pass
+    $("#register-form--input-prepass").keyup(function(){
+        var pass= $("#register-form--input-password").val();
+        var prepass = $(this).val();
+        icon = document.getElementById("icon-check-pass");
+        if(prepass==""){
+            icon.style.display="none";
+        } else
+            if(prepass===pass){
+                icon.style.display="block";
+                icon.style.color="green";
+            } else{
+                if(prepass!==pass){
+                    icon.style.display="block";
+                    icon.style.color="red";
+                }
+            }
+    });
+}
 
 
 

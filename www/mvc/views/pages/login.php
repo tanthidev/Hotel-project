@@ -23,13 +23,13 @@
 <div class="container-login">
     <div id="wrap-login" class="wrap-login">
 
-        <form action="/enrol/loginprocessing" method="POST" class="login-form validate-form">
+        <form id="login-form" action="/enrol/loginprocessing" method="POST" class="login-form validate-form">
             <span class="login-form-title">
                 Member Login
             </span>
 
             <div class="wrap-input validate-input">
-                <input class="login-form--input" type="tel" name="tel" placeholder="Phone Number">
+                <input id="login-form--input-tel" class="login-form--input" type="tel" name="tel" placeholder="Phone Number">
                 <span class="focus-input"></span>
                 <span class="symbol-input">
                     <i class="fa-sharp fa-solid fa-phone" aria-hidden="true"></i>
@@ -37,15 +37,17 @@
             </div>
 
             <div class="wrap-input validate-input">
-                <input class="login-form--input" type="password" name="pass" placeholder="Password">
+                <input id="login-form--input-pass" class="login-form--input" type="password" name="pass" placeholder="Password">
                 <span class="focus-input"></span>
                 <span class="symbol-input">
                     <i class="fa fa-lock" aria-hidden="true"></i>
                 </span>
             </div>
-            
+            <!-- Notice -->
+            <h4 id="notice--empty"></h4>
+            <!-- Button submit -->
             <div class="container-login-form-btn">
-                <input type="submit" name="btnLogin" class="login-form-btn" value="LOG IN">
+                <button type="submit" name="btnLogin" class="login-form-btn" value="LOG IN">LOG IN</button>
             </div>
 
             <div class="text-center login-form__forgot">

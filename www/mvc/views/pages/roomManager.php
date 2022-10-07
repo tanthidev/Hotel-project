@@ -10,13 +10,13 @@
         <h3 class="form__add-room--title">
             ADD ROOM
         </h3>
-        <form method="POST" action="/admin/addRoom" class="form-add-room" enctype="multipart/form-data">
+        <form id="form-add-room" method="POST" action="/admin/addRoom" class="form-add-room" enctype="multipart/form-data">
                 <!-- Room number -->
                     <label class="form-add-room--label" for="roomNumber">Room number *</label>
                     <br>
                     <input class="form-add-room--input" id="roomNumber" name="roomNumber" type="text">
                     <br>
-                    <span id="messageRoomNumber"></span>
+                    <h4 id="messageRoomNumber"></h4>
                     <br>
                     <!-- Price -->
                     <label class="form-add-room--label" for="priceRoom">Price ($) *</label>
@@ -53,9 +53,14 @@
                     <br>                   
                     <textarea class="form-add-room--input form-add-room--input-describe" id="roomDescribe" name="roomDescribe" rows="3" cols="auto"></textarea>
                     <br>
+                    <!-- Text notice -->
+                    
                     <div class="form-add-room__container-btn">
+                        <span>
+                            <h4 id="notice--empty"></h4>
+                        </span>
                         <input type="reset" class="form-add-room-reset form-add-room-btn" value="RESET">
-                        <input type="submit" class="form-add-room-submit form-add-room-btn" value="ADD" name="btn-add">
+                        <button type="submit" class="form-add-room-submit form-add-room-btn" value="ADD" name="btn-add">ADD</button>
                     </div>
         </form>
     </div>

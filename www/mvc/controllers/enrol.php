@@ -31,21 +31,6 @@ class enrol extends controller{
                 $checkLogin=false;
     
                 //Check login 
-                //Kiểm tra đã nhập đủ tên đăng nhập với mật khẩu chưa
-                if (!$phoneNumber || !$pass) {
-                    //Kiểm tra ng;ười dùng đã nhập liệu đầy đủ chưa
-                    if ($phoneNumber || !$pass){
-                        $textnotice="Vui lòng nhập đầy đủ thông tin.";
-                        //GỌi view
-                        $view =self::view("simplelayout",[
-                            "page"=>"login",
-                            "notice" => $textnotice,
-                            "check" => $checkLogin
-                        ]);
-                        exit;
-                    }
-                }
-    
          
                 //Kiểm tra tên đăng nhập có tồn tại không
                 if (!($user -> checkExistphoneNumber($phoneNumber))) {
@@ -112,30 +97,6 @@ class enrol extends controller{
                 $textnotice="";
                 $checkregister=false;
                 
-                //Kiểm tra ng;ười dùng đã nhập liệu đầy đủ chưa
-                if (!$fullName || !$phoneNumber || !$email || !$pass || !$re_pass){
-                    $textnotice="Vui lòng nhập đầy đủ thông tin.";
-                    //GỌi view
-                    $view =self::view("simplelayout",[
-                        "page"=>"register",
-                        "notice" => $textnotice,
-                        "check" => $checkregister
-                    ]);
-                    exit;
-                }
-
-                //Kiểm tra tên đăng nhập này đã có người dùng chưa
-                if ($user -> checkExistphoneNumber($phoneNumber)){
-                    //Nếu trả về true => đã tồn tại 
-                    $textnotice="Số điện thoại đã được sử dụng!";
-                    //GỌi view
-                    $view =self::view("simplelayout",[
-                        "page"=>"register",
-                        "notice" => $textnotice,
-                        "check" => $checkregister
-                    ]);
-                    exit;
-                }
                 
 
                 // Mã khóa mật khẩu bằng BCrypt
@@ -167,19 +128,6 @@ class enrol extends controller{
                     exit;
                 }
                       
-                //Kiểm tra email đã có người dùng chưa
-                if ($user -> checkExistEmail($email)){              
-                    $textnotice="Email đã được dụng!";
-                    //GỌi view
-                    $view =self::view("simplelayout",[
-                        "page"=>"register",
-                        "notice" => $textnotice,
-                        "check" => $checkregister
-                    ]);
-                    exit;
-                }
-            
-
 
                 //Lưu thông tin thành viên vào bảng
                 $result = $user -> insertUser($fullName,$phoneNumber,$email,$pass);

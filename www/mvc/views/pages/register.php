@@ -5,12 +5,12 @@
 <div class="container-register">
     <div id="wrap-register" class="wrap-register">
 
-        <form action="/enrol/registerprocessing" method="POST" class="register-form validate-form">
+        <form id="register-form" action="/enrol/registerprocessing" method="POST" class="register-form validate-form">
             <span class="register-form-title">
                 Member Register
             </span>
             <div class="wrap-input validate-input">
-                <input class="register-form--input" type="text" name="fullName" placeholder="Full Name">
+                <input id="register-form--input-fullName" class="register-form--input" type="text" name="fullName" placeholder="Full Name">
                 <span class="focus-input"></span>
                 <span class="symbol-input">
                     <i class="fa-solid fa-user"aria-hidden="true"></i>
@@ -18,23 +18,27 @@
             </div>
 
             <div class="wrap-input validate-input">
-                <input class="register-form--input" type="tel" name="tel" placeholder="Phone Number">
+                <input id="register-form--input-tel" class="register-form--input" type="tel" name="tel" placeholder="Phone Number">
                 <span class="focus-input"></span>
                 <span class="symbol-input">
                     <i class="fa-sharp fa-solid fa-phone" aria-hidden="true"></i>
                 </span>
             </div>
+            <!-- Notice exist -->
+            <span id="notice__exist-phone-number"></span>
 
             <div class="wrap-input validate-input">
-                <input class="register-form--input" type="email" name="email" placeholder="Email">
+                <input id="register-form--input-email" class="register-form--input" type="email" name="email" placeholder="Email">
                 <span class="focus-input"></span>
                 <span class="symbol-input">
                     <i class="fa-solid fa-envelope" aria-hidden="true"></i>
                 </span>
             </div>
+            <!-- Notice exist -->
+            <span id="notice__exist-email"></span>
 
             <div class="wrap-input validate-input">
-                <input class="register-form--input" type="password" name="pass" placeholder="Password">
+                <input id="register-form--input-password" class="register-form--input" type="password" name="pass" placeholder="Password">
                 <span class="focus-input"></span>
                 <span class="symbol-input">
                     <i class="fa fa-lock" aria-hidden="true"></i>
@@ -42,15 +46,17 @@
             </div>
 
             <div class="wrap-input validate-input">
-                <input class="register-form--input" type="password" name="repeat-pass" placeholder="Repeat Password">
+                <input id="register-form--input-prepass" class="register-form--input" type="password" name="repeat-pass" placeholder="Repeat Password">
                 <span class="focus-input"></span>
                 <span class="symbol-input">
                     <i class="fa-solid fa-repeat" aria-hidden="true"></i>
+                    <i id="icon-check-pass" class="fa-sharp fa-solid fa-circle-check"></i>
                 </span>
+                
             </div>
-            
+            <h4 id="notice--empty"></h4>
             <div class="container-register-form-btn">
-                <input name="btnRegister" type="submit" class="register-form-btn" value="Register">
+                <button name="btnRegister" type="submit" class="register-form-btn" value="Register">Register</button>
             </div>
 
 
