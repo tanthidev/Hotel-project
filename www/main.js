@@ -214,20 +214,30 @@ if(document.getElementById("favorite-rooms__container")){
 
 }
 
-
-
-    $("#roomNumber").keyup(function(){
-        var num = $(this).val();
-        if(num==""){
-            $("#messageRoomNumber").html("");
+if(document.getElementById("add-room__btn")){
+    document.getElementById("add-room__btn").onclick = function(){
+        if(document.getElementById("container__form-add-room").style.display="none"){
+            document.getElementById("container__form-add-room").style.display="block";
         }
-        else{
-            $.post("/ajax/checkRoomNumber", {roomNumber: num}, function(data){
-                    $("#messageRoomNumber").html(data);
-            });
-        }
-    });
+    };
+}
 
+//Check form
+
+
+
+//AJAX
+$("#roomNumber").keyup(function(){
+    var num = $(this).val();
+    if(num==""){
+        $("#messageRoomNumber").html("");
+    }
+    else{
+        $.post("/ajax/checkRoomNumber", {roomNumber: num}, function(data){
+                $("#messageRoomNumber").html(data);
+        });
+    }
+});
 
 
 

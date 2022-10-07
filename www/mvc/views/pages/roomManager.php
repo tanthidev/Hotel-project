@@ -6,7 +6,7 @@
             </div>
         </div>
     </div>
-    <div class="container__form-add-room">
+    <div id="container__form-add-room" class="container__form-add-room">
         <h3 class="form__add-room--title">
             ADD ROOM
         </h3>

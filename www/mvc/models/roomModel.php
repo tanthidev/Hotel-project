@@ -1,5 +1,16 @@
 <?php 
     class roomModel extends db{
+
+        public function getAllRoom(){
+            $qr = "SELECT roomNumber from Rooms";
+            $rows = mysqli_query($this ->conn, $qr);
+            $array = array();
+            while($row = mysqli_fetch_assoc($rows)){
+                $array[] = $row;
+            }
+            return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+        }
+
         public function getRoomType(){
             $qr = "SELECT roomType from RoomType";
             $rows = mysqli_query($this ->conn, $qr);
@@ -50,10 +61,11 @@
             return $result;
         }
 
-        public function getListRoom(){
+        public function getLimitListRoom($from, $amount){
             $qr = " SELECT Rooms.roomNumber, Rooms.price, Rooms.roomType, AvatarRoom.localAvatar, RoomType.guest, roomType.area, roomType.numberOfBed
                     FROM Rooms, AvatarRoom, roomType
-                    WHERE (Rooms.roomNumber = AvatarRoom.roomNumber) AND (Rooms.roomType = RoomType.roomType)";
+                    WHERE (Rooms.roomNumber = AvatarRoom.roomNumber) AND (Rooms.roomType = RoomType.roomType)
+                    limit $from, $amount";
             $rows = mysqli_query($this ->conn, $qr);
             $array = array();
             while($row = mysqli_fetch_assoc($rows)){

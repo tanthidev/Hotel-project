@@ -1,6 +1,7 @@
 <?php 
     class booking extends controller{
-        static function default($roomNumber){
+        static function default(){
+            $roomNumber=$_GET['room'];
             //Gọi Model
             $room = self::model('roomModel');
             $user = self::model('userModel');

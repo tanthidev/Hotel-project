@@ -25,9 +25,8 @@
         }
         
         static function userManager(){
-            //Users per page
+            
             $userPerPage=10;
-
             //Get page from url
             if(isset($_GET['page'])){
                 $currentPage=$_GET['page'];
