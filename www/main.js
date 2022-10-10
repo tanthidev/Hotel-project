@@ -320,6 +320,67 @@ if(document.getElementById("form-confirm")){
     form.addEventListener('submit', logSubmit);
 }
 
+if(document.getElementById("admin__container-categories")){
+    btnHidden = document.getElementById("btn-collapse-sidebar");
+    btnShow = document.getElementById("btn-show-sidebar");
+    categories = document.getElementById("admin__container-categories");
+    content = document.getElementById("admin__container-content");
+    categoriesText = document.getElementsByClassName("admin__catogories--item-text");
+    logo = document.getElementById("admin__logo");
+    adminName = document.getElementById("admin-container-name");
+    categoriesItem=document.getElementsByClassName("admin__categories--item");
+    adminSetting = document.getElementById("admin-setting");
+    //Collapse
+    btnHidden.onclick = function (){
+        categories.style.width="8.3%";
+        content.style.width="91.7%";
+        logo.style.display="none";
+        adminName.style.display="none";
+        
+        //Hide categories text
+        for(index =0; index<categoriesText.length;index++){
+            categoriesText[index].style.display="none";
+        };
+
+        //change padding item
+        for(index =0; index<categoriesItem.length;index++){
+            categoriesItem[index].style.paddingLeft ="0";
+            categoriesItem[index].style.textAlign = "center";
+        };
+
+        //Change padding admin setting
+        adminSetting.style.paddingLeft="20px";
+        //Hidden btn
+        btnHidden.style.display="none";
+        btnShow.style.display="block";
+    }
+
+    //Show
+    btnShow.onclick = function (){
+        categories.style.width="20%";
+        content.style.width="80%";
+        logo.style.display="block";
+        adminName.style.display="block";
+        
+        //Hide categories text
+        for(index =0; index<categoriesText.length;index++){
+            categoriesText[index].style.display="inline-block";
+        };
+
+        //change padding item
+        for(index =0; index<categoriesItem.length;index++){
+            categoriesItem[index].style.paddingLeft ="40px";
+            categoriesItem[index].style.textAlign = "left";
+        
+        };
+
+        //Change padding admin setting
+        adminSetting.style.paddingLeft="40px";
+        //Hidden btn
+        btnHidden.style.display="block";
+        btnShow.style.display="none";
+    }
+}
 
 //AJAX
 //check exist room number

@@ -17,6 +17,16 @@
             }
         }
 
+        public function getAdmin(){
+            if(isset($_SESSION['id'])){
+                $id=$_SESSION['id'];
+                $qr = "SELECT userID, fullName, phoneNumber, roles, email, gender from User where userID=$id";
+                $rows = mysqli_query($this ->conn, $qr);
+                $row = mysqli_fetch_array($rows);
+                return json_encode($row, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+            }
+        }
+
         public function getAllUser(){
             $qr = "SELECT userID, fullName, phoneNumber, email, country, gender, passPort from User";
             $rows = mysqli_query($this ->conn, $qr);

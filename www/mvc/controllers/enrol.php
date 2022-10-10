@@ -58,14 +58,17 @@ class enrol extends controller{
         
                 //Lấy Id để tạo session
                 $_SESSION['id'] = $user -> getID($phoneNumber);
-                echo $_SESSION['id'];
+
+                $roles = json_decode ($user ->getUser())->roles;
+                if($roles=="2"){
+                    header('Location: /admin');
+                } else {
+                    header('Location: /home');
+                }
 
                 //Lưu tên đăng nhập
                 //Về Trang chủ
-                header('Location: /home');
                 exit;
-    
-            
             }
 
            

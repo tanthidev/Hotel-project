@@ -1,32 +1,42 @@
 <?php 
     ob_start();
     class admin extends controller{
-        
         static function default(){
+            //Gọi model user
+            $user = self::model("userModel");
             //GỌi view
             $view =self::view("adminlayout",[
-                "page"=>"dashBoard"
+                "page"=>"dashBoard",
+                "admin" => $user -> getAdmin()
             ]);
         }
         
         static function dashBoard(){
+            //Gọi model user
+            $user = self::model("userModel");
             //GỌi view
             $view =self::view("adminlayout",[
-                "page"=>"dashBoard"
+                "page"=>"dashBoard",
+                "admin" => $user -> getAdmin()
             ]);
         }
 
         // 
         static function bookingManager(){
+            //Gọi model user
+            $user = self::model("userModel");
             //GỌi view
             $view =self::view("adminlayout",[
-                "page"=>"bookingManager"
+                "page"=>"bookingManager",
+                "admin" => $user -> getAdmin()
             ]);
         }
         
         static function userManager(){
-            
-            $userPerPage=10;
+            //Gọi Model User
+            $user = self::model("userModel");
+            // 
+            $userPerPage=8;
             //Get page from url
             if(isset($_GET['page'])){
                 $currentPage=$_GET['page'];
@@ -34,8 +44,6 @@
             else {
                 $currentPage=1;
             }
-            //Gọi Model User
-            $user = self::model("userModel");
             
             //Pagination
             $totalUser = count(json_decode($user->getAllUser()));
@@ -45,28 +53,41 @@
             $view =self::view("adminlayout",[
                 "page"=>"userManager",
                 "users" => $user->getLimUser($from, $userPerPage),
-                "totalPage"=> $totalPage
+                "totalPage"=> $totalPage,
+                "admin" => $user -> getAdmin()
             ]);
         }
 
         static function roomManager(){
+            //Gọi model user
+            $user = self::model("userModel");
+            //Gọi model room
             $room = self::model("roomModel");
             
             //GỌi view
             $view =self::view("adminlayout",[
                 "page"=>"roomManager",
-                "roomType" => $room -> getRoomType()
+                "roomType" => $room -> getRoomType(),
+                "users" => $user -> getUser(),
+                "admin" => $user -> getAdmin()
             ]);
         }
 
         static function serviceManager(){
+            //Gọi model user
+            $user = self::model("userModel");
             //GỌi view
             $view =self::view("adminlayout",[
-                "page"=>"serviceManager"
+                "page"=>"serviceManager",
+                "users" => $user -> getUser(),
+                "admin" => $user -> getAdmin()
             ]);
         }
 
         static function addRoom(){
+            //Gọi model user
+            $user = self::model("userModel");
+            
             if(isset($_POST['btn-add'])){
                 $room = self::model("roomModel");
                 $localImage= "./mvc/data/images/";
@@ -98,6 +119,7 @@
                         //GỌi view
                         $view =self::view("adminlayout",[
                             "page"=>"roomManager",
+                            "admin" => $user -> getAdmin(),
                             "roomType" => $room -> getRoomType(),
                             "notice" => $textnotice,
                             "check" => $check
@@ -109,6 +131,7 @@
                     $textnotice="Room number can't empty!";
                     $view =self::view("adminlayout",[
                         "page"=>"roomManager",
+                        "admin" => $user -> getAdmin(),
                         "roomType" => $room -> getRoomType(),
                         "notice" => $textnotice,
                         "check" => $check
@@ -126,9 +149,11 @@
                     //GỌi view
                     $view =self::view("adminlayout",[
                         "page"=>"roomManager",
+                        "admin" => $user -> getAdmin(),
                         "roomType" => $room -> getRoomType(),
                         "notice" => $textnotice,
-                        "check" => $check
+                        "check" => $check,
+                        "users" => $user -> getUser()
                     ]);
                     exit;
                 }
@@ -141,7 +166,8 @@
                         "page"=>"roomManager",
                         "roomType" => $room -> getRoomType(),
                         "notice" => $textnotice,
-                        "check" => $check
+                        "check" => $check,
+                        "users" => $user -> getUser()
                     ]);
                     exit;
                 }
@@ -154,7 +180,8 @@
                         "page"=>"roomManager",
                         "roomType" => $room -> getRoomType(),
                         "notice" => $textnotice,
-                        "check" => $check
+                        "check" => $check,
+                        "users" => $user -> getUser()
                     ]);
                     exit;
                 }

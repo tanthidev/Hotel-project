@@ -59,7 +59,7 @@
                         <span>
                             <h4 id="notice--empty"></h4>
                         </span>
-                        <input type="reset" class="form-add-room-reset form-add-room-btn" value="RESET">
+                        <a href="" id="cancel" name="cancel" class="form-add-room-reset form-add-room-btn">Cancel</a>
                         <button type="submit" class="form-add-room-submit form-add-room-btn" value="ADD" name="btn-add">ADD</button>
                     </div>
         </form>

@@ -5,7 +5,7 @@
         session_start(); 
         ob_start();
     } 
-
+    $admin = json_decode($data['admin']);
 ?>
 
 <?php 
@@ -27,6 +27,8 @@
         </div>
         ';      
     }
+
+
 ?>
 
 
@@ -49,13 +51,12 @@
 			<i class="fa-solid fa-arrow-up"></i>
 		</btn>
 
-		<div class="header" id="header">
+		<!-- <div class="header" id="header">
 			<div class="grid">
 				<div class="grid__row header__container">
 					<div class="header__container-logo">
 						<a href="/home" class="header__container-logo--img">
 							<img src="/dataweb/img/logo/logo-company.png" alt="" class="header__logo">
-
 						</a>
 					</div>
 
@@ -84,12 +85,29 @@
 					</div>
 				</div>
 			</div>	
-		</div>
+		</div> -->
         <!-- Main content -->
 		<div class="container-content">
             <!--  -->
             <div class="grid__row">
-                <div class="admin__container-categories grid__column-5-1">
+                <div id="admin__container-categories" class="admin__container-categories grid__column-5-1">
+                    <div class="container-btn-sidebar">
+                        <!-- btn hidden sidebar -->
+                        <a id="btn-collapse-sidebar" href="javascript:void(0)" class="btn-collapse-sidebar">
+                            &times;
+                        </a>
+                        <!-- btn show sidebar -->
+                        <a id="btn-show-sidebar" href="javascript:void(0)" class="btn-show-sidebar">
+                            <i class="fa-solid fa-angles-right"></i>
+                        </a>
+                    </div>
+                    <!-- Logo -->
+                    <div id="admin__container-logo" class="admin__container-logo">
+						<a href="/home">
+							<img id="admin__logo" src="/dataweb/img/logo/logo-company.png" alt="" class="header__logo">
+						</a>
+					</div>
+                    <!-- Category -->
                     <ul class="admin__categoies--list">
                         <!-- DashBoard -->
                         <a href="/admin/dashBoard" class="admin__categories--link">
@@ -147,9 +165,21 @@
                             </li>                        
                         </a>
                     </ul>
+                    <!-- Admin -->
+                    <div id="admin-setting" class="admin-setting admin__categories--item">
+                        <div class="admin-container ">
+                            <?php echo '<p id="admin-container-name" class="admin-container-name">Admin '.$admin->fullName.'</p>';?>
+                            <img class="admin-container-img" src="/mvc/data/images/admin.png" alt="">
+                        </div>
+                        
+                        <a href="/enrol/logout" class="admin__logout">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            Đăng xuất
+                        </a>
+					</div>
                 </div>
     
-                <div class="admin__container-content grid__column-5-4">
+                <div id="admin__container-content" class="admin__container-content grid__column-5-4">
                     <?php 
                         require_once "./mvc/views/pages/".$data['page'].".php";
                     ?>

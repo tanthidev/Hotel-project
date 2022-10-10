@@ -324,17 +324,16 @@ a:hover{
 }
 
 
-
 /* index CSS */
 
-.header__container-logo{
-    height: 100%;
+.admin__container-logo{
+    margin-bottom: 40px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .header__logo{
-    height: 55px;
+    height: 60px;
 }
 
 
@@ -1570,11 +1569,57 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 /* CSS ADMIN PAGE */
 
+.container-btn-sidebar{
+    width: 100%;
+    text-align: right;
+}
+
+.btn-collapse-sidebar,
+.btn-show-sidebar{
+    font-size: 40px;
+    margin-right: 10px;
+    font-weight: 700;
+    color: #bbb;
+    background-color: transparent;
+    border: none;
+}
+.btn-show-sidebar{
+    font-size: 30px;
+    display: none;
+}
+
+.admin-setting{
+    margin-top: 100px;
+}
+
+.admin-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.admin-container-name,
+.admin__logout{
+    color: var(--white-color);
+    font-size: 14px;
+    margin: 0;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.admin-container-img{
+    width: 50px;
+    margin-right: 20px;
+}
+
+
 .admin__container-categories{
     background-color: var(--main-color);
     height: 100%;
-    padding: 50px 0;
+    padding: 10px 0;
     position: fixed;
+    transition: width .3s;
 }
 
 .admin__categoies--list{
@@ -1590,6 +1635,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .admin__categories--item:hover{
     background-color: rgb(46, 55, 101);
+}
+
+.admin-setting:hover{
+    background-color: var(--main-color);
 }
 
 .admin__categories--item{
@@ -1646,6 +1695,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .admin__container-content{
     position: absolute;
     right: 0;
+    transition: width .3s;
 }
 
 /* CSS USER MANAGER PAGE */
@@ -1659,14 +1709,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .userManager_table-header-item{
-    font-size: 12px;
+    font-size: 14px;
     background-color:#ccc;
     padding: 12px;
-    
+    border-bottom: 2px solid #999999;
 }
 .userManager_table-content{
-    font-size: 13px;
-    padding: 14px;
+    font-size: 15px;
+    padding: 17px;
 }
 .userManager_table-content--action{
     display: flex;
@@ -2010,6 +2060,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
     .header__container-logo{
         padding: 0 20px;
+       
     }
 
     .header__btn-menu--mobile{
