@@ -19,16 +19,12 @@
             $totalPage = ceil($totalRoom/$roomPerPage);
             $from = ($currentPage-1) * $roomPerPage;
 
-
-
-
             //GỌi view
             $view =self::view("sublayout",[
                 "page"=>"listroom",
                 "user"=> $user -> getUser(),
                 "totalPage" => $totalPage,
                 "rooms" => $room -> getLimitListRoom($from, $roomPerPage)
-
             ]);
         }
     }

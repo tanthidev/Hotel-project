@@ -62,7 +62,7 @@
         }
 
         public function getLimitListRoom($from, $amount){
-            $qr = " SELECT Rooms.roomNumber, Rooms.price, Rooms.roomType, AvatarRoom.localAvatar, RoomType.guest, roomType.area, roomType.numberOfBed
+            $qr = " SELECT Rooms.roomNumber, Rooms.price, Rooms.roomType, AvatarRoom.localAvatar, RoomType.guest, roomType.area, roomType.numberOfBed, Rooms.describeRoom
                     FROM Rooms, AvatarRoom, roomType
                     WHERE (Rooms.roomNumber = AvatarRoom.roomNumber) AND (Rooms.roomType = RoomType.roomType)
                     limit $from, $amount";

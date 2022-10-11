@@ -1699,49 +1699,64 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 /* CSS USER MANAGER PAGE */
-.container__userManager{
-    height: 600px;
+.container__userManager,
+.container__roomManager{
     padding: 50px 30px;  
 }
 
-.userManager__table{
+.container__roomManager{
+    padding: 0 30px;  
+}
+
+.userManager__table,
+.roomManager__table{
     width: 100%;
 }
 
-.userManager_table-header-item{
+.userManager_table-header-item,
+.roomManager_table-header-item{
     font-size: 14px;
     background-color:#ccc;
     padding: 12px;
     border-bottom: 2px solid #999999;
 }
-.userManager_table-content{
+.userManager_table-content,
+.roomManager_table-content{
     font-size: 15px;
     padding: 17px;
 }
-.userManager_table-content--action{
+.userManager_table-content--action,
+.roomManager_table-content--action{
     display: flex;
 }
 .userManager_table-content--change,
-.userManager_table-content--detele{
+.userManager_table-content--detele,
+.roomManager_table-content--change,
+.roomManager_table-content--detele{
     display: inline-block;
     font-size: 15px;
 }
 
-.userManager_table-content--detele{
+.userManager_table-content--detele,
+.roomManager_table-content--detele{
     margin-left: 10px;
 }
 
 .userManager_table-content--change:hover,
-.userManager_table-content--detele:hover{
+.userManager_table-content--detele:hover,
+.roomManager_table-content--change:hover,
+.roomManager_table-content--detele:hover{
     color: var(--orange-color);
 }
 
-.userManager_table-row{
+.userManager_table-row,
+.roomManager_table-row{
     background-color:#F1F1F1;
     border-bottom: 1px solid #bbb;
 }
 
-.userManager_table-row:hover{
+.userManager_table-row:hover,
+.roomManager_table-row:hover{
     background-color: var(--main-color);
     color: var(--white-color);
     cursor: pointer;

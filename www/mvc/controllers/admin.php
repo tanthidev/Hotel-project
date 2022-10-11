@@ -63,13 +63,28 @@
             $user = self::model("userModel");
             //Gọi model room
             $room = self::model("roomModel");
+            //
+            $roomPerPage=6;
+            //Get page from url
+            if(isset($_GET['page'])){
+                $currentPage=$_GET['page'];
+            }
+            else {
+                $currentPage=1;
+            }
             
+            //Pagination
+            $totalRoom = count(json_decode($room->getAllRoom()));
+            $totalPage = ceil($totalRoom/$roomPerPage);
+            $from = ($currentPage-1) * $roomPerPage;
             //GỌi view
             $view =self::view("adminlayout",[
                 "page"=>"roomManager",
                 "roomType" => $room -> getRoomType(),
                 "users" => $user -> getUser(),
-                "admin" => $user -> getAdmin()
+                "admin" => $user -> getAdmin(),
+                "totalPage" => $totalPage,
+                "rooms" => $room -> getLimitListRoom($from, $roomPerPage)
             ]);
         }
 
