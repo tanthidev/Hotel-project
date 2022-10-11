@@ -165,8 +165,8 @@ if(document.getElementById("container__serviceManager")){
 
 // Slide show
 
-if(document.getElementById("favorite-rooms__container")){
-    let slides = document.getElementsByClassName("favorite-rooms__slide");
+if(document.getElementById("slide-show__container")){
+    let slides = document.getElementsByClassName("slide-show");
     if(slides!=0){
         let slideIndex = 1;
         showSlides(slideIndex);
@@ -176,7 +176,7 @@ if(document.getElementById("favorite-rooms__container")){
     
         function showSlides(n) {
             let i;
-            let slides = document.getElementsByClassName("favorite-rooms__slide");
+            let slides = document.getElementsByClassName("slide-show");
             if (slideIndex > slides.length) {
                 slideIndex = 1
             }  

@@ -1,11 +1,18 @@
 <?php 
-
     if(!isset($_SESSION)){
         session_start();
         
     }
     ob_start();
+    
     class user extends controller{
+        public function __construct(){
+            $user = self::model("userModel");
+            if(!isset($_SESSION['id'])){
+                header('Location: /home');         
+            }
+        }
+
         static function default(){
             //Gọi Model
             $user = self::model('userModel');

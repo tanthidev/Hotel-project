@@ -9,8 +9,8 @@
 <div class="grid container-page-booking">
                 <div class="grid__row page-booking__main">
                     <!--  -->
-                    <div id="favorite-rooms__container" class="grid__column-10-6 slideshow-container page-booking__main--slide-img">
-                            <div class="favorite-rooms__slide page-booking__main--slide--item">
+                    <div id="slide-show__container" class="grid__column-10-6 slideshow-container page-booking__main--slide-img">
+                            <div class="slide-show page-booking__main--slide--item">
                                 <img <?php echo $localImage; ?> style="width:100%">
                             </div>
 
@@ -18,7 +18,7 @@
                                 for($index=0;$index<$countImageRoom;$index++){
                                     $localImage = 'src="/mvc/data/images/' .  $imageRoom[$index]-> localImage. '"';
                                     echo '
-                                    <div class="favorite-rooms__slide  page-booking__main--slide--item">
+                                    <div class="slide-show  page-booking__main--slide--item">
                                         <img '.$localImage.' style="width:100%">
                                     </div>
                                 ';

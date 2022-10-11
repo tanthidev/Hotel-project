@@ -95,7 +95,9 @@
                     <td class="roomManager_table-content grid__column-10-1">'.$room->numberOfBed.'</td>
                     <td class="roomManager_table-content grid__column-10-1">'.$room->area.'</td>
                     <td class="roomManager_table-content grid__column-10-1">'.$room->guest.'</td>
-                    <td class="roomManager_table-content grid__column-10-2"></td>
+                    <td class="roomManager_table-content grid__column-10-2">
+                        <i class="fa-solid fa-image roomManager_table-content-image"></i>
+                    </td>
                     <td class="roomManager_table-content grid__column-10-1">'.$room->describeRoom.'</td>
                     <td class="roomManager_table-content grid__column-10-1 roomManager_table-content--action">
                         <div class="roomManager_table-content--change">
@@ -110,6 +112,17 @@
                 ';
               }
         ?>
+
+        <div class="roomManager__container-img">
+            <div id="slide-show__container" class="roomManger__slide-show">
+                    <img src="/mvc/data/images/0ebb8dbb.jpg" alt="" class="roomManager__img slide-show">
+
+                    <img src="/mvc/data/images/baf2c6c0.jpg" alt="" class="roomManager__img slide-show">
+
+                <a id="prev" class="prev">&#10094;</a>
+  				<a id="next" class="next">&#10095;</a>
+            </div>
+        </div>
     </table>
 
     <div class="container-pagination">

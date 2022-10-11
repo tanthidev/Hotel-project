@@ -1,6 +1,13 @@
 <?php 
     ob_start();
     class admin extends controller{
+        public function __construct(){
+            $user = self::model("userModel");
+            if(!isset($_SESSION['id']) || ((json_decode($user->getAdmin())->fullName==null))){
+                header('Location: /home');         
+            }
+        }
+
         static function default(){
             //Gọi model user
             $user = self::model("userModel");
@@ -35,27 +42,30 @@
         static function userManager(){
             //Gọi Model User
             $user = self::model("userModel");
-            // 
-            $userPerPage=8;
-            //Get page from url
-            if(isset($_GET['page'])){
-                $currentPage=$_GET['page'];
-            }
-            else {
-                $currentPage=1;
-            }
             
-            //Pagination
-            $totalUser = count(json_decode($user->getAllUser()));
-            $totalPage = ceil($totalUser/$userPerPage);
-            $from = ($currentPage-1) * $userPerPage;
-            //GỌi view
-            $view =self::view("adminlayout",[
-                "page"=>"userManager",
-                "users" => $user->getLimUser($from, $userPerPage),
-                "totalPage"=> $totalPage,
-                "admin" => $user -> getAdmin()
-            ]);
+                $userPerPage=8;
+                //Get page from url
+                if(isset($_GET['page'])){
+                    $currentPage=$_GET['page'];
+                }
+                else {
+                    $currentPage=1;
+                }
+                
+                //Pagination
+                $totalUser = count(json_decode($user->getAllUser()));
+                $totalPage = ceil($totalUser/$userPerPage);
+                $from = ($currentPage-1) * $userPerPage;
+                //GỌi view
+                $view =self::view("adminlayout",[
+                    "page"=>"userManager",
+                    "users" => $user->getLimUser($from, $userPerPage),
+                    "totalPage"=> $totalPage,
+                    "admin" => $user -> getAdmin()
+                ]);
+            
+            // 
+            
         }
 
         static function roomManager(){

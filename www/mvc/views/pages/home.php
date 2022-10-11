@@ -39,12 +39,12 @@
 		<div id="room" class="favorite-rooms">
 			<div class="grid">
 				<div class="grid__row">
-					<div id="favorite-rooms__container" class="favorite-rooms__container">
+					<div id="slide-show__container" class="favorite-rooms__container">
 						<h1 class="favorite-rooms__title">
 							Our Favorite Room
 						</h1>
 	
-						<div class="favorite-rooms__slide transfer-slide">
+						<div class="slide-show transfer-slide">
 							<div class="favorite-rooms__slide--container-img">
 								<img src="./dataweb/img/room/A0101.jpg" alt="" class="favorite-rooms__slide--img">
 								<a href="" class="btn__booking-now favorite-rooms_slide--booking">Đặt phòng</a>
@@ -73,7 +73,7 @@
 							</div>
 						</div>
 						
-						<div class="favorite-rooms__slide transfer-slide">
+						<div class="slide-show transfer-slide">
 							<div class="favorite-rooms__slide--container-img">
 								<img src="./dataweb/img/room/A0102.jpg" alt="" class="favorite-rooms__slide--img">
 								<a href="" class="btn__booking-now favorite-rooms_slide--booking">Đặt phòng</a>
@@ -102,7 +102,7 @@
 							</div>
 						</div>
 						
-						<div class="favorite-rooms__slide transfer-slide">
+						<div class="slide-show transfer-slide">
 							<div class="favorite-rooms__slide--container-img">
 								<img src="./dataweb/img/room/A0103.jpg" alt="" class="favorite-rooms__slide--img">
 								<a href="" class="btn__booking-now favorite-rooms_slide--booking">Đặt phòng</a>
