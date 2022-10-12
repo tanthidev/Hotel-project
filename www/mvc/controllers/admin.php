@@ -247,5 +247,28 @@
 
             
         }
+
+        static function settingRoom(){
+            if(isset($_GET['room'])){
+                 //Gọi model user
+                $user = self::model("userModel");
+                //Gọi model room
+                $room = self::model("roomModel");
+
+
+
+                //View
+                $view =self::view("adminlayout",[
+                    "page"=>"settingRoom",
+                    "users" => $user -> getUser(),
+                    "admin" => $user -> getAdmin(),
+                    "room" => $room -> getRoom($_GET['room']),
+                    "avatarRoom" => $room -> getAvatarRoom($_GET['room']),
+                    "imageRoom"  => $room -> getImageRoom($_GET['room'])
+                ]);
+            } else {
+                header("Location: /admin/roomManager");
+            }
+        }
     }
 ?>

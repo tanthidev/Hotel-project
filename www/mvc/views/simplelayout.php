@@ -45,9 +45,6 @@
 	</head>
 
 	<body>
-		<btn onclick="topFunction()" id="btn-to-top" class="btn-to-top">
-			<i class="fa-solid fa-arrow-up"></i>
-		</btn>
 
 		<div class="header" id="header">
 			<div class="grid">

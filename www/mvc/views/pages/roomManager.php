@@ -72,7 +72,7 @@
     </div>
 
     <!-- LIST ROOM -->
-    <table class="roomManager__table">
+    <table id="roomManager__table" class="roomManager__table">
         <tr class="roomManager_table-header">
             <th class="roomManager_table-header-item grid__column-10-1">ROOM NUMBER</th>
             <th class="roomManager_table-header-item grid__column-10-1">ROOM TYPES</th>
@@ -100,9 +100,9 @@
                     </td>
                     <td class="roomManager_table-content grid__column-10-1">'.$room->describeRoom.'</td>
                     <td class="roomManager_table-content grid__column-10-1 roomManager_table-content--action">
-                        <div class="roomManager_table-content--change">
+                        <a href="/admin/settingRoom/?room='.$room->roomNumber.'" class="roomManager_table-content--change">
                             <i class="fa-solid fa-gear"></i>
-                        </div>
+                        </a>
                         
                         <div class="roomManager_table-content--detele">
                             <i class="fa-sharp fa-solid fa-trash"></i>
@@ -112,20 +112,9 @@
                 ';
               }
         ?>
-
-        <div class="roomManager__container-img">
-            <div id="slide-show__container" class="roomManger__slide-show">
-                    <img src="/mvc/data/images/0ebb8dbb.jpg" alt="" class="roomManager__img slide-show">
-
-                    <img src="/mvc/data/images/baf2c6c0.jpg" alt="" class="roomManager__img slide-show">
-
-                <a id="prev" class="prev">&#10094;</a>
-  				<a id="next" class="next">&#10095;</a>
-            </div>
-        </div>
     </table>
 
-    <div class="container-pagination">
+    <div id="container-pagination" class="container-pagination">
         <!--Btn pre-page-->
         <span class="btn__controller-page">
             <i class="fa-solid fa-angle-left"></i>

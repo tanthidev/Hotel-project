@@ -4,15 +4,19 @@
 // Get the button:
 let mybutton = document.getElementById("btn-to-top");
 
-// When the user scrolls down 700px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
 
-function scrollFunction() {
-  if (document.body.scrollTop > 700 || document.documentElement.scrollTop > 700) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
+
+
+if(document.getElementById("btn-to-top")){
+    // When the user scrolls down 700px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+    function scrollFunction() {
+      if (document.body.scrollTop > 700 || document.documentElement.scrollTop > 700) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
 }
 
 // When the user clicks on the button, scroll to the top of the document
@@ -83,9 +87,9 @@ function readMoreWelcomePage() {
       document.getElementById("welcome-page__image").style.display="none"
       document.getElementById("welcome-page__content").style.width="100%"
     }
-  }
+}
 
-  if(document.getElementById("profile__container-info")){
+if(document.getElementById("profile__container-info")){
         if(document.getElementById("profile__container-info").style.display="block"){
             document.getElementById("to-page-info").style.color="rgba(217,134,0)";
         }
@@ -132,7 +136,7 @@ function readMoreWelcomePage() {
             document.getElementById("cancel-change-info").style.display="none";
         
         }
-    }
+}
 
 
 
@@ -211,9 +215,9 @@ if(document.getElementById("slide-show__container")){
 
 if(document.getElementById("add-room__btn")){
     document.getElementById("add-room__btn").onclick = function(){
-        if(document.getElementById("container__form-add-room").style.display="none"){
-            document.getElementById("container__form-add-room").style.display="block";
-        }
+        document.getElementById("container__form-add-room").style.display="block";
+        document.getElementById("roomManager__table").style.display="none";
+        document.getElementById("container-pagination").style.display="none";
     };
 }
 
@@ -380,6 +384,24 @@ if(document.getElementById("admin__container-categories")){
         btnHidden.style.display="block";
         btnShow.style.display="none";
     }
+}
+
+//Close when click ouside
+if(document.getElementById("container__settingRoom")){
+    var settingRoom__image = document.getElementById("settingRoom__container--slide-show");
+        document.onclick = function(e){
+            if((e.target.classList[0] == "settingRoom__image")){
+                
+                settingRoom__image.style.display = 'block';
+            } else 
+                if((e.target.id !== "settingRoom__image") && (e.target.id !== "prev") && (e.target.id !== "next")){
+                    //element clicked wasn't the div; hide the div
+                    if(settingRoom__image.style.display !== 'none'){
+                        settingRoom__image.style.display = 'none';
+                    }
+                } 
+        };
+
 }
 
 //AJAX

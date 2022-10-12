@@ -90,6 +90,18 @@
             }
             return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
         }
+
+        public function getRoom($roomNumber){
+            $qr = " SELECT Rooms.roomNumber, Rooms.price, Rooms.roomType, RoomType.guest, roomType.area, roomType.numberOfBed, Rooms.describeRoom 
+                FROM Rooms, roomType 
+                WHERE (Rooms.roomNumber = '$roomNumber') AND (Rooms.roomType = RoomType.roomType);";
+            $rows = mysqli_query($this ->conn, $qr);
+            $array = array();
+            while($row = mysqli_fetch_assoc($rows)){
+                $array[] = $row;
+            }
+            return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+        }
     }   
 
 ?>
