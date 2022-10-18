@@ -66,6 +66,11 @@
                     <label for="describe" class="settingRoom__item--label">Describe</label>
                     <textarea id="describe" row=4 cols=auto class="settingRoom__item--input settingRoom__item--input-describe"></textarea>
                 </li>
+                
+                <li class="settingRoom__item settingRoom__btn">
+                    <input class="settingRoom__item--reset" type="reset" value="Reset">
+                    <input class="settingRoom__item--submit" type="submit" value="Save">
+                </li>
             </ul>
         </div>
     </form>

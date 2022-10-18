@@ -1969,6 +1969,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .settingRoom__slide-show--image{
     width: 100%;
     border-radius: 5px;
+    box-shadow: 0px 0px 20px #000;
 }
 
 #settingRoom__close-slide{
@@ -1979,6 +1980,36 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     right: 2%;
     cursor: pointer;
 }
+.settingRoom__btn{
+    display: flex;
+}
+
+.settingRoom__item--submit,
+.settingRoom__item--reset{
+    display: flex;
+    margin: auto;
+    font-size: 15px;
+    padding: 5px 30px;
+    border-radius: 20px;
+    border: none;
+}
+
+.settingRoom__item--submit{
+    background-color: var(--main-color);
+    color:var(--white-color);
+}
+
+.settingRoom__item--submit:hover{
+    color: var(--orange-color);
+    transform:scale(1.05);
+}
+
+.settingRoom__item--reset{
+    background-color: #bbb;
+}
+
+
+
 
 /* REPONSIVE */
 
