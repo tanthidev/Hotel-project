@@ -1,7 +1,7 @@
 <?php 
     
     $nameAvatar = json_decode($data['avatarRoom']) -> localAvatar;
-    $localImage = 'src="/mvc/data/images/' .  $nameAvatar . '"';
+    $localImage = 'src="/mvc/data/images/room/' .  $nameAvatar . '"';
     $imageRoom = json_decode($data['imageRoom']) ;
     $countImageRoom = count( $imageRoom);
     // print_r($imageRoom [1]-> localImage);
@@ -16,7 +16,7 @@
 
                             <?php 
                                 for($index=0;$index<$countImageRoom;$index++){
-                                    $localImage = 'src="/mvc/data/images/' .  $imageRoom[$index]-> localImage. '"';
+                                    $localImage = 'src="/mvc/data/images/room/' .  $imageRoom[$index]-> localImage. '"';
                                     echo '
                                     <div class="slide-show  page-booking__main--slide--item">
                                         <img '.$localImage.' style="width:100%">
@@ -27,8 +27,8 @@
                             ?>
 
 
-                            <a id="prev" class="prev prev--page-booking">❮</a>
-                            <a id="next" class="next next--page-booking">❯</a>
+                            <a id="prev-pic" class="prev-pic prev--page-booking">❮</a>
+                            <a id="next-pic" class="next-pic next--page-booking">❯</a>
                     </div>
                     <!--  -->
                     <div class="grid__column-10-4 page-booking__main--selection">
@@ -42,19 +42,13 @@
                             </div>
                         </div>
                         
-                        <form action="" class="grid__row page-booking--selection-form">
-                            <div class="grid__column-2 page-booking--selection-form-item">
-                                <label for="datecheckin" class="page-booking--selection-text">
-                                    Check-in
+                        <form id="form-search" action="" class="grid__row page-booking--selection-form">
+                            <div class="page-booking--selection-form-item page-booking--selection-form-item--date">
+                                <label for="date" class="page-booking--selection-text">
+                                    Checkin - Checkout
                                 </label>
-                                <input name="datecheckin" id="datecheckin" type="date" class="page-booking--selection-input">
-                            </div>
-
-                            <div class="grid__column-2 page-booking--selection-form-item">
-                                <label for="datecheckout" class="page-booking--selection-text">
-                                    Check-out
-                                </label>
-                                <input name="datecheckout" id="datecheckout" type="date" class="page-booking--selection-input">
+                                <!-- <input name="datecheckin" id="datecheckin" type="date" class="page-booking--selection-input"> -->
+                                <input id="date" class="page-booking--selection-input" type="text" name="datefilter" value="" />
                             </div>
 
                             <div class="grid__column-2 page-booking--selection-form-item">

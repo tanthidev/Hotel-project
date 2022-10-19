@@ -9,7 +9,7 @@
 		<div class="list-room__group">
 			<?php
 				for($index = 0; $index < $countRoom; $index=$index+2){
-					$localImage="url('/mvc/data/images/";
+					$localImage="url('/mvc/data/images/room/";
 					$localImageTop = $localImage . $rooms[$index]->localAvatar . "')";
 					$localImageBot = $localImage . $rooms[$index+1]->localAvatar . "')";
 					echo '

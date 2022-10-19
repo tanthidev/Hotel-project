@@ -40,49 +40,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/style.css">
-		<link rel="stylesheet" href="/dataweb/font/fontawesome-free-6.2.0-web/fontawesome-free-6.2.0-web/css/all.css">
+		<link rel="stylesheet" href="/mvc/data/font/fontawesome-free-6.2.0-web/fontawesome-free-6.2.0-web/css/all.min.css">
 		<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;700&family=Qwitcher+Grypen:wght@700&display=swap" rel="stylesheet">
 		<title>Carlton Hotel</title>
-		<link rel="icon" type="image/x-icon" href="/dataweb/img/logo/logo-company.png">
+		<link rel="icon" type="image/x-icon" href="/mvc/data/images/logo/logo-company.png">
 	</head>
 
 	<body>
-
-		<!-- <div class="header" id="header">
-			<div class="grid">
-				<div class="grid__row header__container">
-					<div class="header__container-logo">
-						<a href="/home" class="header__container-logo--img">
-							<img src="/dataweb/img/logo/logo-company.png" alt="" class="header__logo">
-						</a>
-					</div>
-
-
-					<div id="header__user" class="header__user">
-                                <div class="header__user-opption">
-									<p id="header_user-name" class="header_user-name">Welcome, '.$row->fullName.'</p>
-									<div id="user__opption" class="user__opption">
-										<ul class="user__opption--list">
-											<li class="user__opption--item">
-												<a href="./User/UserInfo.php" class="user__manager--link user__opption--item-link">
-													<i class="fa-regular fa-user"></i>
-													Quản lý khách sạn
-												</a>
-											</li>
-											<li class="user__opption--item">
-												<a href="/enrol/logout" class="user__logout--link user__opption--item-link">
-													<i class="fa-solid fa-arrow-right-from-bracket"></i>
-													Đăng xuất
-												</a>
-											</li>
-										</ul>
-									</div>
-								</div>
-
-					</div>
-				</div>
-			</div>	
-		</div> -->
         <!-- Main content -->
 		<div class="container-content">
             <!--  -->
@@ -101,7 +65,7 @@
                     <!-- Logo -->
                     <div id="admin__container-logo" class="admin__container-logo">
 						<a href="/home">
-							<img id="admin__logo" src="/dataweb/img/logo/logo-company.png" alt="" class="header__logo">
+							<img id="admin__logo" src="/mvc/data/images/logo/logo-company.png" alt="" class="header__logo">
 						</a>
 					</div>
                     <!-- Category -->

@@ -2,7 +2,7 @@
     $room = json_decode($data['room']);
     $room = $room[0];
     $nameAvatar = json_decode($data['avatarRoom']) -> localAvatar;
-    $localImage = 'src="/mvc/data/images/' .  $nameAvatar . '"';
+    $localImage = 'src="/mvc/data/images/room/' .  $nameAvatar . '"';
     $imageRoom = json_decode($data['imageRoom']) ;
     $countImageRoom = count( $imageRoom);
 ?>
@@ -50,7 +50,7 @@
                             <img class="settingRoom__image" <?php echo $localImage; ?> alt="">
                             <?php 
                                 for($index=0;$index<$countImageRoom;$index++){
-                                    $localImage = 'src="/mvc/data/images/' .  $imageRoom[$index]-> localImage. '"';
+                                    $localImage = 'src="/mvc/data/images/room/' .  $imageRoom[$index]-> localImage. '"';
                                     echo '
                                         <img alt="image" class="settingRoom__image" '.$localImage.'>
                                      ';
@@ -79,11 +79,11 @@
                 <i id="settingRoom__close-slide" class="fa-sharp fa-solid fa-circle-xmark"></i>
                 
                 <?php
-                    $localImage = 'src="/mvc/data/images/' .  $nameAvatar . '"';
+                    $localImage = 'src="/mvc/data/images/room/' .  $nameAvatar . '"';
                     echo '<img id="settingRoom__image" '.$localImage.' alt="" class="settingRoom__slide-show--image slide-show">';
                     
                     for($index=0;$index<$countImageRoom;$index++){
-                        $localImage = 'src="/mvc/data/images/' .  $imageRoom[$index]-> localImage. '"';
+                        $localImage = 'src="/mvc/data/images/room/' .  $imageRoom[$index]-> localImage. '"';
                         echo '
                         <img id="settingRoom__image" '.$localImage.' alt="" class="settingRoom__slide-show--image slide-show">
                          ';

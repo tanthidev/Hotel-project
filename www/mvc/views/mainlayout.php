@@ -36,10 +36,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/style.css">
-	<link rel="stylesheet" href="/dataweb/font/fontawesome-free-6.2.0-web/fontawesome-free-6.2.0-web/css/all.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+	<link rel="stylesheet" href="/mvc/data/font/fontawesome-free-6.2.0-web/fontawesome-free-6.2.0-web/css/all.min.css">
 	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;700&family=Qwitcher+Grypen:wght@700&display=swap" rel="stylesheet">
 	<title>Carlton Hotel</title>
-	<link rel="icon" type="image/x-icon" href="./dataweb/img/logo/logo-company.png">
+	<link rel="icon" type="image/x-icon" href="/mvc/data/images/logo/logo-company.png">
 </head>
 
 <body>
@@ -51,7 +52,7 @@
 			<div class="grid__row header__container">
 				<div class="header__container-logo">
 					<a href="/home" class="header__container-logo--img">
-						<img src="/dataweb/img/logo/logo-company.png" alt="" class="header__logo">
+						<img src="/mvc/data/images/logo/logo-company.png" alt="" class="header__logo">
 
 					</a>
 					
@@ -165,21 +166,15 @@
 
 
 				<div class="home__taskbar-container-booking">
-					<form class="home__taskbar-booking">
-				
-						<div class="taskbar-booking__checkin taskbar-booking--item">
-							<label for="booking-input-checkin" class="taskbar-booking--text">
-								Check-in
-							</label>
-							<input id="booking-input-checkin" type="date" name="checkin-date" class="booking-input">
-						</div>
+					<form id="form-search" class="home__taskbar-booking grid__row">
 						
-						<div class="taskbar-booking__checkout taskbar-booking--item">
+						<div class="grid__column-3--2 taskbar-booking__checkout taskbar-booking--item">
 							<label for="booking-input-checkout" class="taskbar-booking--text">
 								<i class="fa-regular fa-inbox-out"></i>
 								Check-out
 							</label>
-							<input id="booking-input-checkout" type="date" name="checkout-date"  class="booking-input">
+
+							<input id="booking-input-checkout" type="text" name="datefilter"  class="booking-input" value="">
 						</div>
 					
 						<div class="taskbar-booking__number-guest taskbar-booking--item">
@@ -209,7 +204,7 @@
 		<div class="grid">
 			<div class="grid__row">
 				<div class="grid__column-4">
-					<img src="./dataweb/img/logo/logo-company.png" alt="" class="footer__logo">
+					<img src="/mvc/data/images/logo/logo-company.png" alt="" class="footer__logo">
 					<p class="footer__sologan">
 						We started building our hotel in 1995. Since then, we've grown in to the
 						hotel with the best client service in our country
@@ -269,6 +264,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 	<script src="main.js"></script> 
 </body>
 

@@ -756,12 +756,12 @@ input:-ms-input-placeholder { color: #999999; }
 .home__backgound{
     position: relative;
     padding-top: 50%;
-    background: url('/dataweb/img/backgroundHome.jpg') top center / cover no-repeat;
+    background: url('/mvc/data//images/backgroundHome.jpg') top center / cover no-repeat;
 }
 
 .home__backgound--short{
     padding-top: 25%;
-    background: url('/dataweb/img/backgroundHome.jpg') center center / cover no-repeat;
+    background: url('/mvc/data//images/backgroundHome.jpg') center center / cover no-repeat;
 }
 
 
@@ -772,7 +772,7 @@ input:-ms-input-placeholder { color: #999999; }
 }
 .home__taskbar-booking{
     position:absolute;
-    display: flex;
+    
     text-align: left;
     width: 90%;
     font-size: 17px;
@@ -793,16 +793,19 @@ input:-ms-input-placeholder { color: #999999; }
     width: fit-content;
     width: 70%;
     cursor: pointer;
-    width: 130px;
 }
 .booking-input--guest{
     width: 90px;
     
 }
 .taskbar-booking--item{
-    width: 180px;
+    /* width: 180px; */
     padding: 0 20px;
     border-right: 2px solid var(--white-color);
+}
+
+.taskbar-booking--text{
+    display: block;
 }
 
 
@@ -830,7 +833,7 @@ input:-ms-input-placeholder { color: #999999; }
 
 /* Hidden icon input date */
 input[type="date"]::-webkit-calendar-picker-indicator {
-    background: url(./dataweb/img/icon-calendar.png) top center / cover no-repeat;
+    background: url('/mvc//data//images/icon-calendar.png') top center / cover no-repeat;
 }
 
 /* Welcome page */
@@ -936,7 +939,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 	transform: scale(1);
 	-webkit-transition: 0.3s ease-in-out;
 	transition: 0.3s ease-in-out;
-    animation: fade ease-in-out 0.6s forwards;
+    animation: fade ease-in-out 0.3s forwards;
 }
 
 .favorite-rooms__slide--container-img:hover .favorite-rooms__slide--img{
@@ -1010,7 +1013,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 22px;
 }
 
-.prev, .next {
+.prev-pic, .next-pic {
     cursor: pointer;
     position: absolute;
     top: 40%;
@@ -1026,12 +1029,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     background-color: rgba(0,0,0,0.4);
 }
 
-.next {
+.next-pic {
     right: 0;
     border-radius: 3px 0 0 3px;
   }
 
-.prev:hover, .next:hover {
+.prev-pic:hover, .next-pic:hover {
     background-color: rgba(0,0,0,0.8);
     text-decoration: none;
     color: white;
@@ -1130,19 +1133,19 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .services__container-image1{
-    background: url('./dataweb/img/Services/fitness.webp')top center / cover no-repeat;
+    background: url('/mvc/data/images/Services/fitness.webp')top center / cover no-repeat;
 }
 
 .services__container-image2{
-    background: url('./dataweb/img/Services/restaurant.jpg')top center / cover no-repeat;
+    background: url('/mvc/data/images/Services/restaurant.jpg')top center / cover no-repeat;
 }
 
 .services__container-image3{
-    background: url('./dataweb/img/Services/SpaCenter.jpg')top center / cover no-repeat;
+    background: url('/mvc/data/images/Services/SpaCenter.jpg')top center / cover no-repeat;
 }
 
 .services__container-image4{
-    background: url('./dataweb/img/Services/swimming.jpg')top center / cover no-repeat;
+    background: url('/mvc/data/images/Services/swimming.jpg')top center / cover no-repeat;
 }
 
 .services__container-text{
@@ -1472,7 +1475,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .page-booking__main--slide--item{
     border-radius: 5px;
     overflow: hidden;
-    animation: fade 1s ease-in-out forwards;
+    animation: fade 0.3s ease-in-out forwards;
 }
 
 .next--page-booking{
@@ -1515,6 +1518,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .page-booking--selection-form-item{
     margin-top: 20px;
     padding: 0 20px;
+}
+
+.page-booking--selection-form-item--date{
+    width: 100%;
 }
 
 .page-booking--selection-text{

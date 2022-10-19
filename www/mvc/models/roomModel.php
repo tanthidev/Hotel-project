@@ -102,6 +102,20 @@
             }
             return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
         }
+
+        public function getRandomRoom(){
+            $qr = "SELECT Rooms.roomNumber, Rooms.roomType, Rooms.price, AvatarRoom.localAvatar, RoomType.numberOfBed, RoomType.guest, RoomType.area
+                    FROM Rooms, AvatarRoom, RoomType
+                    WHERE (Rooms.roomNumber=AvatarRoom.roomNumber) AND (Rooms.roomType = RoomType.roomType)
+                    ORDER BY RAND() 
+                    LIMIT 3";
+            $rows = mysqli_query($this ->conn, $qr);
+            $array = array();
+            while($row = mysqli_fetch_assoc($rows)){
+                $array[] = $row;
+            }
+            return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+        }
     }   
 
 ?>

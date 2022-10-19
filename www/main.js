@@ -201,8 +201,8 @@ if(document.getElementById("slide-show__container")){
             
         }
 
-        const next = document.getElementById('next');
-        const prev = document.getElementById('prev');
+        const next = document.getElementById('next-pic');
+        const prev = document.getElementById('prev-pic');
         next.addEventListener('click', (event) => {
             plusSlides(1);
         });
@@ -478,6 +478,47 @@ if(document.getElementById("register-form")){
             }
     });
 }
+
+
+//Vô hiệu hóa chọn ngày trong quá khứ
+
+if(document.getElementById("form-search")){
+    $(function() {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = mm + '/' + dd + '/' + yyyy;
+    
+        
+        $('input[name="datefilter"]').daterangepicker({
+            autoUpdateInput: false,
+            locale: {
+                cancelLabel: 'Clear'
+            },
+            "minDate": today,
+            "autoApply": true,
+            isInvalidDate: function(date) {
+                if (date.format('MM/DD/YYYY') == '10/24/2022') {
+                    return true; 
+                }
+            }
+            
+        });
+
+      
+        $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
+        });
+      
+        $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+        });
+      
+      });
+}
+
 
 
 

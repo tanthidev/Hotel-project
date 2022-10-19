@@ -115,7 +115,7 @@
             
             if(isset($_POST['btn-add'])){
                 $room = self::model("roomModel");
-                $localImage= "./mvc/data/images/";
+                $localImage= "./mvc/data/images/room/";
                 //Get data from form
                 $roomNumber     = addslashes($_POST['roomNumber']);
                 $roomType       = addslashes($_POST['roomType']);
