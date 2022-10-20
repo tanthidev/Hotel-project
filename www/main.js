@@ -479,26 +479,28 @@ if(document.getElementById("register-form")){
     });
 }
 
+function getCurrentDate(){
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    today = mm + '/' + dd + '/' + yyyy;
+    return today;
+}
+
+
 
 //Vô hiệu hóa chọn ngày trong quá khứ
-
 if(document.getElementById("form-search")){
     $(function() {
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-        var yyyy = today.getFullYear();
-
-        today = mm + '/' + dd + '/' + yyyy;
-    
-        
         $('input[name="datefilter"]').daterangepicker({
             autoUpdateInput: false,
             locale: {
                 cancelLabel: 'Clear'
             },
-            "minDate": today,
+            "minDate": getCurrentDate(),
             "autoApply": true,
+            "drops": 'auto',
             isInvalidDate: function(date) {
                 if (date.format('MM/DD/YYYY') == '10/24/2022') {
                     return true; 

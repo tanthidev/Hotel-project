@@ -160,74 +160,31 @@
             <!--  -->
 			<div class="home">
 				<div class="home__backgound home__backgound--short">
-
-
-
-				<!-- Task forgot password -->
-				<!-- <div class="header__user--container--login">
-					<div class="container-login">
-						<div id="wrap-forgot" class="wrap-login">
-							<div id="forgot-cancel" class="cancel-btn">
-								<i class="fa-solid fa-xmark"></i>
-							</div>
-
-							<div id="forgot-back" class="cancel-btn back-btn">
-								<i class="fa-sharp fa-solid fa-arrow-left"></i>
-							</div>
-			
-							<form action="index.php" method="POST" class="login-form validate-form">
-								<span class="login-form-title">
-									Forgot Password
-								</span>
-			
-								<div class="wrap-input validate-input">
-									<input class="login-form--input" type="email" name="email" placeholder="Enter your email">
-									<span class="focus-input"></span>
-									<span class="symbol-input">
-									<i class="fa-solid fa-envelope" aria-hidden="true"></i>
-									</span>
-								</div>
-								
-								<div class="container-login-form-btn">
-									<button class="login-form-btn">
-										Confirm
-									</button>
-								</div>
-			
-							</form>
-						</div>
-					</div>
-				</div> -->
-
-                <div class="home__taskbar-container-booking">
-						<form class="home__taskbar-booking">
-							<!-- check in -->
-							<div class="taskbar-booking__checkin taskbar-booking--item">
-								<label for="booking-input-checkin" class="taskbar-booking--text">
-									Check-in
-								</label>
-								<input id="booking-input-checkin" type="date" name="checkin-date" class="booking-input">
-							</div>
-							<!-- check out -->
-							<div class="taskbar-booking__checkout taskbar-booking--item">
+					<div class="home__taskbar-container-booking">
+						<form id="form-search" class="home__taskbar-booking grid__row">
+							
+							<div class="grid__column-2 taskbar-booking__checkout taskbar-booking--item">
 								<label for="booking-input-checkout" class="taskbar-booking--text">
 									<i class="fa-regular fa-inbox-out"></i>
-									Check-out
+									Check in - Check out
 								</label>
-								<input id="booking-input-checkout" type="date" name="checkout-date"  class="booking-input">
+
+								<input id="booking-input-checkout" type="text" name="datefilter"  class="booking-input" value="dd/mm/yyyy">
 							</div>
-							<!-- Number guest -->
-							<div class="taskbar-booking__number-guest taskbar-booking--item">
+						
+							<div class="grid__column-4 taskbar-booking__number-guest taskbar-booking--item">
 								<label for="booking-input-guest" class="taskbar-booking--text">
 									<i class="fa-solid fa-users"></i>
 									Guest
 								</label>
 								<input id="booking-input-guest" type="number" name="number-guest" value="1" min="1"  class="booking-input booking-input--guest">
 							</div>
-							<!-- Search -->
-							<input type="submit" value="Search" class="taskbar-booking__search">
+							<input type="submit" value="Search" class="taskbar-booking__search grid__column-4">
 						</form>
 					</div>
+				</div>
+
+
 			</div>
 
             <!--  -->

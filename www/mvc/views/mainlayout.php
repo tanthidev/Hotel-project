@@ -168,24 +168,23 @@
 				<div class="home__taskbar-container-booking">
 					<form id="form-search" class="home__taskbar-booking grid__row">
 						
-						<div class="grid__column-3--2 taskbar-booking__checkout taskbar-booking--item">
+						<div class="grid__column-2 taskbar-booking__checkout taskbar-booking--item">
 							<label for="booking-input-checkout" class="taskbar-booking--text">
 								<i class="fa-regular fa-inbox-out"></i>
-								Check-out
+								Check in - Check out
 							</label>
 
-							<input id="booking-input-checkout" type="text" name="datefilter"  class="booking-input" value="">
+							<input id="booking-input-checkout" type="text" name="datefilter"  class="booking-input" value="dd/mm/yyyy">
 						</div>
 					
-						<div class="taskbar-booking__number-guest taskbar-booking--item">
+						<div class="grid__column-4 taskbar-booking__number-guest taskbar-booking--item">
 							<label for="booking-input-guest" class="taskbar-booking--text">
 								<i class="fa-solid fa-users"></i>
 								Guest
 							</label>
 							<input id="booking-input-guest" type="number" name="number-guest" value="1" min="1"  class="booking-input booking-input--guest">
 						</div>
-						
-						<input type="submit" value="Search" class="taskbar-booking__search">
+						<input type="submit" value="Search" class="taskbar-booking__search grid__column-4">
 					</form>
 				</div>
 			</div>
