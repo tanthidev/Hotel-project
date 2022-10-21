@@ -1,6 +1,6 @@
 <?php 
     $rooms = json_decode($data['rooms']);
-	$countRoom = count($rooms);
+	// $countRoom = count($rooms);
 ?>
 <div id="container__roomManager" class="container__roomManager">
     <div class="container__add-room">
@@ -16,42 +16,35 @@
         <h3 class="form__add-room--title">
             ADD ROOM
         </h3>
-        <form id="form-add-room" method="POST" action="/admin/addRoom" class="form-add-room" enctype="multipart/form-data">
+        <form id="form-add-room" method="POST" action="/admin/addRoom" class="form-add-room">
+            <div class="grid__row">
                 <!-- Room number -->
+                <div class="grid__column-2">
                     <label class="form-add-room--label" for="roomNumber">Room number *</label>
                     <br>
                     <input class="form-add-room--input" id="roomNumber" name="roomNumber" type="text">
                     <br>
                     <h4 id="messageRoomNumber"></h4>
-                    <br>
-                    <!-- Price -->
-                    <label class="form-add-room--label" for="priceRoom">Price ($) *</label>
-                    <br>
-                    <input class="form-add-room--input form-add-room--input-price" id="priceRoom" name="priceRoom" type="number">
-                    <br>
+                </div>
                     <!-- Room Type -->
-                    <label class="form-add-room--label" for="roomType">Room Type *</label>
-                    <br>
-                    <select class="form-add-room--input" name="roomType" id="roomType">
-                        <option value=""></option>
-                        <?php
-                        $roomsType=json_decode($data['roomType']);
-                        foreach($roomsType as $roomType){
-                            echo '
-                                    <option value="'.$roomType->roomType.'">'.$roomType->roomType.'</option>
-                                    ';
-                                }
-                        ?>
-                    </select>
-                    <br>
-                    <!-- Room avatar -->
-                    <label class="form-add-room--label" for="roomAvatar">Room Avatar *</label>
-                    <input class="form-add-room--input form-add-room--input-img" id="roomAvatar" type="file" name="roomAvatar">
+                    <div class="grid__column-2">
+                        <label class="form-add-room--label" for="roomType">Room Type *</label>
+                        <br>
+                        <select class="form-add-room--input" name="roomType" id="roomType">
+                            <option value=""></option>
+                            <?php
+                            $roomsType=json_decode($data['roomType']);
+                            foreach($roomsType as $roomType){
+                                echo '
+                                        <option value="'.$roomType->roomType.'">'.$roomType->roomType.'</option>
+                                        ';
+                                    }
+                            ?>
+                        </select>
+                    
+                    </div>
+            </div>    
 
-                    <!-- Room Image -->
-                    <br>
-                    <label class="form-add-room--label" for="roomImages">Room Image *</label>
-                    <input class="form-add-room--input form-add-room--input-img" id="roomImages" type="file" name="roomImages[]" multiple>
                    
                     <br>
                     <!-- Describe -->
@@ -68,7 +61,72 @@
                         <a href="" id="cancel" name="cancel" class="form-add-room-reset form-add-room-btn">Cancel</a>
                         <button type="submit" class="form-add-room-submit form-add-room-btn" value="ADD" name="btn-add">ADD</button>
                     </div>
-        </form>
+                </form>
+                
+                <form id="form-add-roomtype" method="POST" action="/admin/addRoomType" class="form-add-roomtype" enctype="multipart/form-data">
+                    <div class="grid__row">
+                        <!-- Room Type-->
+                        <div class="grid__column-2">
+                            <label class="form-add-room--label" for="roomtype">Room Type *</label>
+                            <br>
+                            <input class="form-add-room--input" id="roomtype" name="roomtype" type="text" >
+                            <br>
+                            <h4 id="messageRoomType"></h4>
+                        </div>
+                        <!--  -->
+                        <div class="grid__column-2">
+                            <label class="form-add-room--label" for="beds">Number of bed *</label>
+                            <br>
+                            <input class="form-add-room--input" id="beds" name="beds" type="number">
+                            <br>
+                        </div>
+                    </div>
+                    <!--  -->
+                    <div class="grid__row">
+                        <div class="grid__column-2">
+                            <label class="form-add-room--label" for="area">Area *</label>
+                            <br>
+                            <input class="form-add-room--input" id="area" name="area" type="number">
+                            <br>
+                        </div>
+                        <div class="grid__column-2">
+                            <label class="form-add-room--label" for="price">Price *</label>
+                            <br>
+                            <input class="form-add-room--input" id="price" name="price" type="number">
+                            <br>
+                        </div>
+                        <!-- <div class="grid__column-3">
+                            <label class="form-add-room--label" for="guest">Guest *</label>
+                            <br>
+                            <input class="form-add-room--input" id="guest" name="price" type="number">
+                            <br>
+                        </div> -->
+                    </div>
+                    
+                    <div class="grid__row">
+                        <div class="grid__column-2">
+                            <!-- Room avatar -->
+                            <label class="form-add-room--label" for="roomAvatar">Room Avatar *</label>
+                            <input class="form-add-room--input form-add-room--input-img" id="roomAvatar" type="file" name="roomAvatar">
+    
+                        </div>
+                        <div class="grid__column-2">
+                            <!-- Room Image -->
+    
+                            <label class="form-add-room--label" for="roomImages">Room Image *</label>
+                            <input class="form-add-room--input form-add-room--input-img" id="roomImages" type="file" name="roomImages[]" multiple>
+    
+                        </div>
+                    </div>
+
+                    <div class="form-add-room__container-btn">
+                        <span>
+                            <h4 id="notice--empty--roomtype"></h4>
+                        </span>
+                        <a href="" id="cancel" name="cancel" class="form-add-room-reset form-add-room-btn">Cancel</a>
+                        <button type="submit" class="form-add-room-submit form-add-room-btn" value="ADD" name="btn-add">ADD</button>
+                    </div>
+                </form>
     </div>
 
     <!-- LIST ROOM -->

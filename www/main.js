@@ -226,8 +226,6 @@ if(document.getElementById("container__form-add-room")){
     function logSubmit(event) {
         const roomNumber = document.getElementById("roomNumber").value;   
         const roomType = document.getElementById("roomType").value;
-        const roomAvatar = document.getElementById("roomAvatar").value;
-        const roomImages = document.getElementById("roomImages").value;
         if(roomNumber==""){
             notice.textContent = `Please enter room number!`;
             event.preventDefault();
@@ -235,20 +233,46 @@ if(document.getElementById("container__form-add-room")){
             if(roomType==""){
                 notice.textContent = `Please choose room type!`;
                 event.preventDefault();
-            }else 
-                if(roomAvatar==""){
-                    notice.textContent = `Please choose room avatar!`;
-                    event.preventDefault();
-                }else 
-                    if(roomImages==""){
-                        notice.textContent = `Please choose room image!`;
-                        event.preventDefault();
-                    }
+            }
     }
     
     const form = document.getElementById('form-add-room');
     const notice = document.getElementById('notice--empty');
     form.addEventListener('submit', logSubmit);
+}
+
+//Check form add Room Type
+if(document.getElementById("container__form-add-room")){
+    function logSubmit(event) {
+        const roomType = document.getElementById("roomtype").value;
+        const beds = document.getElementById("beds").value;
+        const area = document.getElementById("area").value;
+        const price = document.getElementById("price").value;
+        
+        if(roomType==""){
+            notice.textContent = `Please enter room type!`;
+            console.log(roomType);
+            event.preventDefault();
+        } else 
+            if(beds==""){
+                notice.textContent = `Please enter number of bed!`;
+                event.preventDefault();
+            }  else 
+                if(area==""){
+                    notice.textContent = `Please enter area!`;
+                    event.preventDefault();
+                }  else 
+                    if(price==""){
+                        notice.textContent = `Please enter price!`;
+                        event.preventDefault();
+                    } 
+    }
+    
+    const form = document.getElementById('form-add-roomtype');
+    const notice = document.getElementById('notice--empty--roomtype');
+    form.addEventListener('submit', logSubmit);
+
+
 }
 
 //Check form register
@@ -417,6 +441,21 @@ if(document.getElementById("roomNumber")){
         else{
             $.post("/ajax/checkRoomNumber", {roomNumber: num}, function(data){
                     $("#messageRoomNumber").html(data);
+            });
+        }
+    });
+}
+
+//check exist room number
+if(document.getElementById("roomtype")){
+    $("#roomtype").keyup(function(){
+        var num = $(this).val();
+        if(num==""){
+            $("#messageRoomType").html("");
+        }
+        else{
+            $.post("/ajax/checkRoomType", {roomType: num}, function(data){
+                    $("#messageRoomType").html(data);
             });
         }
     });

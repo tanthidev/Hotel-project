@@ -1875,9 +1875,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-bottom: 10px;
 }
 
-.form-add-room{
+.form-add-room,
+.form-add-roomtype{
     background-color: var(--white-color);
     padding: 10px 30px;
+    border-radius: 5px;
+}
+
+.form-add-roomtype{
+    margin-top: 15px;
 }
 
 .form-add-room--label{
@@ -1933,7 +1939,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     transform: scale(1.04);
 }
 
-#notice--empty{
+#notice--empty,
+#notice--empty--roomtype{
     display: inline-block;
     font-size: 17px;
     color: red;
@@ -1943,7 +1950,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 #roomNumber{
     margin-bottom: 0;
 }
-#messageRoomNumber{
+#messageRoomNumber,
+#messageRoomType{
     color: red;
     font-size: 15px;
     animation: 1s shake infinite;

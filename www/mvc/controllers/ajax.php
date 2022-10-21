@@ -30,5 +30,13 @@
                 echo "Email already in existence!";
             }
         }
+        //Check Exist room type
+        public function checkRoomType(){
+            $room = self::model("roomModel");
+            $roomType = $_POST['roomType'];
+            if($room -> checkExistRoomType($roomType)==false){
+                echo "Room type already in existence!";
+            }
+        }
     }
 ?>
