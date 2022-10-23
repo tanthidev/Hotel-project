@@ -20,7 +20,7 @@
             <div class="grid__row">
                 <!-- Room number -->
                 <div class="grid__column-2">
-                    <label class="form-add-room--label" for="roomNumber">Room number *</label>
+                    <label class="form-add-room--label" for="roomNumber">Room number <span style="color:red;">*</span></label>
                     <br>
                     <input class="form-add-room--input" id="roomNumber" name="roomNumber" type="text">
                     <br>
@@ -28,7 +28,7 @@
                 </div>
                     <!-- Room Type -->
                     <div class="grid__column-2">
-                        <label class="form-add-room--label" for="roomType">Room Type *</label>
+                        <label class="form-add-room--label" for="roomType">Room Type <span style="color:red;">*</span></label>
                         <br>
                         <select class="form-add-room--input" name="roomType" id="roomType">
                             <option value=""></option>
@@ -67,7 +67,7 @@
                     <div class="grid__row">
                         <!-- Room Type-->
                         <div class="grid__column-2">
-                            <label class="form-add-room--label" for="roomtype">Room Type *</label>
+                            <label class="form-add-room--label" for="roomtype">Room Type <span style="color:red;">*</span></label>
                             <br>
                             <input class="form-add-room--input" id="roomtype" name="roomtype" type="text" >
                             <br>
@@ -75,7 +75,7 @@
                         </div>
                         <!--  -->
                         <div class="grid__column-2">
-                            <label class="form-add-room--label" for="beds">Number of bed *</label>
+                            <label class="form-add-room--label" for="beds">Number of bed <span style="color:red;">*</span></label>
                             <br>
                             <input class="form-add-room--input" id="beds" name="beds" type="number">
                             <br>
@@ -84,13 +84,13 @@
                     <!--  -->
                     <div class="grid__row">
                         <div class="grid__column-2">
-                            <label class="form-add-room--label" for="area">Area *</label>
+                            <label class="form-add-room--label" for="area">Area <span style="color:red;">*</span></label>
                             <br>
                             <input class="form-add-room--input" id="area" name="area" type="number">
                             <br>
                         </div>
                         <div class="grid__column-2">
-                            <label class="form-add-room--label" for="price">Price *</label>
+                            <label class="form-add-room--label" for="price">Price <span style="color:red;">*</span></label>
                             <br>
                             <input class="form-add-room--input" id="price" name="price" type="number">
                             <br>
@@ -106,7 +106,7 @@
                     <div class="grid__row">
                         <div class="grid__column-2">
                             <!-- Room avatar -->
-                            <label class="form-add-room--label" for="roomAvatar">Room Avatar *</label>
+                            <label class="form-add-room--label" for="roomAvatar">Room Avatar <span style="color:red;">*</span></label>
                             <input class="form-add-room--input form-add-room--input-img" id="roomAvatar" type="file" name="roomAvatar">
     
                         </div>

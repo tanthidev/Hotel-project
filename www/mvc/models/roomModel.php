@@ -45,7 +45,7 @@
             
         }
 
-        public function addRoomAvatar($fileame, $roomType){
+        public function addRoomAvatar($filename, $roomType){
             $result = false;
             $qr = "INSERT INTO AvatarRoom (fileName, roomType) VALUES ('$filename', '$roomType')";
             $a = mysqli_query($this -> conn, $qr);
@@ -56,15 +56,26 @@
         }
 
         public function addRoomImage($fileNames, $roomType){
-            foreach($fileNames as $fileNames){
+            foreach($fileNames as $fileName){
                 $qr = "INSERT INTO ImageRoom (fileName, roomType) VALUES ('$fileName', '$roomType')";
                 $a = mysqli_query($this -> conn, $qr);
             }
         }
 
-        public function insertRoom($roomNumber, $roomType, $describe, $priceRoom){
-            $qr ="INSERT INTO Rooms (roomNumber, roomType, describeRoom, price)
-                    VALUE ('$roomNumber','$roomType','$describe', '$priceRoom')";
+        public function insertRoom($roomNumber, $roomType, $describe){
+            $qr ="INSERT INTO Rooms (roomNumber, roomType, describeRoom)
+                    VALUE ('$roomNumber','$roomType','$describe')";
+            $result = "false";
+            $a = mysqli_query($this -> conn, $qr);
+            if($a){
+                $result = "true";
+            }
+            return $result;
+        }
+
+        public function insertRoomType($roomType, $beds, $area, $guest, $price){
+            $qr ="INSERT INTO RoomType (roomType, numberOfBed, area, guest, price)
+                    VALUE ('$roomType','$beds','$area', '$guest', '$price')";
             $result = "false";
             $a = mysqli_query($this -> conn, $qr);
             if($a){
@@ -114,6 +125,7 @@
             }
             return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
         }
+
 
 
     }   

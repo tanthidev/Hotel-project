@@ -10,7 +10,8 @@
             $roomNumber = $_POST['roomNumber'];
             if($room -> checkExistRoomNumber($roomNumber)==true){
                 echo "Room number already in existence!";
-            }
+            } else 
+                echo "";
         }
 
         //Check exist phone number
@@ -34,9 +35,10 @@
         public function checkRoomType(){
             $room = self::model("roomModel");
             $roomType = $_POST['roomType'];
-            if($room -> checkExistRoomType($roomType)==false){
+            if($room -> checkExistRoomType($roomType)==true){
                 echo "Room type already in existence!";
-            }
+            }  else 
+                echo "";
         }
     }
 ?>

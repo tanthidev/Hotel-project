@@ -121,8 +121,6 @@
                 $roomType       = addslashes($_POST['roomType']);
                 $describe       = addslashes($_POST['roomDescribe']);
                 
-
-                
                 // Kiểm tra Room Number
                 if(($_POST['roomNumber']!=null)){
                     if($room -> checkExistRoomNumber($roomNumber)){
@@ -140,96 +138,47 @@
                         ]);
                         exit;
                     }
+
+                    $result = $room -> insertRoom($roomNumber, $roomType, $describe);
+                    if(!$result){
+                        $textnotice="";
+                        $check=false;
+                        //Nếu trả về true => đã tồn tại 
+                        $textnotice="Error when add room!";
+                        //GỌi view
+                        $view =self::view("adminlayout",[
+                            "page"=>"roomManager",
+                            "admin" => $user -> getAdmin(),
+                            "roomType" => $room -> getRoomType(),
+                            "notice" => $textnotice,
+                            "check" => $check
+                        ]);
+                        exit;
+                    } else {
+                        header("Location: /admin/roomManager");
+                    }
                 } 
                 
 
-                // //Kiểm tra Room Type
-                // if ($roomType==""){
-                //     $textnotice="";
-                //     $check=false;
-                //     //Nếu trả về true => đã tồn tại 
-                //     $textnotice="Room type can't empty!";
-                //     //GỌi view
-                //     $view =self::view("adminlayout",[
-                //         "page"=>"roomManager",
-                //         "admin" => $user -> getAdmin(),
-                //         "roomType" => $room -> getRoomType(),
-                //         "notice" => $textnotice,
-                //         "check" => $check,
-                //         "users" => $user -> getUser()
-                //     ]);
-                //     exit;
-                // }
-
-                // //Kiểm tra Avatar file
-                // if(($_FILES["roomAvatar"]['error'] != 0)){
-                //     $check=false;
-                //     $textnotice="Room Avatar can't empty!";
-                //     $view =self::view("adminlayout",[
-                //         "page"=>"roomManager",
-                //         "roomType" => $room -> getRoomType(),
-                //         "notice" => $textnotice,
-                //         "check" => $check,
-                //         "users" => $user -> getUser()
-                //     ]);
-                //     exit;
-                // }
-
-                // //Kiểm tra room Image
-                // if(($_FILES["roomImages"]['error'][0]!=0)){
-                //     $check=false;
-                //     $textnotice="Room Image can't empty!";
-                //     $view =self::view("adminlayout",[
-                //         "page"=>"roomManager",
-                //         "roomType" => $room -> getRoomType(),
-                //         "notice" => $textnotice,
-                //         "check" => $check,
-                //         "users" => $user -> getUser()
-                //     ]);
-                //     exit;
-                // }
-
-                // //Tiến hành Insert vào table Rooms
-                // $result = $room -> insertRoom($roomNumber, $roomType, $describe, $priceRoom);
                 
-
-                // //Tiến hành lưu Avatar Image
-                // $room -> addRoomAvatar($avatarName, $roomNumber);
-                // if (!move_uploaded_file($tempAvatar, $folderAvatar)) {
-                //     //Báo lỗi
-                //     echo "Error Image Room!";
-                //     //Xóa data vừa lưu vào Rooms 
-
-                //     //Xóa data vừa lưu vào RoomAvatar
-
-                // }
-                // //Tiến hành lưu Image Room[]
-                // $room -> addRoomImage($roomImagesNames, $roomNumber);
-                // for ($i = 0; $i < count($folderImages); $i++){
-                    
-                //     if (!move_uploaded_file($roomImagesTemps[$i], $folderImages[$i])) {
-                //         //Báo lỗi
-                //         echo "Error Image Room!";
-                //         break;
-                //         //Xóa data vừa lưu vào Rooms 
-    
-                //         //Xóa data vừa lưu vào RoomAvatar
-    
-                //     }
-                // }
-
                 header("Location: /admin/roomManager");
 
+            } else {
+                header("Location: /admin/roomManager"); 
             }
         }
 
         static function addRoomType(){
+            $user = self::model("userModel");
 
             if(isset($_POST['btn-add'])){
+                $room = self::model("roomModel");
+
                 $price      = addslashes($_POST['price']);
                 $beds           = addslashes($_POST['beds']);
+                $guest          = $beds *2;
                 $area           = addslashes($_POST['area']);
-                $roomType           = addslashes($_POST['roomType']);
+                $roomType           = addslashes($_POST['roomtype']);
                 $localImage= "./mvc/data/images/room/";
                 $avatarName     = $_FILES["roomAvatar"]["name"];
                 $tempAvatar     = $_FILES["roomAvatar"]["tmp_name"];
@@ -242,14 +191,107 @@
                     $folderImages[$index] = $localImage . $roomImagesName;
                     $index++;
                 }
-    
-                //Check roomtype
                 
-               
+
+                //Kiểm tra Avatar file
+                if(($_FILES["roomAvatar"]['error'] != 0)){
+                    $check=false;
+                    $textnotice="Room Avatar can't empty!";
+                    $view =self::view("adminlayout",[
+                        "page"=>"roomManager",
+                        "roomType" => $room -> getRoomType(),
+                        "notice" => $textnotice,
+                        "check" => $check,
+                        "users" => $user -> getUser(),
+                        "admin" => $user -> getAdmin()
+                    ]);
+                    exit;
+                }
+                
+
+                //Kiểm tra room Image
+                if(($_FILES["roomImages"]['error'][0]!=0)){
+                    $check=false;
+                    $textnotice="Room Image can't empty!";
+                    $view =self::view("adminlayout",[
+                        "page"=>"roomManager",
+                        "roomType" => $room -> getRoomType(),
+                        "notice" => $textnotice,
+                        "check" => $check,
+                        "users" => $user -> getUser(),
+                        "admin" => $user -> getAdmin()
+                    ]);
+                    exit;
+                }
+
+                //Tiến hành insert vào bảng room type
+                $result = $room -> insertRoomType($roomType, $beds, $area, $guest, $price);
+                
+                if(!$result){
+                    $check=false;
+                    $textnotice="Error when insert room type!";
+                    $view =self::view("adminlayout",[
+                        "page"=>"roomManager",
+                        "roomType" => $room -> getRoomType(),
+                        "notice" => $textnotice,
+                        "check" => $check,
+                        "users" => $user -> getUser(),
+                        "admin" => $user -> getAdmin()
+                    ]);
+                    exit;
+                }
+
+                //Tiến hành lưu Avatar Image
+                $room -> addRoomAvatar($avatarName, $roomType);
+                if (!move_uploaded_file($tempAvatar, $folderAvatar)) {
+                    //Báo lỗi
+                    $check=false;
+                        $textnotice="Error when save avatar!";
+                        $view =self::view("adminlayout",[
+                            "page"=>"roomManager",
+                            "roomType" => $room -> getRoomType(),
+                            "notice" => $textnotice,
+                            "check" => $check,
+                            "users" => $user -> getUser(),
+                            "admin" => $user -> getAdmin()
+                        ]);
+                        exit;
+                    //Xóa data vừa lưu vào Rooms 
+
+                    //Xóa data vừa lưu vào RoomAvatar
+
+                }
+
+                //Tiến hành lưu Image Room[]
+                $room -> addRoomImage($roomImagesNames, $roomType);
+                for ($i = 0; $i < count($folderImages); $i++){
+                    if (!move_uploaded_file($roomImagesTemps[$i], $folderImages[$i])) {
+                        //Báo lỗi
+                        $check=false;
+                        $textnotice="Error when save image!";
+                        $view =self::view("adminlayout",[
+                            "page"=>"roomManager",
+                            "roomType" => $room -> getRoomType(),
+                            "notice" => $textnotice,
+                            "check" => $check,
+                            "users" => $user -> getUser(),
+                            "admin" => $user -> getAdmin()
+                        ]);
+                        exit;
+                        break;
+                        //Xóa data vừa lưu vào Rooms 
+    
+                        //Xóa data vừa lưu vào RoomAvatar
+    
+                    }
+                }
+
+                header("Location: /admin/roomManager");
 
             }
 
         }
+
         static function settingRoom(){
             if(isset($_GET['room'])){
                  //Gọi model user
