@@ -1,7 +1,7 @@
 <?php
     $room = json_decode($data['room']);
     $room = $room[0];
-    $nameAvatar = json_decode($data['avatarRoom']) -> localAvatar;
+    $nameAvatar = json_decode($data['avatarRoom']) -> fileName;
     $localImage = 'src="/mvc/data/images/room/' .  $nameAvatar . '"';
     $imageRoom = json_decode($data['imageRoom']) ;
     $countImageRoom = count( $imageRoom);
@@ -50,9 +50,9 @@
                             <img class="settingRoom__image" <?php echo $localImage; ?> alt="">
                             <?php 
                                 for($index=0;$index<$countImageRoom;$index++){
-                                    $localImage = 'src="/mvc/data/images/room/' .  $imageRoom[$index]-> localImage. '"';
+                                    $localImage = 'src="/mvc/data/images/room/' .  $imageRoom[$index]-> fileName. '"';
                                     echo '
-                                        <img alt="image" class="settingRoom__image" '.$localImage.'>
+                                        <img class="settingRoom__image" '.$localImage.'>
                                      ';
                                 }
                                 
@@ -83,7 +83,7 @@
                     echo '<img id="settingRoom__image" '.$localImage.' alt="" class="settingRoom__slide-show--image slide-show">';
                     
                     for($index=0;$index<$countImageRoom;$index++){
-                        $localImage = 'src="/mvc/data/images/room/' .  $imageRoom[$index]-> localImage. '"';
+                        $localImage = 'src="/mvc/data/images/room/' .  $imageRoom[$index]-> fileName. '"';
                         echo '
                         <img id="settingRoom__image" '.$localImage.' alt="" class="settingRoom__slide-show--image slide-show">
                          ';
@@ -92,8 +92,8 @@
                 
                 
 
-            <a id="prev" class="prev">&#10094;</a>
-            <a id="next" class="next">&#10095;</a>
+            <a id="prev-pic" class="prev-pic">&#10094;</a>
+            <a id="next-pic" class="next-pic">&#10095;</a>
         </div>
     </div>
 </div>

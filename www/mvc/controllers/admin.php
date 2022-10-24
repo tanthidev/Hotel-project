@@ -84,17 +84,17 @@
             }
             
             //Pagination
-            $totalRoom = count(json_decode($room->getAllRoom()));
+            $totalRoom = count(json_decode($room->getAllRoomType()));
             $totalPage = ceil($totalRoom/$roomPerPage);
             $from = ($currentPage-1) * $roomPerPage;
             //GỌi view
             $view =self::view("adminlayout",[
                 "page"=>"roomManager",
-                "roomType" => $room -> getRoomType(),
+                "roomType" => $room -> getAllRoomType(),
                 "users" => $user -> getUser(),
                 "admin" => $user -> getAdmin(),
-                "totalPage" => $totalPage 
-                // "rooms" => $room -> getLimitListRoom($from, $roomPerPage)
+                "totalPage" => $totalPage,
+                "rooms" => $room -> getLimitListRoom($from, $roomPerPage)
             ]);
         }
 
@@ -192,7 +192,7 @@
                     $index++;
                 }
                 
-
+                
                 //Kiểm tra Avatar file
                 if(($_FILES["roomAvatar"]['error'] != 0)){
                     $check=false;
@@ -225,21 +225,21 @@
                 }
 
                 //Tiến hành insert vào bảng room type
-                $result = $room -> insertRoomType($roomType, $beds, $area, $guest, $price);
+                // $result = $room -> insertRoomType($roomType, $beds, $area, $guest, $price);
                 
-                if(!$result){
-                    $check=false;
-                    $textnotice="Error when insert room type!";
-                    $view =self::view("adminlayout",[
-                        "page"=>"roomManager",
-                        "roomType" => $room -> getRoomType(),
-                        "notice" => $textnotice,
-                        "check" => $check,
-                        "users" => $user -> getUser(),
-                        "admin" => $user -> getAdmin()
-                    ]);
-                    exit;
-                }
+                // if(!$result){
+                //     $check=false;
+                //     $textnotice="Error when insert room type!";
+                //     $view =self::view("adminlayout",[
+                //         "page"=>"roomManager",
+                //         "roomType" => $room -> getRoomType(),
+                //         "notice" => $textnotice,
+                //         "check" => $check,
+                //         "users" => $user -> getUser(),
+                //         "admin" => $user -> getAdmin()
+                //     ]);
+                //     exit;
+                // }
 
                 //Tiến hành lưu Avatar Image
                 $room -> addRoomAvatar($avatarName, $roomType);
@@ -306,7 +306,7 @@
                     "page"=>"settingRoom",
                     "users" => $user -> getUser(),
                     "admin" => $user -> getAdmin(),
-                    "room" => $room -> getRoom($_GET['room']),
+                    "room" => $room -> getRoomType($_GET['room']),
                     "avatarRoom" => $room -> getAvatarRoom($_GET['room']),
                     "imageRoom"  => $room -> getImageRoom($_GET['room'])
                 ]);

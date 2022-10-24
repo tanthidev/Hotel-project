@@ -1,6 +1,6 @@
 <?php 
     $rooms = json_decode($data['rooms']);
-	// $countRoom = count($rooms);
+	$countRoom = count($rooms);
 ?>
 <div id="container__roomManager" class="container__roomManager">
     <div class="container__add-room">
@@ -132,13 +132,11 @@
     <!-- LIST ROOM -->
     <table id="roomManager__table" class="roomManager__table">
         <tr class="roomManager_table-header">
-            <th class="roomManager_table-header-item grid__column-10-1">ROOM NUMBER</th>
-            <th class="roomManager_table-header-item grid__column-10-1">ROOM TYPES</th>
+            <th class="roomManager_table-header-item grid__column-10-3">ROOM TYPES</th>
             <th class="roomManager_table-header-item grid__column-10-1">PRICE ($)</th>
             <th class="roomManager_table-header-item grid__column-10-1">BEDS</th>
             <th class="roomManager_table-header-item grid__column-10-1">AREA</th>
             <th class="roomManager_table-header-item grid__column-10-1">GUEST</th>
-            <th class="roomManager_table-header-item grid__column-10-1">IMAGES</th>
             <th class="roomManager_table-header-item grid__column-10-2">DESCRIBE</th>
             <th class="roomManager_table-header-item grid__column-10-1">ACTION</th>
         </tr>
@@ -147,18 +145,14 @@
             foreach ($rooms as $room){
                 echo '
                 <tr class="roomManager_table-row">
-                    <td class="roomManager_table-content grid__column-10-1">'.$room->roomNumber.'</td>
-                    <td class="roomManager_table-content grid__column-10-1">'.$room->roomType.'</td>
+                    <td class="roomManager_table-content grid__column-10-3">'.$room->roomType.'</td>
                     <td class="roomManager_table-content grid__column-10-1">'.$room->price.'</td>
                     <td class="roomManager_table-content grid__column-10-1">'.$room->numberOfBed.'</td>
                     <td class="roomManager_table-content grid__column-10-1">'.$room->area.'</td>
                     <td class="roomManager_table-content grid__column-10-1">'.$room->guest.'</td>
-                    <td class="roomManager_table-content grid__column-10-2">
-                        <i class="fa-solid fa-image roomManager_table-content-image"></i>
-                    </td>
-                    <td class="roomManager_table-content grid__column-10-1">'.$room->describeRoom.'</td>
+                    <td class="roomManager_table-content grid__column-10-2">'.$room->describeRoom.'</td>
                     <td class="roomManager_table-content grid__column-10-1 roomManager_table-content--action">
-                        <a href="/admin/settingRoom/?room='.$room->roomNumber.'" class="roomManager_table-content--change">
+                        <a href="/admin/settingRoom/?room='.$room->roomType.'" class="roomManager_table-content--change">
                             <i class="fa-solid fa-gear"></i>
                         </a>
                         

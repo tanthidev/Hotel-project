@@ -5,29 +5,30 @@
         session_start(); 
         ob_start();
     } 
+	
+	//Notice
+	if(isset($data['notice'])){
+		if($data['check']){
+			$text= "notice-text--success";
+			$task= "notice-task--success";
+		}
+		else{
+			$text= "notice-text";
+			$task= "notice-task";
+		}
+	
+		echo '
+		<div class="'.$task.' notice-task">
+			<span class="'.$text.' notice-text">
+			'.$data['notice'].'
+			</span>
+		</div>
+		';      
+	}
+
 
 ?>
 
-<?php 
-    if(isset($data['notice'])){
-        if($data['check']){
-            $text= "notice-text--success";
-            $task= "notice-task--success";
-        }
-        else{
-            $text= "notice-text";
-            $task= "notice-task";
-        }
-
-        echo '
-        <div class="'.$task.' notice-task">
-            <span class="'.$text.' notice-text">
-            '.$data['notice'].'
-            </span>
-        </div>
-        ';      
-    }
-?>
 
 
 
@@ -161,7 +162,7 @@
 			<div class="home">
 				<div class="home__backgound home__backgound--short">
 					<div class="home__taskbar-container-booking">
-						<form id="form-search" class="home__taskbar-booking grid__row">
+						<form action="/listroom/default/" id="form-search" class="home__taskbar-booking grid__row">
 							
 							<div class="grid__column-2 taskbar-booking__checkout taskbar-booking--item">
 								<label for="booking-input-checkout" class="taskbar-booking--text">
@@ -177,9 +178,9 @@
 									<i class="fa-solid fa-users"></i>
 									Guest
 								</label>
-								<input id="booking-input-guest" type="number" name="number-guest" value="1" min="1"  class="booking-input booking-input--guest">
+								<input id="booking-input-guest" type="number" name="guest" value="1" min="1"  class="booking-input booking-input--guest">
 							</div>
-							<input type="submit" value="Search" class="taskbar-booking__search grid__column-4">
+							<input type="submit" name="search" value="search" class="taskbar-booking__search grid__column-4">
 						</form>
 					</div>
 				</div>

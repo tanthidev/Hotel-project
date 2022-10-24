@@ -166,7 +166,7 @@
 
 
 				<div class="home__taskbar-container-booking">
-					<form id="form-search" class="home__taskbar-booking grid__row">
+					<form action="/listroom/default" method="GET" id="form-search" class="home__taskbar-booking grid__row">
 						
 						<div class="grid__column-2 taskbar-booking__checkout taskbar-booking--item">
 							<label for="booking-input-checkout" class="taskbar-booking--text">
@@ -182,9 +182,9 @@
 								<i class="fa-solid fa-users"></i>
 								Guest
 							</label>
-							<input id="booking-input-guest" type="number" name="number-guest" value="1" min="1"  class="booking-input booking-input--guest">
+							<input id="booking-input-guest" type="number" name="guest" value="1" min="1"  class="booking-input booking-input--guest">
 						</div>
-						<input type="submit" value="Search" class="taskbar-booking__search grid__column-4">
+						<input type="submit" name="search" value="search" class="taskbar-booking__search grid__column-4">
 					</form>
 				</div>
 			</div>

@@ -1,6 +1,9 @@
 <?php 
     class listroom extends controller{
         static function default(){
+            if(isset($_GET['search'])){
+                
+            }
             //Gọi Model
             $room = self::model('roomModel');
             $user = self::model('userModel');
@@ -15,7 +18,7 @@
             $roomPerPage=4;
 
             //Pagination
-            $totalRoom= count(json_decode($room->getAllRoom()));
+            $totalRoom= count(json_decode($room->getAllRoomType()));
             $totalPage = ceil($totalRoom/$roomPerPage);
             $from = ($currentPage-1) * $roomPerPage;
 

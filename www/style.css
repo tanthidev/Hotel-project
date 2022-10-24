@@ -7,9 +7,10 @@
     --text-color: #333;
     --main-color: #13172B;
     --main-color0-9:rgba(19, 23, 43,0.95);
-    --orange-color: rgba(217,134,0);
+    --orange-color: #d98600;
     --orange-color-dark: rgb(151, 93, 0);
     --background-color: #F1F1F1;
+    --background-gradient: linear-gradient(317deg, rgba(19,23,43,1) 50%, rgba(58,32,132,1) 100%)
 }
 
 *{
@@ -269,7 +270,8 @@ a{
 
 /* Footer CSS */
 .footer{
-    background-color: var(--main-color);
+    background: var(--main-color);
+    background: var(--background-gradient);
     padding: 50px 0;
     color: var(--white-color);
 }
@@ -907,7 +909,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 /* Favorite Room */
 
 .favorite-rooms{
-    background-color: var(--main-color);
+    background: var(--main-color);
+    background: var(--background-gradient);
 }
 
 .favorite-rooms__container{
@@ -929,10 +932,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-top: 10px;;
 }
 .favorite-rooms__slide--container-img{
+    display: flex;
+    margin: auto;
     position: relative;
     cursor: pointer;
     overflow: hidden;
-    width: fit-content;
+    width: 100%;
+    height: 380px;
 }
 .favorite-rooms__slide--img{
     width: 600px;
@@ -978,7 +984,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .favorite-rooms__slide--describe{
     display: flex;
-    font-size: 12px;
+    margin: auto;
+    width: fit-content;
+    font-size: 15px;
     line-height: 10px;
     padding-top: 10px;
 }
@@ -1018,7 +1026,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .prev-pic, .next-pic {
     cursor: pointer;
     position: absolute;
-    top: 35%;
+    top: 50%;
     width: auto;
     margin-top: -22px;
     padding: 16px;
@@ -1066,7 +1074,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .all-rooms--link{
     color: var(--white-color);
-    font-size: 30px
+    font-size: 25px
 }
 
 .all-rooms--link:hover{
@@ -1475,10 +1483,19 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .page-booking__main--slide--item{
+    position: relative;
     border-radius: 5px;
     overflow: hidden;
     animation: fade 0.3s ease-in-out forwards;
     margin: 0;
+    height: 400px;
+    overflow: hidden;
+
+}
+
+.page-booking__main--slide--image{
+    width: 100%;
+
 }
 
 .next--page-booking{
@@ -2349,16 +2366,25 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     .favorite-rooms__slide--img{
         width: 100%;
     }
+    
+
     .favorite-rooms__slide--container-img{
-        display: flex;
-        margin: auto;
+        
+        height: auto;
     }
 
+    .favorite-rooms__slide--style-room,
+    .all-rooms--link{
+        font-size: 20px;
+    }
+
+    
     .favorite-rooms__container{
         position: relative;
         margin: auto;
         color: var(--white-color);
         padding: 50px 0;
+        width: 80%;
     }
 
     .btn__booking-now{

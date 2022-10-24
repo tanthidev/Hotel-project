@@ -1,17 +1,7 @@
 <?php 
     class roomModel extends db{
 
-        public function getAllRoom(){
-            $qr = "SELECT roomNumber from Rooms";
-            $rows = mysqli_query($this ->conn, $qr);
-            $array = array();
-            while($row = mysqli_fetch_assoc($rows)){
-                $array[] = $row;
-            }
-            return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
-        }
-
-        public function getRoomType(){
+        public function getAllRoomType(){
             $qr = "SELECT roomType from RoomType";
             $rows = mysqli_query($this ->conn, $qr);
             $array = array();
@@ -20,6 +10,9 @@
             }
             return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
         }
+
+        
+
 
         public function checkExistRoomNumber($roomNumber){
             $qr = "SELECT * FROM Rooms WHERE roomNumber='$roomNumber'";
@@ -44,6 +37,7 @@
             return $result;
             
         }
+        
 
         public function addRoomAvatar($filename, $roomType){
             $result = false;
@@ -58,7 +52,7 @@
         public function addRoomImage($fileNames, $roomType){
             foreach($fileNames as $fileName){
                 $qr = "INSERT INTO ImageRoom (fileName, roomType) VALUES ('$fileName', '$roomType')";
-                $a = mysqli_query($this -> conn, $qr);
+                mysqli_query($this -> conn, $qr);
             }
         }
 
@@ -84,28 +78,11 @@
             return $result;
         }
 
-        // public function getLimitListRoom($from, $amount){
-        //     $qr = " SELECT Rooms.roomNumber, Rooms.price, Rooms.roomType, AvatarRoom.localAvatar, RoomType.guest, roomType.area, roomType.numberOfBed, Rooms.describeRoom
-        //             FROM Rooms, AvatarRoom, roomType
-        //             WHERE (Rooms.roomNumber = AvatarRoom.roomNumber) AND (Rooms.roomType = RoomType.roomType)
-        //             limit $from, $amount";
-        //     $rows = mysqli_query($this ->conn, $qr);
-        //     $array = array();
-        //     while($row = mysqli_fetch_assoc($rows)){
-        //         $array[] = $row;
-        //     }
-        //     return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
-        // }
-
-        public function getAvatarRoom($roomNumber){
-            $qr = "SELECT localAvatar from AvatarRoom where roomNumber='$roomNumber'";
-            $rows = mysqli_query($this ->conn, $qr);
-            $row = mysqli_fetch_array($rows);
-            return json_encode($row, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
-        }
-
-        public function getImageRoom($roomNumber){
-            $qr = "SELECT localImage from ImageRoom where roomNumber = '$roomNumber'";
+        public function getLimitListRoom($from, $amount){
+            $qr = " SELECT RoomType.roomType, RoomType.price, AvatarRoom.fileName, RoomType.guest, roomType.area, roomType.numberOfBed, roomType.describeRoom 
+                    FROM   AvatarRoom, roomType 
+                    WHERE (AvatarRoom.roomType = RoomType.roomType)
+                    LIMIT $from, $amount";
             $rows = mysqli_query($this ->conn, $qr);
             $array = array();
             while($row = mysqli_fetch_assoc($rows)){
@@ -114,10 +91,39 @@
             return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
         }
 
-        public function getRoom($roomNumber){
-            $qr = " SELECT Rooms.roomNumber, Rooms.price, Rooms.roomType, RoomType.guest, roomType.area, roomType.numberOfBed, Rooms.describeRoom 
-                FROM Rooms, roomType 
-                WHERE (Rooms.roomNumber = '$roomNumber') AND (Rooms.roomType = RoomType.roomType);";
+        public function getAvatarRoom($roomType){
+            $qr = "SELECT fileName from AvatarRoom where roomType='$roomType'";
+            $rows = mysqli_query($this ->conn, $qr);
+            $row = mysqli_fetch_array($rows);
+            return json_encode($row, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+        }
+
+        public function getImageRoom($roomType){
+            $qr = "SELECT fileName from ImageRoom where roomType = '$roomType'";
+            $rows = mysqli_query($this ->conn, $qr);
+            $array = array();
+            while($row = mysqli_fetch_assoc($rows)){
+                $array[] = $row;
+            }
+            return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+        }
+
+        public function getRoomType($roomType){
+            $qr = "SELECT roomType.price, roomType.roomType, RoomType.guest, roomType.area, roomType.numberOfBed, roomType.describeRoom 
+                FROM roomType 
+                WHERE (RoomType.roomType = '$roomType')";
+            $rows = mysqli_query($this ->conn, $qr);
+            $array = array();
+            while($row = mysqli_fetch_assoc($rows)){
+                $array[] = $row;
+            }
+            return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+        }
+
+        public function getFavoritesRoom(){
+            $qr = "SELECT RoomType.roomType, RoomType.numberOfBed, RoomType.area, RoomType.guest, RoomType.price, AvatarRoom.fileName 
+                    FROM RoomType, AvatarRoom
+                    WHERE (RoomType.roomType = AvatarRoom.roomType) AND (RoomType.favorite='1')";
             $rows = mysqli_query($this ->conn, $qr);
             $array = array();
             while($row = mysqli_fetch_assoc($rows)){

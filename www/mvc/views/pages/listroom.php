@@ -10,8 +10,8 @@
 			<?php
 				for($index = 0; $index < $countRoom; $index=$index+2){
 					$localImage="url('/mvc/data/images/room/";
-					$localImageTop = $localImage . $rooms[$index]->localAvatar . "')";
-					$localImageBot = $localImage . $rooms[$index+1]->localAvatar . "')";
+					$localImageTop = $localImage . $rooms[$index]->fileName . "')";
+					$localImageBot = $localImage . $rooms[$index+1]->fileName . "')";
 					echo '
 						<!-- ROOM TOP -->
 						<div class="list-room__group--container-room">
@@ -79,7 +79,7 @@
 													<span class="list-room__booking-price--text">$'.$rooms[$index]->price.'/ Night</span>
 												</div>
 												<!--  -->
-												<a href="/booking/default?room='.$rooms[$index] -> roomNumber.'" class="list-room__booking-btn">BOOK NOW</a>
+												<a href="/booking/default?room='.$rooms[$index] -> roomType.'" class="list-room__booking-btn">BOOK NOW</a>
 											</div>
 										</div>
 									</div>
@@ -163,7 +163,7 @@
 													<span class="list-room__booking-price--text">$'.$rooms[$index+1] -> price.'/ Night</span>
 												</div>
 												<!--  -->
-												<a href="/booking/default?room='.$rooms[$index+1] -> roomNumber.'" class="list-room__booking-btn">BOOK NOW</a>
+												<a href="/booking/default?room='.$rooms[$index+1] -> roomType.'" class="list-room__booking-btn">BOOK NOW</a>
 											</div>
 										</div>
 									</div>

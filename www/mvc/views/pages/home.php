@@ -1,6 +1,5 @@
 <?php 
 	$rooms = json_decode($data['favorateRoom']);
-	// print_r($rooms);
 	$localImage="/mvc/data/images/room/";
 ?>
 
@@ -53,17 +52,17 @@
 						echo '
 							<div class="slide-show transfer-slide">
 								<div class="favorite-rooms__slide--container-img">
-									<img src="'.$localImage. $room->localAvatar.'" alt="" class="favorite-rooms__slide--img">
-									<a href="/booking/default?room='.$room->roomNumber.'" class="btn__booking-now favorite-rooms_slide--booking">Đặt phòng</a>
+									<img src="'.$localImage. $room->fileName.'" alt="" class="favorite-rooms__slide--img">
+									<a href="/booking/default?room='.$room->roomType.'" class="btn__booking-now favorite-rooms_slide--booking">Đặt phòng</a>
 								</div>
 								<div class="favorite-rooms__information">
 									<div class="favorite-rooms__slide--describe">
 										<p class="favorite-rooms__slide--number-bed favorite-rooms__slide--item">
-											'.$room->numberOfBed.' bed
+											'.$room->numberOfBed.' <i class="fa-solid fa-bed"></i>
 										</p>
 										<i class="fa-sharp fa-solid fa-circle"></i>
 										<p class="favorite-rooms__slide--number-person favorite-rooms__slide--item">
-											'.$room ->guest.' person
+											'.$room ->guest.' <i class="fa-solid fa-user-group"></i>
 										</p>
 										<i class="fa-sharp fa-solid fa-circle"></i>
 										<p class="favorite-rooms__slide--area favorite-rooms__slide--item">

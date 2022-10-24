@@ -428,7 +428,7 @@ if(document.getElementById("container__settingRoom")){
                 
                 settingRoom__image.style.display = 'block';
             } else 
-                if((e.target.id !== "settingRoom__image") && (e.target.id !== "prev") && (e.target.id !== "next")){
+                if((e.target.id !== "settingRoom__image") && (e.target.id !== "prev-pic") && (e.target.id !== "next-pic")){
                     //element clicked wasn't the div; hide the div
                     if(settingRoom__image.style.display !== 'none'){
                         settingRoom__image.style.display = 'none';
@@ -473,13 +473,13 @@ if(document.getElementById("roomtype")){
         else{
             $.post("/ajax/checkRoomType", {roomType: num}, function(data){
                     $("#messageRoomType").html(data);
-                    if(data!=" \n"){
-                        function logSubmit(event) {
-                            event.preventDefault();
-                        }
-                        const form = document.getElementById('form-add-roomtype');
-                        form.addEventListener('submit', logSubmit);
-                    }
+                    // if(data!=" \n"){
+                    //     function logSubmit(event) {
+                    //         event.preventDefault();
+                    //     }
+                    //     const form = document.getElementById('form-add-roomtype');
+                    //     form.addEventListener('submit', logSubmit);
+                    // }
             });
         }
     });
@@ -563,12 +563,12 @@ if(document.getElementById("form-search")){
             },
             "minDate": getCurrentDate(),
             "autoApply": true,
-            "drops": 'auto',
-            isInvalidDate: function(date) {
-                if (date.format('MM/DD/YYYY') == '10/24/2022') {
-                    return true; 
-                }
-            }
+            "drops": 'auto'
+            // isInvalidDate: function(date) {
+            //     if (date.format('MM/DD/YYYY') == '10/24/2022') {
+            //         return true; 
+            //     }
+            // }
             
         });
 
