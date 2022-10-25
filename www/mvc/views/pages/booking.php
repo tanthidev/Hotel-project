@@ -8,6 +8,7 @@
     $guest = "";
 ?>
 <div class="grid container-page-booking">
+    <!-- MAIN -->
     <div class="grid__row page-booking__main">
         <!--  -->
         <div id="slide-show__container" class="grid__column-10-6 slideshow-container page-booking__main--slide-img">
@@ -71,7 +72,7 @@
                         Date from - Date to
                     </label>
                     <!-- <input name="datecheckin" id="datecheckin" type="date" class="page-booking--selection-input"> -->
-                    <input value="<?php echo $dateCheckin; ?>" placeholder="Date from - Date to" id="date" class="page-booking--selection-input" type="text" name="datefilter" value="" />
+                    <input value="<?php echo $dateCheckin; ?>" placeholder="Date from - Date to" id="date" class="page-booking--selection-input page-booking--selection-input-date" type="text" name="datefilter" value="" />
                 </div>
 
                 <div class="grid__column-2 page-booking--selection-form-item">
@@ -140,17 +141,26 @@
     </div>
     <!--  -->
 
-    <div class="page-booking__container-overview grid__row">
-        <div class="page-booking__overview grid__column-10-6">
 
+    <!-- ROOM DETAIL -->
+     <div class="page-booking__container-detail grid__row">
+        <div class="grid__column-10-2">
+            <ul class="page-booking__tab-header">
+                <li class="page-booking__tab-header--item">
+                    <a href="#overview">OVERVIEW</a>
+                </li>
+                <li class="page-booking__tab-header--item">
+                    <a href="#amenities">AMENITIES</a>
+                </li>
+            </ul>
         </div>
     </div>
 
-    <!--  -->
+    <!--
     <div class="page-booking__container-amenities grid__row">
         <div class="page-booking__amenities grid__column-10-6">
 
         </div>
-    </div>
+    </div> -->
 
 </div>

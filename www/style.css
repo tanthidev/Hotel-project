@@ -91,15 +91,6 @@ hr{
     padding: 0 15px; 
 }
 
-.grid__column-10-6{
-    width: 60%;
-    padding: 0 15px; 
-}
-
-.grid__column-10-4{
-    width: 40%;
-    padding: 0 15px; 
-}
 
 .grid__column-10-1{
     width: 10%;
@@ -107,6 +98,11 @@ hr{
 }
 
 .grid__column-10-2{
+    width: 20%;
+    padding: 0 10px; 
+}
+
+.grid__column-10-8{
     width: 20%;
     padding: 0 10px; 
 }
@@ -203,11 +199,15 @@ hr{
 
 a:hover{
     text-decoration: none;
-    color: var(--white-color);
+    color: unset;
 }
 
 a{
     color: unset;
+}
+
+ul{
+    padding: 0;
 }
 
 /* Controller PAGE */
@@ -1473,8 +1473,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 
+/* PAGE BOOKING */
 .container-page-booking{
-    margin: 50px auto;
+    margin: 50px auto 0;
 }
 
 .page-booking__main--slide-img {
@@ -1500,7 +1501,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .next--page-booking{
     right: 15px;
+    border-radius: 3px 0 0 3px;
 }
+
+.next--page-booking, .prev--page-booking{
+    top: 35%;
+}
+
+
 
 
 .page-booking__main--selection{
@@ -1562,6 +1570,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 0 10px;
 }
 
+.page-booking--selection-input-date{
+    cursor: pointer;
+}
+
 .page-booking--selection-input--request{
     height: auto;
 
@@ -1610,9 +1622,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 
-.page-booking__container-amenities{
 
-}
 
 .page-booking__amenities-item{
     width: 30%;
@@ -1642,6 +1652,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     right: 5%;
     margin-bottom: 20px;
 }
+
+.page-booking__tab-header{
+    list-style: none;
+}
+
+.page-booking__tab-header--item{
+    font-size: 15px;
+    font-weight: 700;
+    padding: 15px 0;
+    border-bottom: 2px solid #ccc;
+}
+
 
 
 /* CSS ADMIN PAGE */
