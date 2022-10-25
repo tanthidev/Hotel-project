@@ -1,9 +1,7 @@
 <?php 
     class listroom extends controller{
         static function default(){
-            if(isset($_GET['search'])){
-                
-            }
+
             //Gọi Model
             $room = self::model('roomModel');
             $user = self::model('userModel');

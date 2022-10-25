@@ -26,6 +26,15 @@
 		';      
 	}
 
+	$datefilter = "dd/mm/yyy";
+	$guest = 1;
+
+	if(isset($_GET['datefilter'])){
+		$datefilter = $_GET['datefilter'];
+	}
+	if(isset($_GET['guest'])){
+		$guest = $_GET['guest'];
+	}
 
 ?>
 
@@ -40,7 +49,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/style.css">
-		<link rel="stylesheet" href="/mvc/data/tempus-dominus-master/dist/css/tempus-dominus.css"></link>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 		<link rel="stylesheet" href="/mvc/data/font/fontawesome-free-6.2.0-web/fontawesome-free-6.2.0-web/css/all.min.css">
 		<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;700&family=Qwitcher+Grypen:wght@700&display=swap" rel="stylesheet">
 		<title>Carlton Hotel</title>
@@ -48,6 +57,7 @@
 	</head>
 
 	<body>
+
 
 		<div class="header" id="header">
 			<div class="grid">
@@ -162,7 +172,7 @@
 			<div class="home">
 				<div class="home__backgound home__backgound--short">
 					<div class="home__taskbar-container-booking">
-						<form action="/listroom/default/" id="form-search" class="home__taskbar-booking grid__row">
+						<form action="/listroom/default" id="form-search" class="home__taskbar-booking grid__row">
 							
 							<div class="grid__column-2 taskbar-booking__checkout taskbar-booking--item">
 								<label for="booking-input-checkout" class="taskbar-booking--text">
@@ -170,7 +180,7 @@
 									Check in - Check out
 								</label>
 
-								<input id="booking-input-checkout" type="text" name="datefilter"  class="booking-input" value="dd/mm/yyyy">
+								<input id="booking-input-checkout" type="text" name="datefilter"  class="booking-input" value="<?php echo $datefilter; ?>">
 							</div>
 						
 							<div class="grid__column-4 taskbar-booking__number-guest taskbar-booking--item">
@@ -178,7 +188,7 @@
 									<i class="fa-solid fa-users"></i>
 									Guest
 								</label>
-								<input id="booking-input-guest" type="number" name="guest" value="1" min="1"  class="booking-input booking-input--guest">
+								<input id="booking-input-guest" type="number" name="guest" value="<?php echo $guest; ?>" min="1"  class="booking-input booking-input--guest">
 							</div>
 							<input type="submit" name="search" value="search" class="taskbar-booking__search grid__column-4">
 						</form>
@@ -256,12 +266,13 @@
 
 
 							
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>						
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<script src="/mvc/data/tempus-dominus-master/dist/js/tempus-dominus.js"></script>
-	<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>	
-	<script src="main.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+	<script src="/main.js"></script> 
 		
 	</body>
 </html>
