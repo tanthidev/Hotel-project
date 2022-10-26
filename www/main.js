@@ -172,7 +172,6 @@ if(document.getElementById("slide-show__container")){
         function currentSlide(n) {
         showSlides(slideIndex = n);
         }
-    
         function showSlides(n) {
             let i;
             let slides = document.getElementsByClassName("slide-show");
@@ -190,6 +189,7 @@ if(document.getElementById("slide-show__container")){
             if (slideIndex > slides.length) {
                 slideIndex = 0
             } 
+            setTimeout(showSlides,3000);
         }
         function plusSlides(n) {
             showSlides(slideIndex += n);
@@ -432,6 +432,31 @@ if(document.getElementById("container__settingRoom")){
         };
 
 }
+
+//Show overview/ Amenities
+if(document.getElementById("page-booking__container-detail")){
+    var overview = document.getElementById("page-booking--overview-btn");
+    var amenities = document.getElementById("page-booking--amenities-btn");
+    var overview_content = document.getElementById("page-booking__container--detail-content");
+    var amenities_content = document.getElementById("page-booking__container--amenities-list");
+    overview.onclick = function(){
+        amenities_content.classList.remove("active-content");
+        amenities.classList.remove("active-menu");
+        overview_content.classList.add("active-content");
+        overview.classList.add("active-menu");
+
+    }
+
+    amenities.onclick = function(){
+        amenities_content.classList.add("active-content");
+        overview_content.classList.remove("active-content");
+        amenities.classList.add("active-menu");
+        overview.classList.remove("active-menu");
+
+
+    }
+}
+
 
 //AJAX
 //check exist room number

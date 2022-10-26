@@ -1,32 +1,28 @@
 <?php
 //Khai báo sử dụng session
-    if(!isset($_SESSION)) 
-    { 
+    if(!isset($_SESSION)){ 
         session_start(); 
         ob_start();
     } 
-
-?>
-
-<?php 
-    if(isset($data['notice'])){
-        if($data['check']){
-            $text= "notice-text--success";
-            $task= "notice-task--success";
-        }
-        else{
-            $text= "notice-text";
-            $task= "notice-task";
-        }
-
-        echo '
-        <div class="'.$task.' notice-task">
-            <span class="'.$text.' notice-text">
-            '.$data['notice'].'
-            </span>
-        </div>
-        ';      
-    }
+	if(isset($data['notice'])){
+		if($data['check']){
+			$text= "notice-text--success";
+			$task= "notice-task--success";
+		}
+		else{
+			$text= "notice-text";
+			$task= "notice-task";
+		}
+	
+		echo '
+		<div class="'.$task.' notice-task">
+			<span class="'.$text.' notice-text">
+			'.$data['notice'].'
+			</span>
+		</div>
+		';      
+	}
+	$room = json_decode($data['room'])[0];
 ?>
 
 
@@ -154,6 +150,11 @@
         <!-- Main content -->
 		<div class="container-content">
             <!--  -->
+			<div class="background-booking" style="padding-top: 15%; background: url('/mvc/data/images/background/<?php echo $room -> view?>.png') top center / cover no-repeat;">
+				<div class="container-baner">
+					<h2 class="baner-roomtype"><?php echo $room ->roomType;?></h2>
+				</div>				
+			</div>
             <!-- Add code here -->
             <?php 
                 require_once "./mvc/views/pages/".$data['page'].".php";

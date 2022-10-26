@@ -80,7 +80,7 @@
 
 				<div id="header__user" class="header__user">
 					
-                <?php
+                	<?php
 						if(isset($data['user'])){
                             $row = json_decode($data['user']);
 							// echo($row -> fullName);
@@ -147,24 +147,19 @@
 								<a href="/enrol/register" id="header__user--register" class="header__user--register header__user-item ">Register</a>
 								<a href="/enrol/login" id="header__user--login" class="header__user--login header__user-item ">Log In</a>
 							
-						<?php } ?>
+						<?php } 
+					?>
 
 
 
 				</div>
 			</div>
 		</div>
-
-		
 	</div> 
 
 	<div class="container-content">
 		<div class="home">
 			<div class="home__backgound">
-				
-
-
-
 				<div class="home__taskbar-container-booking">
 					<form action="/listroom/default" method="GET" id="form-search" class="home__taskbar-booking grid__row">
 						

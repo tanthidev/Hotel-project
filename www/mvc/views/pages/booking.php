@@ -1,11 +1,20 @@
 <?php 
-    
     $nameAvatar = json_decode($data['avatarRoom']) -> fileName;
     $localImage = 'src="/mvc/data/images/room/' .  $nameAvatar . '"';
     $imageRoom = json_decode($data['imageRoom']) ;
-    $countImageRoom = count( $imageRoom);
-    $dateCheckin ="";
-    $guest = "";
+    $countImageRoom = count($imageRoom);
+    $room = json_decode($data['room'])[0];
+
+    //GET data
+    $datefilter = "";
+	$guestRequire="";
+
+	if(isset( $_GET['datefilter'])){
+		$datefilter = $_GET['datefilter'];
+	}
+	if(isset( $_GET['guest'])){
+		$guestRequire = $_GET['guest'];
+	}
 ?>
 <div class="grid container-page-booking">
     <!-- MAIN -->
@@ -72,14 +81,14 @@
                         Date from - Date to
                     </label>
                     <!-- <input name="datecheckin" id="datecheckin" type="date" class="page-booking--selection-input"> -->
-                    <input value="<?php echo $dateCheckin; ?>" placeholder="Date from - Date to" id="date" class="page-booking--selection-input page-booking--selection-input-date" type="text" name="datefilter" value="" />
+                    <input value="<?php echo $datefilter; ?>" placeholder="Date from - Date to" id="date" class="page-booking--selection-input page-booking--selection-input-date" type="text" name="datefilter" value="" />
                 </div>
 
                 <div class="grid__column-2 page-booking--selection-form-item">
                     <label for="guest" class="page-booking--selection-text">
                         Guest
                     </label>
-                    <input value="<?php echo $guest; ?>" name="guest" id="guest" type="number" class="page-booking--selection-input" placeholder="Number of Guest">
+                    <input value="<?php echo $guestRequire; ?>" name="guest" id="guest" type="number" class="page-booking--selection-input" placeholder="Number of Guest">
                 </div>
 
                 <div class="grid__column-2 page-booking--selection-form-item">
@@ -143,17 +152,135 @@
 
 
     <!-- ROOM DETAIL -->
-     <div class="page-booking__container-detail grid__row">
+     <div id="page-booking__container-detail" class="page-booking__container-detail grid__row">
         <div class="grid__column-10-2">
             <ul class="page-booking__tab-header">
-                <li class="page-booking__tab-header--item">
-                    <a href="#overview">OVERVIEW</a>
+                <li id="page-booking--overview-btn" class="page-booking__tab-header--item active-menu">
+                    <p>OVERVIEW</p>
                 </li>
-                <li class="page-booking__tab-header--item">
-                    <a href="#amenities">AMENITIES</a>
+                <li id="page-booking--amenities-btn" class="page-booking__tab-header--item">
+                    <p>AMENITIES</p>
                 </li>
             </ul>
         </div>
+        <!--  -->
+        <div class="grid__column-10-8">
+            <div id="page-booking__container--detail-content" class="page-booking__container--detail-content active-content">
+                <p class="page-booking__detail--describe">
+                    <?php echo $room -> describeRoom ?>
+                </p>
+
+                <table>
+                    <tr>
+                        <td class="page-booking__detail--table-content text-bold">View</td>
+                        <td class="page-booking__detail--table-content"><?php echo ucfirst($room -> view);?> view</td>
+                    </tr>
+                    <tr>
+                        <td class="page-booking__detail--table-content text-bold">Area</td>
+                        <td class="page-booking__detail--table-content"><?php echo $room -> area;?>&#x33A1; including balcony</td>
+                    </tr>
+                    <tr>
+                        <td class="page-booking__detail--table-content text-bold">Bed</td>
+                        <td class="page-booking__detail--table-content"><?php echo $room -> numberOfBed;?> beds (L 2m W 2m)</td>
+                    </tr>
+                    <tr>
+                        <td class="page-booking__detail--table-content text-bold">Bathroom</td>
+                        <td class="page-booking__detail--table-content">En suite bathroom with bathtub and overhead shower</td>
+                    </tr>
+                    <tr>
+                        <td class="page-booking__detail--table-content text-bold">Maximum Occupancy</td>
+                        <td class="page-booking__detail--table-content">Maximum occupancy <?php echo $room -> guest ?> adults + 2 children </td>
+                    </tr>
+                </table>
+                <p class="page-booking__detail--table-content">Wheelchair accessible room – available upon request</p>
+            </div>
+
+            <div id="page-booking__container--amenities-list" class="page-booking__container--detail-content">
+                <table>
+                    <tr>
+                        <td class="page-booking__detail--table-content">
+                            <i class="fa-solid fa-square-check"></i>
+                            Individually controlled AC and heater
+                        </td>
+                        <td class="page-booking__detail--table-content">
+                            <i class="fa-solid fa-square-check"></i>
+                            Alarm clock
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="page-booking__detail--table-content">
+                            <i class="fa-solid fa-square-check"></i>
+                            Flat screen TV with 25 satellite international channels
+                        </td>
+                        <td class="page-booking__detail--table-content">
+                            <i class="fa-solid fa-square-check"></i>
+                            Tea/ coffee making facilities
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="page-booking__detail--table-content">
+                            <i class="fa-solid fa-square-check"></i>
+                            Individual safe deposit box
+                        </td>
+                        <td class="page-booking__detail--table-content">
+                            <i class="fa-solid fa-square-check"></i>
+                            Bathrobes and slippers
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="page-booking__detail--table-content">
+                            <i class="fa-solid fa-square-check"></i>
+                            IDD telephone
+                        </td>
+                        <td class="page-booking__detail--table-content">
+                            <i class="fa-solid fa-square-check"></i>
+                            Daily flowers & fruit bowl
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="page-booking__detail--table-content">
+                            <i class="fa-solid fa-square-check"></i>
+                            Mini bar/ refrigerator
+                        </td>
+                        <td class="page-booking__detail--table-content">
+                            <i class="fa-solid fa-square-check"></i>
+                            6:00 to 24:00 room service
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="page-booking__detail--table-content">
+                            <i class="fa-solid fa-square-check"></i>
+                            Writing desk
+                        </td>
+                        <td class="page-booking__detail--table-content">
+                            <i class="fa-solid fa-square-check"></i>
+                            Turn-down service
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="page-booking__detail--table-content">
+                            <i class="fa-solid fa-square-check"></i>
+                            Seating area
+                        </td>
+                        <td class="page-booking__detail--table-content">
+                            <i class="fa-solid fa-square-check"></i>
+                            High-speed Wifi
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="page-booking__detail--table-content">
+                            <i class="fa-solid fa-square-check"></i>
+                            Hairdryer
+                        </td>
+                        <td class="page-booking__detail--table-content">
+                            <i class="fa-solid fa-square-check"></i>
+                            Vanity with complete range of bath amenities.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
     </div>
 
     <!--

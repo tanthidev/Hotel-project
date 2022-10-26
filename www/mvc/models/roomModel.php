@@ -109,9 +109,9 @@
         }
 
         public function getRoomType($roomType){
-            $qr = "SELECT roomType.price, roomType.roomType, RoomType.guest, roomType.area, roomType.numberOfBed, roomType.describeRoom 
+            $qr = "SELECT roomType, view, price, guest, area, numberOfBed, describeRoom 
                 FROM roomType 
-                WHERE (RoomType.roomType = '$roomType')";
+                WHERE (roomType = '$roomType')";
             $rows = mysqli_query($this ->conn, $qr);
             $array = array();
             while($row = mysqli_fetch_assoc($rows)){

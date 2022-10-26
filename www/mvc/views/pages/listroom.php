@@ -1,6 +1,16 @@
 <?php 
 	$rooms = json_decode($data['rooms']);
 	$countRoom = count($rooms);
+
+	$datefilter = "";
+	$guest="";
+
+	if(isset( $_GET['datefilter'])){
+		$datefilter = $_GET['datefilter'];
+	}
+	if(isset( $_GET['guest'])){
+		$guest = $_GET['guest'];
+	}
 ?>
 
 <div class="container-list-room">
@@ -79,7 +89,7 @@
 													<span class="list-room__booking-price--text">$'.$rooms[$index]->price.'/ Night</span>
 												</div>
 												<!--  -->
-												<a href="/booking/default?room='.$rooms[$index] -> roomType.'" class="list-room__booking-btn">BOOK NOW</a>
+												<a href="/booking/default?room='.$rooms[$index] -> roomType.'&datefilter='.$datefilter.'&guest='.$guest.'" class="list-room__booking-btn">BOOK NOW</a>
 											</div>
 										</div>
 									</div>
@@ -163,7 +173,7 @@
 													<span class="list-room__booking-price--text">$'.$rooms[$index+1] -> price.'/ Night</span>
 												</div>
 												<!--  -->
-												<a href="/booking/default?room='.$rooms[$index+1] -> roomType.'" class="list-room__booking-btn">BOOK NOW</a>
+												<a href="/booking/default?room='.$rooms[$index+1] -> roomType.'&datefilter='.$datefilter.'&guest='.$guest.'" class="list-room__booking-btn">BOOK NOW</a>
 											</div>
 										</div>
 									</div>
