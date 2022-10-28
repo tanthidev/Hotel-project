@@ -13,7 +13,7 @@ class enrol extends controller{
         // LOGIN
         static function login(){
             //GỌi view
-            $view =self::view("simplelayout",[
+            $view =self::view("emptylayout",[
                 "page"=>"login"
             ]);
         }
@@ -77,7 +77,7 @@ class enrol extends controller{
         //REGISTER
         static function register(){
             //GỌi view
-            $view =self::view("simplelayout",[
+            $view =self::view("emptylayout",[
                 "page"=>"register"
             ]);
         }
@@ -169,13 +169,12 @@ class enrol extends controller{
         }
 
         static function forgot(){
-            $view = self::view("simplelayout",[
+            $view = self::view("emptylayout",[
                 "page" => "forgot"
             ]);
         }
 
         static function forgotprocessing(){
-
             //GỌI MODEL USER
             $user = self::model("userModel");
             //TEXT THÔNG BÁO LỖI

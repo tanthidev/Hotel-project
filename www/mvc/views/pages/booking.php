@@ -75,7 +75,7 @@
                 </div>
             </div>
             
-            <form id="form-search" action="" class="grid__row page-booking--selection-form">
+            <form id="form-search" action="/booking/completeBooking" method="POST" class="grid__row page-booking--selection-form">
                 <div class="page-booking--selection-form-item page-booking--selection-form-item--date">
                     <label for="date" class="page-booking--selection-text">
                         Date from - Date to
@@ -88,14 +88,14 @@
                     <label for="guest" class="page-booking--selection-text">
                         Guest
                     </label>
-                    <input value="<?php echo $guestRequire; ?>" name="guest" id="guest" type="number" class="page-booking--selection-input" placeholder="Number of Guest">
+                    <input value="<?php echo $guestRequire; ?>" name="guest" id="guest" min="1" max="<?php echo $room -> guest;  ?>" type="number" class="page-booking--selection-input" placeholder="Number of Guests">
                 </div>
 
                 <div class="grid__column-2 page-booking--selection-form-item">
-                    <label for="rooms" class="page-booking--selection-text">
-                        Rooms
+                    <label for="numberOfRooms" class="page-booking--selection-text">
+                        Number Of Rooms
                     </label>
-                    <input name="rooms" id="rooms" type="number" class="page-booking--selection-input">
+                    <input min="1" name="numberOfRooms" id="numberOfRooms" type="number" class="page-booking--selection-input" placeholder="Number of Rooms">
                 </div>
                 
                 <div class="page-booking__extra-services">
@@ -103,15 +103,18 @@
                         Extra Services
                     </h1>
                     <ul class="page-booking__extra-services--list">
+                        <!-- Car rental -->
                         <li class="page-booking__extra-services--item">
                             <div class="page-booking__extra-service-container-input">
                                 <input id="driver" name="driver" type="checkbox" class="page-booking__extra-service--input">
                                 <label for="driver" class="page-booking__extra-service-label">
-                                    <span class="page-booking__extra-service-name">Driver</span>
+                                    <span class="page-booking__extra-service-name">Car rental</span>
                                 </label>
                             </div>
-                            <label for="driver" class="page-booking__extra-service-price">$10/ Day</label>
+                            <label for="driver" class="page-booking__extra-service-price">$30/ Day</label>
                         </li>
+
+                        <!-- Gym & Spa -->
                         <li class="page-booking__extra-services--item">
                             <div class="page-booking__extra-service-container-input">
                                 <input id="gym" name="gym" type="checkbox" class="page-booking__extra-service--input">
@@ -119,8 +122,10 @@
                                     <span class="page-booking__extra-service-name">Gym & Spa</span>
                                 </label>
                             </div>
-                            <label for="gym" class="page-booking__extra-service-price">$10/ Day</label>
+                            <label for="gym" class="page-booking__extra-service-price">$10/ Journey</label>
                         </li>
+
+                        <!-- Breakfast -->
                         <li class="page-booking__extra-services--item">
                             <div class="page-booking__extra-service-container-input">
                                 <input id="breakfast" name="breakfast" type="checkbox" class="page-booking__extra-service--input">
@@ -130,14 +135,34 @@
                             </div>
                             <label for="breakfast" class="page-booking__extra-service-price">$10/ Day</label>
                         </li>
+
+                        <li class="page-booking__extra-services--item">
+                            <div class="page-booking__extra-service-container-input">
+                                <input id="laundry" name="Laundry" type="checkbox" class="page-booking__extra-service--input">
+                                <label for="laundry" class="page-booking__extra-service-label">
+                                    <span class="page-booking__extra-service-name">Laundry</span>
+                                </label>                                 
+                            </div>
+                            <label for="Laundry" class="page-booking__extra-service-price">$5/ Day</label>
+                        </li>
+
+                        <li class="page-booking__extra-services--item">
+                            <div class="page-booking__extra-service-container-input">
+                                <input id="airport" name="airport" type="checkbox" class="page-booking__extra-service--input">
+                                <label for="airport" class="page-booking__extra-service-label">
+                                    <span class="page-booking__extra-service-name">Airport pick up</span>
+                                </label>                                 
+                            </div>
+                            <label for="Laundry" class="page-booking__extra-service-price">$20/ Way</label>
+                        </li>
                     </ul>
                 </div>
 
                 <div class="page-booking--selection-form-item page-booking--selection-form-item--request">
-                    <label for="rooms" class="page-booking--selection-text">
+                    <label for="request" class="page-booking--selection-text">
                         Special request
                     </label>
-                    <textarea placeholder="Special request..." name="request" id="request" rows="3" cols="auto" class="page-booking--selection-input page-booking--selection-input--request"></textarea>
+                    <textarea placeholder="Check-in time, food allergies..." name="request" id="request" rows="3" cols="auto" class="page-booking--selection-input page-booking--selection-input--request"></textarea>
                 </div>
 
                 <div class="page-booking--selection-footer">

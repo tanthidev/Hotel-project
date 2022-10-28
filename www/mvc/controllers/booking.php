@@ -14,5 +14,17 @@
                 "room"      => $room -> getRoomType($roomType)
             ]);
         }
+
+        static function completeBooking(){
+            //Gọi Model
+            $room = self::model('roomModel');
+            $user = self::model('userModel');
+
+            //Gọi view
+            $view =self::view("emptylayout",[
+                "page"      =>"completeBooking",
+                "user"      => $user -> getUser()
+            ]);
+        }
     }
 ?>

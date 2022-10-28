@@ -150,7 +150,7 @@
                     <td class="roomManager_table-content grid__column-10-1">'.$room->numberOfBed.'</td>
                     <td class="roomManager_table-content grid__column-10-1">'.$room->area.'</td>
                     <td class="roomManager_table-content grid__column-10-1">'.$room->guest.'</td>
-                    <td class="roomManager_table-content grid__column-10-2">'.$room->describeRoom.'</td>
+                    <td class="roomManager_table-content grid__column-10-2">'.substr($room->describeRoom,0, 45).'... <span style="color: #5454d1;">Read more</span></td>
                     <td class="roomManager_table-content grid__column-10-1 roomManager_table-content--action">
                         <a href="/admin/settingRoom/?room='.$room->roomType.'" class="roomManager_table-content--change">
                             <i class="fa-solid fa-gear"></i>

@@ -1,10 +1,6 @@
 
-
-
-
 <div class="container-register">
     <div id="wrap-register" class="wrap-register">
-
         <form id="register-form" action="/enrol/registerprocessing" method="POST" class="register-form validate-form">
             <span class="register-form-title">
                 Member Register
