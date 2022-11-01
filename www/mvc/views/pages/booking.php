@@ -1,7 +1,7 @@
 <?php 
     $nameAvatar = json_decode($data['avatarRoom']) -> fileName;
     $localImage = 'src="/mvc/data/images/room/' .  $nameAvatar . '"';
-    $imageRoom = json_decode($data['imageRoom']) ;
+    $imageRoom = json_decode($data['imageRoom']);
     $countImageRoom = count($imageRoom);
     $room = json_decode($data['room'])[0];
 
@@ -16,6 +16,10 @@
 		$guestRequire = $_GET['guest'];
 	}
 ?>
+
+<div>
+    
+</div>
 <div class="grid container-page-booking">
     <!-- MAIN -->
     <div class="grid__row page-booking__main">
@@ -75,7 +79,7 @@
                 </div>
             </div>
             
-            <form id="form-search" action="/booking/completeBooking" method="POST" class="grid__row page-booking--selection-form">
+            <form id="form-search" action="/booking/completeBooking/?room=<?php echo $room -> roomType; ?>" method="post" class="grid__row page-booking--selection-form">
                 <div class="page-booking--selection-form-item page-booking--selection-form-item--date">
                     <label for="date" class="page-booking--selection-text">
                         Date from - Date to
@@ -88,7 +92,7 @@
                     <label for="guest" class="page-booking--selection-text">
                         Guest
                     </label>
-                    <input value="<?php echo $guestRequire; ?>" name="guest" id="guest" min="1" max="<?php echo $room -> guest;  ?>" type="number" class="page-booking--selection-input" placeholder="Number of Guests">
+                    <input value="<?php echo $guestRequire; ?>" name="guest" id="guest" min="1" type="number" class="page-booking--selection-input" placeholder="Number of Guests">
                 </div>
 
                 <div class="grid__column-2 page-booking--selection-form-item">
@@ -106,8 +110,8 @@
                         <!-- Car rental -->
                         <li class="page-booking__extra-services--item">
                             <div class="page-booking__extra-service-container-input">
-                                <input id="driver" name="driver" type="checkbox" class="page-booking__extra-service--input">
-                                <label for="driver" class="page-booking__extra-service-label">
+                                <input id="carrental" name="carrental" type="checkbox" class="page-booking__extra-service--input">
+                                <label for="carrental" class="page-booking__extra-service-label">
                                     <span class="page-booking__extra-service-name">Car rental</span>
                                 </label>
                             </div>
@@ -117,12 +121,12 @@
                         <!-- Gym & Spa -->
                         <li class="page-booking__extra-services--item">
                             <div class="page-booking__extra-service-container-input">
-                                <input id="gym" name="gym" type="checkbox" class="page-booking__extra-service--input">
+                                <input id="gym" name="gym" type="checkbox" checked="checked" class="page-booking__extra-service--input">
                                 <label for="gym" class="page-booking__extra-service-label">
                                     <span class="page-booking__extra-service-name">Gym & Spa</span>
                                 </label>
                             </div>
-                            <label for="gym" class="page-booking__extra-service-price">$10/ Journey</label>
+                            <label for="gym" class="page-booking__extra-service-price">Free</label>
                         </li>
 
                         <!-- Breakfast -->
@@ -133,17 +137,18 @@
                                     <span class="page-booking__extra-service-name">Breakfast</span>
                                 </label>                                 
                             </div>
-                            <label for="breakfast" class="page-booking__extra-service-price">$10/ Day</label>
+                            <label for="breakfast" class="page-booking__extra-service-price">$10/ Day/ Guest</label>
                         </li>
 
+                        <!-- Laundry -->
                         <li class="page-booking__extra-services--item">
                             <div class="page-booking__extra-service-container-input">
-                                <input id="laundry" name="Laundry" type="checkbox" class="page-booking__extra-service--input">
+                                <input id="laundry" name="laundry" type="checkbox" class="page-booking__extra-service--input">
                                 <label for="laundry" class="page-booking__extra-service-label">
                                     <span class="page-booking__extra-service-name">Laundry</span>
                                 </label>                                 
                             </div>
-                            <label for="Laundry" class="page-booking__extra-service-price">$5/ Day</label>
+                            <label for="laundry" class="page-booking__extra-service-price">$5/ Day/ Guest</label>
                         </li>
 
                         <li class="page-booking__extra-services--item">
@@ -153,7 +158,7 @@
                                     <span class="page-booking__extra-service-name">Airport pick up</span>
                                 </label>                                 
                             </div>
-                            <label for="Laundry" class="page-booking__extra-service-price">$20/ Way</label>
+                            <label for="airport" class="page-booking__extra-service-price">$20/ Way</label>
                         </li>
                     </ul>
                 </div>
@@ -166,7 +171,7 @@
                 </div>
 
                 <div class="page-booking--selection-footer">
-                    <input type="submit" class="page-booking__btn-next" value="Next">
+                    <input type="submit" class="page-booking__btn-next" name="btn-next" value="Next">
                 </div>
 
             </form>
@@ -316,3 +321,15 @@
     </div> -->
 
 </div>
+
+<script> 
+    
+        document.getElementById('guest').addEventListener('input', function() {
+            var guest= ($("#guest").val());
+            document.getElementById("numberOfRooms").setAttribute("min", Math.ceil(guest/<?php echo (int)($room -> guest) ?>))
+        });
+    
+
+    
+
+</script>

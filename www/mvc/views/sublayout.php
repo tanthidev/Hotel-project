@@ -79,7 +79,7 @@
 								<a href="/home" class="header__menu--link">HOME</a>
 							</li>
 							<li class="header__menu--item">
-								<a href="#room" class="header__menu--link">ROOM</a>
+								<a href="/listroom" class="header__menu--link">ROOM</a>
 							</li>
 							<li class="header__menu--item">
 								<a href="#about" class="header__menu--link">ABOUT</a>

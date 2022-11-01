@@ -415,6 +415,51 @@ if(document.getElementById("admin__container-categories")){
     }
 }
 
+
+//Check form booking
+if(document.getElementById("form-search")){
+    const date = document.getElementById("date");   
+    const guest = document.getElementById("guest");
+    const room = document.getElementById("numberOfRooms");
+    function logSubmit(event) {
+        if(date.value==""){
+            date.style.border ="1px solid rgba(255,0,0,0.5)";
+            date.style.boxShadow ="1px 0px 5px rgba(255,0,0,0.5)";
+            event.preventDefault();
+        } else 
+            if(guest.value==""){
+                guest.style.border ="1px solid rgba(255,0,0,0.5)";
+                guest.style.boxShadow ="1px 0px 5px rgba(255,0,0,0.5)";
+                event.preventDefault();
+            } else 
+                if(room.value==""){
+                    room.style.border ="1px solid rgba(255,0,0,0.5)";
+                    room.style.boxShadow ="1px 0px 5px rgba(255,0,0,0.5)";
+                    event.preventDefault();
+                }
+    }
+
+    date.addEventListener('input', function() {
+        date.style.border ="1px solid #ccc";
+        date.style.boxShadow ="none";
+    });
+
+    guest.addEventListener('input', function() {
+        guest.style.border ="1px solid #ccc";
+        guest.style.boxShadow ="none";
+    });
+
+    room.addEventListener('input', function() {
+        room.style.border ="1px solid #ccc";
+        room.style.boxShadow ="none";
+    });
+
+        
+    const form = document.getElementById('form-search');
+    form.addEventListener('submit', logSubmit);
+
+}
+
 //Close when click ouside
 if(document.getElementById("container__settingRoom")){
     var settingRoom__image = document.getElementById("settingRoom__container--slide-show");
@@ -562,6 +607,22 @@ if(document.getElementById("register-form")){
     });
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function getCurrentDate(){
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -570,9 +631,6 @@ function getCurrentDate(){
     today = mm + '/' + dd + '/' + yyyy;
     return today;
 }
-
-
-
 //Vô hiệu hóa chọn ngày trong quá khứ
 if(document.getElementById("form-search")){
     $(function() {
@@ -603,7 +661,4 @@ if(document.getElementById("form-search")){
       
       });
 }
-
-
-
 

@@ -11,6 +11,18 @@
             return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
         }
 
+        public function getRoomNumber($roomType, $numberOfRooms){
+            $qr = " SELECT Rooms.roomNumber, RoomType.guest
+                    FROM   Rooms, RoomType
+                    WHERE  (Rooms.roomType = '$roomType') AND (RoomType.roomType = '$roomType')
+                    LIMIT $numberOfRooms";
+            $rows = mysqli_query($this ->conn, $qr);
+            $array = array();
+            while($row = mysqli_fetch_assoc($rows)){
+                $array[] = $row;
+            }
+            return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+        }
         
 
 

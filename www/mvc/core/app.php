@@ -46,7 +46,8 @@
             
             
             //Gọi hàm
-            call_user_func_array([$this->controller, $this->action], $this->params);
+            call_user_func_array([$this->controller, $this->action], []);
+            // print_r( $this->params);
         }
 
         function UrlProcess(){

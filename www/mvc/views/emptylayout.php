@@ -35,7 +35,7 @@
 							<a href="/home" class="header__menu--link">HOME</a>
 						</li>
 						<li class="header__menu--item">
-							<a href="#room" class="header__menu--link">ROOM</a>
+							<a href="/listroom" class="header__menu--link">ROOM</a>
 						</li>
 						<li class="header__menu--item">
 							<a href="#about" class="header__menu--link">ABOUT</a>
@@ -135,6 +135,12 @@
 		</div>
     </div>
 
+	<div class="footer emptypage__footer">
+		<div class="container text-center">
+			<span class="emptypage__footer--text">© 2022 Carlton Hotel</span>
+		</div>
+	</div>
+
 
 	<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>						
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -142,7 +148,13 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+	<!-- html2canvas library -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+	<!-- jsPDF library -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
 	<script src="main.js"></script> 
 </body>
+
 
 </html>
