@@ -136,11 +136,6 @@
 		</div>
     </div>
 
-	<div class="footer emptypage__footer">
-		<div class="container text-center">
-			<span class="emptypage__footer--text">© 2022 Carlton Hotel</span>
-		</div>
-	</div>
 
 
 	<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>						

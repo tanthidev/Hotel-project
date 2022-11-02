@@ -177,7 +177,7 @@
                 </label>
                 <label class="complete__payment-item complete__payment-item-disable">
                     <input type="radio" disabled="disabled">
-                    <div class="complete__payment-container-img">
+                    <div class="complete__payment-container-img flex">
                         <img src="/mvc/data/images/payments/visa.png" alt="" class="complete__payment-img">
                         <img src="/mvc/data/images/payments/mastercard.png" alt="" class="complete__payment-img">
                         <img src="/mvc/data/images/payments/amex.png" alt="" class="complete__payment-img">

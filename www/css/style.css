@@ -153,6 +153,7 @@ hr{
     text-align: center;
     padding: 5px;
     border-radius: 2px;
+    display: none;
 }
 
 .btn-to-top:hover{
@@ -283,6 +284,9 @@ ul{
 
 .emptypage__footer{
     padding: 10px 0;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 }
 
 .emptypage__footer--text{
@@ -2310,11 +2314,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     opacity: 0.4;
 }
 
+
 .complete__payment-item input{
     margin-right: 10px;
 }
+
 .complete__payment-img{
-    width: 12%;
+    width: 50%;
     margin-right: 2px;
     
 }
