@@ -51,8 +51,8 @@
         <!-- Main content -->
 		<div class="container-content">
             <!--  -->
-            <div class="grid__row">
-                <div id="admin__container-categories" class="admin__container-categories grid__column-5-1">
+            <div>
+                <div id="admin__container-categories" class="admin__container-categories w-3/12">
                     <div class="container-btn-sidebar">
                         <!-- btn hidden sidebar -->
                         <a id="btn-collapse-sidebar" href="javascript:void(0)" class="btn-collapse-sidebar">
@@ -141,7 +141,7 @@
 					</div>
                 </div>
     
-                <div id="admin__container-content" class="admin__container-content grid__column-5-4">
+                <div id="admin__container-content" class="admin__container-content w-3/4">
                     <?php 
                         require_once "./mvc/views/pages/".$data['page'].".php";
                     ?>

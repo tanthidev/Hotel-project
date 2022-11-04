@@ -57,7 +57,7 @@ if(document.getElementById("header_user-name")){
     document.getElementById('header_user-name').onclick = function(){
         if(document.getElementById("user__opption").style.display== ""){
             document.getElementById("user__opption").style.display= "block";
-        }
+        } else 
         if(document.getElementById("user__opption").style.display== "none"){
             document.getElementById("user__opption").style.display= "block";
         }
@@ -395,8 +395,8 @@ if(document.getElementById("admin__container-categories")){
 
     //Show
     btnShow.onclick = function (){
-        categories.style.width="20%";
-        content.style.width="80%";
+        categories.style.width="25%";
+        content.style.width="75%";
         logo.style.display="block";
         adminName.style.display="block";
         

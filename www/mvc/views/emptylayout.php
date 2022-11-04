@@ -16,12 +16,12 @@
 </head>
 
 <body>
-	<div class="header" id="header">
+	<div class="bg-main h-20 flex items-center" id="header">
 		<div class="grid">
-			<div class="grid__row header__container">
-				<div class="header__container-logo">
-					<a href="/home" class="header__container-logo--img">
-						<img src="/mvc/data/images/logo/logo-company.png" alt="" class="header__logo">
+			<div class="flex justify-between">
+				<div class="">
+					<a href="/home" class="">
+						<img src="/mvc/data/images/logo/logo-company.png" alt="" class="w-32">
 
 					</a>
 					
@@ -30,24 +30,25 @@
 					</btn>
 				</div>
 
-				<div class="header__menu">
-					<ul id="header__menu--list" class="header__menu--list">
+				<div class="flex items-center">
+					<ul id="header__menu--listl" class="flex">
 						<li class="header__menu--item">
-							<a href="/home" class="header__menu--link">HOME</a>
+							<a href="/home" class="flex h-full items-center text-white font-light mx-3 text-xl">HOME</a>
 						</li>
 						<li class="header__menu--item">
-							<a href="/listroom" class="header__menu--link">ROOM</a>
+							<a href="#room" class="flex h-full items-center text-white font-light mx-3 text-xl">ROOM</a>
 						</li>
 						<li class="header__menu--item">
-							<a href="#about" class="header__menu--link">ABOUT</a>
+							<a href="#about" class="flex h-full items-center text-white font-light mx-3 text-xl">ABOUT</a>
 						</li>
 						<li class="header__menu--item">
-							<a href="#services" class="header__menu--link">SERVICE</a>
+							<a href="#services" class="flex h-full items-center text-white font-light mx-3 text-xl">SERVICE</a>
 						</li>
 					</ul>
 				</div>
 
-				<div id="header__user" class="header__user">
+				<div id="header__user" class="flex items-center">
+					
                 	<?php
 						if(isset($data['user'])){
                             $row = json_decode($data['user']);
@@ -112,8 +113,8 @@
 					
 						} else{
 							?>
-								<a href="/enrol/register" id="header__user--register" class="header__user--register header__user-item ">Register</a>
-								<a href="/enrol/login" id="header__user--login" class="header__user--login header__user-item ">Log In</a>
+								<a href="/enrol/register" id="header__user--register" class=" text-white border-r-2 px-2">Register</a>
+								<a href="/enrol/login" id="header__user--login" class="text-white px-2">Log In</a>
 							
 						<?php } 
 					?>

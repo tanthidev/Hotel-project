@@ -8,7 +8,7 @@
     --main-color: #13172B;
     --main-color0-9:rgba(19, 23, 43,0.95);
     --orange-color: #d98600;
-    --orange-color-dark: rgb(151, 93, 0);
+    --orange-color-dark: #975d00;
     --background-color: #F1F1F1;
     --background-gradient: linear-gradient(317deg, rgba(19,23,43,1) 50%, rgba(58,32,132,1) 100%)
 }
@@ -19,7 +19,7 @@
 
 html{
     width: 100%;
-    font-size: 62.5%;
+    /* font-size: 62.5%; */
     line-height: 1.6rem;
     box-sizing: border-box;
     /* -webkit-touch-callout: none;
@@ -369,15 +369,11 @@ ul{
     margin: 0;
 }
 
-.header__menu--item{
-    margin: 10px 10px;
-    padding: 5px 10px;
-    transition: transform .2s;
-    cursor: pointer;
-}
+
 
 .header__menu--item:hover{
     transform: scale(1.1);
+    transition: transform .2s;
     
 }
 
@@ -431,7 +427,7 @@ ul{
     cursor: pointer;
 }
 .header_user-name:hover{
-    color: #ccc;
+    transform: scale(1.05);
 }
 
 .header__user-opption{
@@ -804,7 +800,6 @@ input:-ms-input-placeholder { color: #999999; }
 }
 .home__taskbar-booking{
     position:absolute;
-    
     text-align: left;
     width: 90%;
     font-size: 17px;
