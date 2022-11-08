@@ -360,6 +360,10 @@ ul{
     height: 60px;
 }
 
+.header__menu{
+    display: flex;
+    align-items: center;
+}
 
 .header__menu--list{
     display: flex;
@@ -369,6 +373,9 @@ ul{
     margin: 0;
 }
 
+.header__menu--item{
+    padding: 10px 15px;
+}
 
 
 .header__menu--item:hover{
@@ -852,12 +859,12 @@ input:-ms-input-placeholder { color: #999999; }
     right: 0;
     border: none;
     color: var(--white-color);
-    background-color: rgba(217,134,0,0.7);
+    background-color: rgba(217,134,0,0.7) !important;
     padding: 0;
 }
 
 .taskbar-booking__search:hover{
-    background-color: rgba(217,134,0, 0.8);
+    background-color: rgba(217,134,0, 0.9) !important;
 }
 
 /* Hidden icon input date */
@@ -1407,6 +1414,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     display: flex;
     justify-content: space-between;
     padding: 0 50px;
+    margin: 5px;
 }
 
 .list-room__booking-price{
@@ -1685,7 +1693,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .complete__btn-book{
     position: absolute;
     border: none;
-    background-color: var(--main-color);
+    background-color: var(--main-color) !important;
     color: var(--white-color);
     font-size: 23px;
     font-weight: 300;
@@ -2303,7 +2311,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 20px;
     display: flex;
     margin-bottom: 20px;
-    
 }
 .complete__payment-item-disable{
     opacity: 0.4;
@@ -2314,10 +2321,21 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-right: 10px;
 }
 
+.complete__payment-container-img{
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
 .complete__payment-img{
-    width: 50%;
-    margin-right: 2px;
-    
+    height: 60%;
+    margin-right: 2px
+}
+
+.complete__payments-title,
+.complete__info-title{
+    font-size: 20px;
+    font-weight: 700;
 }
 
 .complete__btn-book{
@@ -2527,7 +2545,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         justify-content: center;
     }
     .header__container{
-        display: block;
+        display: flex;
+        align-items: center;
         background-color: var(--main-color);
         padding-bottom:20px ;
     }

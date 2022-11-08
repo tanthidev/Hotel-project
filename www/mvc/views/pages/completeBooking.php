@@ -9,6 +9,24 @@
     $moneyRoom     = $data['moneyRoom'];
     $moneyService  = $data['moneyService'];
     $moneyPayment  = $data['moneyPayment'];
+  
+    $servicesForPost="";
+    foreach($services as $service){
+        if($service!=null){
+            $servicesForPost = $servicesForPost.$service->nameService."-";
+
+        }        
+    }
+
+    $roomNumbersForPost="";
+    foreach($roomNumbers as $roomNumber){
+        if($roomNumber!=null){
+            $roomNumbersForPost = $roomNumbersForPost.$roomNumber->roomNumber."-";
+
+        }        
+    }
+
+    
 ?>
 <div id="bill" class="grid">
     <div class="complete__container-currency text-right">
@@ -134,9 +152,9 @@
     <div class="complete__container-form-info row">
         <div class="col-6">
             <h1 class="col-12 complete__info-title text-center">Guest Infomation</h1>
-            <form action="" class=" complete__form">
-                <div class="container form-group">
-                    <label class="complete__form-item" for="fullName">Full Name <span style="color:red;">*</span></label>
+            <form method="POST" action="/booking/processBooking/?<?php echo 'checkin='.$checkin.'&checkout='.$checkout.'&service='.$servicesForPost.'&request='.$request.'&roomNumbers='.$roomNumbersForPost.'&roomType='.$roomType->roomType.'&moneyRoom='.$moneyRoom.'&moneyService='.$moneyService.'&moneyPayment='.$moneyPayment.''; ?>" class=" complete__form">
+            <div class="container form-group">
+                    <label class="complete__form-item" for="fullName">Full Name<span style="color:red;">*</span></label>
                     <input class="form-control complete__form-item" id="fullName" name="fullName" type="text">
                 </div>
                 <div class="container form-group">
@@ -161,7 +179,7 @@
                 </div>
 
                 <div class="container form-group text-center">
-                    <input class="complete__btn-book" type="submit" value="BOOK">
+                    <input class="complete__btn-book" type="submit" value="BOOK" name="btn-book">
                 </div>
             </form>
         </div>
@@ -175,22 +193,24 @@
                     <input type="radio" checked="checked">
                     Payment upon check-in
                 </label>
-                <label class="complete__payment-item complete__payment-item-disable">
+                <label class="complete__payment-item complete__payment-item-disable flex">
                     <input type="radio" disabled="disabled">
-                    <div class="complete__payment-container-img flex">
+                    <div class="complete__payment-container-img">
                         <img src="/mvc/data/images/payments/visa.png" alt="" class="complete__payment-img">
                         <img src="/mvc/data/images/payments/mastercard.png" alt="" class="complete__payment-img">
                         <img src="/mvc/data/images/payments/amex.png" alt="" class="complete__payment-img">
                         <img src="/mvc/data/images/payments/dinersclub.png" alt="" class="complete__payment-img">
                         <img src="/mvc/data/images/payments/visaelectron.png" alt="" class="complete__payment-img">
                         <img src="/mvc/data/images/payments/jcb.png" alt="" class="complete__payment-img">
-
                     </div>
                 </label>
             </form>
         </div>
     </div>
 </div>
+
+
+
 
 <!-- <script>
     
