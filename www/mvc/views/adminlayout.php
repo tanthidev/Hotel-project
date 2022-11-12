@@ -40,7 +40,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/css/style.css">
-        <link rel="stylesheet" href="/css/tailwind.css">
 		<link rel="stylesheet" href="/mvc/data/font/fontawesome-free-6.2.0-web/fontawesome-free-6.2.0-web/css/all.min.css">
 		<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;700&family=Qwitcher+Grypen:wght@700&display=swap" rel="stylesheet">
 		<title>Carlton Hotel</title>
@@ -51,8 +50,8 @@
         <!-- Main content -->
 		<div class="container-content">
             <!--  -->
-            <div>
-                <div id="admin__container-categories" class="admin__container-categories w-3/12">
+            <div class="grid__row">
+                <div id="admin__container-categories" class="admin__container-categories grid__column-5-1">
                     <div class="container-btn-sidebar">
                         <!-- btn hidden sidebar -->
                         <a id="btn-collapse-sidebar" href="javascript:void(0)" class="btn-collapse-sidebar">
@@ -141,7 +140,7 @@
 					</div>
                 </div>
     
-                <div id="admin__container-content" class="admin__container-content w-3/4">
+                <div id="admin__container-content" class="admin__container-content grid__column-5-4">
                     <?php 
                         require_once "./mvc/views/pages/".$data['page'].".php";
                     ?>

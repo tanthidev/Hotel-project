@@ -420,28 +420,74 @@ if(document.getElementById("admin__container-categories")){
     }
 }
 
+// Back first page booking
+function backFirstPageBooking(){
+    //back page booking guest = document.getElementById("info-guest");
+    btn_booking = document.getElementById("btn-info-booking");
+    btn_guest = document.getElementById("btn-info-guest");
+    btn_next = document.getElementById("page-booking__btn-next");
+    btn_next_booking = document.getElementById("page-booking__btn-booking");
+    booking = document.getElementById("info-booking");
+    guest = document.getElementById("info-guest");
+    
+    
+    booking.classList.add("page-booking__active");
+    guest.classList.remove("page-booking__active");
+    
+    // BTN
+    btn_booking.classList.add("booking-title__active");
+    btn_guest.classList.remove("booking-title__active");
+    document.getElementById("booking-title__action-active").style.left = '0';
+
+    btn_next.classList.add("btn-active");
+    btn_next_booking.classList.remove("btn-active");
+}
 
 //Check form booking
 if(document.getElementById("form-search")){
     const date = document.getElementById("date");   
     const guest = document.getElementById("guest");
     const room = document.getElementById("numberOfRooms");
+    const name = document.getElementById("fullName");
+    const emai = document.getElementById("email");
+    const phone = document.getElementById("phoneNumber");
+
+
     function logSubmit(event) {
         if(date.value==""){
             date.style.border ="1px solid rgba(255,0,0,0.5)";
             date.style.boxShadow ="1px 0px 5px rgba(255,0,0,0.5)";
+            backFirstPageBooking();
+            // Not allow submit
             event.preventDefault();
         } else 
             if(guest.value==""){
                 guest.style.border ="1px solid rgba(255,0,0,0.5)";
                 guest.style.boxShadow ="1px 0px 5px rgba(255,0,0,0.5)";
+                backFirstPageBooking();
                 event.preventDefault();
             } else 
                 if(room.value==""){
                     room.style.border ="1px solid rgba(255,0,0,0.5)";
                     room.style.boxShadow ="1px 0px 5px rgba(255,0,0,0.5)";
+                    backFirstPageBooking();
                     event.preventDefault();
-                }
+                }else 
+                    if(name.value==""){
+                        name.style.border ="1px solid rgba(255,0,0,0.5)";
+                        name.style.boxShadow ="1px 0px 5px rgba(255,0,0,0.5)";
+                        event.preventDefault();
+                    }else 
+                        if(emai.value==""){
+                            emai.style.border ="1px solid rgba(255,0,0,0.5)";
+                            emai.style.boxShadow ="1px 0px 5px rgba(255,0,0,0.5)";
+                            event.preventDefault();
+                        } else 
+                            if(phone.value==""){
+                                phone.style.border ="1px solid rgba(255,0,0,0.5)";
+                                phone.style.boxShadow ="1px 0px 5px rgba(255,0,0,0.5)";
+                                event.preventDefault();
+                            }
     }
 
     if(document.getElementById("guest")){
@@ -508,6 +554,83 @@ if(document.getElementById("page-booking__container-detail")){
 
 
     }
+}
+
+// BOOKING PAGE
+if(document.getElementById("form-booking")){
+    btn_booking = document.getElementById("btn-info-booking");
+    btn_guest = document.getElementById("btn-info-guest");
+    btn_next = document.getElementById("page-booking__btn-next");
+    btn_next_booking = document.getElementById("page-booking__btn-booking");
+    
+    btn_booking.addEventListener("click", function(){
+        
+        booking = document.getElementById("info-booking");
+
+        if(booking.classList.contains("page-booking__active")){
+            return;
+        } else {
+            backFirstPageBooking();
+        }
+
+    });
+
+
+    btn_guest.addEventListener("click", function(){
+        
+        guest = document.getElementById("info-guest");
+        if(guest.classList.contains("page-booking__active")){
+            return;
+        } else {
+            booking = document.getElementById("info-booking");
+            guest.classList.add("page-booking__active");
+            booking.classList.remove("page-booking__active");
+
+            // BTN
+            btn_booking.classList.remove("booking-title__active");
+            btn_guest.classList.add("booking-title__active");
+            document.getElementById("booking-title__action-active").style.left = '50%';
+            btn_next.classList.remove("btn-active");
+            btn_next_booking.classList.add("btn-active");
+        
+        }
+        
+    });
+
+    btn_next.addEventListener("click", function(){
+        guest = document.getElementById("info-guest");
+        if(guest.classList.contains("page-booking__active")){
+            return;
+        } else {
+            booking = document.getElementById("info-booking");
+            guest.classList.add("page-booking__active");
+            booking.classList.remove("page-booking__active");
+
+            // BTN
+            btn_booking.classList.remove("booking-title__active");
+            btn_guest.classList.add("booking-title__active");
+            document.getElementById("booking-title__action-active").style.left = '50%';
+            
+            btn_next.classList.remove("btn-active");
+            btn_next_booking.classList.add("btn-active");
+        }
+        
+    });
+
+    
+
+
+    // let items = document.querySelectorAll('li');
+
+    // items.forEach(li =>{
+    //     li.addEventListener("click", function(e){
+    //         document.getElementById("action").style.left = e.target.offsetLeft + "px";
+    //         items.forEach(li_hide =>{
+    //             li_hide.classList.remove('btn-active');
+    //         })
+    //         this.classList.add("btn-active");
+    //     })
+    // })
 }
 
 

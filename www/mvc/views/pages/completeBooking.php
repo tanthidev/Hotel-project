@@ -1,230 +1,160 @@
 <?php 
     $checkin       =$data['checkin'];
     $checkout      =$data['checkout'];
-    $amount        =$data['amount'];
-    $services      = $data['services'];
+    $bill          = $data['bill'];
+    $infoguest     = $data['infoGuest'];
+    $totalPayment  = $data['TotalPayment'];
     $request       = $data['request'];
-    $roomNumbers   = $data['roomNumbers'];
-    $roomType      = json_decode($data['roomType'])[0];
-    $moneyRoom     = $data['moneyRoom'];
-    $moneyService  = $data['moneyService'];
-    $moneyPayment  = $data['moneyPayment'];
-  
-    $servicesForPost="";
-    foreach($services as $service){
-        if($service!=null){
-            $servicesForPost = $servicesForPost.$service->nameService."-";
-
-        }        
-    }
-
-    $roomNumbersForPost="";
-    foreach($roomNumbers as $roomNumber){
-        if($roomNumber!=null){
-            $roomNumbersForPost = $roomNumbersForPost.$roomNumber->roomNumber."-";
-
-        }        
-    }
-
-    
 ?>
+
+
+<div class="grid" style="text-align: right; margin-top: 30px;">
+    <button class="btn-download"onclick="Convert_HTML_To_PDF()">Download Invoice</button>
+    <button class="btn-confirm-booking">Confirm Booking</button>
+</div>
 <div id="bill" class="grid">
-    <div class="complete__container-currency text-right">
-    <form class="complete__currency" action="">
-            <label for="currency">Currency:</label>
-            <select name="currency dropdown-menu" id="currency">
-                <option value="dollar">US$ (USD)</option>
-                <option value="euro">€ (EUR)</option>
-                <option value="vnd">VND (VND)</option>
-            </select>
-    </form>
+    <div class="header-bill">
+        <img class="header-bill__logo" src="/mvc/data/images/logo/logo-company.png" alt="">
     </div>
-    <div class="complete__container-header">
-        <h1 class="complete__title text-center">Complete your booking</h1>
-    </div>
-    <div class="complete__container-show-day-booking row">
-        <span class="col-12 complete__show-day-booking text-white">Your reservation - from <?php echo $checkin.' to '.$checkout.' ('. $amount.' night)'; ?></span>
-    </div>
-
-    <div class="complete__container-detail-hotel row">
-        <div class="col-12 complete__detail-hotel-item complete__detail-hotel-name">Carlton Hotel</div>
-        <div class="col-3">
-            <div class="col-12 complete__detail-hotel-item text-bold">Reception work</div>
-            <div class="col-12 complete__detail-hotel-item text-bold">Check-in after</div>
-            <div class="col-12 complete__detail-hotel-item text-bold">Check-out before</div>
-            <div class="col-12 complete__detail-hotel-item text-bold">Contact</div>
-            <div class="col-12 complete__detail-hotel-item text-bold">Website</div>
-        </div>
-        <div class="col-3">
-            <div class="col-12 complete__detail-hotel-item">24/7</div>
-            <div class="col-12 complete__detail-hotel-item">14:00</div>
-            <div class="col-12 complete__detail-hotel-item">11:00</div>
-            <div class="col-12 complete__detail-hotel-item">0123456789</div>
-            <div class="col-12 complete__detail-hotel-item"><a href="">carltonhotel.com</a></div>
-        </div>
-    </div>
-    <div class="complete__container-detail-room row">
-        <div class="col-3">
-            <?php 
-                foreach($roomNumbers as $roomNumber){
-                        echo '
-                        <p class="col-12 complete__detail-room-item text-bold">Room '.$roomNumber -> roomNumber.'</p>
-                        <p class="col-12 complete__detail-room-item blur">'.$roomNumber -> guest.' adult</p>
-                    ';
-                    
-                }
-            ?>
-        </div>
-        <div class="col-6">
-            <p class="col-12 complete__detail-room-item--roomtype text-bold"><?php echo $roomType -> roomType; ?></p>
-            <p class="col-12 complete__detail-room-item">View: <?php echo ucfirst($roomType -> view) ?> view</p>
-            <p class="col-12 complete__detail-room-item"><?php echo $roomType -> numberOfBed ?> King Beds</p>
-            <p class="col-12 complete__detail-room-item">SPECIAL DEAL - 30' SPA VOUCHER</p>
-        </div>
-        <div class="col-3">
-            <span class="col-12 complete__detail-room-item-price complete__detail-room-item-price-total"><?php echo $moneyRoom; ?> US$</span>
-        </div>
-    </div>
-
-    <div class="complete__container-services row">
-        <div class="col-3">
-            <p class="col-12 complete__services-item text-bold">Services</p>
-        </div>
-        <div class="col-6">
-            <?php 
-            if($services[0]!=null){
-                foreach($services as $service){
-                    if($service!=null){
-                        echo '<p class="col-12 complete__services-item">'.$service -> nameService.'</p>';
-                    }
-                }
-            }
-            ?>
-
-        </div>
-        <div class="col-3">
-            <?php 
-                if($services[0]!=null){
-                    foreach($services as $service){
-                        if($service!=null){
-                            if($service -> unit == 'Day'){
-                                $price = ($service -> price)*$amount;
-                            } else {
-                                $price = ($service -> price);
-                            }
-                            echo '<p class="col-12 complete__services-item-price">'.$price.' US$</p>';
-                        }
-                    }
-
-                    echo '<p class="col-12 complete__services-item-price complete__services-item-price-total">'.$moneyService.' US$</p>';
-
-                } else{
-                    echo '<p class="col-12 complete__services-item-price"> 0 US$</p>';
-                }
-            ?>
-            
-
-        </div>
-    </div>
-
-    <div class="complete__container-special-request row">
-        <div class="col-3">
-            <div class="col-12 complete__special-request--item text-bold">Special request</div>
-        </div>
-        <div class="col-3">
-            <div class="col-12 complete__special-request--item"><?php echo $request;?></div>
-        </div>
-    </div>
-
-    <div class="complete__container-total row">
-        <div class="col-3">
-            <div class="col-12 complete__total-item text-bold">Total</div>
-        </div>
-        <div class="col-6"></div>
-        <div class="col-3">
-            <div class="col-12 complete__total-item text-bold"><?php echo $moneyPayment; ?> US$</div>
-        </div>
-    </div>
-
-</div>
-
-<div class="grid">
-    <div class="complete__container-form-info row">
-        <div class="col-6">
-            <h1 class="col-12 complete__info-title text-center">Guest Infomation</h1>
-            <form method="POST" action="/booking/processBooking/?<?php echo 'checkin='.$checkin.'&checkout='.$checkout.'&service='.$servicesForPost.'&request='.$request.'&roomNumbers='.$roomNumbersForPost.'&roomType='.$roomType->roomType.'&moneyRoom='.$moneyRoom.'&moneyService='.$moneyService.'&moneyPayment='.$moneyPayment.''; ?>" class=" complete__form">
-            <div class="container form-group">
-                    <label class="complete__form-item" for="fullName">Full Name<span style="color:red;">*</span></label>
-                    <input class="form-control complete__form-item" id="fullName" name="fullName" type="text">
-                </div>
-                <div class="container form-group">
-                    <label class="complete__form-item" for="email">Email<span style="color:red;">*</span></label>
-                    <input class="form-control complete__form-item" id="email" name="email" type="text">
-                </div>
-                <div class="container form-group">
-                    <label class="complete__form-item" for="phoneNumber">Phone number<span style="color:red;">*</span></label>
-                    <input class="form-control complete__form-item" id="phoneNumber" name="phoneNumber" type="tel">
-                </div>
-                <div class="container form-group">
-                    <label class="complete__form-item" for="passport">Passport</label>
-                    <input class="form-control complete__form-item" id="passport" name="passport" type="text">
-                </div>
-
-                <div class="container form-group complete__container-checkbox-terms">
-                    
-                    <label class="complete__form-item-checkbox" for="terms">
-                    <input class="complete__form-item-checkbox" id="terms" name="terms" type="checkbox">
-                        I acknowledge that I have read and accepted the terms states in the agreement.
-                    </label>
-                </div>
-
-                <div class="container form-group text-center">
-                    <input class="complete__btn-book" type="submit" value="BOOK" name="btn-book">
-                </div>
-            </form>
-        </div>
-        <div class="col-6">
-            <h1 class="col-12 complete__payments-title text-center">
-                Payments
-            </h1>
-
-            <form class="complete__form-payment">
-                <label class="complete__payment-item">
-                    <input type="radio" checked="checked">
-                    Payment upon check-in
-                </label>
-                <label class="complete__payment-item complete__payment-item-disable flex">
-                    <input type="radio" disabled="disabled">
-                    <div class="complete__payment-container-img">
-                        <img src="/mvc/data/images/payments/visa.png" alt="" class="complete__payment-img">
-                        <img src="/mvc/data/images/payments/mastercard.png" alt="" class="complete__payment-img">
-                        <img src="/mvc/data/images/payments/amex.png" alt="" class="complete__payment-img">
-                        <img src="/mvc/data/images/payments/dinersclub.png" alt="" class="complete__payment-img">
-                        <img src="/mvc/data/images/payments/visaelectron.png" alt="" class="complete__payment-img">
-                        <img src="/mvc/data/images/payments/jcb.png" alt="" class="complete__payment-img">
+    <div class="bill__info-guest-hotel">
+        <div class="grid__row">
+            <div class="grid__column-2">
+                <div class="grid__row">
+                    <div class="grid__column-3">
+                    <div class="complete__detail-hotel-item text-bold">Invoice number</div>
+                        <div class="complete__detail-hotel-item text-bold">Date</div>
+                        <div class="complete__detail-hotel-item text-bold">Check-in</div>
+                        <div class="complete__detail-hotel-item text-bold">Check-out</div>
+                        <div class="complete__detail-hotel-item text-bold">Contact</div>
+                        <div class="complete__detail-hotel-item text-bold">Website</div>
                     </div>
-                </label>
-            </form>
+                    <div class="grid__column-3--2">
+                        <div class="complete__detail-hotel-item">00001</div>
+                        <div class="complete__detail-hotel-item">13:10:22 8/11/2022</div>
+                        <div class="complete__detail-hotel-item">After 14:00</div>
+                        <div class="complete__detail-hotel-item">Before 11:00</div>
+                        <div class="complete__detail-hotel-item">0123456789</div>
+                        <div class="complete__detail-hotel-item"><a href="">carltonhotel.com</a></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid__column-2">
+                <div class="grid__row">
+                    <div class="grid__column-3">
+                        <div class="complete__detail-hotel-item text-bold">Name</div>
+                        <div class="complete__detail-hotel-item text-bold">Email</div>
+                        <div class="complete__detail-hotel-item text-bold">Phone Number</div>
+                        <div class="complete__detail-hotel-item text-bold">Check-in</div>
+                        <div class="complete__detail-hotel-item text-bold">Check-out</div>
+                        <div class="complete__detail-hotel-item text-bold">Dates of stay</div>
+                    </div>
+                    <div class="grid__column-3--2">
+                        <?php 
+                            foreach($infoguest as $item){
+                                echo '<div class="complete__detail-hotel-item">'.$item.'</div>';
+                            }
+                        ?>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <table class="bill__bill-detail">
+        <tr class="grid__row">
+            <th class="grid__column-10-1 bill__bill-detail--header">No</th>
+            <th class="grid__column-10-2 bill__bill-detail--header">Product</th>
+            <th class="grid__column-10-2 bill__bill-detail--header">Description</th>
+            <th class="grid__column-10-1 bill__bill-detail--header">Quantity</th>
+            <th class="grid__column-10-1 bill__bill-detail--header">Guest</th>
+            <th class="grid__column-10-1 bill__bill-detail--header">Price</th>
+            <th class="grid__column-10-1 bill__bill-detail--header">Unit</th>
+            <th class="grid__column-10-1 bill__bill-detail--header">Amount</th>
+        </tr>
+    
+
+        <?php 
+            $no = 1;
+            foreach($bill as $item){
+                // print_r($item);
+                echo'
+                <tr class="grid__row">
+                    <td class="grid__column-10-1 bill__bill-detail--item">'.$no++.'</td>
+                    <td class="grid__column-10-2 bill__bill-detail--item">'.$item["product"].'</td>
+                    <td class="grid__column-10-2 bill__bill-detail--item">'.$item["description"].'</td>
+                    <td class="grid__column-10-1 bill__bill-detail--item">'.$item["quantity"].'</td>
+                    <th class="grid__column-10-1 bill__bill-detail--item">'.$item["guest"].'</th>
+                    <td class="grid__column-10-1 bill__bill-detail--item">'.$item["price"].'</td>
+                    <th class="grid__column-10-1 bill__bill-detail--item">'.$item["unit"].'</th>
+                    <td class="grid__column-10-1 bill__bill-detail--item">'.$item["amount"].'</td>
+                </tr>
+                ';
+            }
+        ?>
+
+
+
+        <!-- Total -->
+        <tr class="grid__row bill__total">
+            <td class="grid__column-10-1 bill__total--item">Total</td>
+            <td class="grid__column-10-2"></td>
+            <td class="grid__column-10-2"></td>
+            <td class="grid__column-10-1"></td>
+            <td class="grid__column-10-1"></td>
+            <th class="grid__column-10-1"></th>
+            <th class="grid__column-10-1"></th>
+            <td class="grid__column-10-1 bill__total--item bill__total--item-price"><?php echo $totalPayment; ?>$</td>
+        </tr>
+
+        <!-- Total -->
+        <tr class="grid__row bill__status">
+            <td class="grid__column-10-1 bill__status--item">Status</td>
+            <td class="grid__column-10-2"></td>
+            <td class="grid__column-10-2"></td>
+            <td class="grid__column-10-1"></td>
+            <td class="grid__column-10-1"></td>
+            <th class="grid__column-10-1"></th>
+            <th class="grid__column-10-1"></th>
+            <td class="grid__column-10-1 bill__status--item">Unpaid</td>
+        </tr>
+        
+
+    </table>
+    
+    <div class="bill__request">
+        <p class="text-bold bill__request--title">Special request:</p>
+        <p style="width: 80%; padding-left: 30px"><?php echo $request; ?></p>
+    </div>
+
+    <div class="footer-bill">
+        THANK YOU FOR YOUR VISIT
+    </div>
+    
 </div>
 
 
 
 
-<!-- <script>
+
+
+<script>
     
     // window.jsPDF = window.jspdf.jsPDF;
     // Convert HTML content to PDF
     function Convert_HTML_To_PDF() {
-        const quality = 1 // Higher the better but larger file
-    html2canvas(document.querySelector('#bill'),
-        { scale: quality }
-    ).then(canvas => {
-        const pdf = new jsPDF('p', 'mm', 'a4');
-        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 211, 200);
-        pdf.save("bill");
-    });
+        width = document.getElementById("bill").offsetWidth;
+        height = document.getElementById("bill").offsetHeight;
+        ratio = height/width
+        a = (300 - 200*ratio)/2;
+        const quality = 2 // Higher the better but larger file
+        html2canvas(document.querySelector('#bill'),
+            { scale: quality }
+        ).then(canvas => {
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 5, 30, 200, 200*ratio);
+            pdf.save("Carlton");
+        });
     }
     //
-</script> -->
+</script>

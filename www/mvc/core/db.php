@@ -12,7 +12,4 @@
             mysqli_query($this->conn, "SET NAMES 'utf8'");
         }
     }
-
-
-
 ?>

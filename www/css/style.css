@@ -106,6 +106,11 @@ hr{
     padding: 0 10px; 
 }
 
+.grid__column-10-3{
+    width: 30%;
+    padding: 0 10px; 
+}
+
 .grid__column-10-8{
     width: 80%;
     padding: 0 10px; 
@@ -214,6 +219,7 @@ a{
 ul{
     padding: 0;
 }
+
 
 /* Controller PAGE */
 
@@ -733,7 +739,7 @@ input:-ms-input-placeholder { color: #999999; }
   width: 100%;
   height: 50px;
   border-radius: 25px;
-  background: rgba(217,134,0,0.6);
+  background: rgba(217,134,0,0.6) !important;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1573,17 +1579,42 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .page-booking__selection--title{
     font-size: 20px;
-    display: flex;
-    align-items: center;
-    margin: auto;
+    /* display: flex; */
+    /* align-items: center; */
+    padding: 15px;
 }
 .page-booking__selection--header {
     text-align: center;
     width: 100%;
     height: 60px;
-    border-bottom: 3px solid var(--orange-color);
 }
 
+
+
+#booking-title__action-active{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    left: 0;
+    z-index: -1;
+    background: transparent;
+    border-radius: 2px;
+    border-bottom: 4px solid var(--orange-color);
+    transition: 0.4s;
+}
+
+
+
+.page-booking__info-room,
+.page-booking__info-guest{
+    width: 100%;
+    display: none;
+}
+
+.page-booking__active{
+    display: inline-block;
+
+}
 
 
 
@@ -1604,7 +1635,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin: 0;
 }
 
-.page-booking--selection-text{
+.page-booking--selection-text,
+.page-booking__extra-services--title{
     display: block;
     font-size: 17px;
     font-weight: 600
@@ -1634,12 +1666,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .page-booking__extra-services--title{
-    font-size: 20px;
-    margin-left: 20px;
+    font-size: 17px;
+    margin-bottom: 8px;
 }
 
 .page-booking__extra-services--list{
     list-style: none;
+    margin: 0 30px 0 15px;
 }
 
 .page-booking__extra-services--item{
@@ -1666,7 +1699,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-top: 20px;
     height: fit-content;
     padding: 30px 0;
-    width: calc(100% + 30px);
+    /* width: calc(100% + 30px); */
 }
 
 
@@ -1687,10 +1720,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .page-booking--selection-footer{
     display: flex;
     align-items: center;
+    width: calc(100% - 15px);
 }
 
 .page-booking__btn-next,
 .complete__btn-book{
+    cursor: pointer;
     position: absolute;
     border: none;
     background-color: var(--main-color) !important;
@@ -1700,6 +1735,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 8px 50px;
     right: 5%;
     margin-bottom: 15px;
+    display: none;
+}
+
+.btn-active{
+    display: block;
 }
 
 .page-booking__tab-header{
@@ -2229,7 +2269,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .complete__detail-room-item,
 .complete__services-item,
 .complete__special-request--item{
-    font-size: 15px;
+    font-size: 16px;
 }
 
 .complete__detail-room-item--roomtype{
@@ -2296,6 +2336,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .complete__form-item{
     font-size: 15px;
     border-radius: 4px;
+    font-weight: 500;
 }
 
 .complete__form-item-checkbox{
@@ -2308,9 +2349,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .complete__payment-item{
-    font-size: 20px;
+    font-size: 15px;
     display: flex;
-    margin-bottom: 20px;
+    /* margin-bottom: 10px; */
 }
 .complete__payment-item-disable{
     opacity: 0.4;
@@ -2342,6 +2383,114 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     position: unset;
     margin-top: 20px;
 }
+
+#bill{
+    border: 1px solid #000;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+}
+
+.header-bill{
+    background-color: var(--main-color);
+    width: 100%;
+    height: fit-content;
+}
+
+.header-bill__logo{
+    margin: auto;
+    padding: 10px 0;
+    width: 12%;
+}
+
+.bill__info-guest-hotel{
+    margin-top: 30px;
+}
+
+.bill__bill-detail,
+.bill__request{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.bill__request{
+    padding: 0 30px;
+}
+
+.bill__bill-detail, 
+.bill__bill-detail--header,
+.bill__bill-detail--item{
+    border: 0.5px solid black;
+    border-collapse: collapse;
+}
+
+.bill__bill-detail{
+    border-right: none;
+    border-left: none;
+
+}
+
+.bill__bill-detail--header,
+.bill__bill-detail--item,
+.bill__status--item{
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.bill__total,.bill__status{
+    margin-top: 5px;
+}
+
+.bill__total--item,
+.bill__status--item{
+    font-size: 24px;
+}
+
+.bill__request--title{
+    font-size: 17px;
+}
+
+.bill__total{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.bill__total--item-price{
+    color: brown;
+    font-weight: 700;
+}
+
+.footer-bill{
+    background-color: var(--main-color);
+    color: var(--white-color);
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+    padding: 10px 0;
+    font-size: 20px;
+    margin-top: 40px;
+
+}
+
+.btn-confirm-booking,
+.btn-download{
+    background-color: var(--orange-color);
+    padding: 10px 20px;
+    color: var(--white-color);
+}
+
+.btn-download{
+    background-color: var(--main-color);
+    margin-right: 20px;
+}
+
+
+
+
+
+
+
 
 
 

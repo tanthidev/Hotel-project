@@ -15,6 +15,16 @@
 	if(isset( $_GET['guest'])){
 		$guestRequire = $_GET['guest'];
 	}
+    if(isset($data['user'])){
+        $user = json_decode($data['user']);
+        $fullName = $user -> fullName;
+        $email = $user -> email;
+        $phoneNumber= $user -> phoneNumber;
+    } else {
+        $fullName="";
+        $email="";
+        $phoneNumber="";
+    }
 ?>
 
 <div>
@@ -72,106 +82,156 @@
         </div>
 
         <!-- Form booking -->
-        <div class="grid__column-10-4 page-booking__main--selection">
+        <div id="form-booking" class="grid__column-10-4 page-booking__main--selection">
             <div class="page-booking__selection--header ">
-                <div class=" page-booking__selection--header">
-                    <h2 class="page-booking__selection--title ">REQUESTS BOOKING</h2>
+                <div class=" page-booking__selection--header grid__row">
+                    <h2 id="btn-info-booking" class="page-booking__selection--title grid__column-2 booking-title__active">BOOKING</h2>
+                    <h2 id="btn-info-guest" class="page-booking__selection--title grid__column-2">GUEST</h2>
+                    <div id="booking-title__action-active"></div>
                 </div>
             </div>
             
-            <form id="form-search" action="/booking/completeBooking/?room=<?php echo $room -> roomType; ?>" method="post" class="grid__row page-booking--selection-form">
-                <div class="page-booking--selection-form-item page-booking--selection-form-item--date">
-                    <label for="date" class="page-booking--selection-text">
-                        Date from - Date to
-                    </label>
-                    <!-- <input name="datecheckin" id="datecheckin" type="date" class="page-booking--selection-input"> -->
-                    <input value="<?php echo $datefilter; ?>" placeholder="Date from - Date to" id="date" class="page-booking--selection-input page-booking--selection-input-date" type="text" name="datefilter" value="" />
+            <form id="form-search" action="/booking/completeBooking/?room=<?php echo $room -> roomType; ?>" method="post" class=" page-booking--selection-form">
+                <!-- First form booking -->
+                <div id="info-booking" class="grid__row page-booking__info-room page-booking__active">
+                    <!-- Date check in -->
+                    <div class="page-booking--selection-form-item page-booking--selection-form-item--date">
+                        <label for="date" class="page-booking--selection-text">
+                            Date from - Date to
+                        </label>
+                        <!-- <input name="datecheckin" id="datecheckin" type="date" class="page-booking--selection-input"> -->
+                        <input value="<?php echo $datefilter; ?>" placeholder="Date from - Date to" id="date" class="page-booking--selection-input page-booking--selection-input-date" type="text" name="datefilter" value="" />
+                    </div>
+                    
+                    <div class="grid__row">
+                        <!-- Guest -->
+                        <div class="grid__column-2 page-booking--selection-form-item">
+                            <label for="guest" class="page-booking--selection-text">
+                                Guest
+                            </label>
+                            <input value="<?php echo $guestRequire; ?>" name="guest" id="guest" min="1" type="number" class="page-booking--selection-input" placeholder="Number of Guests">
+                        </div>
+
+                        <!-- Number of room -->
+                        <div class="grid__column-2 page-booking--selection-form-item">
+                            <label for="numberOfRooms" class="page-booking--selection-text">
+                                Number Of Rooms
+                            </label>
+                            <input min="1" name="numberOfRooms" id="numberOfRooms" type="number" class="page-booking--selection-input" placeholder="Number of Rooms">
+                        </div>
+                    </div>
+                    
+                    <!-- Service -->
+                    <div class="page-booking__extra-services">
+                        <h1 class="page-booking__extra-services--title">
+                            Extra Services
+                        </h1>
+                        <ul class="page-booking__extra-services--list">
+                            <!-- Car rental -->
+                            <li class="page-booking__extra-services--item">
+                                <div class="page-booking__extra-service-container-input">
+                                    <input id="carrental" name="carrental" type="checkbox" class="page-booking__extra-service--input">
+                                    <label for="carrental" class="page-booking__extra-service-label">
+                                        <span class="page-booking__extra-service-name">Car rental</span>
+                                    </label>
+                                </div>
+                                <label for="driver" class="page-booking__extra-service-price">$30/ Day</label>
+                            </li>
+
+                            <!-- Gym & Spa -->
+                            <li class="page-booking__extra-services--item">
+                                <div class="page-booking__extra-service-container-input">
+                                    <input id="gym" name="gym" type="checkbox" checked="checked" class="page-booking__extra-service--input">
+                                    <label for="gym" class="page-booking__extra-service-label">
+                                        <span class="page-booking__extra-service-name">Gym & Spa</span>
+                                    </label>
+                                </div>
+                                <label for="gym" class="page-booking__extra-service-price">Free</label>
+                            </li>
+
+                            <!-- Breakfast -->
+                            <li class="page-booking__extra-services--item">
+                                <div class="page-booking__extra-service-container-input">
+                                    <input id="breakfast" name="breakfast" type="checkbox" class="page-booking__extra-service--input">
+                                    <label for="breakfast" class="page-booking__extra-service-label">
+                                        <span class="page-booking__extra-service-name">Breakfast</span>
+                                    </label>                                 
+                                </div>
+                                <label for="breakfast" class="page-booking__extra-service-price">$10/ Day/ Guest</label>
+                            </li>
+
+                            <!-- Laundry -->
+                            <li class="page-booking__extra-services--item">
+                                <div class="page-booking__extra-service-container-input">
+                                    <input id="laundry" name="laundry" type="checkbox" class="page-booking__extra-service--input">
+                                    <label for="laundry" class="page-booking__extra-service-label">
+                                        <span class="page-booking__extra-service-name">Laundry</span>
+                                    </label>                                 
+                                </div>
+                                <label for="laundry" class="page-booking__extra-service-price">$5/ Day/ Guest</label>
+                            </li>
+
+                            <li class="page-booking__extra-services--item">
+                                <div class="page-booking__extra-service-container-input">
+                                    <input id="airport" name="airport" type="checkbox" class="page-booking__extra-service--input">
+                                    <label for="airport" class="page-booking__extra-service-label">
+                                        <span class="page-booking__extra-service-name">Airport pick up</span>
+                                    </label>                                 
+                                </div>
+                                <label for="airport" class="page-booking__extra-service-price">$20/ Way</label>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Request -->
+                    <div class="page-booking--selection-form-item page-booking--selection-form-item--request">
+                        <label for="request" class="page-booking--selection-text">
+                            Special request
+                        </label>
+                        <textarea placeholder="Check-in time, food allergies..." name="request" id="request" rows="3" cols="auto" class="page-booking--selection-input page-booking--selection-input--request"></textarea>
+                    </div>
                 </div>
 
-                <div class="grid__column-2 page-booking--selection-form-item">
-                    <label for="guest" class="page-booking--selection-text">
-                        Guest
-                    </label>
-                    <input value="<?php echo $guestRequire; ?>" name="guest" id="guest" min="1" type="number" class="page-booking--selection-input" placeholder="Number of Guests">
-                </div>
+                <!-- Second form booking -->
+                <div id="info-guest" class="page-booking__info-guest">
+                    <div class="container form-group">
+                        <label class="complete__form-item" for="fullName">Full Name<span style="color:red;">*</span></label>
+                        <input class="form-control complete__form-item" id="fullName" name="fullName" type="text" value="<?php echo $fullName; ?>">
+                    </div>
+                    <div class="container form-group">
+                        <label class="complete__form-item" for="email">Email<span style="color:red;">*</span></label>
+                        <input class="form-control complete__form-item" id="email" name="email" type="text" value="<?php echo $email; ?>">
+                    </div>
+                    <div class="container form-group">
+                        <label class="complete__form-item" for="phoneNumber">Phone number<span style="color:red;">*</span></label>
+                        <input class="form-control complete__form-item" id="phoneNumber" name="phoneNumber" type="tel" value="<?php echo $phoneNumber; ?>">
+                    </div>
+                    
 
-                <div class="grid__column-2 page-booking--selection-form-item">
-                    <label for="numberOfRooms" class="page-booking--selection-text">
-                        Number Of Rooms
-                    </label>
-                    <input min="1" name="numberOfRooms" id="numberOfRooms" type="number" class="page-booking--selection-input" placeholder="Number of Rooms">
-                </div>
-                
-                <div class="page-booking__extra-services">
-                    <h1 class="page-booking__extra-services--title">
-                        Extra Services
-                    </h1>
-                    <ul class="page-booking__extra-services--list">
-                        <!-- Car rental -->
-                        <li class="page-booking__extra-services--item">
-                            <div class="page-booking__extra-service-container-input">
-                                <input id="carrental" name="carrental" type="checkbox" class="page-booking__extra-service--input">
-                                <label for="carrental" class="page-booking__extra-service-label">
-                                    <span class="page-booking__extra-service-name">Car rental</span>
-                                </label>
+                    <div class="container"> 
+                        <label class="complete__payment-item">
+                            <input type="radio" checked="checked">
+                            Payment upon check-in
+                        </label>
+                        <label class="complete__payment-item complete__payment-item-disable flex">
+                            <input type="radio" disabled="disabled">
+                            <div class="complete__payment-container-img">
+                                <img src="/mvc/data/images/payments/visa.png" alt="" class="complete__payment-img">
+                                <img src="/mvc/data/images/payments/mastercard.png" alt="" class="complete__payment-img">
+                                <img src="/mvc/data/images/payments/amex.png" alt="" class="complete__payment-img">
+                                <img src="/mvc/data/images/payments/dinersclub.png" alt="" class="complete__payment-img">
+                                <img src="/mvc/data/images/payments/visaelectron.png" alt="" class="complete__payment-img">
+                                <img src="/mvc/data/images/payments/jcb.png" alt="" class="complete__payment-img">
                             </div>
-                            <label for="driver" class="page-booking__extra-service-price">$30/ Day</label>
-                        </li>
+                        </label>
+                    </div>
 
-                        <!-- Gym & Spa -->
-                        <li class="page-booking__extra-services--item">
-                            <div class="page-booking__extra-service-container-input">
-                                <input id="gym" name="gym" type="checkbox" checked="checked" class="page-booking__extra-service--input">
-                                <label for="gym" class="page-booking__extra-service-label">
-                                    <span class="page-booking__extra-service-name">Gym & Spa</span>
-                                </label>
-                            </div>
-                            <label for="gym" class="page-booking__extra-service-price">Free</label>
-                        </li>
-
-                        <!-- Breakfast -->
-                        <li class="page-booking__extra-services--item">
-                            <div class="page-booking__extra-service-container-input">
-                                <input id="breakfast" name="breakfast" type="checkbox" class="page-booking__extra-service--input">
-                                <label for="breakfast" class="page-booking__extra-service-label">
-                                    <span class="page-booking__extra-service-name">Breakfast</span>
-                                </label>                                 
-                            </div>
-                            <label for="breakfast" class="page-booking__extra-service-price">$10/ Day/ Guest</label>
-                        </li>
-
-                        <!-- Laundry -->
-                        <li class="page-booking__extra-services--item">
-                            <div class="page-booking__extra-service-container-input">
-                                <input id="laundry" name="laundry" type="checkbox" class="page-booking__extra-service--input">
-                                <label for="laundry" class="page-booking__extra-service-label">
-                                    <span class="page-booking__extra-service-name">Laundry</span>
-                                </label>                                 
-                            </div>
-                            <label for="laundry" class="page-booking__extra-service-price">$5/ Day/ Guest</label>
-                        </li>
-
-                        <li class="page-booking__extra-services--item">
-                            <div class="page-booking__extra-service-container-input">
-                                <input id="airport" name="airport" type="checkbox" class="page-booking__extra-service--input">
-                                <label for="airport" class="page-booking__extra-service-label">
-                                    <span class="page-booking__extra-service-name">Airport pick up</span>
-                                </label>                                 
-                            </div>
-                            <label for="airport" class="page-booking__extra-service-price">$20/ Way</label>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="page-booking--selection-form-item page-booking--selection-form-item--request">
-                    <label for="request" class="page-booking--selection-text">
-                        Special request
-                    </label>
-                    <textarea placeholder="Check-in time, food allergies..." name="request" id="request" rows="3" cols="auto" class="page-booking--selection-input page-booking--selection-input--request"></textarea>
+                   
                 </div>
 
                 <div class="page-booking--selection-footer">
-                    <input type="submit" class="page-booking__btn-next" name="btn-next" value="Next">
+                    <div id="page-booking__btn-next" class="page-booking__btn-next btn-active">Next</div>
+                    <input id="page-booking__btn-booking" type="submit" class="page-booking__btn-next" name="btn-next" value="BOOK">
                 </div>
 
             </form>
