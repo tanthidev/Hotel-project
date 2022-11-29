@@ -321,6 +321,7 @@ ul{
     margin-bottom: 5px;
 }
 
+
 .notice-task{
     position: absolute;
     width: 450px;
@@ -2485,6 +2486,19 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-right: 20px;
 }
 
+
+/* NOTICE PAGE CSS */
+.notice-page__container-img{
+    margin: auto;
+    width: fit-content;
+    text-align: center;
+}
+
+.notice-page__title--success{
+    color: rgb(112,192,67);
+    font-weight: 700;
+    font-size: 40px;
+}
 
 
 

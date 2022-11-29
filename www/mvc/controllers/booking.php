@@ -6,13 +6,16 @@
             $room = self::model('roomModel');
             $user = self::model('userModel');
             
-            //GỌi view
+            
+
+            //Gọi view
             $view =self::view("simplelayout",[
                 "page"      =>"booking",
                 "user"      => $user -> getUser(),
                 "avatarRoom" => $room -> getAvatarRoom($roomType),
                 "imageRoom" => $room -> getImageRoom($roomType),
-                "room"      => $room -> getRoomType($roomType)
+                "room"      => $room -> getRoomType($roomType), 
+                "roomStatus"=> $room -> getStatusRoom($roomType),
             ]);
         }
 
@@ -21,8 +24,7 @@
             $room = self::model('roomModel');
             $user = self::model('userModel');
             $service = self::model('serviceModel');
-
-
+            $booking = self::model('bookingModel');
             $bill = array(
                 "room"=> [
                     "product" =>"",
@@ -66,6 +68,8 @@
                 // Process Service
 
                 $totalMoneyPayment = 0;
+
+                $services = array();
                 if(isset($_POST['btn-next'])){
                     if(isset($_POST['gym'])){
                         // array_unshift($services, json_decode($service -> getService('1')));
@@ -94,6 +98,7 @@
                         $gym["amount"] = $amount;  
                         $gym["guest"] = $guest;  
                         array_push($bill, $gym);
+                        array_push($services, $gym);
                     }
                     
                     if(isset($_POST['breakfast'])){
@@ -120,7 +125,8 @@
                         $breakfast["amount"] = $amount;  
                         $breakfast["guest"] = $guest;  
                         array_push($bill, $breakfast);
-                         
+                        array_push($services, $breakfast);
+
                         // print_r($bill);
 
                     }
@@ -150,6 +156,8 @@
                         $laundry["amount"] = $amount; 
                         $laundry["guest"] = $guest; 
                         array_push($bill, $laundry);
+                        array_push($services, $laundry);
+
                     }
         
                     if(isset($_POST['carrental'])){
@@ -176,6 +184,7 @@
                         $carrental["unit"] = $unit;
                         $carrental["amount"] = $amount;  
                         array_push($bill, $carrental);
+                        array_push($services, $carrental);
                     }
         
                     if(isset($_POST['airport'])){
@@ -201,17 +210,17 @@
                         $airport["unit"] = $unit;
                         $airport["amount"] = $amount;  
                         array_push($bill, $airport);
+                        array_push($services, $airport);
                     }
                 }
                 
                 //Get room from database
-                $roomNumbers = $room -> getRoomNumber($roomType, $numberOfRooms);
+                $roomNumbers = json_decode($room -> getRoomAvailble($roomType, $numberOfRooms, $datefilter[0], $datefilter[1]));    
+                
 
                 $totalMoneyRoom = (int)(json_decode($room -> getRoomType($roomType))[0] -> price) * $datesOfStay * $numberOfRooms;
 
                 $totalMoneyPayment = $totalMoneyRoom + $totalMoneyPayment;
-
-                // $bill = array();
                 
                 
                 $bill["room"]["product"] = $roomType;
@@ -221,8 +230,30 @@
                 $bill["room"]["price"] = (json_decode($room -> getRoomType($roomType))[0]->price);
                 $bill["room"]["amount"] = $totalMoneyRoom;
                 
-                // Info guest
+                $roomBooking = array();
+                foreach($roomNumbers as $roomNumber){
+                    $a = array(
+                        "roomNumber" => $roomNumber-> roomNumber,
+                        "price"      => json_decode($room -> getRoomByPhoneNumber($phoneNumber))[0]->price,
+                        "total"      => json_decode($room -> getRoomByPhoneNumber($phoneNumber))[0]->price * $datesOfStay,
+                    );
+                    array_push($roomBooking, $a);
+                    
+                }
 
+                //Get time booking
+                date_default_timezone_set('Asia/Ho_Chi_Minh');
+                $dateBooking = date("H:i:s d-m-Y");
+
+
+                //Save into database
+                // $booking -> addBooking($fullName, $phoneNumber, $email, $datefilter[0], $datefilter[1], $guest, $request, $dateBooking);
+                // $booking -> addBookingService($services, $phoneNumber);
+                // $booking -> addRoomStatus($roomBooking, $phoneNumber, $datefilter[0], $datefilter[1]);
+
+
+
+                // Info guest
                 $infoGuest = array(
                     "fullName" => $fullName,
                     "email"    => $email,
@@ -231,24 +262,45 @@
                     "checkout"  => $datefilter[1],
                     "datesOfStay"=> $datesOfStay.' Night'
                 );
-
-                
-
-
+                $booking = json_decode($booking -> getBooking($phoneNumber));
+                $bookingId = $booking -> bookingID;
+                $dateBooking = $booking -> dateBooking;
                 //Gọi view
                 $view = self::view("emptylayout",[
                     "page"      => "completeBooking",
-                    "user"      => $user -> getUser(),
+                    "user"      => $user->getUser(),
                     "checkin"   => $datefilter[0],
                     "checkout"  => $datefilter[1],
                     "bill"      => $bill,
                     "infoGuest" => $infoGuest,
                     "TotalPayment"  => $totalMoneyPayment,
                     "request"   => $request,
-                ]);
+                    "dateBooking"=> $dateBooking,
+                    "bookingId" => $bookingId,
 
-            
+                ]);
         }
+
+        static function confirmBooking(){
+            // Goi models
+            $booking = self::model("bookingModel");
+            $user = self::model('userModel');
+
+
+            $bookingId = $_GET['bookingId'];
+            $result = $booking -> confirmBooking($bookingId);
+            if($result){
+                header("Location: /notice?result=success");
+            } else {
+                // View
+                $view = self::view("emptylayout",[
+                    "page"      => "noticePage",
+                    "user"      => $user->getUser(),
+                    "result"    => "fail"
+                ]); 
+            }
+        }
+        
 
         
         static function processBooking(){

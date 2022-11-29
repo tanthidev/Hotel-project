@@ -22,8 +22,9 @@ function topFunction() {
         top: 0,
         behavior: "smooth",
     })
-
 }
+
+
 
 // Show menu when click button on mobile
 if(document.getElementById("header__btn-menu--mobile")){
@@ -772,7 +773,7 @@ if(document.getElementById("form-search")){
             },
             "minDate": getCurrentDate(),
             "autoApply": true,
-            "drops": 'auto'
+            "drops": 'auto',
             // isInvalidDate: function(date) {
             //     if (date.format('MM/DD/YYYY') == '10/24/2022') {
             //         return true; 

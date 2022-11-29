@@ -11,6 +11,19 @@
             return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
         }
 
+        public function getRoomByPhoneNumber($phoneNumber){
+            $qr = "SELECT roomNumber, Rooms.roomType, view, numberOfBed, area, guest, price, describeRoom 
+                    FROM Rooms, RoomType 
+                    WHERE Rooms.roomNumber = 'A0101' 
+                    AND Rooms.roomType = RoomType.roomType;";
+            $rows = mysqli_query($this ->conn, $qr);
+            $array = array();
+            while($row = mysqli_fetch_assoc($rows)){
+                $array[] = $row;
+            }
+            return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+        }
+
         public function getRoomNumber($roomType, $numberOfRooms){
             $qr = " SELECT Rooms.roomNumber, RoomType.guest
                     FROM   Rooms, RoomType
@@ -79,6 +92,8 @@
             return $result;
         }
 
+        
+
         public function insertRoomType($roomType, $beds, $area, $guest, $price){
             $qr ="INSERT INTO RoomType (roomType, numberOfBed, area, guest, price)
                     VALUE ('$roomType','$beds','$area', '$guest', '$price')";
@@ -144,6 +159,60 @@
             return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
         }
 
+        public function getRoomAvailble($roomType, $amount, $checkIn, $checkOut){
+            // Get list room was booking 
+            $qr = "SELECT roomNumber FROM RoomStatus WHERE ('$checkIn' BETWEEN checkIn AND checkOut) or ('$checkOut' BETWEEN checkIn AND checkOut) or (('$checkIn' < checkIn) and ('$checkOut' > checkOut))";
+            $rows = mysqli_query($this -> conn, $qr);
+            $array = array();
+            while($row = mysqli_fetch_assoc($rows)){
+                $array[] = $row;
+            }
+
+            print_r($array);
+
+            if($array!=null){
+                // Neu co phong da duoc book
+                $roomBooked = "'".$array[0]["roomNumber"]."'";
+                foreach($array as $item){
+                    $roomBooked = $roomBooked . ", '".$item["roomNumber"]."'";
+                }
+                $qr = "SELECT roomNumber 
+                        FROM Rooms
+                        WHERE (roomNumber not in ($roomBooked)) and (roomType = '$roomType') 
+                        ORDER BY roomNumber 
+                        LIMIT $amount";
+            } else {
+                //Lay thoai mai vi tat ca phong deu con trong
+                $qr = "SELECT roomNumber 
+                        FROM Rooms
+                        WHERE (roomType = '$roomType') 
+                        ORDER BY roomNumber 
+                        LIMIT $amount";
+            }
+
+            $rows = mysqli_query($this -> conn, $qr);
+            $array = array();
+            while($row = mysqli_fetch_assoc($rows)){
+                $array[] = $row;
+            }
+            return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+        }
+
+
+        // get status room for show calendar
+        public function getStatusRoom($roomType){
+            $currentDate = date("d/m/Y");
+            $qr = "SELECT roomNumber, checkIn, checkOut 
+                    FROM RoomStatus 
+                    WHERE (roomNumber in (SELECT roomNumber FROM Rooms WHERE RoomType = '$roomType')) AND (checkIn > '$currentDate')";
+            $rows = mysqli_query($this -> conn, $qr);
+            $array = array();
+            while($row = mysqli_fetch_assoc($rows)){
+                $array[] = $row;
+            }
+            return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+
+    }
 
 
     }   

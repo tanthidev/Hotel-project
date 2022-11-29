@@ -1,16 +1,18 @@
 <?php 
-    $checkin       =$data['checkin'];
-    $checkout      =$data['checkout'];
+    $checkin       = $data['checkin'];
+    $checkout      = $data['checkout'];
     $bill          = $data['bill'];
     $infoguest     = $data['infoGuest'];
     $totalPayment  = $data['TotalPayment'];
     $request       = $data['request'];
+    $bookingId     = $data['bookingId'];
+    $dateBooking   = $data['dateBooking'];
 ?>
 
 
 <div class="grid" style="text-align: right; margin-top: 30px;">
     <button class="btn-download"onclick="Convert_HTML_To_PDF()">Download Invoice</button>
-    <button class="btn-confirm-booking">Confirm Booking</button>
+    <button id="btn-confirm-booking" class="btn-confirm-booking">Confirm Booking</button>
 </div>
 <div id="bill" class="grid">
     <div class="header-bill">
@@ -29,8 +31,8 @@
                         <div class="complete__detail-hotel-item text-bold">Website</div>
                     </div>
                     <div class="grid__column-3--2">
-                        <div class="complete__detail-hotel-item">00001</div>
-                        <div class="complete__detail-hotel-item">13:10:22 8/11/2022</div>
+                        <div class="complete__detail-hotel-item"><?php echo $bookingId; ?></div>
+                        <div class="complete__detail-hotel-item"><?php echo $dateBooking; ?></div>
                         <div class="complete__detail-hotel-item">After 14:00</div>
                         <div class="complete__detail-hotel-item">Before 11:00</div>
                         <div class="complete__detail-hotel-item">0123456789</div>
@@ -156,5 +158,7 @@
             pdf.save("Carlton");
         });
     }
-    //
+    document.getElementById("btn-confirm-booking").onclick = function(){
+        location.href = '/booking/confirmBooking/?bookingId=<?php echo $bookingId;?>';
+    }
 </script>

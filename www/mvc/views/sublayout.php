@@ -182,7 +182,7 @@
 								Check in - Check out
 							</label>
 
-							<input id="booking-input-checkout" type="text" name="datefilter"  class="booking-input" value="dd/mm/yyyy">
+							<input id="booking-input-checkout" type="text" name="datefilter"  class="booking-input" value="<?php echo $datefilter; ?>">
 						</div>
 
 						<div class="grid__column-4 taskbar-booking__number-guest taskbar-booking--item">
@@ -190,7 +190,7 @@
 								<i class="fa-solid fa-users"></i>
 								Guest
 							</label>
-							<input id="booking-input-guest" type="number" name="guest" value="1" min="1"  class="booking-input booking-input--guest">
+							<input id="booking-input-guest" type="number" name="guest" value="<?php echo $guest; ?>" min="1"  class="booking-input booking-input--guest">
 						</div>
 						<input type="submit" name="search" value="search" class="taskbar-booking__search grid__column-4">
 					</form>
