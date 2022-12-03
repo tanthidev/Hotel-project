@@ -292,12 +292,7 @@
             if($result){
                 header("Location: /notice?result=success");
             } else {
-                // View
-                $view = self::view("emptylayout",[
-                    "page"      => "noticePage",
-                    "user"      => $user->getUser(),
-                    "result"    => "fail"
-                ]); 
+                header("Location: /notice?result=fail"); 
             }
         }
         

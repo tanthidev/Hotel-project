@@ -774,11 +774,11 @@ if(document.getElementById("form-search")){
             "minDate": getCurrentDate(),
             "autoApply": true,
             "drops": 'auto',
-            // isInvalidDate: function(date) {
-            //     if (date.format('MM/DD/YYYY') == '10/24/2022') {
-            //         return true; 
-            //     }
-            // }
+            isInvalidDate: function(date) {
+                if (date.format('MM/DD/YYYY') == '12/24/2022') {
+                    return true; 
+                }
+            }
             
         });
 

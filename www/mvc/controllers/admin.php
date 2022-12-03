@@ -32,10 +32,27 @@
         static function bookingManager(){
             //Gọi model user
             $user = self::model("userModel");
+            $booking = self::model("bookingModel");
+
+            $bookingPerPage=8;
+                //Get page from url
+                if(isset($_GET['page'])){
+                    $currentPage=$_GET['page'];
+                }
+                else {
+                    $currentPage=1;
+                }
+                
+                //Pagination
+                $totalUser = count(json_decode($booking->getAllNewBooking()));
+                $totalPage = ceil($totalUser/$bookingPerPage);
+                $from = ($currentPage-1) * $bookingPerPage;
             //GỌi view
             $view =self::view("adminlayout",[
                 "page"=>"bookingManager",
-                "admin" => $user -> getAdmin()
+                "admin" => $user -> getAdmin(),
+                "totalPage"=> $totalPage,
+                "bookings" => $booking -> getLimitNewBooking($from, $bookingPerPage),
             ]);
         }
         
@@ -101,10 +118,26 @@
         static function serviceManager(){
             //Gọi model user
             $user = self::model("userModel");
+            $sercice = self::model("serviceModel");
+            $servicePerPage=8;
+            //Get page from url
+            if(isset($_GET['page'])){
+                $currentPage=$_GET['page'];
+            }
+            else {
+                $currentPage=1;
+            }
+            
+            //Pagination
+            $totalService = count(json_decode($sercice->getAllService()));
+            $totalPage = ceil($totalService/$servicePerPage);
+            $from = ($currentPage-1) * $servicePerPage;
+            
             //GỌi view
             $view =self::view("adminlayout",[
                 "page"=>"serviceManager",
-                "users" => $user -> getUser(),
+                "services" => $sercice->getLimitService($from, $servicePerPage),
+                "totalPage"=> $totalPage,
                 "admin" => $user -> getAdmin()
             ]);
         }

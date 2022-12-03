@@ -5,7 +5,6 @@
     $countImageRoom = count($imageRoom);
     $room = json_decode($data['room'])[0];
     $roomStatus = json_decode($data['roomStatus']);
-    print_r($roomStatus);
 
     //GET data
     $datefilter = "";
@@ -390,35 +389,7 @@
         document.getElementById("numberOfRooms").setAttribute("min", Math.ceil(guest/<?php echo (int)($room -> guest) ?>))
     });
     
-    if(document.getElementById("form-search")){
-        $(function() {
-            $('input[name="datefilter"]').daterangepicker({
-                autoUpdateInput: false,
-                locale: {
-                    cancelLabel: 'Clear'
-                },
-                "minDate": getCurrentDate(),
-                "autoApply": true,
-                "drops": 'auto',
-                isInvalidDate: function(date) {
-                    if (date.format('M/D/YYYY') == '11/27/2022') {
-                        return true; 
-                    }
-                },
-                
-            });
     
-          
-            $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
-                $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
-            });
-          
-            $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
-                $(this).val('');
-            });
-          
-          });
-    }
     
 
     

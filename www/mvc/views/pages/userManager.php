@@ -13,24 +13,6 @@
             <th class="userManager_table-header-item grid__column-10-1">PASSPORT</th>
             <th class="userManager_table-header-item grid__column-10-1">ACTION</th>
         </tr>
-
-        <!-- <tr class="userManager_table-row">
-                    <td class="userManager_table-content userManager_table-header--id grid__column-10-1" class="grid__column-10-1">'.$user->userID.'</td>
-                    <td class="userManager_table-content grid__column-10-2">'.$user->fullName.'</td>
-                    <td class="userManager_table-content grid__column-10-1">'.$user->phoneNumber.'</td>
-                    <td class="userManager_table-content grid__column-10-2">'.$user->email.'</td>
-                    <td class="userManager_table-content grid__column-10-1">'.$user->country.'</td>
-                    <td class="userManager_table-content grid__column-10-1">'.$user->gender.'</td>
-                    <td class="userManager_table-content grid__column-10-1">'.$user->passPort.'</td>
-                    <td class="userManager_table-content userManager_table-content--action grid__column-10-1">
-                        <div class="userManager_table-content--change">
-                            <i class="fa-solid fa-gear"></i>
-                        </div>
-                        <div class="userManager_table-content--detele">
-                            <i class="fa-sharp fa-solid fa-trash"></i>
-                        </div>
-                    </td>
-        </tr> -->
         
         <?php 
             foreach ($users as $user) {

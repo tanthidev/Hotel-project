@@ -82,5 +82,27 @@
             }
             return $result;
         }
+
+        public function getLimitNewBooking($from, $amount){
+            $currentDate = date("d/m/Y");
+            $qr = "SELECT * FROM `Bookings` WHERE checkIn > '$currentDate' limit $from, $amount";
+            $rows = mysqli_query($this ->conn, $qr);
+            $array = array();
+            while($row = mysqli_fetch_assoc($rows)){
+                $array[] = $row;
+            }
+            return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+        }
+
+        public function getAllNewBooking(){
+            $currentDate = date("d/m/Y");
+            $qr = "SELECT * FROM `Bookings` WHERE checkIn > '$currentDate'";
+            $rows = mysqli_query($this ->conn, $qr);
+            $array = array();
+            while($row = mysqli_fetch_assoc($rows)){
+                $array[] = $row;
+            }
+            return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+        }
     }
 ?>

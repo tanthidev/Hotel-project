@@ -197,11 +197,19 @@
             
             <?php 
                 for($i=1;$i<=$data['totalPage'];$i++){
-                    echo '
-                    <a href="/listroom/default?page='.$i.'" class="btn__controller-page">
-                        <span>'.$i.'</span>
-                    </a> 
-                    ';
+					if(isset($_GET['search'])){
+						echo '
+							<a href="/listroom/default?datefilter='.$_GET['datefilter'].'&guest='.$_GET['guest'].'&search=search&page='.$i.'" class="btn__controller-page">
+								<span>'.$i.'</span>
+							</a> 
+						';
+					} else{
+						echo '
+							<a href="/listroom/default?page='.$i.'" class="btn__controller-page">
+								<span>'.$i.'</span>
+							</a> 
+						';
+					}
                 }
             ?>  
             <!-- Btn next-page -->
