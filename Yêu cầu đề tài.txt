@@ -1,0 +1,16 @@
+Đề tài: Website đặt phòng khách sạn trực tuyến
+Yêu cầu về phía khách hàng: Tham khảo http://agoda.com/
+  - Mô tả: Xây dựng trang web phục vụ cho 1 khách sạn cao cấp, cho phép khác hàng đặt phòng, phía khách sạn thì cho phép quản lý phòng và quản lý đặt phòng...
+  - Các chức năng:
+      + Tương tự như trang đặt vé máy bay, thực hiện các chức năng cho phép khách hàng đặt phòng của 1 khách sạn:
+      + Chọn ngày và chọn số phòng cần đặt.
+      + Kết quả tìm kiếm hiển thị nhiều loại phòng khác nhau, mỗi phòng có đặc điểm và giá khác nhau
+      + Cho phép chọn thêm các dịch vụ ăn sáng, đưa đón sân bay
+      + Khách hàng có thể đặt phòng mà không cần đăng nhập (giống đề tài đặt vé máy bay).
+      + Khách hàng được coi lại thông tin đặt phòng. (giống đề tài đặt vé máy bay)
+      + Khách hàng đăng nhập được chỉnh sửa thông tin cá nhân để tự động điền vào form mỗi khi đặt vé.
+Yêu cầu về phía admin: 
+  - Quản lý thông tin các phòng của ks.
+  - Quản lý danh sách khách hàng
+  - Quản lý lịch sử đặt phòng
+  - Thông kê thu nhập, đặt phòng...
