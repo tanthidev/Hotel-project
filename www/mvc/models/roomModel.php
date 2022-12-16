@@ -24,6 +24,18 @@
             return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
         }
 
+        public function getRoomNumber($roomType){
+            $qr = " SELECT roomNumber,
+                    FROM   Rooms,
+                    WHERE  roomType = '$roomType'";
+            $rows = mysqli_query($this ->conn, $qr);
+            $array = array();
+            while($row = mysqli_fetch_assoc($rows)){
+                $array[] = $row;
+            }
+            return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+        }
+
         public function getRoomNumber($roomType, $numberOfRooms){
             $qr = " SELECT Rooms.roomNumber, RoomType.guest
                     FROM   Rooms, RoomType
@@ -37,8 +49,6 @@
             return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
         }
         
-
-
         public function checkExistRoomNumber($roomNumber){
             $qr = "SELECT * FROM Rooms WHERE roomNumber='$roomNumber'";
             $result = false;
@@ -62,7 +72,6 @@
             return $result;
             
         }
-        
 
         public function addRoomAvatar($filename, $roomType){
             $result = false;
@@ -91,8 +100,6 @@
             }
             return $result;
         }
-
-        
 
         public function insertRoomType($roomType, $beds, $area, $guest, $price){
             $qr ="INSERT INTO RoomType (roomType, numberOfBed, area, guest, price)
@@ -198,7 +205,6 @@
             return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
         }
 
-
         // get status room for show calendar
         public function getStatusRoom($roomType){
             $currentDate = date("d/m/Y");
@@ -212,7 +218,7 @@
             }
             return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
 
-    }
+        }
 
 
     }   

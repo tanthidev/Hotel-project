@@ -23,7 +23,7 @@
 <div class="container-login">
     <div id="wrap-login" class="wrap-login">
 
-        <form id="login-form" action="/enrol/loginprocessing" method="POST" class="login-form validate-form">
+        <form id="login-form" action="/enrol/loginprocessing/" method="POST" class="login-form validate-form">
             <span class="login-form-title">
                 Member Login
             </span>
@@ -54,7 +54,7 @@
                 <span class="login-form__forgot--text">
                     Forgot
                 </span>
-                <a href="/enrol/forgot" id="login-form__to-forgot" class="txt2 login-form__forgot--link">
+                <a href="/enrol/forgot/" id="login-form__to-forgot" class="txt2 login-form__forgot--link">
                     Username / Password?
                 </a>
             </div>

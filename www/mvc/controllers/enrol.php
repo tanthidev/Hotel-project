@@ -188,7 +188,7 @@ class enrol extends controller{
                 if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
                     $textnotice="Mail không đúng định dạng!";
                     //GỌi view
-                    $view =self::view("simplelayout",[
+                    $view =self::view("emptylayout",[
                         "page"=>"forgot",
                         "notice" => $textnotice,
                         "check" => $check
@@ -202,7 +202,7 @@ class enrol extends controller{
                         // //Báo lỗi
                         $textnotice="Email không chính xác!";
                         //GỌi view
-                        $view =self::view("simplelayout",[
+                        $view =self::view("emptylayout",[
                             "page"=>"forgot",
                             "notice" => $textnotice,
                             "check" => $check
@@ -225,7 +225,7 @@ class enrol extends controller{
                         $code = rand(100000,999999);
                         setcookie('code', $code, time() + 120);
                         setcookie('ID', $row->userID, time() + 120);
-                        $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+                        $mail = new PHPMailer;                              // Passing `true` enables exceptions
                         try {
                             //Server settings
                             $mail->SMTPDebug = 0;                                 // Enable verbose debug output
@@ -233,7 +233,7 @@ class enrol extends controller{
                             $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
                             $mail->SMTPAuth = true;                               // Enable SMTP authentication
                             $mail->Username = 'lenguyentanthi1806@gmail.com';                 // SMTP username
-                            $mail->Password = 'iechkjufdgisngrv';                           // SMTP password
+                            $mail->Password = 'bxbodkperbrhcdyn';                           // SMTP password
                             $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
                             $mail->Port = 587;                                    // TCP port to connect to
                             //Recipients
@@ -258,7 +258,7 @@ class enrol extends controller{
                             
                             //GỌi view
                             $textnotice = "Send code success!";
-                            $view =self::view("simplelayout",[
+                            $view =self::view("emptylayout",[
                                 "page"=>"confirmcode",
                                 "notice" => $textnotice,
                                 "check"=>true
@@ -271,9 +271,9 @@ class enrol extends controller{
                             // <div class="notice-task">
                             //     <span class="notice-text">Message could not be sent!</span>
                             // </div>';
-                            // echo $mail->ErrorInfo;
+                            echo $mail->ErrorInfo;
                             $textnotice = "Code could not be sent!";
-                            $view =self::view("simplelayout",[
+                            $view =self::view("emptylayout",[
                                 "page"=> "forgot",
                                 "notice" => $textnotice,
                                 "check" => $check
@@ -301,7 +301,7 @@ class enrol extends controller{
             if(!isset($_POST['code'])){
                 $textnotice="Vui lòng nhập code!";
                 //GỌi view
-                $view =self::view("simplelayout",[
+                $view =self::view("emptylayout",[
                     "page"=>"confirmcode",
                     "notice" => $textnotice,
                     "check" => $check
@@ -323,7 +323,7 @@ class enrol extends controller{
                         //tạo lại cookie id để đăng nhập, có hiệu lực trong 2p
                         setcookie('ID', $ID, time() + 120);
                         //GỌi view
-                        $view =self::view("simplelayout",[
+                        $view =self::view("emptylayout",[
                         "page"=>"confirmcode",
                         "checkcodeinput" => $checkcodeinput
                         ]);
@@ -331,7 +331,7 @@ class enrol extends controller{
                     } else{
                         $textnotice="Code không chính xác!";
                         //GỌi view
-                        $view =self::view("simplelayout",[
+                        $view =self::view("emptylayout",[
                             "page"=>"confirmcode",
                             "notice" => $textnotice,
                             "check" => $check
@@ -370,7 +370,7 @@ class enrol extends controller{
             if(!password_verify($re_pass, $pass)){
                 $textnotice="Password không giống nhau!";
                 //GỌi view
-                $view =self::view("simplelayout",[
+                $view =self::view("emptylayout",[
                     "page"=>"confirmcode",
                     "notice" => $textnotice,
                     "check" => $check,

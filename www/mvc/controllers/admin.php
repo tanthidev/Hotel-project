@@ -332,7 +332,7 @@
                 //Gọi model room
                 $room = self::model("roomModel");
 
-
+                $room -> getRoomNumber($_GET['room']);
 
                 //View
                 $view =self::view("adminlayout",[

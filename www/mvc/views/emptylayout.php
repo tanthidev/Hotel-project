@@ -1,3 +1,28 @@
+<?php
+//Khai báo sử dụng session
+    if(!isset($_SESSION)){ 
+        session_start(); 
+        ob_start();
+    } 
+	if(isset($data['notice'])){
+		if($data['check']){
+			$text= "notice-text--success";
+			$task= "notice-task--success";
+		}
+		else{
+			$text= "notice-text";
+			$task= "notice-task";
+		}
+	
+		echo '
+		<div class="'.$task.' notice-task">
+			<span class="'.$text.' notice-text">
+			'.$data['notice'].'
+			</span>
+		</div>
+		';      
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

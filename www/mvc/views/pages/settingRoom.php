@@ -1,10 +1,11 @@
 <?php
     $room = json_decode($data['room']);
     $room = $room[0];
+    print_r($room);
     $nameAvatar = json_decode($data['avatarRoom']) -> fileName;
     $localImage = 'src="/mvc/data/images/room/' .  $nameAvatar . '"';
     $imageRoom = json_decode($data['imageRoom']) ;
-    $countImageRoom = count( $imageRoom);
+    $countImageRoom = count($imageRoom);
 ?>
 
 <div id="container__settingRoom" class="container__settingRoom">
@@ -13,7 +14,7 @@
             <ul class="settingRoom__list">
                 <li class="settingRoom__item">
                     <label for="roomNumber" class="settingRoom__item--label">Room Number</label>
-                    <input id="roomNumber" type="text" class="settingRoom__item--input" value="<?php echo $room->roomNumber; ?>">
+                    <input id="roomNumber" type="text" class="settingRoom__item--input" value="<?php echo $room->roomNumber;?>">
                 </li>
                 <li class="settingRoom__item">
                     <label for="roomType" class="settingRoom__item--label">Room Type</label>

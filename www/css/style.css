@@ -172,7 +172,7 @@ hr{
     padding: 8px 20px;
     border-radius: 50px;
     font-size: 15px;
-    background-color: var(--orange-color);
+    background-color: var(--orange-color) !important;
     color: var(--white-color);
 }
 
@@ -1477,6 +1477,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .warning-forgot--img{
+    margin: auto;
     width: 130px;
 }
 

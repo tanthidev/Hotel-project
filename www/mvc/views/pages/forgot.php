@@ -5,8 +5,8 @@
             <div class="container-form-forgotpass">
                 <div class="warning-forgot">
                         <div class="warning-forgot--logo">
-                            <a href="/index.php" class="warning-forgot--link-back-home">
-                                <img src="/dataweb/img/logo/logo-company.png" alt="" class="warning-forgot--img">
+                            <a href="/home" class="warning-forgot--link-back-home">
+                                <img src="/mvc/data/images/logo/logo-company.png" alt="" class="warning-forgot--img">
                             </a>
                         </div>
 
