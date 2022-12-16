@@ -86,7 +86,7 @@
 								<div id="user__opption" class="user__opption">
 									<ul class="user__opption--list">
 										<li class="user__opption--item">
-											<a href="/user/" class="user__manager--link user__opption--item-link">
+											<a href="/user" class="user__manager--link user__opption--item-link">
 												<i class="fa-regular fa-user"></i>
 												Quản lý tài khoản
 											</a>

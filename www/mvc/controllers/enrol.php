@@ -102,7 +102,7 @@ class enrol extends controller{
                 
                 
 
-                // Mã khóa mật khẩu bằng BCrypt
+                // Mã hóa mật khẩu bằng BCrypt
                 $pass = password_hash($pass, PASSWORD_DEFAULT);
 
                 //Kiểm tra mật khẩu có trùng nhau không

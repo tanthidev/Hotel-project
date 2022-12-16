@@ -17,7 +17,7 @@
             //Gọi Model
             $user = self::model('userModel');
             //GỌi view
-            $view =self::view("simplelayout",[
+            $view =self::view("emptylayout",[
                 "page"=>"user",
                 "user"=> $user -> getUser()
             ]);
