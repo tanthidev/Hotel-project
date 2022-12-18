@@ -16,10 +16,28 @@
         static function default(){
             //Gọi Model
             $user = self::model('userModel');
+
+
             //GỌi view
             $view =self::view("emptylayout",[
                 "page"=>"user",
                 "user"=> $user -> getUser()
+            ]);
+        }
+
+        // HISTORY BOOKING
+        static function listBooking(){
+            //Gọi Model
+            $user = self::model('userModel');
+            $booking = self::model('bookingModel');
+            $phoneNumber = json_decode($user -> getUser())->phoneNumber;
+
+
+            //GỌi view
+            $view =self::view("emptylayout",[
+                "page"=>"listBooking",
+                "user"=> $user -> getUser(),
+                "bookings" => $booking -> getBookingByPhoneNumber($phoneNumber)
             ]);
         }
 

@@ -1,4 +1,7 @@
 <?php 
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+
     class booking extends controller{
         static function default(){
             $roomType=$_GET['room'];
@@ -293,16 +296,99 @@
             $booking = self::model("bookingModel");
             $user = self::model('userModel');
 
+            $email = $_GET['email'];
+            $bookingCode = $_GET['bookingCode'];
+            $result = $booking -> confirmBooking($bookingCode);
 
-            $bookingId = $_GET['bookingId'];
-            $result = $booking -> confirmBooking($bookingId);
+
             if($result){
+                include "./mvc/core/PHPMailer-master/src/PHPMailer.php";
+                include "./mvc/core/PHPMailer-master/src/Exception.php";
+                include "./mvc/core/PHPMailer-master/src/OAuthTokenProvider.php";
+                include "./mvc/core/PHPMailer-master/src/OAuth.php";
+                include "./mvc/core/PHPMailer-master/src/POP3.php";
+                include "./mvc/core/PHPMailer-master/src/SMTP.php";
+                
+                $mail = new PHPMailer;   
+                //Server settings
+                $mail->SMTPDebug = 0;                                 // Enable verbose debug output
+                $mail->isSMTP();                                      // Set mailer to use SMTP
+                $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+                $mail->SMTPAuth = true;                               // Enable SMTP authentication
+                $mail->Username = 'lenguyentanthi1806@gmail.com';                 // SMTP username
+                $mail->Password = 'bxbodkperbrhcdyn';                           // SMTP password
+                $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+                $mail->Port = 587;                                    // TCP port to connect to
+                //Recipients
+                $mail->setFrom('lenguyentanthi1806@gmail.com', 'ADMIN');
+                $mail->addAddress($email, 'Customer');     // Add a recipient
+                // $mail->addReplyTo('info@example.com', 'Information');
+                // $mail->addCC('cc@example.com');
+                // $mail->addBCC('bcc@example.com');
+            
+                //Attachments
+                // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+                // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+            
+                //Content
+                $mail->isHTML(true);                                  // Set email format to HTML
+                $mail->Subject = 'Thanks for your booking Carlton Hotel!';
+                $mail->Body    = $bookingCode.' is your booking code. You can use it for see you envoice.';
+                // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+            
+                $mail->send();
+                
+                
+
                 header("Location: /notice?result=success");
             } else {
                 header("Location: /notice?result=fail"); 
             }
         }
         
+        static function yourBooking(){
+            if($_GET['code']!=""){
+                $code = $_GET['code'];
+                $booking = self::model("bookingModel");
+                $service = self::model("serviceModel");
+                $checkCode = $booking -> checkCode($code);
+                $guest = json_decode($booking -> getBookingByCode($code));
+
+                // Date of stay
+                $checkin = date_create(str_replace('/', '-', $guest->checkIn));
+                $checkout = date_create(str_replace('/', '-', $guest->checkOut));
+                $datesOfStay = date_diff($checkin, $checkout);
+                //amount is number of day guest stay
+                $datesOfStay = $datesOfStay->format("%a");
+
+                if($checkCode){
+
+
+
+                    $view = self::view("emptylayout",[
+                        "page"      => "yourBooking",
+                        "bookingCode" => $code,
+                        "guest" => $booking -> getBookingByCode($code),
+                        "dateOfStay" => $datesOfStay,
+                        "room"      => $booking -> getproductRoom($code),
+                        "quantityRoom" => $booking -> countQuantityRoom($code),
+                        "services"  => $service -> getListServiceByCode($code)
+                    ]);
+
+
+
+
+
+
+
+                } else {
+                    header("Location: " . $_SERVER["HTTP_REFERER"]);
+                }
+                    
+            } else {
+                header("Location: " . $_SERVER["HTTP_REFERER"]);
+            }
+        }
 
         
         static function processBooking(){

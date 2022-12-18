@@ -267,11 +267,6 @@ class enrol extends controller{
                             }
         
                         catch (Exception $e) {
-                            // echo '
-                            // <div class="notice-task">
-                            //     <span class="notice-text">Message could not be sent!</span>
-                            // </div>';
-                            echo $mail->ErrorInfo;
                             $textnotice = "Code could not be sent!";
                             $view =self::view("emptylayout",[
                                 "page"=> "forgot",

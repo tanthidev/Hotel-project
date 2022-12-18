@@ -4,7 +4,7 @@
 ?>
 <div id="container__bookingManager" class="container__bookingManager">
         <!--  -->
-        <table class="projects-table">
+    <table class="projects-table">
         <thead>
             <tr>
                 <th>ID</th>

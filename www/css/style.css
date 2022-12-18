@@ -2906,6 +2906,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     color: #666;
 }
 
+.container__list-booking{
+    padding: 50px 30px;
+}
+
 
 
 

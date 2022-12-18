@@ -71,6 +71,7 @@
 						<li class="header__menu--item">
 							<a href="#services" class="header__menu--link">SERVICE</a>
 						</li>
+
 						<li class="header__menu--item header__menu--mobile">
 							<a href="/enrol/login" class="header__menu--link">Log In |</a>
 							<a href="/enrol/register" class="header__menu--link">Register</a>
@@ -92,19 +93,19 @@
 										<li class="user__opption--item">
 											<a href="/user" class="user__manager--link user__opption--item-link">
 												<i class="fa-regular fa-user"></i>
-												Quản lý tài khoản
+												Account
 											</a>
 										</li>
 										<li class="user__opption--item">
-											<a href="#" class="user__databooking--link user__opption--item-link">
+											<a href="/user/listBooking" class="user__databooking--link user__opption--item-link">
 												<i class="fa-solid fa-suitcase"></i>
-												Dữ liệu đặt chỗ
+												Your booking
 											</a>
 										</li>
 										<li class="user__opption--item">
 											<a href="/enrol/logout" class="user__logout--link user__opption--item-link">
 												<i class="fa-solid fa-arrow-right-from-bracket"></i>
-												Đăng xuất
+												Log out
 											</a>
 										</li>
 									</ul>
@@ -122,13 +123,13 @@
 										<li class="user__opption--item">
 											<a href="/admin/dashBoard" class="user__manager--link user__opption--item-link">
 												<i class="fa-regular fa-user"></i>
-												Quản lý khách sạn
+												Manager
 											</a>
 										</li>
 										<li class="user__opption--item">
 											<a href="/enrol/logout" class="user__logout--link user__opption--item-link">
 												<i class="fa-solid fa-arrow-right-from-bracket"></i>
-												Đăng xuất
+												Log out
 											</a>
   
 										</li>
@@ -150,11 +151,11 @@
 					?>
 					
 						<div class='search-container' tabindex='1'>
-							<form action="">
-								<input class="input" placeholder='Your phone number' type='text'>
-								<a class='button'>
+							<form action="/booking/yourBooking/" method="GET">
+								<input name="code" class="input" placeholder='Your booking code' type='text'>
+								<button class='button'>
 									<i class='fa fa-search'></i>
-								</a>
+								</button>
 							</form>
 						</div>
 

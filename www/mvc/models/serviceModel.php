@@ -28,5 +28,15 @@
             }
             return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
         }
+
+        public function getListServiceByCode($code){
+            $qr="SELECT Services.nameService, BookingService.price, BookingService.total, Services.unit FROM BookingService, Bookings, Services WHERE (BookingService.bookingID = Bookings.bookingID) AND (Bookings.BookingCode='$code') AND (Services.serviceID=BookingService.serviceID);";
+            $rows = mysqli_query($this ->conn, $qr);
+            $array = array();
+            while($row = mysqli_fetch_assoc($rows)){
+                $array[] = $row;
+            }
+            return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+        }
     }
 ?>

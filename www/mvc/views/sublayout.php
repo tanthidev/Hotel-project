@@ -101,19 +101,19 @@
 										<li class="user__opption--item">
 											<a href="/user/" class="user__manager--link user__opption--item-link">
 												<i class="fa-regular fa-user"></i>
-												Quản lý tài khoản
+												Account
 											</a>
 										</li>
 										<li class="user__opption--item">
-											<a href="#" class="user__databooking--link user__opption--item-link">
+											<a href="/user/listBooking" class="user__databooking--link user__opption--item-link">
 												<i class="fa-solid fa-suitcase"></i>
-												Dữ liệu đặt chỗ
+												Your booking
 											</a>
 										</li>
 										<li class="user__opption--item">
 											<a href="/enrol/logout" class="user__logout--link user__opption--item-link">
 												<i class="fa-solid fa-arrow-right-from-bracket"></i>
-												Đăng xuất
+												Log out
 											</a>
 										</li>
 									</ul>
@@ -131,13 +131,13 @@
 										<li class="user__opption--item">
 											<a href="/admin/dashBoard" class="user__manager--link user__opption--item-link">
 												<i class="fa-regular fa-user"></i>
-												Quản lý khách sạn
+												Manager
 											</a>
 										</li>
 										<li class="user__opption--item">
 											<a href="/enrol/logout" class="user__logout--link user__opption--item-link">
 												<i class="fa-solid fa-arrow-right-from-bracket"></i>
-												Đăng xuất
+												Log out
 											</a>
   
 										</li>

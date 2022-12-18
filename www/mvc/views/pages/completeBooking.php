@@ -170,7 +170,7 @@
         });
     }
     document.getElementById("btn-confirm-booking").onclick = function(){
-        location.href = '/booking/confirmBooking/?bookingId=<?php echo $bookingId;?>';
+        location.href = '/booking/confirmBooking/?bookingCode=<?php echo $bookingCode;?>&email=<?php echo $infoguest['email'];?>';
     }
 
     // Create our number formatter.
