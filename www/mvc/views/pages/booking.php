@@ -92,7 +92,7 @@
                 </div>
             </div>
             
-            <form id="form-search" action="/booking/completeBooking/?room=<?php echo $room -> roomType; ?>" method="post" class=" page-booking--selection-form">
+            <form id="form-search" action="completeBooking/?room=<?php echo $room -> roomType; ?>" method="post" class=" page-booking--selection-form">
                 <!-- First form booking -->
                 <div id="info-booking" class="grid__row page-booking__info-room page-booking__active">
                     <!-- Date check in -->

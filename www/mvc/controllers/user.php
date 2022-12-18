@@ -49,7 +49,7 @@
             {
                 $textnotice="Full Name is require!";
                 //GỌi view
-                $view =self::view("simplelayout",[
+                $view =self::view("emptylayout",[
                     "page"=>"user",
                     "notice" => $textnotice,
                     "check" => $check
@@ -62,7 +62,7 @@
             {
                 $textnotice="Phone number is require!";
                 //GỌi view
-                $view =self::view("simplelayout",[
+                $view =self::view("emptylayout",[
                     "page"=>"user",
                     "notice" => $textnotice,
                     "check" => $check
@@ -75,7 +75,7 @@
             {
                 $textnotice="Email is require!";
                 //GỌi view
-                $view =self::view("simplelayout",[
+                $view =self::view("emptylayout",[
                     "page"=>"user",
                     "notice" => $textnotice,
                     "check" => $check
@@ -89,7 +89,7 @@
             {
                 $textnotice="Email không đúng định dạng!";
                 //GỌi view
-                $view =self::view("simplelayout",[
+                $view =self::view("emptylayout",[
                     "page"=>"user",
                     "notice" => $textnotice,
                     "check" => $check
@@ -102,7 +102,7 @@
             if(!($user->checkPassByID($userID, $pass))){
                 $textnotice="Password is incorrect!";
                 //GỌi view
-                $view =self::view("simplelayout",[
+                $view =self::view("emptylayout",[
                     "page"=>"user",
                     "user"=> $user -> getUser(),
                     "notice" => $textnotice,
@@ -119,7 +119,7 @@
             if ($resultupdate){
                 $textnotice="Update thành công";
                 //GỌi view
-                $view =self::view("simplelayout",[
+                $view =self::view("emptylayout",[
                     "page"=>"user",
                     "user"=> $user -> getUser(),
                     "notice" => $textnotice,
@@ -129,7 +129,7 @@
             } else{
                 $textnotice="Update thất bại";
                 //GỌi view
-                $view =self::view("simplelayout",[
+                $view =self::view("emptylayout",[
                     "page"=>"user",
                     "user"=> $user -> getUser(),
                     "notice" => $textnotice,
@@ -171,7 +171,7 @@
             if (!($user->checkPassByID($userID, $currentpass))){
                 $textnotice="Password is incorrect!";
                 //GỌi view
-                $view =self::view("simplelayout",[
+                $view =self::view("emptylayout",[
                     "page"=>"user",
                     "user"=> $user -> getUser(),
                     "notice" => $textnotice,
@@ -185,7 +185,7 @@
              if(!(password_verify($re_newpass, $newpass))){
                 $textnotice="Password is incorrect!";
                 //GỌi view
-                $view =self::view("simplelayout",[
+                $view =self::view("emptylayout",[
                     "page"=>"user",
                     "user"=> $user -> getUser(),
                     "notice" => $textnotice,
@@ -201,7 +201,7 @@
             if ($resultupdate){
                 $textnotice="Update was success!";
                 //GỌi view
-                $view =self::view("simplelayout",[
+                $view =self::view("emptylayout",[
                     "page"=>"user",
                     "user"=> $user -> getUser(),
                     "notice" => $textnotice,
@@ -213,7 +213,7 @@
             else{
                 $textnotice="Error when update!";
                 //GỌi view
-                $view =self::view("simplelayout",[
+                $view =self::view("emptylayout",[
                     "page"=>"user",
                     "user"=> $user -> getUser(),
                     "notice" => $textnotice,

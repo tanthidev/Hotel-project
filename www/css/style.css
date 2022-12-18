@@ -806,6 +806,79 @@ input:-ms-input-placeholder { color: #999999; }
     color: #fff;
 }
 
+/* Searach ID booking */
+.search-container {
+    position: absolute;
+    right: 0;
+    overflow: hidden;
+    float: right;
+    height: 4em;
+    width: 4em;
+    border-radius: 2em;
+    /* box-shadow: 0 0 5px #6A5D4F; */
+    -moz-transition: all 0.35s;
+    -webkit-transition: all 0.35s;
+  }
+  .search-container:hover, .search-container:focus, .search-container:focus-within {
+    width: 25em;
+    border-radius: 5px 2em 2em 5px;
+    outline: none;
+  }
+  .search-container:hover .input, .search-container:focus .input, .search-container:focus-within .input {
+    display: inline-block;
+    width: 19em;
+    padding: 10px;
+  }
+  
+  .input {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    float: left;
+    width: 0em;
+    height: 2em;
+    margin: 1em;
+    margin-right: -4.5em;
+    background: #fff;
+    color: var(--main-color);
+    font-size: 1em;
+    font-weight: 600;
+    padding: 0px;
+    border: 0;
+    border-radius: 5px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2) inset;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+    -moz-transition: all 0.25s;
+    -webkit-transition: all 0.25s;
+  }
+  .input:focus {
+    outline: none;
+    /* box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.25), 0 1px 5px rgba(0, 0, 0, 0.15); */
+  }
+  
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: right;
+    width: 1.75em;
+    height: 1.75em;
+    margin: 0.125em;
+    background: var(--orange-color);
+    text-align: center;
+    font-size: 2em;
+    color: #FDF6E3;
+    border-radius: 50%;
+    text-shadow: 0 -2px 1px rgba(0, 0, 0, 0.3);
+  }
+  .button:active {
+    border: 0 !important;
+    text-shadow: 0 0 0;
+  }
+  .button i {
+    font-size: 85%;
+    cursor: pointer;
+  }
 
 /* Form search */
 .home__taskbar-container-booking{
@@ -1200,7 +1273,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .services__container-image1{
-    background: url('/mvc/data/images/Services/fitness.webp')top center / cover no-repeat;
+    background: url('/mvc/data/images/Services/fitness.png')top center / cover no-repeat;
 }
 
 .services__container-image2{
@@ -1311,6 +1384,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .change-pass--input{
     width: 30%;
+    border: 1px solid #000;
+    border-radius: 3px;
 }
 
 
@@ -2271,6 +2346,286 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     background-color: #bbb;
 }
 
+.dropdown:hover > .dropdown-menu {
+    display: block;
+  }
+  
+.dropdown > .dropdown-toggle:active {
+    /*Without this, clicking will make it sticky*/
+    pointer-events: none;
+}
+
+.btn-dropdown{
+    background-color: var(--main-color);
+    width: 100%;
+}
+
+.btn-dropdown:hover{
+    background-color: var(--main-color);
+}
+
+.dropdown-menu{
+    width: 100%;
+}
+
+.dropdown-item{
+    cursor: pointer;
+}
+
+.btn-dropdown::before{
+    position: absolute;
+    content: "";
+    background-color: transparent;
+    width: 100%;
+    height: 10px;
+    right: 0;
+    bottom: -10px;
+}
+
+/* DASBOARD */
+.container__dashBoard{
+    padding: 50px 50px 0;
+}
+
+
+.card-list {
+    width: 100%;
+  }
+  .card-list:before, .card-list:after {
+    content: " ";
+    display: table;
+  }
+  .card-list:after {
+    clear: both;
+  }
+  
+  .card {
+    border-radius: 8px;
+    color: white;
+    padding: 10px;
+    position: relative;
+  }
+  .card .zmdi {
+    color: white;
+    font-size: 28px;
+    opacity: 0.3;
+    position: absolute;
+    right: 13px;
+    top: 13px;
+  }
+  .card .stat {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 8px;
+    margin-top: 25px;
+    padding: 10px 10px 0;
+    text-transform: uppercase;
+  }
+  .card .title {
+    display: inline-block;
+    font-size: 12px;
+    padding: 10px 10px 0;
+    text-transform: uppercase;
+  }
+  .card .value {
+    font-size: 28px;
+    padding: 0 10px;
+  }
+  .card.blue {
+    background-color: #2298F1;
+  }
+  .card.green {
+    background-color: #66B92E;
+  }
+  .card.orange {
+    background-color: #DA932C;
+  }
+  .card.red {
+    background-color: #D65B4A;
+  }
+  
+  .projects {
+    background-color: #273142;
+    border: 1px solid #313D4F;
+    overflow-x: auto;
+    width: 100%;
+  }
+  .projects-inner {
+    border-radius: 4px;
+  }
+  
+  .projects-header {
+    color: white;
+    padding: 22px;
+  }
+  .projects-header .count,
+  .projects-header .title {
+    display: inline-block;
+  }
+  .projects-header .count {
+    color: #738297;
+  }
+  .projects-header .zmdi {
+    cursor: pointer;
+    float: right;
+    font-size: 16px;
+    margin: 5px 0;
+  }
+  .projects-header .title {
+    font-size: 21px;
+  }
+  .projects-header .title + .count {
+    margin-left: 5px;
+  }
+  
+  .projects-table {
+    background: #273142;
+    width: 100%;
+  }
+  .projects-table td,
+  .projects-table th {
+    color: white;
+    padding: 10px 22px;
+    vertical-align: middle;
+  }
+  .projects-table td p {
+    font-size: 15px;
+  }
+  .projects-table td p:last-of-type {
+    color: #738297;
+    font-size: 11px;
+  }
+  .projects-table th {
+    background-color: #313D4F;
+  }
+  .projects-table tr:hover {
+    background-color: #303d52;
+  }
+  .projects-table tr:not(:last-of-type) {
+    border-bottom: 1px solid #313D4F;
+  }
+  .projects-table .member figure,
+  .projects-table .member .member-info {
+    display: inline-block;
+    vertical-align: top;
+  }
+  .projects-table .member figure + .member-info {
+    margin-left: 7px;
+  }
+  .projects-table .member img {
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+  }
+  .projects-table .status > form {
+    float: right;
+  }
+  .projects-table .status-text {
+    display: inline-block;
+    font-size: 12px;
+    margin: 11px 0;
+    padding-left: 20px;
+    position: relative;
+  }
+  .projects-table .status-text:before {
+    border: 3px solid;
+    border-radius: 50%;
+    content: "";
+    height: 14px;
+    left: 0;
+    position: absolute;
+    top: 1px;
+    width: 14px;
+  }
+  .projects-table .status-text.status-blue:before {
+    border-color: #1C93ED;
+  }
+  .projects-table .status-text.status-green:before {
+    border-color: #66B92E;
+  }
+  .projects-table .status-text.status-orange:before {
+    border-color: #DA932C;
+  }
+  .projects-table .status-text.status-red:before {
+    border-color: #D65B4A;
+  }
+  .status{
+    text-align: center;
+  }
+
+  .detail-booking{
+    text-align: center;
+  }
+  
+  .selectric {
+    background-color: transparent;
+    border-color: #313D4F;
+    border-radius: 4px;
+  }
+  .selectric .label {
+    color: #738297;
+    line-height: 34px;
+    margin-right: 10px;
+    text-align: left;
+  }
+  .selectric-wrapper {
+    float: right;
+    width: 150px;
+  }
+  
+  .chart {
+    border-radius: 3px;
+    border: 1px solid #313D4F;
+    color: white;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+  }
+  .chart canvas {
+    height: 400px;
+    margin: 20px 0;
+    width: 100%;
+  }
+  .chart .actions {
+    margin: 15px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .chart .actions span {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 20px;
+    margin: 5px;
+    padding: 4px;
+  }
+  .chart .actions .btn-link {
+    color: white;
+  }
+  .chart .actions .btn-link i {
+    font-size: 1.75rem;
+  }
+  .chart .title {
+    font-size: 18px;
+    margin: 0;
+    padding: 15px 0 5px;
+  }
+  .chart .title + .tagline {
+    margin-top: 10px;
+  }
+  .chart .tagline {
+    font-size: 12px;
+  }
+  
+  .danger-item {
+    border-left: 4px solid #A84D43;
+  }
+  
+  .zmdi {
+    line-height: 1;
+    vertical-align: middle;
+  }
+
+
 /* COMPLETE BOOKING */
 .complete__container-header{
     
@@ -2421,6 +2776,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     background-color: var(--main-color);
     width: 100%;
     height: fit-content;
+    display: flex;
+    justify-items: center;
 }
 
 .header-bill__logo{
@@ -2454,6 +2811,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border-right: none;
     border-left: none;
 
+}
+
+.bill__total--item-price{
+    text-align: right;
 }
 
 .bill__bill-detail--header,
@@ -2584,6 +2945,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 }
 
+.btn__show-menu--mobile{
+    display: none;
+}
+
+.header__menu--mobile{
+    display: none;
+}
 
 /* tablet */
 @media (min-width:740px) and (max-width: 1023px) {
@@ -2737,7 +3105,24 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 @media (max-width:740px){
 
     .header{
-        overflow: hidden;
+        position: relative;
+    }
+
+    .search-container{
+        display: none;
+    }
+
+    .header__menu{
+        display: none;
+        position: absolute;
+        background-color: var(--main-color);
+        top: 100%;
+        right: 0;
+        width: 100%;
+    }
+
+    .header__menu--mobile{
+        display: block;
     }
 
     .header__menu--link{
@@ -2746,12 +3131,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
     .header__menu--list{
         display: block;
+        margin: auto
     }
     .header__menu--list{
         text-align: center;
     }
     .header__user{
-        justify-content: center;
+        display: none;
     }
     .header__container{
         display: flex;
@@ -2763,9 +3149,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         display: block !important;
     }
 
+    .btn__show-menu--mobile{
+        position: absolute;
+        display: block;
+        font-size: 30px;
+        margin-left: 20px;
+    }
+    
+
     .header__container-logo{
         padding: 0 20px;
-       
+        margin: auto
     }
 
     .header__btn-menu--mobile{
@@ -2830,6 +3224,22 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
     .welcome-page__text{
         font-size: 15px;
+    }
+
+    .home__taskbar-booking > .grid__column-2{
+        width: 50%;
+    }
+
+    .footer__title{
+        font-size: 20px;
+    }
+
+    .footer__sologan{
+        display: none;
+    }
+
+    .footer__list--item-map{
+        display: none;
     }
 
     .welcome-page__text--dots{
@@ -2953,6 +3363,54 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     .footer__list--item{
         font-size: 8px;
     }
+
+
+       /* CSS BOOKING PAGE */
+   .page-booking__main--selection{
+    width: 80%;
+    margin: auto;
+}
+
+.page-booking__main--slide-img{
+    width: 80%;
+    margin: 30px auto;
+}
+
+.page-booking__container-amenities{
+display: none;
+}
+
+.prev--page-booking,
+.next--page-booking{
+    top: 50%
+}
+
+.page-booking__main--slide--item{
+    height: 200px;
+}
+
+.baner-roomtype{
+    text-align: center;
+}
+
+.page-booking__btn-next{
+    position: relative;
+}
+
+.page-booking--selection-form-item{
+    width: 100%;
+}
+
+.page-booking--selection-footer{
+    display: flex;
+    justify-items: center;
+}
+
+.page-booking__container-detail > .grid__column-10-2,
+.page-booking__container-detail > .grid__column-10-8
+{
+    width: 100%;
+}
 
 
     /* CSS LISTROOM PAGE */

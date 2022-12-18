@@ -47,17 +47,17 @@
 	<div class="header" id="header">
 		<div class="grid">
 			<div class="grid__row header__container">
+				<div id="btn__show-menu--mobile" class="btn__show-menu--mobile">
+					<i class="fa-solid fa-bars"></i>
+				</div>
 				<div class="header__container-logo">
 					<a href="/home" class="header__container-logo--img">
 						<img src="/mvc/data/images/logo/logo-company.png" alt="" class="header__logo">
-
 					</a>
-					<btn id="header__btn-menu--mobile" class="header__btn-menu--mobile" onclick="">
-						<i class="fa-solid fa-bars"></i>
-					</btn>
+
 				</div>
 
-				<div class="header__menu">
+				<div id="header__menu" class="header__menu">
 					<ul id="header__menu--list" class="header__menu--list">
 						<li class="header__menu--item">
 							<a href="/home" class="header__menu--link">HOME</a>
@@ -70,6 +70,10 @@
 						</li>
 						<li class="header__menu--item">
 							<a href="#services" class="header__menu--link">SERVICE</a>
+						</li>
+						<li class="header__menu--item header__menu--mobile">
+							<a href="/enrol/login" class="header__menu--link">Log In |</a>
+							<a href="/enrol/register" class="header__menu--link">Register</a>
 						</li>
 					</ul>
 				</div>
@@ -116,7 +120,7 @@
 								<div id="user__opption" class="user__opption">
 									<ul class="user__opption--list">
 										<li class="user__opption--item">
-											<a href="./admin" class="user__manager--link user__opption--item-link">
+											<a href="/admin/dashBoard" class="user__manager--link user__opption--item-link">
 												<i class="fa-regular fa-user"></i>
 												Quản lý khách sạn
 											</a>
@@ -144,8 +148,15 @@
 
 						<?php } 
 					?>
-
-
+					
+						<div class='search-container' tabindex='1'>
+							<form action="">
+								<input class="input" placeholder='Your phone number' type='text'>
+								<a class='button'>
+									<i class='fa fa-search'></i>
+								</a>
+							</form>
+						</div>
 
 				</div>
 			</div>
@@ -210,7 +221,7 @@
 				<h2 class="footer__title">Address</h2>
 				<ul class="footer__list">
 					<li class="footer__list--item">19 Nguyen Huu Tho, Tan Phong, Distric 7, HCM city, Viet Nam</li>
-					<li class="footer__list--item">
+					<li class="footer__list--item footer__list--item-map">
 						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.026434686444!2d106.69792991488471!3d10.732444492351362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f97d6e91901%3A0x32814f812b209bc1!2zMTkgxJAuTmd1eeG7hW4gSOG7r3UgVGjhu40sIFTDom4gSMawbmcsIFF14bqtbiA3LCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1662765788758!5m2!1svi!2s" width="80%" style="border:0; border-radius: 2px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 					</li>
 				</ul>

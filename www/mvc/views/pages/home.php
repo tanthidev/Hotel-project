@@ -73,7 +73,7 @@
 										'.$room -> roomType.'
 									</p>
 									<div class="favorite-rooms__slide--price-item">
-										<div class="favorite-rooms__slide--price">$'.$room->price.' </div> 
+										<div class="favorite-rooms__slide--price format-money">'.$room->price.' </div> 
 										/ night
 									</div>
 								</div>

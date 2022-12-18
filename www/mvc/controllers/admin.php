@@ -21,11 +21,20 @@
         static function dashBoard(){
             //Gọi model user
             $user = self::model("userModel");
+            $booking = self::model("bookingModel");
+            $booking -> countBookings();
+
+            
             //GỌi view
             $view =self::view("adminlayout",[
                 "page"=>"dashBoard",
-                "admin" => $user -> getAdmin()
+                "admin" => $user -> getAdmin(),
+                "bookings" => $booking -> getLimitNewBooking(0, 10),
+                "countBookings" => $booking -> countBookings(),
+                "countUsers"    => $user -> countUsers(),
+                "envenue"       => $booking -> revenue()
             ]);
+
         }
 
         // 
@@ -34,7 +43,7 @@
             $user = self::model("userModel");
             $booking = self::model("bookingModel");
 
-            $bookingPerPage=8;
+            $bookingPerPage=12;
                 //Get page from url
                 if(isset($_GET['page'])){
                     $currentPage=$_GET['page'];
@@ -60,7 +69,7 @@
             //Gọi Model User
             $user = self::model("userModel");
             
-                $userPerPage=8;
+                $userPerPage=12;
                 //Get page from url
                 if(isset($_GET['page'])){
                     $currentPage=$_GET['page'];
@@ -78,7 +87,8 @@
                     "page"=>"userManager",
                     "users" => $user->getLimUser($from, $userPerPage),
                     "totalPage"=> $totalPage,
-                    "admin" => $user -> getAdmin()
+                    "admin" => $user -> getAdmin(),
+
                 ]);
             
             // 
@@ -91,7 +101,7 @@
             //Gọi model room
             $room = self::model("roomModel");
             //
-            $roomPerPage=6;
+            $roomPerPage=12;
             //Get page from url
             if(isset($_GET['page'])){
                 $currentPage=$_GET['page'];
@@ -332,7 +342,6 @@
                 //Gọi model room
                 $room = self::model("roomModel");
 
-                $room -> getRoomNumber($_GET['room']);
 
                 //View
                 $view =self::view("adminlayout",[
@@ -341,11 +350,31 @@
                     "admin" => $user -> getAdmin(),
                     "room" => $room -> getRoomType($_GET['room']),
                     "avatarRoom" => $room -> getAvatarRoom($_GET['room']),
-                    "imageRoom"  => $room -> getImageRoom($_GET['room'])
+                    "imageRoom"  => $room -> getImageRoom($_GET['room']),
+                    "roomNumbers" => $room -> getRoomNumbers($_GET['room']),
+                    "roomTypes"  => $room -> getAllRoomType()
                 ]);
             } else {
                 header("Location: /admin/roomManager");
             }
+        }
+
+        static function changeInfoRoom(){
+            $roomType = $_GET['room'];
+            $newRoomType = $_POST['roomType'];
+            $price = $_POST['price'];
+            $beds = $_POST['beds'];
+            $guest = $_POST['guest'];
+            $area = $_POST['area'];
+            $describe = $_POST['describe'];
+
+            $room = self::model("roomModel");
+
+            if(isset($_POST['save'])){
+                $room -> changeInfoRoom($roomType, $newRoomType, $price, $beds, $guest, $area, $describe);
+            }
+
+            header("Location: " . $_SERVER["HTTP_REFERER"]);
         }
     }
 ?>

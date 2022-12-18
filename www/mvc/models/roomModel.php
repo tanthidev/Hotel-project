@@ -24,9 +24,9 @@
             return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
         }
 
-        public function getRoomNumber($roomType){
-            $qr = " SELECT roomNumber,
-                    FROM   Rooms,
+        public function getRoomNumbers($roomType){
+            $qr = " SELECT roomNumber
+                    FROM   Rooms
                     WHERE  roomType = '$roomType'";
             $rows = mysqli_query($this ->conn, $qr);
             $array = array();
@@ -175,8 +175,6 @@
                 $array[] = $row;
             }
 
-            print_r($array);
-
             if($array!=null){
                 // Neu co phong da duoc book
                 $roomBooked = "'".$array[0]["roomNumber"]."'";
@@ -218,6 +216,18 @@
             }
             return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
 
+        }
+
+        public function changeInfoRoom($roomType, $newRoomType, $price, $beds, $guest, $area, $describe){
+            $qr ="UPDATE RoomType
+                    SET roomType = '$newRoomType', numberOfBed = '$beds', area='$area', guest='$guest', price='$price', describeRoom='$describe'
+                    WHERE roomType = '$roomType'";
+            $result = "false";
+            $a = mysqli_query($this -> conn, $qr);
+            if($a){
+                $result = "true";
+            }
+            return $result;
         }
 
 

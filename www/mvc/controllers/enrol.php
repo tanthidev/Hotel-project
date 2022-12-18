@@ -36,7 +36,7 @@ class enrol extends controller{
                 if (!($user -> checkExistphoneNumber($phoneNumber))) {
                     $textnotice="Phone number is incorrect!";
                         //GỌi view
-                        $view =self::view("simplelayout",[
+                        $view =self::view("emptylayout",[
                             "page"=>"login",
                             "notice" => $textnotice,
                             "check" => $checkLogin
@@ -48,7 +48,7 @@ class enrol extends controller{
                 if (!($user -> checkPass($phoneNumber, $pass))) {
                     $textnotice="Password is incorrect!";
                         //GỌi view
-                        $view =self::view("simplelayout",[
+                        $view =self::view("emptylayout",[
                             "page"=>"login",
                             "notice" => $textnotice,
                             "check" => $checkLogin
@@ -61,7 +61,7 @@ class enrol extends controller{
 
                 $roles = json_decode ($user ->getUser())->roles;
                 if($roles=="2"){
-                    header('Location: /admin');
+                    header('Location: /admin/dashBoard');
                 } else {
                     header('Location: /home');
                 }
@@ -109,7 +109,7 @@ class enrol extends controller{
                 if(!password_verify($re_pass, $pass)){
                     $textnotice="Password không giống nhau!";
                     //GỌi view
-                    $view =self::view("simplelayout",[
+                    $view =self::view("emptylayout",[
                         "page"=>"register",
                         "notice" => $textnotice,
                         "check" => $checkregister
@@ -123,7 +123,7 @@ class enrol extends controller{
                 if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
                     $textnotice="Email không hợp lệ!";
                     //GỌi view
-                    $view =self::view("simplelayout",[
+                    $view =self::view("emptylayout",[
                         "page"=>"register",
                         "notice" => $textnotice,
                         "check" => $checkregister
@@ -141,7 +141,7 @@ class enrol extends controller{
                     $textnotice = "Đăng kí thành công";
                     $checkregister = true;
                     //GỌi view
-                    $view =self::view("simplelayout",[
+                    $view =self::view("emptylayout",[
                         "page"=>"login",
                         "notice" => $textnotice,
                         "check" => $checkregister
@@ -150,7 +150,7 @@ class enrol extends controller{
                 } else{
                     $textnotice = "Đăng kí thất bại";
                     //GỌi view
-                    $view =self::view("simplelayout",[
+                    $view =self::view("emptylayout",[
                         "page"=>"register",
                         "notice" => $textnotice,
                         "check" => $checkregister

@@ -27,19 +27,11 @@ function topFunction() {
 
 
 // Show menu when click button on mobile
-if(document.getElementById("header__btn-menu--mobile")){
-    document.getElementById("header__btn-menu--mobile").onclick = function(){
-        if(document.getElementById("header").style.overflow==""){
-            document.getElementById("header").style.overflow = "visible";
-            
-        }
-        else if(document.getElementById("header").style.overflow=="hidden"){
-            document.getElementById("header").style.overflow = "visible";
-            
-        }
-        else{
-            document.getElementById("header").style.overflow = "hidden";
-        }
+if(document.getElementById("btn__show-menu--mobile")){
+    document.getElementById("btn__show-menu--mobile").onclick = function(){
+        btn = document.getElementById("header__menu");
+        console.log()
+        btn.style.display = (btn.style.display!="block")? "block" : "none";
     }
 
 }
@@ -635,6 +627,8 @@ if(document.getElementById("form-booking")){
 }
 
 
+
+
 //AJAX
 //check exist room number
 if(document.getElementById("roomNumber")){
@@ -744,8 +738,27 @@ if(document.getElementById("register-form")){
 
 
 
+  
 
+if(document.getElementsByClassName("format-money")){
+    // Create our number formatter.
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    
+        // These options are needed to round to whole numbers if that's what you want.
+        //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+        //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+    });
 
+    items = document.getElementsByClassName("format-money");
+
+    for(var i =0; i<items.length; i++){
+        value = items[i].textContent;
+
+        items[i].innerHTML = formatter.format(Number(value));
+    }
+}
 
 
 
@@ -767,18 +780,16 @@ function getCurrentDate(){
 if(document.getElementById("form-search")){
     $(function() {
         $('input[name="datefilter"]').daterangepicker({
+            "minSpan": {
+                "days": 7
+            },
             autoUpdateInput: false,
             locale: {
                 cancelLabel: 'Clear'
             },
             "minDate": getCurrentDate(),
             "autoApply": true,
-            "drops": 'auto',
-            isInvalidDate: function(date) {
-                if (date.format('MM/DD/YYYY') == '12/24/2022') {
-                    return true; 
-                }
-            }
+            "drops": 'auto'
             
         });
 

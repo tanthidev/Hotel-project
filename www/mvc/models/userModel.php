@@ -17,6 +17,13 @@
             }
         }
 
+        public function countUsers(){
+            $qr = "SELECT * FROM User";
+            $rows = mysqli_query($this -> conn, $qr);
+            $array = mysqli_num_rows($rows);
+            return $array;
+        }
+
         public function getAdmin(){
             if(isset($_SESSION['id'])){
                 $id=$_SESSION['id'];
@@ -51,7 +58,7 @@
 
         //Get UserID 
         public function getID($phoneNumber){
-            $qr = "SELECT userID from User where phoneNumber=$phoneNumber";
+            $qr = "SELECT userID from User where phoneNumber='$phoneNumber'";
             $rows = mysqli_query($this ->conn, $qr);
             $row = mysqli_fetch_array($rows);
             $Id = $row['userID'];
@@ -117,7 +124,7 @@
 
         //Kiểm tra mật khẩu đăng nhập bằng sđt
         public function checkPass($phoneNumber, $pass){
-            $qr = "SELECT passWord, phoneNumber from User where phoneNumber=$phoneNumber";
+            $qr = "SELECT passWord, phoneNumber from User where phoneNumber='$phoneNumber'";
             $rows = mysqli_query($this ->conn, $qr);
             $row = mysqli_fetch_array($rows);
             $check = password_verify($pass, $row['passWord']);

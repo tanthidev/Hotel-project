@@ -86,7 +86,7 @@
 											<hr>
 											<div class="list-room__booking">
 												<div class="list-room__booking-price">
-													<span class="list-room__booking-price--text">$'.$rooms[$index]->price.'/ Night</span>
+													<span class="list-room__booking-price--text format-money">'.$rooms[$index]->price.'</span><span>/ Night</span>
 												</div>
 												<!--  -->
 												<a href="/booking/default?room='.$rooms[$index] -> roomType.'&datefilter='.$datefilter.'&guest='.$guest.'" class="list-room__booking-btn">BOOK NOW</a>
@@ -170,7 +170,7 @@
 											<hr>
 											<div class="list-room__booking">
 												<div class="list-room__booking-price">
-													<span class="list-room__booking-price--text">$'.$rooms[$index+1] -> price.'/ Night</span>
+													<span class="list-room__booking-price--text format-money">'.$rooms[$index+1] -> price.'</span><span>/ Night</span>
 												</div>
 												<!--  -->
 												<a href="/booking/default?room='.$rooms[$index+1] -> roomType.'&datefilter='.$datefilter.'&guest='.$guest.'" class="list-room__booking-btn">BOOK NOW</a>

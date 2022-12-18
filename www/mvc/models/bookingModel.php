@@ -1,8 +1,8 @@
 <?php 
     class bookingModel extends db{
-        public function addBooking($fullName, $phoneNumber, $email, $checkIn, $checkOut, $numberGuest, $specialReq, $dateBooking){
+        public function addBooking($fullName, $phoneNumber, $email, $checkIn, $checkOut, $numberGuest, $specialReq, $dateBooking, $totalMoneyPaymentVAT){
             $result = false;
-            $qr = "INSERT INTO Bookings (fullName, phoneNumber, email, checkIn, checkOut, numberGuest, dateBooking, specialReq) VALUES ('$fullName', '$phoneNumber', '$email', '$checkIn', '$checkOut', '$numberGuest', '$dateBooking', '$specialReq')";
+            $qr = "INSERT INTO Bookings (fullName, phoneNumber, email, checkIn, checkOut, numberGuest, dateBooking, specialReq, total) VALUES ('$fullName', '$phoneNumber', '$email', '$checkIn', '$checkOut', '$numberGuest', '$dateBooking', '$specialReq', '$totalMoneyPaymentVAT')";
             $a = mysqli_query($this -> conn, $qr);
             if($a){
                 $result = true;
@@ -85,7 +85,7 @@
 
         public function getLimitNewBooking($from, $amount){
             $currentDate = date("d/m/Y");
-            $qr = "SELECT * FROM `Bookings` WHERE checkIn > '$currentDate' limit $from, $amount";
+            $qr = "SELECT * FROM `Bookings` ORDER BY dateBooking DESC limit $from, $amount";
             $rows = mysqli_query($this ->conn, $qr);
             $array = array();
             while($row = mysqli_fetch_assoc($rows)){
@@ -104,5 +104,40 @@
             }
             return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
         }
+
+        public function getNewBookingID($phoneNumber){
+            $qr = "SELECT bookingID FROM Bookings WHERE phoneNumber = '$phoneNumber' ORDER BY dateBooking DESC LIMIT 1";
+            $rows = mysqli_query($this ->conn, $qr);
+            $array = array();
+            while($row = mysqli_fetch_assoc($rows)){
+                $array[] = $row;
+            }
+            return json_encode($array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+        }
+
+        public function countBookings(){
+            $qr = "SELECT * FROM Bookings";
+            $rows = mysqli_query($this -> conn, $qr);
+            $array = mysqli_num_rows($rows);
+            return $array;
+        }
+
+        public function revenue(){
+            $qr = "SELECT sum(total) AS 'envenue' from Bookings ";
+            $rows = mysqli_query($this -> conn, $qr);
+            $array = mysqli_fetch_array($rows);
+            return $array['envenue'];
+        }
+
+        public function insertBookingCode($ID, $bookingCode){
+            $result = false;
+            $qr = "UPDATE Bookings SET BookingCode = '$bookingCode' WHERE bookingID = '$ID'";
+            $a = mysqli_query($this -> conn, $qr);
+            if($a){
+                $result = true;
+            }
+            return $result;
+        }
+
     }
 ?>

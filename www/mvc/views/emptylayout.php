@@ -49,9 +49,6 @@
 						<img src="/mvc/data/images/logo/logo-company.png" alt="" class="header__logo">
 
 					</a>
-					<btn id="header__btn-menu--mobile" class="header__btn-menu--mobile" onclick="">
-						<i class="fa-solid fa-bars"></i>
-					</btn>
 				</div>
 
 				<div class="header__menu">

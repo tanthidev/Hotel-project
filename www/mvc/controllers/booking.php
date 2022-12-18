@@ -6,7 +6,7 @@
             $room = self::model('roomModel');
             $user = self::model('userModel');
             
-            
+            $booking = self::model('bookingModel');
 
             //Gọi view
             $view =self::view("simplelayout",[
@@ -221,7 +221,8 @@
                 $totalMoneyRoom = (int)(json_decode($room -> getRoomType($roomType))[0] -> price) * $datesOfStay * $numberOfRooms;
 
                 $totalMoneyPayment = $totalMoneyRoom + $totalMoneyPayment;
-                
+                // VAT: 8%
+                $totalMoneyPaymentVAT= $totalMoneyPayment + $totalMoneyPayment*0.08;
                 
                 $bill["room"]["product"] = $roomType;
                 $bill["room"]["description"] = "View ".ucwords(json_decode($room -> getRoomType($roomType))[0]->view)." view<br>".json_decode($room -> getRoomType($roomType))[0]->numberOfBed." King Bed";
@@ -238,7 +239,6 @@
                         "total"      => json_decode($room -> getRoomByPhoneNumber($phoneNumber))[0]->price * $datesOfStay,
                     );
                     array_push($roomBooking, $a);
-                    
                 }
 
                 //Get time booking
@@ -247,11 +247,16 @@
 
 
                 //Save into database
-                // $booking -> addBooking($fullName, $phoneNumber, $email, $datefilter[0], $datefilter[1], $guest, $request, $dateBooking);
-                // $booking -> addBookingService($services, $phoneNumber);
-                // $booking -> addRoomStatus($roomBooking, $phoneNumber, $datefilter[0], $datefilter[1]);
+                $booking -> addBooking($fullName, $phoneNumber, $email, $datefilter[0], $datefilter[1], $guest, $request, $dateBooking, $totalMoneyPaymentVAT);
+                $booking -> addBookingService($services, $phoneNumber);
+                $booking -> addRoomStatus($roomBooking, $phoneNumber, $datefilter[0], $datefilter[1]);
 
 
+                // Create booking Code 
+                $ID = json_decode($booking -> getNewBookingID($phoneNumber))[0]->bookingID;
+                $prefix = str_replace("/", "", date("d/m/Y"));
+                $bookingCode = $prefix.$ID;
+                $booking -> insertBookingCode($ID, $bookingCode);
 
                 // Info guest
                 $infoGuest = array(
@@ -274,10 +279,12 @@
                     "bill"      => $bill,
                     "infoGuest" => $infoGuest,
                     "TotalPayment"  => $totalMoneyPayment,
+                    "totalVAT"  => $totalMoneyPaymentVAT,
                     "request"   => $request,
                     "dateBooking"=> $dateBooking,
                     "bookingId" => $bookingId,
-
+                    "VAT"       => $totalMoneyPayment*0.08,
+                    "bookingCode" => $bookingCode
                 ]);
         }
 

@@ -7,6 +7,9 @@
     $request       = $data['request'];
     $bookingId     = $data['bookingId'];
     $dateBooking   = $data['dateBooking'];
+    $totalVAT      = $data['totalVAT'];
+    $VAT           = $data['VAT'];
+    $bookingCode   = $data['bookingCode'];
 ?>
 
 
@@ -23,7 +26,7 @@
             <div class="grid__column-2">
                 <div class="grid__row">
                     <div class="grid__column-3">
-                    <div class="complete__detail-hotel-item text-bold">Invoice number</div>
+                    <div class="complete__detail-hotel-item text-bold">Booking Code</div>
                         <div class="complete__detail-hotel-item text-bold">Date</div>
                         <div class="complete__detail-hotel-item text-bold">Check-in</div>
                         <div class="complete__detail-hotel-item text-bold">Check-out</div>
@@ -31,7 +34,7 @@
                         <div class="complete__detail-hotel-item text-bold">Website</div>
                     </div>
                     <div class="grid__column-3--2">
-                        <div class="complete__detail-hotel-item"><?php echo $bookingId; ?></div>
+                        <div class="complete__detail-hotel-item"><?php echo $bookingCode; ?></div>
                         <div class="complete__detail-hotel-item"><?php echo $dateBooking; ?></div>
                         <div class="complete__detail-hotel-item">After 14:00</div>
                         <div class="complete__detail-hotel-item">Before 11:00</div>
@@ -87,15 +90,24 @@
                     <td class="grid__column-10-2 bill__bill-detail--item">'.$item["description"].'</td>
                     <td class="grid__column-10-1 bill__bill-detail--item">'.$item["quantity"].'</td>
                     <th class="grid__column-10-1 bill__bill-detail--item">'.$item["guest"].'</th>
-                    <td class="grid__column-10-1 bill__bill-detail--item">'.$item["price"].'</td>
+                    <td class="grid__column-10-1 bill__bill-detail--item format-money">'.$item["price"].'</td>
                     <th class="grid__column-10-1 bill__bill-detail--item">'.$item["unit"].'</th>
-                    <td class="grid__column-10-1 bill__bill-detail--item">'.$item["amount"].'</td>
+                    <td class="grid__column-10-1 bill__bill-detail--item format-money">'.$item["amount"].'</td>
                 </tr>
                 ';
             }
         ?>
 
-
+        <!-- Status -->
+        <tr class="grid__row bill__status">
+            <td class="grid__column-10-2" style="font-size: 20px;">VAT (8%):</td>
+            <td class="grid__column-10-1"></td>
+            <td class="grid__column-10-2"></td>
+            <td class="grid__column-10-1"></td>
+            <td class="grid__column-10-1"></td>
+            <th class="grid__column-10-1"></th>
+            <td class="grid__column-10-2 bill__total--item-price format-money" style="font-size: 20px; color: #212529;"><?php echo $VAT; ?></td>
+        </tr>
 
         <!-- Total -->
         <tr class="grid__row bill__total">
@@ -105,11 +117,10 @@
             <td class="grid__column-10-1"></td>
             <td class="grid__column-10-1"></td>
             <th class="grid__column-10-1"></th>
-            <th class="grid__column-10-1"></th>
-            <td class="grid__column-10-1 bill__total--item bill__total--item-price"><?php echo $totalPayment; ?>$</td>
+            <td class="grid__column-10-2 bill__total--item bill__total--item-price format-money"><?php echo $totalVAT; ?></td>
         </tr>
 
-        <!-- Total -->
+        <!-- Status -->
         <tr class="grid__row bill__status">
             <td class="grid__column-10-1 bill__status--item">Status</td>
             <td class="grid__column-10-2"></td>
@@ -160,5 +171,23 @@
     }
     document.getElementById("btn-confirm-booking").onclick = function(){
         location.href = '/booking/confirmBooking/?bookingId=<?php echo $bookingId;?>';
+    }
+
+    // Create our number formatter.
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    
+        // These options are needed to round to whole numbers if that's what you want.
+        //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+        //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+    });
+
+    items = document.getElementsByClassName("format-money");
+
+    for(var i =0; i<items.length; i++){
+        value = items[i].textContent;
+
+        items[i].innerHTML = formatter.format(Number(value));
     }
 </script>
