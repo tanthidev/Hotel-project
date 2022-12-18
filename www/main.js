@@ -736,8 +736,6 @@ if(document.getElementById("register-form")){
 
 
 
-
-
   
 
 if(document.getElementsByClassName("format-money")){

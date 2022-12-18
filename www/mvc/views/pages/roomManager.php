@@ -108,6 +108,7 @@
                             <!-- Room avatar -->
                             <label class="form-add-room--label" for="roomAvatar">Room Avatar <span style="color:red;">*</span></label>
                             <input class="form-add-room--input form-add-room--input-img" id="roomAvatar" type="file" name="roomAvatar">
+                            
     
                         </div>
                         <div class="grid__column-2">
